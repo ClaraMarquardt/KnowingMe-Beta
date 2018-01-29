@@ -465,7 +465,7 @@ def reset_all():
 		purge(user_setting['output_dir'], ["log","json","csv", "txt","p"])
 	
 	# system reset
-	os.system(reset_path)
+	# os.system(reset_path)
 
 	print("reset")
 
