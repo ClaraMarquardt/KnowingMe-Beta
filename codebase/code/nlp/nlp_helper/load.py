@@ -20,6 +20,7 @@ from cross import *
 import pandas as pd
 import numpy as np
 import json
+import pickle
 import datetime
 from   dateutil import parser
 
@@ -112,9 +113,10 @@ def load_email(file_array, verbose=True):
 		# loading successful
 		try:	
 		
-			# load 
-			with open(file_path) as data_file:    
-				data = json.load(data_file)
+			# load
+			data = pickle.load(open(file_path, "rb" ) )
+			# with open(file_path) as data_file:    
+			# 	data = json.load(data_file)
 
 			# parse
 			msg_id_tmp            	   = str(data['msg_id'])
@@ -131,8 +133,8 @@ def load_email(file_array, verbose=True):
 			msg_cc_tmp        	  	   = str(data['msg_cc'])
 			msg_bcc_tmp       	  	   = str(data['msg_bcc'])
 	
-			msg_subject_tmp       	   = str(data['msg_subject'].encode("utf-8"))
-			msg_text_tmp          	   = str(data['msg_text'].encode("utf-8"))
+			msg_subject_tmp       	   = str(data['msg_subject'].decode("utf-8","ignore").encode("utf-8"))
+			msg_text_tmp          	   = str(data['msg_text'].decode("utf-8","ignore").encode("utf-8"))
 
 			# append
 			msg_id.append(msg_id_tmp)

@@ -141,16 +141,16 @@ def birthday(link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, ms
 	# insight generation successful
 	try:
 		birthday_guess   =  date_freq(date_data)
-		birthday_guess_1 =  global_fun.fill_array(len(msg_id), birthday_guess[0])
-		birthday_guess_2 =  global_fun.fill_array(len(msg_id), birthday_guess[1])
-		birthday_guess_3 =  global_fun.fill_array(len(msg_id), birthday_guess[2])
-		birthday_guess_4 =  global_fun.fill_array(len(msg_id), birthday_guess[3])
-		birthday_guess_5 =  global_fun.fill_array(len(msg_id), birthday_guess[4])
-		birthday_guess_1_freq =  global_fun.fill_array(len(msg_id), birthday_guess[5])
-		birthday_guess_2_freq =  global_fun.fill_array(len(msg_id), birthday_guess[6])
-		birthday_guess_3_freq =  global_fun.fill_array(len(msg_id), birthday_guess[7])
-		birthday_guess_4_freq =  global_fun.fill_array(len(msg_id), birthday_guess[8])
-		birthday_guess_5_freq =  global_fun.fill_array(len(msg_id), birthday_guess[9])
+		birthday_guess_1 =  global_fun.fill_array(len(msg_id), birthday_guess[0][0])
+		birthday_guess_2 =  global_fun.fill_array(len(msg_id), birthday_guess[1][0])
+		birthday_guess_3 =  global_fun.fill_array(len(msg_id), birthday_guess[2][0])
+		birthday_guess_4 =  global_fun.fill_array(len(msg_id), birthday_guess[3][0])
+		birthday_guess_5 =  global_fun.fill_array(len(msg_id), birthday_guess[4][0])
+		birthday_guess_1_freq =  global_fun.fill_array(len(msg_id), birthday_guess[5][0])
+		birthday_guess_2_freq =  global_fun.fill_array(len(msg_id), birthday_guess[6][0])
+		birthday_guess_3_freq =  global_fun.fill_array(len(msg_id), birthday_guess[7][0])
+		birthday_guess_4_freq =  global_fun.fill_array(len(msg_id), birthday_guess[8][0])
+		birthday_guess_5_freq =  global_fun.fill_array(len(msg_id), birthday_guess[9][0])
 
 	# insight generation unsuccessful
 	except Exception as e: 

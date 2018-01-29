@@ -33,7 +33,11 @@ api_success, feature_success, user_name, user_photo, internal_email_id, link_id_
 app_setting = dict()
 app_setting['app_port']  = int(os.getenv("PORT", "8000"))
 app_setting['app_debug'] = int(str(os.getenv("DEBUG", "False"))=='True')
-
+user_setting['output_dir_master'] = str(os.getenv("OUTPUT", ""))
+print(user_setting['output_dir_master'])
+if user_setting['output_dir_master']!="":
+	user_setting['output_dir'] =user_setting['output_dir_master']
+	user_setting['output_dir_base'] =user_setting['output_dir_master']
 
 # Dependencies - Internal
 #---------------------------------------------#
@@ -245,8 +249,8 @@ def get_email_batch_wrapper(service, user_id, earliest_date, latest_date, output
 		run_time       = email_batch_data[2]
 
 		## feature creation 
-		email_array=np.concatenate((glob.glob(os.path.join(user_setting['output_dir'],'inbox', 'email*.json')), 
-			glob.glob(os.path.join(user_setting['output_dir'],'outbox', 'email*.json'))))
+		email_array=np.concatenate((glob.glob(os.path.join(user_setting['output_dir'],'inbox', 'email*.p')), 
+			glob.glob(os.path.join(user_setting['output_dir'],'outbox', 'email*.p'))))
 		email_array_date = [datetime.datetime.strptime(user_setting['latest_date'],'%m/%d/%Y') - datetime.timedelta(days=x) for x in range(0,user_setting['date_diff']+1)]
 		email_array_date = [x.strftime('%m_%d_%Y') for x in email_array_date]
 		email_array_date = string.join(email_array_date,"|")
@@ -396,8 +400,8 @@ def get_email_batch_wrapper_sample():
 		email_array_other=glob.glob(os.path.join(user_setting['output_dir'],'other', 'date*.json'))
 	
 	## feature creation
-	email_array=np.concatenate((glob.glob(os.path.join(user_setting['output_dir'],'inbox', 'email*.json')), 
-		glob.glob(os.path.join(user_setting['output_dir'],'outbox', 'email*.json'))))
+	email_array=np.concatenate((glob.glob(os.path.join(user_setting['output_dir'],'inbox', 'email*.p')), 
+		glob.glob(os.path.join(user_setting['output_dir'],'outbox', 'email*.p'))))
 	
 	if user_setting["process_email_lim"]!='False':
 		lim   = np.min([len(email_array),int(user_setting["process_email_lim"])])
@@ -444,6 +448,11 @@ def reset_all():
 
 	reset_path                    = os.path.join(app_root,'setup','exec_reset.sh')
 	user_setting, sample_setting  = user_setting_initialization()
+	app_setting['app_debug'] = int(str(os.getenv("DEBUG", "False"))=='True')
+	user_setting['output_dir_master'] = str(os.getenv("OUTPUT", ""))
+	if user_setting['output_dir_master']!="":
+		user_setting['output_dir'] =user_setting['output_dir_master']
+		user_setting['output_dir_base'] =user_setting['output_dir_master']
 
 	# logout
 	api_success, feature_success, user_name, user_photo, internal_email_id, link_id_store, user, user_group_1_store, user_group_2_store,user_group_na_store,user_group_1,user_group_2,user_group_na,user_group_name,user_group_name_a,user_group_name_b,user_group_name_basis, user_group_name_list_address, user_group_name_list_name= var_initialization(user_setting)
@@ -453,7 +462,7 @@ def reset_all():
 			files = sum([y for x in os.walk(dir) for y in [glob.glob(os.path.join(x[0], '*.'+e)) for e in pattern]],[])
 			for f in files:
 				os.remove(f)
-		purge(user_setting['output_dir'], ["log","json","csv", "txt"])
+		purge(user_setting['output_dir'], ["log","json","csv", "txt","p"])
 	
 	# system reset
 	os.system(reset_path)
@@ -487,8 +496,8 @@ def welcome():
 	global user_group_name_list_name
 	global user_group_name_list_address
 
-	if not os.path.exists(os.path.join(user_setting['output_dir'], user)):
-		os.makedirs(os.path.join(user_setting['output_dir'], user))
+	if not os.path.exists(os.path.join(user_setting['output_dir_base'], user)):
+		os.makedirs(os.path.join(user_setting['output_dir_base'], user))
 
 	user_setting['output_dir'] = os.path.join(user_setting['output_dir_base'], user)
 
@@ -507,6 +516,8 @@ def welcome():
 	for i in contact_path:
 		user_group_name_list_name_temp.append(i)
 
+	user_group_name_list_name_temp = [x for x in user_group_name_list_name_temp if x not in user_group_name_list_name]
+	
 	if (len(user_group_name_list_name_temp)>0):
 		user_group_name_list_name_temp = list(set(user_group_name_list_name_temp))
 		user_group_name_list_address_temp = ['/user_group_load_' + x for x in user_group_name_list_name_temp]	
@@ -531,8 +542,9 @@ def reset():
 def logout():
 
 	reset_all()
-
-	return flask.redirect('https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http%3A%2F%2Flocalhost%3A8000%2Foauth2callback')
+	redirect_uri=flask.url_for('oauth2callback', _external=True)
+	print(redirect_uri)
+	return flask.redirect('https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue='+redirect_uri)
 
 
 
@@ -611,8 +623,8 @@ def user_setting_store():
 		if x in user_setting_tmp.keys():
 			del user_setting_tmp[x]
 	
-	with open(user_setting_file_user, 'w') as out_file:
-			json.dump(user_setting_tmp, out_file, indent=4)
+	# with open(user_setting_file_user, 'w') as out_file:
+	# 		json.dump(user_setting_tmp, out_file, indent=4)
 
 	# load page
 	if user_setting['personal_email']=='True':
@@ -1259,15 +1271,18 @@ def birthday():
 
 	#format date
 	map_month    	      = {1:'January',2:'February',3:'March',4:'April',5:'May',6:'June',7:'July',8:'August',9:'September',10:'October', 11:'November', 12:'December'}
-	birthday_guess        = parser.parse(feat_df['birthday..birthday_guess_1'][0][0])
-	birthday_guess_month  = str(pd.Series(int(birthday_guess.strftime('%m'))).map(map_month)[0])
-	birthday_guess_day    = str(birthday_guess.strftime('%d'))
+	if type(feat_df['birthday..birthday_guess_1'][0]) is str:
+		birthday_guess        = parser.parse(feat_df['birthday..birthday_guess_1'][0])
+		birthday_guess_month  = str(pd.Series(int(birthday_guess.strftime('%m'))).map(map_month)[0])
+		birthday_guess_day    = str(birthday_guess.strftime('%d'))
 
-	birthday_guess_format = birthday_guess_month + ', ' + birthday_guess_day
+		birthday_guess_format = birthday_guess_month + ', ' + birthday_guess_day
 	
-	# render
-	return flask.render_template('sample_insight.html',
-		birthday_guess=birthday_guess_format)
+		# render
+		return flask.render_template('sample_insight.html',
+			birthday_guess=birthday_guess_format)
+	else:
+		return flask.render_template('sample_insight_unavailable.html')
 
 @app.route('/birthday_followup')
 def birthday_followup():
@@ -1280,17 +1295,23 @@ def birthday_followup():
 	map_month    	      = {1:'January',2:'February',3:'March',4:'April',5:'May',6:'June',7:'July',8:'August',9:'September',10:'October', 11:'November', 12:'December'}
 	
 	for i in ['birthday..birthday_guess_2','birthday..birthday_guess_3','birthday..birthday_guess_4','birthday..birthday_guess_5']:
-		birthday_guess_tmp        = parser.parse(feat_df[i][0][0])
-		birthday_guess_month_tmp  = str(pd.Series(int(birthday_guess_tmp.strftime('%m'))).map(map_month)[0])
-		birthday_guess_day_tmp    = str(birthday_guess_tmp.strftime('%d'))
+		if type(feat_df[i][0]) is str:
+			birthday_guess_tmp        = parser.parse(feat_df[i][0])
+			birthday_guess_month_tmp  = str(pd.Series(int(birthday_guess_tmp.strftime('%m'))).map(map_month)[0])
+			birthday_guess_day_tmp    = str(birthday_guess_tmp.strftime('%d'))
 
-		birthday_guess_format_tmp = birthday_guess_month_tmp + ', ' + birthday_guess_day_tmp
-		birthday_guess_alt.append(birthday_guess_format_tmp)
+			birthday_guess_format_tmp = birthday_guess_month_tmp + ', ' + birthday_guess_day_tmp
+			birthday_guess_alt.append(birthday_guess_format_tmp)
 	
-	# render
-	return flask.render_template('sample_insight_followup.html',
+	if (len(birthday_guess_alt)>0):
+		
+		# render
+		return flask.render_template('sample_insight_followup.html',
 		birthday_guess=birthday_guess_alt)
 
+	else:
+		# render
+		return flask.render_template('sample_insight_followup_unavailable.html')
 
 ## success
 #---------------------------
@@ -1531,12 +1552,12 @@ def load_inbox():
 	browser_mode="inbox"
 
 	## update
-	email_array_browser = glob.glob(os.path.join(user_setting['output_dir'],'inbox', 'email*.json'))
+	email_array_browser = glob.glob(os.path.join(user_setting['output_dir'],'inbox', 'email*.p'))
 	email_array_browser = np.array([x for x in email_array_browser if x in email_array])
 
 	if (len(email_array_browser)>0):
 		
-		email_id            = re.sub("(.*email_)([^_]*)(_.*json$)","\\2",email_array_browser[internal_email_id])
+		email_id            = re.sub("(.*email_)([^_]*)(_.*p$)","\\2",email_array_browser[internal_email_id])
 
 		if internal_email_id<len(email_array_browser) and (internal_email_id>=0) and (email_id in np.array(feat_df['msg_id'])):
 		
@@ -1579,12 +1600,12 @@ def load_outbox():
 	browser_mode="outbox"
 
 	## update
-	email_array_browser = glob.glob(os.path.join(user_setting['output_dir'],'outbox', 'email*.json'))
+	email_array_browser = glob.glob(os.path.join(user_setting['output_dir'],'outbox', 'email*.p'))
 	email_array_browser = np.array([x for x in email_array_browser if x in email_array])
 	
 	if (len(email_array_browser)>0):
 
-		email_id            = re.sub("(.*email_)([^_]*)(_.*json$)","\\2",email_array_browser[internal_email_id])
+		email_id            = re.sub("(.*email_)([^_]*)(_.*p$)","\\2",email_array_browser[internal_email_id])
 
 		if internal_email_id<len(email_array_browser) and (internal_email_id>=0) and (email_id in np.array(feat_df['msg_id'])):
 
@@ -1640,7 +1661,7 @@ def reload_next():
 
 	if (internal_email_id<len(email_array_browser)) and (internal_email_id>=0):
 
-		email_id            = re.sub("(.*email_)([^_]*)(_.*json$)","\\2",email_array_browser[internal_email_id])
+		email_id            = re.sub("(.*email_)([^_]*)(_.*p$)","\\2",email_array_browser[internal_email_id])
 		print(email_id)
 
 		if (email_id in np.array(feat_df_tmp['msg_id'])):
@@ -1698,7 +1719,7 @@ def reload_pre():
 	
 	if (internal_email_id<len(email_array_browser)) and (internal_email_id>=0):
 
-		email_id            = re.sub("(.*email_)([^_]*)(_.*json$)","\\2",email_array_browser[internal_email_id])
+		email_id            = re.sub("(.*email_)([^_]*)(_.*p$)","\\2",email_array_browser[internal_email_id])
 		print(email_id)
 
 		if (email_id in np.array(feat_df_tmp['msg_id'])):

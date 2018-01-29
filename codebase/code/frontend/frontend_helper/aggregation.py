@@ -314,6 +314,8 @@ def hist_agg(df, link_id_list, col_pattern,col_pattern_exclude):
 
 		df_tmp             = df.loc[df[col]>0, 'msg_id'].unique()
 		key_col_unique_msg = len(df_tmp)
+		if (key_col_unique_msg==0):
+			key_col_unique_msg=np.nan
 		key_col_count.append(key_col_unique_msg)
 
 	dict_tmp = pd.DataFrame({'key_col':key_col, 'key_col_count':key_col_count})

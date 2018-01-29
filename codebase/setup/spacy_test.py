@@ -12,7 +12,7 @@ import re
 platform  = sys.platform
 if bool(re.match("win", platform))==True:
 	print("windows")
-    spacy_dir = os.path.normpath(os.path.join(app_root, 'dependencies', 'spacy_win','en_core_web_sm','en_core_web_sm-2.0.0'))
+	spacy_dir = os.path.normpath(os.path.join(app_root, 'dependencies', 'spacy_win','en_core_web_sm','en_core_web_sm-2.0.0'))
 
 else: 
 	print("non-windows")

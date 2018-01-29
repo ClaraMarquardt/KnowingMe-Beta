@@ -27,7 +27,7 @@ import re
 def prepare_browser_vis(feat_df,feat_df_dict, email_array, internal_email_id, link_id_store, reload):
 
 	# subset feature dt
-	email_id            = re.sub("(.*email_)([^_]*)(_.*json$)","\\2",email_array[internal_email_id])
+	email_id            = re.sub("(.*email_)([^_]*)(_.*p$)","\\2",email_array[internal_email_id])
 	email_feat_df       = feat_df[feat_df['msg_id']==email_id]
 
 	# meta    - df

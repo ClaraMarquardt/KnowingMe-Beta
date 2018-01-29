@@ -95,7 +95,7 @@ def get_email_batch(service, user_id, earliest_date, latest_date, output_dir, ex
 		Returns:
 			email_text, the extracted email text.
 		"""
-	
+		
 		# recursive parsing function
 		def rec_msg_parse(msg_element):
 			messageMainType = msg_element.get_content_maintype()
@@ -109,13 +109,14 @@ def get_email_batch(service, user_id, earliest_date, latest_date, output_dir, ex
 							return(msg_text_temp)
 			elif messageMainType == 'text':
 				return msg_element.get_payload(decode=True)
-	
+		
+
 		# execute
 		msg_str  = base64.urlsafe_b64decode(msg['raw'].encode('ASCII'))
 		mime_msg = email.message_from_string(msg_str)
 		msg_text = rec_msg_parse(mime_msg)
+		
 	
-		# print(msg_text[1:300])
 		return msg_text
 		
 	## get_msg_meta
@@ -151,10 +152,7 @@ def get_email_batch(service, user_id, earliest_date, latest_date, output_dir, ex
 
 		## labels (GMAIL)
 		msg_meta['msg_label'] = msg['labelIds']
-	
-		## snippet (GMAIL)
-		msg_meta['msg_snippet'] = msg['snippet']
-	
+		
 		## date (MAIL)
 		msg_meta['msg_date'] = mime_msg['date']
 	
@@ -165,7 +163,7 @@ def get_email_batch(service, user_id, earliest_date, latest_date, output_dir, ex
 		msg_meta['msg_bcc']  = mime_msg["bcc"]
 	
 		## subject (MAIL)
-		msg_meta['msg_subject'] = mime_msg["subject"]
+		msg_meta['msg_subject'] = clean_msg_text(mime_msg["subject"])
 	
 		## meta labels
 		
@@ -193,21 +191,25 @@ def get_email_batch(service, user_id, earliest_date, latest_date, output_dir, ex
 		"""
 
 		# omit forwarded emails, etc.
+		
 		msg_text_clean = msg_text.split("\n>")[0]
 		msg_text_clean = msg_text_clean.split("Begin forwarded message:")[0]
 		msg_text_clean = msg_text_clean.split("---------- Forwarded message ---------")[0]
 		msg_text_clean = msg_text_clean.split("________________________________")[0]
 		msg_text_clean = msg_text_clean.split("-----Original Message-----")[0]
+		
 		msg_text_clean = re.sub("From:.*Subject:.*", "", msg_text_clean,flags=re.DOTALL)
 		msg_text_clean = re.sub("On.*<.*>.*wrote:", "", msg_text_clean,flags=re.DOTALL)
 		msg_text_clean = re.sub("On.*wrote:", "", msg_text_clean,flags=re.DOTALL)
 		msg_text_clean = re.sub("[0-9]{4}-[0-9]{2}-[0-9]{2}.*<.*>:","", msg_text_clean,flags=re.DOTALL)
-		msg_text_clean = re.sub("([\n]*[\r]*[\n]*)*$", "", msg_text_clean)
-		msg_text_clean = re.sub("^([\n]*[\r]*[\n]*)*", "", msg_text_clean)
-
+		# msg_text_clean = re.sub("([\n]*[\r]*[\n]*)*$", "", msg_text_clean)
+		# msg_text_clean = re.sub("^([\n]*[\r]*[\n]*)*", "", msg_text_clean)
+		msg_text_clean = re.sub("(\r\n[\r]*[\n]*){1,}", "\n", msg_text_clean)
+		msg_text_clean = re.sub("(\n\r[\n]*[\r]*){1,}", "\n", msg_text_clean)
+		
 		# basic	- special characters
 		msg_text_clean = re.sub("&#39;|&quot;|&lt;|&gt;"," ",msg_text_clean)
-
+		
 		# basic - spaces
 		msg_text_clean = msg_text_clean.replace("[ ]{2,}", "")
 		msg_text_clean = re.sub("^[ ]|[ ]$","",msg_text_clean)
@@ -233,29 +235,34 @@ def get_email_batch(service, user_id, earliest_date, latest_date, output_dir, ex
 		print("---------------------------")
 		
 		try: 
-			
+		
 			# Obtain the email meta-data
 			email_meta = get_msg_meta(response)
 
 			## Obtain the email-text
 			email_text = get_msg_text(response)
-
+			
 			# if not any(label in email_meta['msg_label'] for label in exclude_label) and (not any(label in email_meta['msg_label'] for label in exclude_label_non_personal) or excl_non_personal_email=='False') and len(email_text)>0 and "<style>" not in email_text and not any(text in email_text for text in exclude_text_non_personal) and ((excl_archived_email=='True' and any(label in email_meta['msg_label'] for label in include_label)) or (excl_archived_email=='False')):
-		
+			
 			## Combine the meta data & text
 			email_data = email_meta
 			email_data['msg_text'] = clean_msg_text(email_text)
 			
 			## Save the email
 			if email_data['msg_inbox_outbox'] == 'inbox':
-				email_filename=os.path.normpath(os.path.join(output_dir, "inbox", 'email_' + email_data['msg_id'] + '_' + email_data['msg_inbox_outbox'] + '_' + parser.parse(email_data['msg_date']).strftime('%m_%d_%Y') + '.json'))
+				email_filename=os.path.normpath(os.path.join(output_dir, "inbox", 'email_' + email_data['msg_id'] + '_' + email_data['msg_inbox_outbox'] + '_' + parser.parse(email_data['msg_date']).strftime('%m_%d_%Y') + '.p'))
 			else:
-				email_filename=os.path.normpath(os.path.join(output_dir, "outbox", 'email_' + email_data['msg_id'] + '_' + email_data['msg_inbox_outbox'] + '_' + parser.parse(email_data['msg_date']).strftime('%m_%d_%Y') + '.json'))
+				email_filename=os.path.normpath(os.path.join(output_dir, "outbox", 'email_' + email_data['msg_id'] + '_' + email_data['msg_inbox_outbox'] + '_' + parser.parse(email_data['msg_date']).strftime('%m_%d_%Y') + '.p'))
 			
-			with open(email_filename, 'w') as out_file:
-				print("save")
-				json.dump(email_data, out_file, indent=4)
+			
+			pickle.dump( email_data, open(email_filename, "wb" ) )
+			print("save")
 
+			# with open(email_filename, 'w') as out_file:
+			# 	print("save")
+			# 	email_data_format=json.dumps(obj=email_data,indent=4, ensure_ascii=False, encoding="utf-8")
+			# 	out_file.write(email_data_format)
+		
 
 			print("---------------------------")
 
@@ -333,8 +340,8 @@ def get_email_batch(service, user_id, earliest_date, latest_date, output_dir, ex
 		print('Found ' + str(len(msg_list)) + ' emails (All)')
 
 
-		msg_list_saved = np.concatenate((glob.glob(os.path.join(output_dir,'inbox', 'email*.json')), 
-			glob.glob(os.path.join(output_dir,'outbox', 'email*.json'))))
+		msg_list_saved = np.concatenate((glob.glob(os.path.join(output_dir,'inbox', 'email*.p')), 
+			glob.glob(os.path.join(output_dir,'outbox', 'email*.p'))))
 		msg_list_saved = [re.sub("(.*email_)([^_]*)(.*)","\\2", x) for x in msg_list_saved]
 
 		msg_list_mod = [x for x in msg_list if x not in msg_list_saved]
@@ -403,11 +410,11 @@ def get_email_batch(service, user_id, earliest_date, latest_date, output_dir, ex
 					batch.add(service.users().messages().get(userId=user_id, id=msg_id, format="raw", metadataHeaders =["Date"]), callback=process_date)
 				batch.execute()
 
-			# save
-			birthday_date_filename=os.path.normpath(os.path.join(output_dir, "other", 'date_birthday.json'))
-			
-			with open(birthday_date_filename, 'w') as out_file:
-				json.dump(birthday_date_list, out_file, indent=4)
+		# save
+		birthday_date_filename=os.path.normpath(os.path.join(output_dir, "other", 'date_birthday.json'))
+		
+		with open(birthday_date_filename, 'w') as out_file:
+			json.dump(birthday_date_list, out_file, indent=4)
 
 	## other function (date, etc.)
 	## --------------------------

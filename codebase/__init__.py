@@ -25,7 +25,7 @@ import glob
 import base64
 import random
 import time
-import pickle
+import cPickle as pickle
 
 import math
 import pandas as pd
@@ -112,7 +112,7 @@ def dir_initialization():
 	## setting files
 
 	if (os.path.exists(user_setting_file_user)):
-		user_setting_file = user_setting_file_user
+		user_setting_file = user_setting_file_default
 	else: 
 		user_setting_file = user_setting_file_default
 

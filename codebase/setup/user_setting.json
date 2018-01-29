@@ -5,7 +5,7 @@
     "excl_non_personal_email": "True", 
     "excl_archived_email": "True", 
     "process_email_lim": 100000, 
-    "output_dir": "~/Desktop/KnowingMe_Data", 
+    "output_dir": "~/Desktop/KnowingMe_Data/", 
     "extract_email_lim": 100000, 
     "use_stored": "False", 
     "max_contact": 100000, 

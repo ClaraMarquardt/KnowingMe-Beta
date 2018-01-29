@@ -28,12 +28,12 @@ RUN ls root/
 # -------------------
 ENV PORT 8000
 ENV DEBUG "False"
+ENV OUTPUT "/KnowingMe_Data/"
 
 # Obtain Codebase
 # -------------------
 # -------------------
-RUN mkdir knowingme
-COPY . /KnowingMe/
+RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@github.com/ClaraMarquardt/KnowingMeBeta.git
 RUN pwd
 
 # Installation
@@ -48,6 +48,10 @@ RUN chmod -R a+rwx .
 
 # Installation - App Settings (app_setting.json)
 # -------------------
+
+# System Check 
+# -------------------
+RUN python codebase/setup/system_check.py
 
 # Installation 
 # -------------------
@@ -78,7 +82,7 @@ EXPOSE 5432
 # Launch
 # -------------------
 # -------------------
-VOLUME KnowingMe_Data
+VOLUME /KnowingMe_Data/
 WORKDIR /KnowingMe/
 EXPOSE  $PORT
-CMD ["/KnowingMe/test.sh"]
+CMD ["/KnowingMe/codebase/KnowingMe_exec.sh"]

@@ -64,7 +64,7 @@ def contact_list(msg_data):
 
 	else:
 		
-		inbox_contact  				= pdf.DataFrame({"freq_inbox":np.nan, 'contact':['']})
+		inbox_contact  				= pd.DataFrame({"freq_inbox":np.nan, 'contact':['']})
 		inbox_contact_name_df 		= pd.DataFrame({"contact":[''], 'contact_name':['']})
 
 	## outbox contacts -- to, cc, bcc
