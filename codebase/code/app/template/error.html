@@ -1,0 +1,17 @@
+<!doctype html>
+<title>Error</title>
+
+<link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css') }}">
+
+
+<font color="#464241"><h3>Error Encountered</h3> </font> 
+
+<i>{{ error_msg }}</i>
+
+<br>
+<br>
+<img src="{{url_for('static', filename='image/icon/error_background.png')}}" style="width:60%;"/>
+
+<br>
+<br>

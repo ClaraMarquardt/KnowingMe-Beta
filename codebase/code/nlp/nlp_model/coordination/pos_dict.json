@@ -1,0 +1,49 @@
+{
+    "article": [
+    ], 
+    "conjunction": [
+    "CC"
+    ],
+    "personal_pronoun": [
+    "PRP",
+    "WP"
+    ],
+    "impersonal_pronoun": [
+    ],
+    "preposition": [
+    "ADP"
+    ],
+    "quantifier": [
+    "CD"
+    ],
+    "high_freq_adverb": [
+    "RB",
+    "RBR",
+    "RBS",
+    "RP",
+    "WRB"
+    ],
+    "aux_verb": [
+    "MD",
+    "BES"
+    ],
+    "non_aux_verb": [
+    "VB",
+    "VBD",
+    "VBG",
+    "VBN",
+    "VBP",
+    "VBZ"
+    ],
+    "adjective": [
+    "JJ",
+    "JJR",
+    "JJS"
+    ],
+    "noun": [
+    "NN",
+    "NNP",
+    "NNPS",
+    "NNS"
+    ]
+}

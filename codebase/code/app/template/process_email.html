@@ -1,0 +1,78 @@
+<!doctype html>
+<title>Email Extraction</title>
+
+<html>
+<head>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
+    {% if use_stored=='False' %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    {% endif %}
+      
+
+    <script>
+      $(document).ready(function() {
+        var refresh_id = setInterval(function() {
+            $.get(
+              "{{ url_for('thread_status') }}",
+              function(data) {
+                console.log(data.status)
+                console.log(data.status_email_load)
+                console.log(data.status_email_max)
+                console.log(data.status_email_max_new)
+                $('.progress-bar').css('width', data.status_email_load/data.status_email_max_new*100+'%').attr('aria-valuenow', data.status_email_load)
+                $('#loaded_email').text(data.status_email_load);
+                $('#total_email').text(data.status_email_max);
+                $('#total_new_email').text(data.status_email_max_new);
+                if (data.status == 'finished') {
+                  window.location.replace("{{ url_for('process_feature') }}");
+                } else if (data.status == 'error') {
+                  window.location.replace("{{ url_for('error') }}"); 
+                }
+              }
+            )}
+          , 1000);
+      });
+    </script>
+        
+   
+
+</head>
+<body>
+
+
+    {% if use_stored=='False' %}
+
+    <br>
+    <font face="Lucida Sans Unicode", size="1.5" color="#464241">&nbsp;&nbsp;KnowingMe</font>
+
+ 
+    <h3><font face="Lucida Grande" size="1" color="#464241">&nbsp;&nbsp;>> Extracting <div id="total_email" style="display: inline">...</div> Emails (<div id="total_new_email" style="display: inline">...</div> New Emails).......... Please Wait</font></h3>
+    <img src="{{ url_for('static', filename='animation/email_loading.gif') }}" style="width:250px;height:250px;" /><br>
+        <h3><font face="Lucida Grande" size="1" color="#464241">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div id="loaded_email" style="display: inline">0</div> Email(s) Extracted</font></h3>
+
+
+    <div id="loaded_email"><h3><font face="Lucida Grande" size="1" color="#464241"></font></div>
+<!--     <div class="progress" style="width: 20%; margin: 10px;">
+        <div class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+      <div id="loaded_email">0</div>
+ -->      
+
+   </div>
+
+    {% else %}
+
+    <font color="#464241"><h3>KnowingMe</h3> </font>
+
+    >> Loading Previously Extracted Emails.......... Please Wait
+    <img src="{{ url_for('static', filename='animation/email_loading.gif') }}" alt="Loading" title="Loading" />
+    {% endif %}
+
+
+</div>
+</body>
+</html>

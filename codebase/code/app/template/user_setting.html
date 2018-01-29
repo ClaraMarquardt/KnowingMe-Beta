@@ -1,0 +1,361 @@
+<!doctype html>
+<title>Settings</title>
+<html>
+<head>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script data-require="d3@4.0.0" data-semver="4.0.0" src="https://d3js.org/d3.v4.js"></script>
+
+</head>
+<font color="#464241"><h3>KnowingMe</h3></font>
+
+Select Timeframe Over Which To Analye Emails
+<hr>
+
+&nbsp;&nbsp;>> Number of emails: <div id="total_email" style="display: inline"></div> (At most <div id="total_email_max" style="display: inline"></div> emails)
+
+<body>
+    <div id="chart"></div>
+    <script>
+
+    $email_count = {{ email_count_count|tojson|safe }};
+    $email_date  = {{ email_count_date|tojson|safe }};
+    $email_month = {{ email_count_month|tojson|safe }};
+    $email_lim = {{ email_lim|tojson|safe }};
+    console.log($email_date)
+     console.log($email_month)
+    
+
+        $('#total_email_max').text($email_lim)
+
+    var default_end     = new Date();
+    var default_start   = new Date();
+    var max_end         = new Date();
+    var max_start       = new Date();
+    default_start.setDate(default_start.getDate() - 14);
+    max_start.setDate(max_start.getDate() - 362);
+    max_end.setDate(max_end.getDate() - 2);
+    var someData = [];
+    for (var i = 0; i < 365; i++) {
+
+      var sum_email=0
+      var currentDate = new Date();
+
+      currentDate.setDate(currentDate.getDate() - i-1);
+      someData.push({
+        date: currentDate,
+        value: $email_count[i],
+        group: $email_month[i]
+      });
+    }
+    sum_email = d3.sum(someData, function(d) {  if (!(d.date>default_end | d.date<default_start)) {
+           
+            return(d.value)
+            
+          } else {
+            
+            return(0)
+
+    }})
+    gap=14
+    while ((sum_email < $email_lim) & (default_start>max_start)) {
+      gap=gap+1
+    var default_start   = new Date();
+    default_start.setDate(default_start.getDate() - gap);
+
+    sum_email = d3.sum(someData, function(d) {  if (!(d.date>default_end | d.date<default_start)) {
+            
+            return(d.value)
+            
+          } else {
+           
+            return(0)
+
+    }})
+
+
+    }
+    console.log(default_start)
+     console.log( default_start.setDate(default_start.getDate()))
+    default_start.setDate(default_start.getDate())
+    $('#total_email').text(sum_email)
+
+
+    var width = 700,
+      height = 600,
+      start = 0,
+      end = 2.25,
+      numSpirals = 3
+      margin = {top:10,bottom:20,left:10,right:10};
+
+    var theta = function(r) {
+      return numSpirals * Math.PI * r;
+    };
+
+    var start_date = default_start;
+    start_date.setDate(start_date.getDate() +1)
+    console.log(default_start)
+    console.log(start_date)
+    var end_date = default_end;
+    end_date.setDate(end_date.getDate() -1)
+    console.log(default_end)
+    console.log(end_date)
+    // used to assign nodes color by group
+    var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+    var r = d3.min([width, height]) / 2 - 40;
+
+    var radius = d3.scaleLinear()
+      .domain([start, end])
+      .range([40, r]);
+
+    var svg = d3.select("#chart").append("svg")
+      .attr("width", width + margin.right + margin.left)
+      .attr("height", height + margin.left + margin.right)
+      .append("g")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var points = d3.range(start, end + 0.001, (end - start) / 1000);
+
+    var spiral = d3.radialLine()
+      .curve(d3.curveCardinal)
+      .angle(theta)
+      .radius(radius);
+
+    var path = svg.append("path")
+      .datum(points)
+      .attr("id", "spiral")
+      .attr("d", spiral)
+      .style("fill", "none")
+      .style("stroke", "steelblue");
+
+    var spiralLength = path.node().getTotalLength(),
+        N = 365,
+        barWidth = (spiralLength / N) - 1;
+
+
+    var timeScale = d3.scaleTime()
+      .domain(d3.extent(someData, function(d){
+        return d.date;
+      }))
+      .range([0, spiralLength]);
+    
+    // yScale for the bar height
+    var yScale = d3.scaleLinear()
+      .domain([0, d3.max(someData, function(d){
+        return d.value;
+      })])
+      .range([0, (r / numSpirals) - 30]);
+
+    svg.selectAll("rect")
+      .data(someData)
+      .enter()
+      .append("rect")
+      .attr("x", function(d,i){
+        
+        var linePer = timeScale(d.date),
+            posOnLine = path.node().getPointAtLength(linePer),
+            angleOnLine = path.node().getPointAtLength(linePer - barWidth);
+      
+        d.linePer = linePer; // % distance are on the spiral
+        d.x = posOnLine.x; // x postion on the spiral
+        d.y = posOnLine.y; // y position on the spiral
+        
+        d.a = (Math.atan2(angleOnLine.y, angleOnLine.x) * 180 / Math.PI) - 90; //angle at the spiral position
+
+        return d.x;
+      })
+      .attr("y", function(d){
+        return d.y;
+      })
+      .attr("width", function(d){
+        return barWidth;
+      })
+      .attr("height", function(d){
+        return yScale(d.value);
+      })
+      .style("fill", function(d){return color(d.date<=default_end & d.date>=default_start);})
+      .style("stroke", function(d){ if (d.date==default_start | d.date==default_end) {return "#000000"} else {return "none"}})
+
+      .attr("transform", function(d){
+        return "rotate(" + d.a + "," + d.x  + "," + d.y + ")"; // rotate the bar
+      });
+    
+    // add date labels
+    var tF = d3.timeFormat("%b %Y"),
+        firstInMonth = {};
+
+    svg.selectAll("text")
+      .data(someData)
+      .enter()
+      .append("text")
+      .attr("dy", 10)
+      .style("text-anchor", "start")
+      .style("font", "10px arial")
+      .append("textPath")
+      // only add for the first of each month
+      .filter(function(d){
+        var sd = tF(d.date);
+        if (!firstInMonth[sd]){
+          firstInMonth[sd] = 1;
+          return true;
+        }
+        return false;
+      })
+      .text(function(d){
+        date_ = d.date
+        currDay   = date_.getDate()-10;
+        currMonth = date_.getMonth();
+        if (currMonth!=11){
+          currMonth = date_.getMonth() + 1;
+        } else {
+          currMonth = 0
+        }
+        currYear  = date_.getYear()+1900;
+        date__ = new Date(currYear, currMonth, currDay);
+        return tF(date__);
+      })
+      // place text along spiral
+      .attr("xlink:href", "#spiral")
+      .style("fill", "grey")
+      .attr("startOffset", function(d){
+        return ((d.linePer / spiralLength) * 100) + "%";
+      })
+
+
+    var tooltip = d3.select("#chart")
+    .append('div')
+    .attr('class', 'tooltip');
+
+    tooltip.append('div')
+    .attr('class', 'date');
+    tooltip.append('div')
+    .attr('class', 'value');
+
+    svg.selectAll("rect")
+    .on('mouseover', function(d) {
+
+        tooltip.select('.date').html("Date: <b>" + d.date.toDateString() + "</b>");
+        tooltip.select('.value').html("Number of Emails: <b>" + Math.round(d.value*100)/100 + "<b>");
+
+        d3.select(this)
+        .style("fill","#FFFFFF")
+        .style("stroke","#000000")
+        .style("stroke-width","2px");
+
+        tooltip.style('display', 'block');
+        tooltip.style('opacity',2);
+
+    })
+    .on('mousemove', function(d) {
+        tooltip.style('top', (d3.event.layerY + 10) + 'px')
+        .style('left', (d3.event.layerX - 25) + 'px');
+    })
+    .on('mouseout', function(d) {
+      
+       if (start_date!='' & end_date=='' & d.date==start_date) {
+
+        d3.selectAll("rect")
+        .style("stroke",  function(d){ if (d.date==start_date) {return "#000000"} else {return "none"}})
+
+        d3.selectAll("rect")
+        .style("fill", function(d){return color(d.group);})
+
+      } else if (start_date!='' & end_date!='' & (d.date==start_date | d.date==end_date)) {
+        d3.selectAll("rect")
+      } else if (start_date!='' & end_date!='' ) {
+        d3.select(this)
+        .style("fill", function(d){return color(d.date<=end_date & d.date>=start_date);})
+        
+        d3.select(this)
+        .style("stroke", "none")
+      } else { 
+        d3.selectAll("rect")
+        .style("fill", function(d){return color(d.group);})
+
+        d3.select(this)
+        .style("stroke", "none")
+      }
+
+  
+        tooltip.style('display', 'none');
+        tooltip.style('opacity',0);
+    })
+    .on('click', function(d) {
+
+      
+      var max_end = new Date();
+
+      max_end.setDate(max_end.getDate() - 2);
+      var x = new Date(max_end);
+      var y = new Date(d.date);
+
+      if (start_date=='' & Number(y)<Number(x)) {
+        start_date=d.date;
+      } else if (start_date!="" & end_date=='' & d.date>start_date) {
+        
+        end_date_temp=d.date;
+ 
+        
+        sum_email = d3.sum(someData, function(d) {  if (d.date<=end_date_temp & d.date>=start_date) {
+            
+            return(d.value)
+            
+          } else {
+            
+            return(0)
+
+          }})
+
+        $('#total_email').text(sum_email)
+    
+        if (sum_email<$email_lim) {
+        end_date=d.date;
+  
+        d3.selectAll("rect")
+        .style("fill", function(d){
+
+          return color(d.date<=end_date & d.date>=start_date);})
+        }
+
+      } else if (start_date!='' & end_date !='' & Number(y)<Number(x)) {
+        start_date=d.date;
+        end_date='';
+        sum_email=0
+      };
+
+    });
+
+
+
+     function   sum_email_count(d) {
+          if (d.date<=end_date & d.date>=start_date) {
+            sum_email = sum_email + d.value
+          }
+          }
+    function getJSON(){
+            var formInfo = document.forms['send'];
+            if (start_date!='' & end_date !='') {
+              formInfo.latest_date.value = end_date;
+              formInfo.earliest_date.value = start_date;
+            }
+            delay(500);
+            delay(500);
+            delay(500000);
+        }
+    </script>
+    
+    <div id="form">
+
+      <form id="send" method="post" action="{{ url_for('user_setting_store') }}" onsubmit="getJSON()">        
+        <input type="Submit" id="Submit" value="Launch" />
+        <input type="hidden" id="latest_date" name="latest_date" value=""/>
+        <input type="hidden" id="earliest_date" name="earliest_date" value=""/>
+
+      </form>
+    </div>
+
+</body>
+</html>

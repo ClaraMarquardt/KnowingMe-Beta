@@ -1,0 +1,14 @@
+MODULE,FUNCTION,DESCRIPTION
+global_fun,freq_tabulate,Convert an array into a frequency DataFrame
+,df_sort,Sort a DataFrame (includes an index reset)
+,groupshift,Shift a column of a pandas dataframe - within groups and by group-subunits
+,pd_htmlformat,Prepare a DataFrame for a flask visualisation
+,dict_round,Round a dictionary to a specified number of decimals (splitting on /)
+,perc,Calculate a percentage given two series
+,date_range,Generate a dictionary with date ranges
+,date_reindex,Reindex different date/time related series (expand over entire date/time range)
+,pd_htmlformat_seq,
+,fill_array,
+,dict_key_df,
+,,
+ *********************,,

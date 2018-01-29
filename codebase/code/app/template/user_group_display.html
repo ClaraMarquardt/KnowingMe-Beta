@@ -1,0 +1,17 @@
+<!doctype html>
+<title>Contact Groups</title>
+<link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css') }}">
+
+<font color="#464241"><h3>KnowingMe</h3></font>
+
+<a href="/success">Return To Overview</a> 
+
+<br><br>
+
+ 
+{% for table in user_group_df %}
+    <h2>{{""}}</h2>
+    {{ table|safe }}
+{% endfor %}
+ 

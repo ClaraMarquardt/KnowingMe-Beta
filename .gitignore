@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.DS_Store
+*.Rout
+*.pyc
+github_backup.sh
+*.log
+codebase/output/user/email*.json

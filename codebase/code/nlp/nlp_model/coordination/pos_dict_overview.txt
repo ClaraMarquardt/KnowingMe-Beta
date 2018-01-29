@@ -1,0 +1,72 @@
+## See: https://spacy.io/docs/usage/pos-tagging
+
+## Functional word categories represented in paper
+## --------------------------------
+
+* Article
+
+
+* Conjunction
+- CC 			## conjunction, coordinating
+
+* Personal Pronoun
+- PRP   		## pronoun, personal
+- WP            ## wh-pronoun, personal
+
+* Impersonal Pronoun
+
+
+* Preposition
+- ADP			## conjunction, subordinating or preposition
+
+* Quantifier
+CD 				## cardinal number
+
+* High-frequency adverb
+RB				## adverb
+RBR				## adverb, comparative
+RBS				## adverb, superlative
+RP				## adverb, particle
+WRB				## wh-adverb
+
+* Auxiliary verb
+MD				## verb, modal auxillary
+BES				## auxillary "be"
+
+## Other word categories 
+## --------------------------------
+
+** Noun 
+NN 				## noun, singular or mass
+NNP 			## noun, proper singular
+NNPS 			## noun, proper plural
+NNS 			## noun, plural
+
+** Adjective
+JJ 				## adjective
+JJR 			## adjective, comparative
+JJS				## adjective, superlative
+
+** Verb
+VB 				## verb, base form
+VBD 			## verb, past tense
+VBG 			## verb, gerund or present participle
+VBN 			## verb, past participle
+VBP 			## verb, non-3rd person singular present
+VBZ 			## verb, 3rd person singular present
+
+
+
+## Aggregate list
+## --------------------------------
+article
+conjunction
+personal_pronoun
+impersonal_pronoun
+preposition
+quantifier
+high_freq_adverb
+aux_verb
+non_aux_verb
+adjective
+noun

@@ -1,0 +1,16 @@
+<!doctype html>
+<title>Your Birthday</title>
+
+<link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css') }}">
+
+
+<br><br><br><br><br><br><br><br>
+
+<h3><p style="text-align:center;"><img src="{{url_for('static', filename='image/icon/birthday.png')}}" style="width:100px;height:100px;"/><font color="#464241">Is Your Birthday On {{ birthday_guess }}?</font></p></h3>
+<p style="text-align:center;"><a href="/success">Yes</a>
+<p style="text-align:center;"><a href="/birthday_followup">No</a></p>
+
+<br>
+<br>
+ 

@@ -1,0 +1,44 @@
+<!doctype html>
+<title>Contact Group Creation</title>
+<html>
+<head>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <script>
+      var messages = {{ messages | safe }};
+      for (var i=0; i<messages.length; i++) {
+        alert(messages[i]);
+      }
+    </script>
+  {% endif %}
+{% endwith %}
+<body>
+    
+    <font color="#464241"><h3>KnowingMe</h3> </font>
+
+   
+    # Contact Group Creation
+    <hr/>
+    <br>
+   
+    <form action="{{ url_for('user_group_update') }}" method="post">
+
+    Contact Group Name:&nbsp;&nbsp; <input type="text" id="user_group_name" name="user_group_name" value="{{ user_group_name }}" size=50><br><br>
+    Contact Group A:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="user_group_name_a" name="user_group_name_a" value="{{ user_group_name_a }}" size=50><br><br>
+    Contact Group B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="user_group_name_b" name="user_group_name_b" value="{{ user_group_name_b }}" size=50><br><br>
+    Contact Group Basis:&nbsp;&nbsp;&nbsp;<input type="text" id="user_group_name_basis" name="user_group_name_basis" value="{{ user_group_name_basis }}" size=50  readonly><br><br>
+
+    <input type="Submit" value="Start">
+
+</form>
+<br><br>
+<a href="/user_group_agg">Cancel (Return to Contact Selection)</a>
+
+</body>
+</html>

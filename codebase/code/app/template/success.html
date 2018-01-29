@@ -1,0 +1,86 @@
+<!doctype html>
+<title>Overview</title>
+<link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css') }}">
+
+<font color="#464241"><h3>KnowingMe</h3></font>
+
+<a href="/user_group_agg">Modify User Groups </a>&nbsp;&nbsp;||&nbsp;&nbsp;
+<a href="/user_setting_init">Modify Analysis Timeframe</a>&nbsp;&nbsp;||&nbsp;&nbsp;
+<a href="/">Return To Home Page</a>&nbsp;&nbsp;||&nbsp;&nbsp;
+
+<br><br>
+
+<b> > Status</b>: {{ count }} Emails Successfully Processed
+<br>
+<b> > User + Date</b>: {{ user }} // </b>  {{ date_range }} ({{ date_diff }} Days)
+<br>
+<b> > Errors</b>: {{stage_error}}
+<br><br>
+<hr align="left" width="30%" color="LightGray">
+<hr align="left" width="30%" color="LightGray">
+
+
+<br>
+<img src="{{url_for('static', filename='image/icon/lightbulb.png')}}" style="width:25px;height:25px;"/>&nbsp;&nbsp;<b>INSIGHTS </b>  
+<hr align="left" width="30%" color="LightGray">
+<br>
+<a href="/insight_nonlang">Non-Language Insights</a> (Volume, FirstLast, Responsiveness)
+<br>
+<br>
+<a href="/insight_simplelang">Simple-Language Insights</a> (Talkative, LengthImbalance)
+<br>
+<br>
+<a href="/insight_nlp">NLP Insights</a> (Politeness, Sentiment, LinguisticCoordination)
+<br>
+<br>
+<br>
+
+<img src="{{url_for('static', filename='image/icon/loop.png')}}" style="width:25px;height:25px;"/>&nbsp;&nbsp;<b>EMAIL BROWSER </b>  
+<hr align="left" width="30%" color="LightGray">
+<br>
+<a href="/load_inbox">Browse All {{ inbox_count }} Received Emails ({{ inbox_link_count }} Links)</a>
+<br><br>
+<a href="/load_outbox">Browse All {{ outbox_count }} Sent Emails ({{ outbox_link_count }} Links)</a>
+<br><br><br>
+<b> CONTACTS </b>  
+<hr align="left" width="30%" color="LightGray">
+<br>
+* <b> Number of Contacts: </b>  
+<br>
+&nbsp;&nbsp;- Overall:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{ user_len }} contact(s)
+<br>
+&nbsp;&nbsp;- Sent Email(s) To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{ user_outbox_len }} contact(s)
+<br>
+&nbsp;&nbsp;- Received Email(s) From:&nbsp;&nbsp;&nbsp;{{ user_inbox_len }} contact(s)
+<br><br>
+* <b> Contact Groups <i>{{ user_group_name }} </i> </b> 
+<br>
+&nbsp;&nbsp;- {{ user_group_name_a }}:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{ user_group_1_len }} contact(s)
+<br>
+&nbsp;&nbsp;- {{ user_group_name_b }}:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{ user_group_2_len }} contact(s)
+<br>
+&nbsp;&nbsp;- Uncategorised:&nbsp; {{ user_group_uncat_len }} contact(s) 
+<br>
+<!-- &nbsp;&nbsp;- ** Default gender classification > indeterminate gender ({{ user_group_ambig_gender_len }}%) ({{ user_group_ambig_gender_len_perc }}%)
+<br>
+&nbsp;&nbsp;- ** Default gender classification > unknown gender ({{ user_group_unknown_gender_len }}%) ({{ user_group_unknown_gender_len_perc }}%)<br> -->
+<br>
+&nbsp;&nbsp;>&nbsp;<a href="/user_group_display">View Contacts (By Group)</a> 
+<br>
+<br>
+<br>
+<b> LOG </b>  
+<hr align="left" width="30%" color="LightGray">
+<br>
+* <b> Number of Non-Parsable Emails: </b> {{ error_count }}
+<br><br>
+* <b> Runtime (Email Extraction): </b> {{ run_time }} Seconds
+<br><br>
+* <b> Runtime (Insight Generation): </b> {{ run_time_feature }} Seconds
+<br>
+<br>
+<hr align="left" width="30%" color="LightGray">
+<br>
+<br>
+<br>

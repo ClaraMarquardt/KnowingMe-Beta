@@ -1,0 +1,26 @@
+<!doctype html>
+<title>KnowingMe</title>
+
+<link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css') }}">
+
+
+<br><br><br><br><br><br><br><br>
+<div>
+    <center><img src={{ user_photo }} style="vertical-align: middle;" align="middle"/>
+    <span style="vertical-align: middle;text-align:center;"><h3><font color="#464241">Welcome {{ user }}</font></h3></span></center>
+</div>
+
+
+<!-- <h3><p style=";">
+ -->
+<h2><div style="text-align:center;vertical-align:middle;"><font color="#464241">({{ user_email }})</font></p></h2>
+<h2><p style="text-align:center;"><a href="/launch_overview">Launch</a></div</h2>
+
+<h2><p style="text-align:center;"><a href="{{ url_for('logout') }}">Login As Another User</a></p></h2>
+
+<br>
+<br>
+ 
+
+

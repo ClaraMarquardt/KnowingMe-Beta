@@ -1,0 +1,134 @@
+/* General Style Sheet (Scope: All Templates) */
+
+/* General */
+html            { font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-size: 0.9em;}
+a, h1, h2       { color: #858e93; }
+h1, h2          { margin: 0; }
+h1              { border-bottom: 2px solid #cdd4d8; }
+h2              { font-size: 1em; }
+h3              { font-size: 1.5em; }
+
+/* General - Tables */
+table.dataframe, .dataframe th, .dataframe td {
+  border: none; 
+  border-bottom: 1px solid #cdd4d8;
+  border-collapse: collapse;
+  text-align:left;
+  padding: 5px;
+  table-layout:fixed
+  margin-bottom: 40px;
+  font-size: 1.5em;
+  background-color: #ffffff;
+  color: black;
+
+}
+
+
+tr:nth-child(odd)  { background-color:#ffffff; }
+tr:nth-child(even) { background-color:#ffffff; }
+tr:hover           { background-color: #ffffff;}
+
+
+/* Buttons & Inputs */
+
+input[type=submit] {
+    border: 1;
+    font-family: Lucida Grande;
+    font-size: 0.8em;
+    background: transparent;
+    color: #000000;
+    border-color: #000000;
+    border-style: solid;
+}
+input[type="checkbox"] { 
+  opacity:0.5;
+  transform: scale(1.2);
+}
+
+select[type=select] {
+    font-family: Lucida Grande;
+    font-size: 0.2em;
+}
+
+.axis path {
+  fill: none;
+  stroke: #999;
+  stroke-dasharray: 2 3;
+}
+.axis text {
+  font-size: 13px;
+  stroke: #222;
+}
+text.title {
+  font-size: 24px;
+}
+circle.tick {
+  fill: #f3f3f3;
+  stroke: #999;
+  stroke-dasharray: 2 3;
+}
+path.spiral {
+  fill: none;
+  stroke: #ee8d18;
+  stroke-width: 3px;
+}
+
+.tooltip {
+    background: #eee;
+    box-shadow: 0 0 5px #999999;
+    color: #333;
+    font-size: 12px;
+    left: 130px;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    top: 95px;
+    z-index: 10;
+    display: block;
+    opacity: 0;
+}
+
+/* Dropdown Button */
+.dropbtn {
+/*    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer*/;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+/*    background-color: #2980B9;*/
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+/*    padding: 12px 16px;*/
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {/*background-color: #f1f1f1*/}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
