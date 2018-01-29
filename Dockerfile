@@ -34,6 +34,7 @@ ENV OUTPUT "/KnowingMe_Data/"
 # -------------------
 # -------------------
 RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@github.com/ClaraMarquardt/KnowingMeBeta.git
+RUN mv /KnowingMeBeta /KnowingMe
 RUN pwd
 
 # Installation
