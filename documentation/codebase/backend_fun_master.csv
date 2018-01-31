@@ -1,4 +1,0 @@
-MODULE,FUNCTION,DESCRIPTION
-gmail_api_fun,gmail_api_fun,"Download, format and save all of emails that meet fall within a certain date range"
-,,
- *********************,,
