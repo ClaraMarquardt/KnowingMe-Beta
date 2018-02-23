@@ -1,0 +1,50 @@
+(dp1
+S'msg_subject'
+p2
+S'Thank you!'
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'apatton@ChicagoBooth.edu'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V161b03adb0b7156e
+p11
+sS'msg_threadid'
+p12
+V161b03adb0b7156e
+p13
+sS'msg_date'
+p14
+S'Mon, 19 Feb 2018 16:41:36 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<D3684575-D4D1-4C0C-8995-591E6C021B28@gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Hi Ariel, \nI just wanted to send you a quick note to say a huge thank you for the interview earlier today! It was incredible to have an opportunity to share my passion for data-driven social innovation and entrepreneurship, and I appreciated the effort you made to make the interview so much less stressful!\nLearning about your background and goals convinced me yet again that Booth is the place I could find people who shared my passion for innovative ideas and a community which would support me as I seek to scale the scope of my impact - thank you!\nMany thanks once more, \nClara\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VSENT
+p23
+asS'msg_cc'
+p24
+NsS'msg_bcc'
+p25
+Ns.

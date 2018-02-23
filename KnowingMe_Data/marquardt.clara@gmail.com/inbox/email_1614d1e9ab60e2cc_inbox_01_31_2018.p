@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'alf zips <alfzips@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V1614d1e9ab60e2cc
+p11
+sS'msg_threadid'
+p12
+V1614c02f2a8dbd98
+p13
+sS'msg_date'
+p14
+S'Wed, 31 Jan 2018 17:48:25 +0100'
+p15
+sS'msg_id_mime'
+p16
+S'<CAF34eQHg4KpF4nxzFvOya0BHpe8HSpbiM84+qeYhfaP_ozOm4w@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S'super text h\xc3\xbchnchen... habe nur eine satz erg\xc3\xa4nzt und einen gestrichen,\ndass du auf Boost R\xc3\xbcckmeldung wartest w\xc3\xbcrde ich nicht sagen, da diesen\ngoogle search jaauch ohne das gemacht h\xc3\xa4ttestt.\n:))\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<1B81A264-3323-4151-BB65-C3F8EFB0EFCA@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.

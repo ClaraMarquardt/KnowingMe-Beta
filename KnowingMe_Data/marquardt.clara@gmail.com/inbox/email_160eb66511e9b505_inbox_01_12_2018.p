@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'alf zips <alfzips@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V160eb66511e9b505
+p11
+sS'msg_threadid'
+p12
+V160e3c7330af3073
+p13
+sS'msg_date'
+p14
+S'Fri, 12 Jan 2018 18:23:57 +0100'
+p15
+sS'msg_id_mime'
+p16
+S'<CAF34eQExRTZeYywL9fiaboT2kyu+ODRobB-_uR2KL-wc5ySZNg@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Hallo H\xc3\xbchnchen\nlese mir grad die Videopresentation nochmal durch... *die ist sehr gut *und\nwenn du es in fast einer Minute schaffst ist es super, und bestimmt ist es\nnicht zu schnell, da du ja schon von Natur aus schneller redest als andere.\nDen Cover letter lese ich auch grade noch mal gelesen.. aber mir f\xc3\xa4llt auf\ndass ich nicht deinen letzten stand hab. Schicke ihn mir so woe er jetzt\nist und ich  lese ihn noch mal kritisch.\nlieb dich :)\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<0CD3D292-037A-4272-909A-9420B07FC886@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.

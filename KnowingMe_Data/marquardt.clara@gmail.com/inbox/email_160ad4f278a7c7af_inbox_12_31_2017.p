@@ -1,0 +1,52 @@
+(dp1
+S'msg_subject'
+p2
+S'NBER Computing Facilities Downtime, Sunday, Jan 7, 2018 12:00 1:00\n PM - 6:00 PM EST.'
+p3
+sS'msg_from'
+p4
+S'Mohan Ramanujan <mohan@nber.org>'
+p5
+sS'msg_to'
+p6
+S'activenberunix@nber.org'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V160ad4f278a7c7af
+p11
+sS'msg_threadid'
+p12
+V160ad4f278a7c7af
+p13
+sS'msg_date'
+p14
+S'Sun, 31 Dec 2017 11:01:48 -0500 (EST)'
+p15
+sS'msg_id_mime'
+p16
+S'<pmd-19184-activenberunix-moh-claramar@nber.org>'
+p17
+sS'msg_text'
+p18
+S"Dear All:\nHappy New Year!\nWe would like to take the opportunity of lighter than expected usage \nduring the AEA'a ASSA meetings (Jan 5-7, 2018).\nSemi-annual scheduled shutdown of the entire NBER Linux compute cluster \nwill take place Sunday 7 Jan 2018 starting roughly 1pm and lasting perhaps \n5 hours, with irregular service during that time period.\nWhen: Sunday, Jan 7, 2018 from 1:00 PM to about 6:00 PM EST.\nWhat is being done:\n \t* Upgrade OS on Firewall appliance.\n \t* Upgrade OS on Computing Servers including security patches.\n \t* Testing of power supply and UPSs that support the servers.\nWhat will be affected:\n \t* Internal Network will be down.\n \t  Access to network drive(s) will be down.\n \t* Email will be down. Anyone sending you emails will be queued at the\n \t  sender's server and will eventually get delivered to you. You will\n           not be able to send emails yourself via NBER servers.\n \t* Internal webserver will be down.\n \t* Database(s) will be down.\n \t* Web based WP submission, Conference invitations and acceptance will be down.\n \t* VPN and servers behind the VPN will be down (only affects those who\n \t  need to use the VPN)\n \t* WiFi will be down.\nWhat will not be affected:\n \t* www.nber.org website will remain up, but things related to database,\n \t  e.g. WP submissions will be down.\nMany of the services are expected to be back up earlier than 6:00 pm. In\nparticular, we expect the firewall and the network to be up much earlier (possibly by 2:00 pm)\nSome servers may be rebooted multiple times.  Your access to servers and\nvarious services are expected to remain intact as before after this operation.\nWe will send another email once we have restored all services.\nOnce again, thank you and we appreciate your support accommodating this inconvenience.\nNBER IT Team.\nsupport@nber.org or it-staff@nber.org\nDan Feenberg:    617-863-0343\nMohan Ramanujan: 617-588-0367\nAlex Aminoff:    617-588-0353\n"
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

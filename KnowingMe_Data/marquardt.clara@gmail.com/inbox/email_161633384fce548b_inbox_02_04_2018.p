@@ -1,0 +1,54 @@
+(dp1
+S'msg_subject'
+p2
+S'FW: Job 149014: <R CMD BATCH "--args MiscStat feb_2nd_addition"\n MASTER_output.R\n /data/zolab/pants/temp/Rout/MASTER_output_04_02_2018_18_31_44_MiscStat.Rout>\n Exited'
+p3
+sS'msg_from'
+p4
+S'"Lakhtakia, Shreyas" <slakhtakia@bwh.harvard.edu>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V161633384fce548b
+p11
+sS'msg_threadid'
+p12
+V161633384fce548b
+p13
+sS'msg_date'
+p14
+S'Sun, 4 Feb 2018 23:42:35 +0000'
+p15
+sS'msg_id_mime'
+p16
+S'<DB10CD54-3551-4A7B-9DE6-B76899CC450E@bwh.harvard.edu>'
+p17
+sS'msg_text'
+p18
+S'\n'
+sS'msg_reply_to_id_mime'
+p19
+S'<20180204233457.7594FD52@cn071.research.partners.org>'
+p20
+sS'msg_label'
+p21
+(lp22
+VIMPORTANT
+p23
+aVCATEGORY_PERSONAL
+p24
+aVINBOX
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

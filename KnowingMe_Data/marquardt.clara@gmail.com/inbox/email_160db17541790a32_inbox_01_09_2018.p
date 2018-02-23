@@ -1,0 +1,54 @@
+(dp1
+S'msg_subject'
+p2
+S'=?UTF-8?Q?Text_Pr=C3=A4sentation_Video?='
+p3
+sS'msg_from'
+p4
+S'Ulla Marquardt <ulla.marquardt@yahoo.de>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>, \r\n\tAlf Zips <alfzips@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V160db17541790a32
+p11
+sS'msg_threadid'
+p12
+V160db17541790a32
+p13
+sS'msg_date'
+p14
+S'Tue, 9 Jan 2018 13:23:42 +0000 (UTC)'
+p15
+sS'msg_id_mime'
+p16
+S'<1158258554.5468537.1515504222088@mail.yahoo.com>'
+p17
+sS'msg_text'
+p18
+S'... etwas gek\xc3\xbcrzt und vereinfacht. \nIch denke du kommst da sehr gut r\xc3\xbcber, liebster Schatz.\nSchaut mal Ihr beiden. \nKuss Kuss\nvom Tiger\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VIMPORTANT
+p23
+aVCATEGORY_PERSONAL
+p24
+aVINBOX
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

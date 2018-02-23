@@ -1,0 +1,54 @@
+(dp1
+S'msg_subject'
+p2
+S'Documents for Ups'
+p3
+sS'msg_from'
+p4
+S'"homoempatia.eu" <info@homoempatia.eu>'
+p5
+sS'msg_to'
+p6
+S'marquardt.clara@gmail.com'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V161af4ba2d815e08
+p11
+sS'msg_threadid'
+p12
+V161af4ba2d815e08
+p13
+sS'msg_date'
+p14
+S'Mon, 19 Feb 2018 18:20:23 +0000'
+p15
+sS'msg_id_mime'
+p16
+S'<523B50F3FE73BE83989B8458FEF83007975B1D3E@DESKTOP00OQIE32>'
+p17
+sS'msg_text'
+p18
+S'\nGOOD MORNING,\n    I am trying to prepare the above referenced shipment for clearance\nthrough US Customs and the FDA (Food and Drug Administration). Please\nfind a copy of the commercial invoice attached.  To further prepare \nthis\nshipment for clearance, the following information is needed:\n?    Statement indicating the following:\no    Description/ Intended Use\no    Why this product is being imported into the US.\no    Name of Drug\no    Form (Liquid, Powder, Capsules, Tablets, etc...)\no    Name and Physical address of the manufacturer\no    New Drug Application (NDA) or National Drug Code (NDC)\no    Quantity\n?    A photo Identification  (Visa/ Passport)\n?    A copy of the prescription from the physician (not to exceed a 3  month supply).\nIF YOU ARE NOT THE ONE TO HANGLE THIS MATTER PLEASE FORWARD TO THE APPROPRITE PARTY AS WAREHOUSE FEES ACCRUE DAILY (SEE DISCLAIMERE \nBELOW)\nThank you and Best Regards,\nDavid Sistrunk\nFDA SPECIALIST\nUPS Customs Brokerage\n2031 S. Centennial Ave\nAiken, SC 29803\nPh: 803-502-7098\nEMAIL: dsistrunk@ups.com\nTUES-FRI 9:00am-5:30PM SAT 8:00AM-4:30PM EST\nGr\xc3\xbc\xc3\x9fe, Regards, Saludos, Saluti, Cordialement \nFilippo\nDie Kosmos Apotheke Reform\nApollostr. 13\n39118 Magdeburg\nGermany\nDE194825493\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+S'dsistrunk@ups.com'
+p26
+sS'msg_bcc'
+p27
+Ns.

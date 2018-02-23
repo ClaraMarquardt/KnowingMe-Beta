@@ -1,0 +1,54 @@
+(dp1
+S'msg_subject'
+p2
+S'FW: Angel Onuoha Research Assistant'
+p3
+sS'msg_from'
+p4
+S'"Unverzagt, Eric" <eunverz@fas.harvard.edu>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V15fe477a22c3ebc5
+p11
+sS'msg_threadid'
+p12
+V15fe477a22c3ebc5
+p13
+sS'msg_date'
+p14
+S'Wed, 22 Nov 2017 16:02:45 +0000'
+p15
+sS'msg_id_mime'
+p16
+S'<SN4PR0701MB36482DA9A97649B65E528C3EE5200@SN4PR0701MB3648.namprd07.prod.outlook.com>'
+p17
+sS'msg_text'
+p18
+S'\n'
+sS'msg_reply_to_id_mime'
+p19
+S'<B0D664A5-E1C9-40D4-A6AD-2BF63D124D3A@college.harvard.edu>'
+p20
+sS'msg_label'
+p21
+(lp22
+VIMPORTANT
+p23
+aVCATEGORY_PERSONAL
+p24
+aVINBOX
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

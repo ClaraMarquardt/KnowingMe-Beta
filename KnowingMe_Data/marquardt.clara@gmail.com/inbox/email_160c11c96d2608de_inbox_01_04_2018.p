@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'alf zips <alfzips@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V160c11c96d2608de
+p11
+sS'msg_threadid'
+p12
+V160c036e830c596b
+p13
+sS'msg_date'
+p14
+S'Thu, 4 Jan 2018 13:19:23 +0100'
+p15
+sS'msg_id_mime'
+p16
+S'<CAF34eQEt_0Uh6DuqxY-N_Fbh9ikfgjB4JGxp-2HJ+VPE_h_aVA@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Das ist toll und wir sind stolz auf dich UNSER HUHN IN DEN STAATEN:\nschick mir noch deine DKB konto nummer, danke\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<284CC4B1-E680-4D57-9B5F-3B15A9D7D925@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.

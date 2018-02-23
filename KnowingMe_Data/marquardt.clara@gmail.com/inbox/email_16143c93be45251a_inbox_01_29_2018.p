@@ -1,0 +1,54 @@
+(dp1
+S'msg_subject'
+p2
+S'Aer Product Review'
+p3
+sS'msg_from'
+p4
+S'Aer <hello@aersf.com>'
+p5
+sS'msg_to'
+p6
+S'undisclosed-recipients:;'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V16143c93be45251a
+p11
+sS'msg_threadid'
+p12
+V16143c93be45251a
+p13
+sS'msg_date'
+p14
+S'Mon, 29 Jan 2018 15:18:34 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<CA+VGX2oxMM7Vz-ivPqcXhoNONbqoKP9b-FSFi+aB_QwiNthiJg@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S"Hi,\nThank you for your recent Aer purchase!\nWe'd love to hear your feedback and first impressions about your bag. Write\nus a review at http://www.aersf.com/reviews and we'll send you a code for\n10% off your next purchase.\nYour feedback and time are both much appreciated!\nThanks in advance,\nAer\n"
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+S'marquardt.clara@gmail.com'
+p27
+s.

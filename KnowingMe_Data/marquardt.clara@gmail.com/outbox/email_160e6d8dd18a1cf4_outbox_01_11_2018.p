@@ -1,0 +1,51 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'Ulla Marquardt <ulla.marquardt@yahoo.de>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V160e6d8dd18a1cf4
+p10
+sS'msg_threadid'
+p11
+V160e6d8dd18a1cf4
+p12
+sS'msg_date'
+p13
+S'Thu, 11 Jan 2018 14:09:52 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<5a57c4d4.1550240a.b2701.6de5@mx.google.com>'
+p16
+sS'msg_text'
+p17
+S'Hallo tiger, \nMANTEL ist heute morgen angekommen !!! Ein wahres wunder : )\nDa dass ja funktioniert hat \xe2\x80\x93 koenntest du mir wenn du mal wieder im reformhaus bist die apricot cr\xc3\xa8me schicken? Bestelle ja normalerweise bei amzon/boerlind direct doch scheinen die gerade alle ausverkauft zu sein \nDANKE\nSent from Mail for Windows 10\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVSENT
+p23
+asS'msg_cc'
+p24
+NsS'msg_bcc'
+p25
+Ns.

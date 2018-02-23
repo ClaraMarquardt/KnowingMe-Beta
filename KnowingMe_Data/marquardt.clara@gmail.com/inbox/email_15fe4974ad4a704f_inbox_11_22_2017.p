@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'alf zips <alfzips@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V15fe4974ad4a704f
+p11
+sS'msg_threadid'
+p12
+V15fdc103786f1f80
+p13
+sS'msg_date'
+p14
+S'Wed, 22 Nov 2017 17:37:19 +0100'
+p15
+sS'msg_id_mime'
+p16
+S'<CAF34eQEnXSVftCTWBBqcas2pQ_pJqX6F+wnn+RmYJfQ=MvZ5Nw@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Hallo H\xc3\xbchnchen...\ndein Renter hat NICHTS ZU TUN... du must ihn besch\xc3\xa4ftigen sonst machen die\nnur Bl\xc3\xb6dsinn... HBO und so :)\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<4464CD7D-9701-40E1-8C6E-60C5766BA551@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.

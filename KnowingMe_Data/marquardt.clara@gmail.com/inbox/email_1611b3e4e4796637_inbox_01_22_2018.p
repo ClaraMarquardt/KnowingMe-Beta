@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'alf zips <alfzips@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'inbox'
+p8
+sS'msg_id'
+p9
+V1611b3e4e4796637
+p10
+sS'msg_threadid'
+p11
+V1611b3e4e4796637
+p12
+sS'msg_date'
+p13
+S'Mon, 22 Jan 2018 01:21:57 +0100'
+p14
+sS'msg_id_mime'
+p15
+S'<CAF34eQHv_QugN4-oea4KaXfcFVs0QkVDQpeLNmAGeL0hHrpCkw@mail.gmail.com>'
+p16
+sS'msg_text'
+p17
+S'Hallo H\xc3\xa4hnchen\nHier ist deine hundemarke.... ich melde es weiter\xf0\x9f\x98\x8e\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

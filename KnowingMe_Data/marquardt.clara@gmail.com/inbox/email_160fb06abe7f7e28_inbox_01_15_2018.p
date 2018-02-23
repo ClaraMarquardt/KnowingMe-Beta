@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'AW:'
+p3
+sS'msg_from'
+p4
+S'Ulla Marquardt <ulla.marquardt@yahoo.de>'
+p5
+sS'msg_to'
+p6
+S'"marquardt.clara@gmail.com" <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V160fb06abe7f7e28
+p11
+sS'msg_threadid'
+p12
+V160f92d8f0fe22c3
+p13
+sS'msg_date'
+p14
+S'Mon, 15 Jan 2018 18:13:19 +0000 (UTC)'
+p15
+sS'msg_id_mime'
+p16
+S'<1144875837.6163615.1516039999799@mail.yahoo.com>'
+p17
+sS'msg_text'
+p18
+S'SUPER!!\xc2\xa0Ein paar kleine Kommafehler. Sie schick ich dir nachher.\nGanz ganz prima du Huhn!!!\nGesendet von Yahoo Mail auf Android \n \n  Am Mo., Jan. 15, 2018 at 10:36 schrieb Clara Marquardt<marquardt.clara@gmail.com>:   was haltet ihr von neuer version - ist wieder ein paar W\xc3\xb6rter zu land (337 - optimal bestimmt so 320-325) aber ich bin schon etwas happier damit - ich denke der kern Punkt der Ideen/beispiele kommt mehr r\xc3\xbcber\nwas meint ihr\nDANKE\n \n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<17809447-1022-4CF4-8508-0F766D0111B6@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.

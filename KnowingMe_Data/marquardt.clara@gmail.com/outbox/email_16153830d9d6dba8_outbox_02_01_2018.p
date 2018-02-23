@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'"marquardt.clara@gmail.com" <marquardt.clara@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V16153830d9d6dba8
+p10
+sS'msg_threadid'
+p11
+V16153830d9d6dba8
+p12
+sS'msg_date'
+p13
+S'Thu, 1 Feb 2018 16:35:00 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<5a739648.5e106b0a.b8852.2083@mx.google.com>'
+p16
+sS'msg_text'
+p17
+S"Hi, \nJust wanted to send you a quick heads-up and, most importantly, some positive updates. I just heard back from LBS \xe2\x80\x93 another interview invite a week after I heard back from Booth (Sloan gets back to applicants at the end of the month)! A huge thank you again for your references and support which helped me get this far!\nLBS has informed all applicants that they will be doing 'reference checks' next week \xe2\x80\x93 from what I gather this means that you will receive an email or phone call to verify that you did indeed write the reference. I have looped in Eric in case they send an email but wanted to reach out to you in case they give you a call. \nMany thanks again, \nClara\n"
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVSENT
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

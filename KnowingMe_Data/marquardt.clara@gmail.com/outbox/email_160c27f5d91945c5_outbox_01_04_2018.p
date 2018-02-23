@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'"marquardt.clara@gmail.com" <marquardt.clara@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V160c27f5d91945c5
+p10
+sS'msg_threadid'
+p11
+V160c27f5d91945c5
+p12
+sS'msg_date'
+p13
+S'Thu, 4 Jan 2018 12:45:41 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<5a4e769e.c1ab6b0a.1f2d8.009f@mx.google.com>'
+p16
+sS'msg_text'
+p17
+S'Hi Krishna, I am currently in the process of applying to the MBA program at the London Business School and came across your LinkedIn Profile as I was searching for Alumni who had gone on to work at IDEO. I was inspired by the projects, including the breast cancer startup challenge and the technology club, that you took part in while at LBS as well as your experiences since graduating which reflect a lot of the things that I am passionate about - technology, entrepreneurship, and design-thinking. Upon completing my undergraduate degree at Cambridge, I moved to the US where I first became involved with start-ups and human-centered design. While I am super excited by the curriculum and faculty at LBS (and thrilled to return to London), I am trying to get a better sense of how I could best develop these interests at LBS. In this spirit, I was wondering if there were any lecturers or courses/projects that you felt particularly contributed to your learning experience at LBS with regards to a role at a company like IDEO. My background very briefly - having grown up in China (where I moved from Germany) I started out with a keen interest in data-driven and evidence-based public-policy/development economics. Relocating to the US, I saw my thinking about how to best realize these interests evolve as I founded and scaled a tech start-up in San Francisco and spent two years working with an early-stage company leveraging data science and machine learning to tackle pressing social challenges in the healthcare and education space. Looking ahead, I am hoping to obtain an MBA to help me combine my interests in data science and entrepreneurship to tackle social problems at scale. I look forward to hearing back from you! Many thanks and best wishes for the year ahead, Clara\nSent from Mail for Windows 10\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVSENT
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

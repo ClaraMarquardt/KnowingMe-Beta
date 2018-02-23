@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'Ulla Marquardt <ulla.marquardt@yahoo.de>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V160a7f44ad82620e
+p11
+sS'msg_threadid'
+p12
+V160a71c0a032bb91
+p13
+sS'msg_date'
+p14
+S'Sat, 30 Dec 2017 15:04:48 +0000 (UTC)'
+p15
+sS'msg_id_mime'
+p16
+S'<1727393868.10895604.1514646289459@mail.yahoo.com>'
+p17
+sS'msg_text'
+p18
+S'Guten Morgen Sunshine\xc2\xa0 - etwas ramponiert zur Zeit - aber sehr bald kommen wieder sehr leuchtende Tage!\nHab dir auf Skype Korrekturen geschickt.\nbis sp\xc3\xa4ter mein Engel. Unten ein Foto - von Coffeeshop to Coffeeshop...\n      Von: Clara Marquardt <marquardt.clara@gmail.com>\n An: Ulla Marquardt <ulla.marquardt@yahoo.de>; alf zips <alfzips@gmail.com> \n Gesendet: 12:08 Samstag, 30.Dezember 2017\n Betreff: \n   \nHallo - huhn ist heute nicht wirklich weiter gekommen : ( : ( have viel ge\xc3\xa4ndert um dann das meiste wieder zu verwenden \nAttached der lbs essay, der booth essay (und der optional essay fuer booth). Feedback w\xc3\xa4re besonders fuer booth hilfreich (und den LBS Anfang). \nProblem mit booth - bin jetzt bei ~ 1180 W\xc3\xb6rtern : ( : (\n  '
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<FC21FF32-1129-4C74-8F01-53CEF376A07E@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.

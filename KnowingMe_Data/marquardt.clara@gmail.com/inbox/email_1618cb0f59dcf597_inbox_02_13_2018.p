@@ -1,0 +1,54 @@
+(dp1
+S'msg_subject'
+p2
+S'=?UTF-8?Q?Re=3A_Yale_Club_Young_Members=E2=80=99_Presents_Casablanca=3A_?=\n\t=?UTF-8?Q?A_Black_=26_White_Ball?='
+p3
+sS'msg_from'
+p4
+S'Shreyas Lakhtakia <shreyaslakhtakia@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V1618cb0f59dcf597
+p11
+sS'msg_threadid'
+p12
+V1618ca16f61506c4
+p13
+sS'msg_date'
+p14
+S'Tue, 13 Feb 2018 01:04:10 +0000'
+p15
+sS'msg_id_mime'
+p16
+S'<CALEjPT9kQLkiRPVeJe4yzTx-2d+nqyt9qBHUx6urF=ixRVuMUA@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S"Miss you a ton also! Found some of your belongings scattered on my floor.\nThey made me smile :) :)\nCan't wait for March!\n"
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VIMPORTANT
+p23
+aVCATEGORY_PERSONAL
+p24
+aVINBOX
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

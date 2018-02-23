@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'alf zips <alfzips@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V160f1b63eb12a531
+p11
+sS'msg_threadid'
+p12
+V160ed7dc05ba4b33
+p13
+sS'msg_date'
+p14
+S'Sat, 13 Jan 2018 23:48:58 +0100'
+p15
+sS'msg_id_mime'
+p16
+S'<CAF34eQGCnp7odcRLVdvCUMe4dcjTTJXOWuBAaUM-NNsGt_NR+g@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S'was h\xc3\xa4lst du davon ;?\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<4D287FD6-5F05-461C-A37F-E57819481BDF@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.

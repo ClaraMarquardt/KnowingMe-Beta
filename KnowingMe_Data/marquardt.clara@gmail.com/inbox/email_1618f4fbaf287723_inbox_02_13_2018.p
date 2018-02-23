@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'=?UTF-8?Q?Re=3A_Yale_Club_Young_Members=E2=80=99_Presents_Casablanca=3A_?=\n\t=?UTF-8?Q?A_Black_=26_White_Ball?='
+p3
+sS'msg_from'
+p4
+S'Shreyas Lakhtakia <shreyaslakhtakia@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V1618f4fbaf287723
+p11
+sS'msg_threadid'
+p12
+V1618ca16f61506c4
+p13
+sS'msg_date'
+p14
+S'Tue, 13 Feb 2018 13:16:51 +0000'
+p15
+sS'msg_id_mime'
+p16
+S'<CALEjPT9v+Ybyk3npf5vqFKFMPYD8Xe248rtTto4MgkiM5qRtXw@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S'To you too! Have a great day! :) \xf0\x9f\xa4\x97\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<315A59D4-DA69-4FDF-8633-0DCA822ED6DC@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.

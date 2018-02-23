@@ -1,0 +1,52 @@
+(dp1
+S'msg_subject'
+p2
+S'Cron <cz425@rgs05> /data/zolab/temp_misc/fingerprint/github_backup_HFP.sh'
+p3
+sS'msg_from'
+p4
+S'root@rgs05.research.partners.org (Cron Daemon)'
+p5
+sS'msg_to'
+p6
+S'marquardt.clara@gmail.com'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V1600625868aa1913
+p11
+sS'msg_threadid'
+p12
+V1600625868aa1913
+p13
+sS'msg_date'
+p14
+S'Wed, 29 Nov 2017 00:00:01 -0500 (EST)'
+p15
+sS'msg_id_mime'
+p16
+S'<20171129050010.279E421F3F@rgs05.research.partners.org>'
+p17
+sS'msg_text'
+p18
+S"Agent pid 4810\nIdentity added: /PHShome/cz425/.ssh/id_git (/PHShome/cz425/.ssh/id_git)\n# On branch master\n# Your branch is ahead of 'origin/master' by 2 commits.\n#\nnothing to commit (working directory clean)\nEverything up-to-date\n# On branch master\nnothing to commit (working directory clean)\nEverything up-to-date\n"
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

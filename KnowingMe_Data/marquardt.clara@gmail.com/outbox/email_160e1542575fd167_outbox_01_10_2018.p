@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V160e1542575fd167
+p10
+sS'msg_threadid'
+p11
+V160e1542575fd167
+p12
+sS'msg_date'
+p13
+S'Wed, 10 Jan 2018 12:27:52 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<CAB60472-5EEF-431C-B35E-249D1BD422E7@gmail.com>'
+p16
+sS'msg_text'
+p17
+S"\nClara Marquardt sent the following message at 12:26 PM\nApplying to Sloan with an interest in entrepreneurship, technology, and design-thinking\nHi Lisa,  I am currently in the process of applying to the MBA program at Sloan and came across your LinkedIn Profile as I was searching for Alumni who had gone on to work at IDEO. I was inspired by the projects that you worked on at Sloan as well as your position since graduating. Experiences which reflect a lot of the things that I am passionate about: design-thinking, entrepreneurship, emerging tech and social impact.  While I am super excited by Sloan' curriculum and faculty, I am trying to get a better sense of how I could best develop my interest, in design-thinking in particular, while at Sloan. In this spirit, I was wondering if you would have time for a quick chat at any point in the coming weeks.   My background very briefly -  Having grown up in China (where I moved from Germany), I started out with a keen interest in data-driven and evidence-based public policy. Relocating to the US, I saw my thinking about how to best realize these interests evolve as I founded and scaled a tech start-up in San Francisco and spent two years working with an early-stage company in Boston leveraging data science and machine learning to tackle pressing social challenges in the healthcare and education space. Looking ahead, I am hoping to obtain an MBA to help me combine my interests in data science and entrepreneurship to tackle social problems at scale.  I look forward to hearing back from you!  Many thanks and best wishes for the year ahead, Clara"
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVSENT
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

@@ -1,0 +1,52 @@
+(dp1
+S'msg_subject'
+p2
+S'schedule'
+p3
+sS'msg_from'
+p4
+S'"Ludwig, Jens O" <jludwig@uchicago.edu>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>,\r\n\t"nerdiestbookclubever@lists.uchicago.edu"\r\n\t<nerdiestbookclubever@lists.uchicago.edu>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V15fc7ca0a7181cc3
+p11
+sS'msg_threadid'
+p12
+V15fc7ca0a7181cc3
+p13
+sS'msg_date'
+p14
+S'Fri, 17 Nov 2017 02:23:20 +0000'
+p15
+sS'msg_id_mime'
+p16
+S'<92F63C365D214C4B8094C19DE4C3E13E24C57E15@ssa35.ssa.ad.uchicago.edu>'
+p17
+sS'msg_text'
+p18
+S"Book club team-\nThere will be no meeting tomorrow (unfortunately I have to be in Hyde Park for the day) or next Friday (b/c of the Thanksgiving holiday). Let's plan to have the next book club meeting on Friday December 1 at 1pm; I hope to  have figured out the adjacent-birthday problem by then. Have a nice Thanksgiving everyone\nJens Ludwig\nMcCormick Foundation Professor of Social Service Administration, Law, and Public Policy\nUniversity of Chicago\n1155 East 60th Street\nChicago, IL 60637\njludwig@uchicago.edu\n(773) 834-0811 (Harris School office)\n(773) 702-3242 (SSA office)\n(312) 404-6189 (cell)\n(773) 834-1582 (fax)"
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

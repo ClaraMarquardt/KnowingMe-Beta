@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <cmarquardt@uchicago.edu>'
+p4
+sS'msg_to'
+p5
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'inbox'
+p8
+sS'msg_id'
+p9
+V160d86434cf678be
+p10
+sS'msg_threadid'
+p11
+V160d86434cf678be
+p12
+sS'msg_date'
+p13
+S'Tue, 9 Jan 2018 00:48:52 +0000'
+p14
+sS'msg_id_mime'
+p15
+S'<CY1PR11MB07615D72BE6C5F2940ACBE42A7100@CY1PR11MB0761.namprd11.prod.outlook.com>'
+p16
+sS'msg_text'
+p17
+S'Hi Jens,\nSpe today looking into the key question that we will face with the Blattman paper - the multiple treatment arms.\nAfter making my way through all the papers, etc. that I could find online with regards to a multivariate permutation tests I am still not completely sure as to what the best method is - my current understanding below:\n1.       Run a multivariate e.g. random forest\n2.       Obtain the error for each outcome\n3.       Permute the multivariate outcome the same way as we would permute a binary outcome (i.e. shuffling the values e.g. 0,1,2 within clusters)\n4.       Obtain the permuted error rate for each outcome\n5.       Repeat 3,4 n times\n6.       Calculate the p-value for each outcome\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

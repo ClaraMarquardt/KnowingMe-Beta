@@ -1,0 +1,51 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'Shreyas Lakhtakia <shreyaslakhtakia@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V160b1c020d20e847
+p10
+sS'msg_threadid'
+p11
+V160b1c020d20e847
+p12
+sS'msg_date'
+p13
+S'Mon, 1 Jan 2018 06:43:32 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<C71151CB-BA38-424B-8825-CA7C587964B2@gmail.com>'
+p16
+sS'msg_text'
+p17
+S'Hi : ) : ) \nHAPPY FIRST MORNING OF 2018!\nAttached my CV and the LBS essay (which I just changed yet again \xe2\x80\xa6..) (I have attached the pdf version of the CV in case the formatting gets mixed up - both contain exactly the same content). \nAny and all feedback (even super brief) whenever you get a  chance would be hugely appreciated. \nI know that you are super busy (and you have already been of such much help (!)) so please only look at this if you fund the time. \nCan\xe2\x80\x99t wait to see you soon (with all of this long forgotten)\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVSENT
+p23
+asS'msg_cc'
+p24
+NsS'msg_bcc'
+p25
+Ns.

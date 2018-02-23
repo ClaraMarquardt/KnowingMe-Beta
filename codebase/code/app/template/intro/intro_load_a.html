@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
+<title>KnowingMe</title>
+
+<!-- HEADER -->
+<header>
+
+  <!-- Style -->
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css')}}">
+  
+  <!-- Dependencies -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <script>
+            var messages = {{ messages | safe }};
+            for (var i=0; i<messages.length; i++) {
+              alert(messages[i]);
+            }
+        </script>
+      {% endif %}
+  {% endwith %}
+
+  <!-- Progress -->
+  <script>
+    $(document).ready(function() {
+      var refresh_id = setInterval(function() {
+          $.get(
+            "{{ url_for('intro_load_update_view') }}",
+            function(data) {
+              $('#load_overview').text(data.status_overview_load);
+              $('#total_overview').text(data.status_overview_max);
+              if (data.status == 'finished') {
+                window.location.replace("{{ url_for('intro_load_b_view') }}");
+              } else if (data.status == 'error') {
+                window.location.replace("{{ url_for('error_view') }}"); 
+              }
+            }
+          )}
+        , 1000);
+    });
+  </script>
+
+</header>
+
+<!-- BODY -->
+<body scroll="no" style="overflow: hidden">
+
+  <!-- Header Section -->
+  <div id="content">
+    <center>
+    <div class="ribbon">
+    <img src="{{ user_photo }}" style="width:40px;height:40px;"/>
+    <br>
+    {{ user_email }}
+    <br>
+    <a href="{{ url_for('logout_view') }}">Switch User</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="{{ url_for('landing_view') }}">Home Page</a>
+    </div>
+    </center>
+    
+    <!-- Header Section - progress -->
+     <br><br><br>
+     <center>
+     <img src="{{ url_for('static', filename='image/icon/analysis_map_overview.png') }}" style="width:500px;height:30px;"/><br>
+     </center>
+
+  </div>
+
+  <!-- Content -->
+  <br><br><br><br><br><br>
+ 
+  <h3><p style="text-align:center;">We Send Lots Of Emails</p></h3>
+  <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">
+
+  <br>Every day, around the world, we create 1000’s of emails. 
+  <br>
+  <br>
+  <br>
+  <br>  
+  <br>
+  <br>
+  
+  </font></p>
+  
+  <br><br>
+
+  <center>
+  <img src="{{ url_for('static', filename='animation/email_loading.gif') }}" style="width:130px;height:100px;"/><br>
+  
+  <br><br>
+  
+  <font color="#575a60"><i>We Are Getting An Overview Of Your Emails Over The Past Year<br>
+  We Have Analyzed <div id="load_overview" style="display: inline">....</div> Out Of <div id="total_overview" style="display: inline">....</div> Days</i></font>
+  </center>
+
+  <br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
+
+<!-- END -->

@@ -1,0 +1,51 @@
+(dp1
+S'msg_subject'
+p2
+S'Re: [Topcoder Connect] Development Phase Start!'
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Bec Weeks <weeks.rebecca@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V16190f873995c6af
+p11
+sS'msg_threadid'
+p12
+V1616debb30436f6b
+p13
+sS'msg_date'
+p14
+S'Tue, 13 Feb 2018 15:00:55 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<D83FB2D7-B847-42D0-AFFD-BA9B71469832@gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Agreed!\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<CAPp_zuq4hHYmjd8JB8cz1Vwx-Aht81XDhO0EeRMqPUU74B47EA@mail.gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VSENT
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

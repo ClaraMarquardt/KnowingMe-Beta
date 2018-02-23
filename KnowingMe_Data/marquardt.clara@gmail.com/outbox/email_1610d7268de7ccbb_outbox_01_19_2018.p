@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'alf zips <alfzips@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V1610d7268de7ccbb
+p11
+sS'msg_threadid'
+p12
+V160fe08b93de5149
+p13
+sS'msg_date'
+p14
+S'Fri, 19 Jan 2018 02:04:16 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<6515FEBF-578D-4EDC-A33A-A2A98D783532@gmail.com>'
+p17
+sS'msg_text'
+p18
+S'schweizer bureokratie - im guten alten china haette ich einfach cash gekriegt \xe2\x80\xa6.. \nich habe keine Ahnung wo eine solche Nummer sein soll. Habe meinen ganzen Papier Stapel durchforstet - nichts dergleichen\nkannst du tiger mal fragen?\ntut mir leid dass es so kompliziert ist mit H\xc3\xbchnern geschaeftte zu machen\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<CAF34eQHam7Efnfvn10QgSabp8S2BYW4Jd-qfQbeQgJeiir8GGg@mail.gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVSENT
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

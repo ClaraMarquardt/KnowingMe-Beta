@@ -1,0 +1,51 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'Shreyas Lakhtakia <shreyaslakhtakia@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V160f935d2dc7fd95
+p10
+sS'msg_threadid'
+p11
+V160f935d2dc7fd95
+p12
+sS'msg_date'
+p13
+S'Mon, 15 Jan 2018 03:45:39 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<0A57DAE0-977E-4238-87B0-080BD55497D1@gmail.com>'
+p16
+sS'msg_text'
+p17
+S'A work in progress : )\nI have left off the Ziad example (xxxx in the text) as I made a few changes which need to be revised. \nOverall (including ZIad\xe2\x80\x99s example) I am currently at 340 words - ~ 20 words over the word limit. \nAny and all comments would be hugely appreciated - I know how busy you are so please don\xe2\x80\x99t spend long on this!!\nLots of love, \nClara \xf0\x9f\x90\x94\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVSENT
+p23
+asS'msg_cc'
+p24
+NsS'msg_bcc'
+p25
+Ns.

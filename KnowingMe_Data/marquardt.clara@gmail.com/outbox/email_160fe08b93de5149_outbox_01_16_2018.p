@@ -1,0 +1,51 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'alf zips <alfzips@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V160fe08b93de5149
+p10
+sS'msg_threadid'
+p11
+V160fe08b93de5149
+p12
+sS'msg_date'
+p13
+S'Tue, 16 Jan 2018 02:14:28 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<D99D363C-0B23-4846-AED3-4956D2ED2F7C@gmail.com>'
+p16
+sS'msg_text'
+p17
+S'Doch noch mal einige \xc3\x84nderungen - zum besseren finde ich aber bin gespannt was du meinst!\nJetzt 328 W\xc3\xb6rter also ok - ein paar W\xc3\xb6rter k\xc3\xbcrzer ware besser doch das kriegt mann dann noch hin. \nP.s. die neue Unterschrift ist ein wahres Meisterwerk finde ich \nP.s.s. Pdf und word file sind identisch\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVSENT
+p23
+asS'msg_cc'
+p24
+NsS'msg_bcc'
+p25
+Ns.

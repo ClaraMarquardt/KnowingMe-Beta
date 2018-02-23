@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
+<title>KnowingMe</title>
+
+<!-- HEADER -->
+<header>
+
+	<!-- Style -->
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css')}}">
+	
+	<!-- Dependencies -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script data-require="d3@4.0.0" data-semver="4.0.0" src="https://d3js.org/d3.v4.js"></script>
+
+	<!-- Flash Messages -->
+	{% with messages = get_flashed_messages() %}
+  		{% if messages %}
+    		<script>
+      			var messages = {{ messages | safe }};
+      			for (var i=0; i<messages.length; i++) {
+        			alert(messages[i]);
+      			}
+    		</script>
+  		{% endif %}
+	{% endwith %}
+
+</header>
+
+<!-- BODY -->
+<body scroll="no" style="overflow: hidden>
+
+  <!-- Header Section -->
+  <div id="content">
+    <center>
+    <div class="ribbon">
+    <img src="{{ user_photo }}" style="width:40px;height:40px;"/>
+    <br>
+    {{ user_email }}
+    <br>
+    <a href="{{ url_for('logout_view') }}">Switch User</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="{{ url_for('landing_view') }}">Home Page</a>
+    </div>
+    </center>
+
+    <!-- Header Section - progress -->
+     <br><br><br>
+     <center>
+     <img src="{{ url_for('static', filename='image/icon/insight_sample_map_email.png') }}" style="width:500px;height:30px;"/><br>
+     </center>
+
+  </div>
+
+  <!-- Content -->
+  
+  <!-- Visualization -->
+  <center>
+  <div id="chart"></div>
+  <br><br>
+  <div id="text"></div>
+  <br><br>
+  </center>
+  <center>
+  <div id="text_link"></div>
+  </center>
+  <center>
+  <a href="{{ url_for('intro_b_view') }}"><div id="navigation"></div></a>
+
+  </center>
+  <!-- Visualization Script -->
+
+  <!--   # Prepare Data --> 
+  <script> 
+  $email_date                   = {{ email_date|tojson|safe }};
+  $email_month                  = {{ email_month|tojson|safe }};
+  $email_count                  = {{ email_count|tojson|safe }};
+
+  $start_date                   = {{ earliest_date|tojson|safe }};
+  $end_date                     = {{ latest_date|tojson|safe }};
+
+  $email_date_subset            = {{ email_date_subset|tojson|safe }};
+  $email_count_subset           = {{ email_count_subset|tojson|safe }};
+  $email_count_sent_subset      = {{ email_count_sent_subset|tojson|safe }};
+  $email_count_received_subset  = {{ email_count_received_subset|tojson|safe }};
+
+  </script>
+
+  <!--   # Load JS Script -->  
+  <script src="{{ url_for('static', filename='vis/spiral_vis.js') }}"></script>
+
+</body>
+</html>
+
+<!-- END -->

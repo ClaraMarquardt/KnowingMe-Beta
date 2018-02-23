@@ -1,0 +1,51 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'alf zips <alfzips@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V15fb3f8ff5fcaa8f
+p10
+sS'msg_threadid'
+p11
+V15fb3f8ff5fcaa8f
+p12
+sS'msg_date'
+p13
+S'Mon, 13 Nov 2017 00:02:39 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<E14F298A-BB75-4A95-AADC-80B543051050@gmail.com>'
+p16
+sS'msg_text'
+p17
+S'Huhn ist heute morgen wieder mit dollen Kopfschmerzen, Halsschmerzen, etc. aufgewacht - kein sehr produktiver tag : ( :(\nSchicke essay updates sobald wie m\xc3\xb6glich. \nDein Huhn'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVSENT
+p23
+asS'msg_cc'
+p24
+NsS'msg_bcc'
+p25
+Ns.

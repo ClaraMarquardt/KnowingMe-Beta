@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S'Re: A Message from Amazon Customer Service'
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'cs-reply+A1B190YOFCPWHP@amazon.com'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V161b6c2bc6aed8a2
+p11
+sS'msg_threadid'
+p12
+V161b2ad22067463c
+p13
+sS'msg_date'
+p14
+S'Tue, 20 Feb 2018 23:07:50 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<CCAB924B-1D4B-4C1C-A808-73100EE06704@gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Hi Pankaj, \nMany thanks for all your help on this! \nI just placed a new order for the same items with one-day shipping as you had suggested - here is the new order number: 112-6573124-1421817\nMany thanks again,\nClara\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<01000161b2ad2233-751c866a-7635-49bc-950a-7afbe6a88e45-000000@email.amazonses.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVSENT
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

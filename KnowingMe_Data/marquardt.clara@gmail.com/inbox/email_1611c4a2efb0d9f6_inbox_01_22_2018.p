@@ -1,0 +1,52 @@
+(dp1
+S'msg_subject'
+p2
+S'=?utf-8?Q?Barry=E2=80=99s=20Bootcamp=20Reservation=20Confirmed?='
+p3
+sS'msg_from'
+p4
+S"Barry's Bootcamp <frontdeskrivernorth@barrysbootcamp.com>"
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V1611c4a2efb0d9f6
+p11
+sS'msg_threadid'
+p12
+V1611c49fd503ef6b
+p13
+sS'msg_date'
+p14
+S'Mon, 22 Jan 2018 05:12:10 +0000'
+p15
+sS'msg_id_mime'
+p16
+S'<31029127.20180122051210.5a6572aa87db27.79667410@mail186-7.suw21.mandrillapp.com>'
+p17
+sS'msg_text'
+p18
+S"Hi Clara, Run. Lift. Repeat. \n We\xe2\x80\x99ve got a spot for you in Chest, Back & Abs (60 Minutes) with Kate L.\nin spot F-12! We\xe2\x80\x99ll see you at 05:30 PM on Wednesday, January 24, 2018.\n  Please don\xe2\x80\x99t forget the fine print: A class must be changed or canceled\nprior to 12 hours before the scheduled class time or it will be forfeited.\nYou must be present 5 minutes prior to the start of class or your spot may\nbe given away to wait listed clients and you will be charged for the class.\nPlease feel free to contact us with questions or comments.\n  If you did not make this reservation, please contact us immediately at\nfrontdeskrivernorth@barrysbootcamp.com\n<mailto:frontdeskrivernorth@barrysbootcamp.com>. \n  Barry's Bootcamp\n Web: barrysbootcamp.com <https://www.barrysbootcamp.com>\n Email: frontdeskrivernorth@barrysbootcamp.com\n<mailto:frontdeskrivernorth@barrysbootcamp.com>\n Phone: 3122020840\n"
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

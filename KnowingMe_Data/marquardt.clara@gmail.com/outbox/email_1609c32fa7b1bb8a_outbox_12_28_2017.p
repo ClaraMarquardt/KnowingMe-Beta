@@ -1,0 +1,49 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'Ulla Marquardt <ulla.marquardt@yahoo.de>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V1609c32fa7b1bb8a
+p10
+sS'msg_threadid'
+p11
+V1609c32fa7b1bb8a
+p12
+sS'msg_date'
+p13
+S'Thu, 28 Dec 2017 02:17:53 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<D959705E-B57B-4E8C-ACD8-F585A8C67A45@gmail.com>'
+p16
+sS'msg_text'
+p17
+S'Hier mal erste version vom neuen CV. Falls du Inhalt oder format feedback hast (ich weis das einige Sachen etwas verschoben sind). Korrigieren morgen noch mal alles im CV (along with the short answer questions) dann m\xc3\xbcssen die Sachen fertig sein. \nHUHN\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VSENT
+p22
+asS'msg_cc'
+p23
+NsS'msg_bcc'
+p24
+Ns.

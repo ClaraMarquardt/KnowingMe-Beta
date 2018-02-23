@@ -1,0 +1,51 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'alf zips <alfzips@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V1601ab9217781f4f
+p11
+sS'msg_threadid'
+p12
+V1601838c28103197
+p13
+sS'msg_date'
+p14
+S'Sat, 2 Dec 2017 22:53:46 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<54BAB811-7884-4713-A0FF-E7110D6F0321@gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Herkules, hier der LBS essay - jezt nur noch 100 W\xc3\xb6rter (statt 400 ) \xc3\xbcber dem limit. Habe heute nur an dem essay gearbeitet - die anderen fragen (short answer qiestns) sind noch nicht ueberarbeitete. Habe ein paar fragen wenn du ihn dann mal gelesen hast. \nSchicke heute Abend dann auch alle an tiger. \nMir ging es heute immer schlechter. Jetzt auch Fieber : ( : ( : ( : ( Huhn machst sich sorgen wie das alles zu schaffen sein soll wenn ich netzt auch noch krank werde...\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<CAF34eQEu517Yvw-m69bpbt2LC8SEm8osUHEJa4OavQa6NQAGdA@mail.gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VSENT
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

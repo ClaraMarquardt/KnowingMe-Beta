@@ -1,0 +1,52 @@
+(dp1
+S'msg_subject'
+p2
+S'Cron <cz425@rgs05> /data/zolab/temp_misc/multi_outcome/multiple_outcome/github_backup_ExpLearning.sh'
+p3
+sS'msg_from'
+p4
+S'root@rgs05.research.partners.org (Cron Daemon)'
+p5
+sS'msg_to'
+p6
+S'marquardt.clara@gmail.com'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V15fd2a5ee248609f
+p11
+sS'msg_threadid'
+p12
+V15fd2a5ee248609f
+p13
+sS'msg_date'
+p14
+S'Sun, 19 Nov 2017 00:00:01 -0500 (EST)'
+p15
+sS'msg_id_mime'
+p16
+S'<20171119050010.42C2721F17@rgs05.research.partners.org>'
+p17
+sS'msg_text'
+p18
+S'Agent pid 46898\nIdentity added: /PHShome/cz425/.ssh/id_git (/PHShome/cz425/.ssh/id_git)\n# On branch clara_dev\nnothing to commit (working directory clean)\nEverything up-to-date\n# On branch master\nnothing to commit (working directory clean)\nEverything up-to-date\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'Shreyas Lakhtakia <shreyaslakhtakia@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V160f9d683ef380a8
+p11
+sS'msg_threadid'
+p12
+V160f935d2dc7fd95
+p13
+sS'msg_date'
+p14
+S'Mon, 15 Jan 2018 12:41:01 +0000'
+p15
+sS'msg_id_mime'
+p16
+S'<CALEjPT92rB57zGEC5zE=A65+R_egwPTX7EQSx=Z1XSnedhak6g@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S"Hey, here you are! :)\nSorry if the feedback sounds mean :(\nCan talk more in person if helpful! :)\nYou've got this!!\nBest,\nSL\n"
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<0A57DAE0-977E-4238-87B0-080BD55497D1@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.

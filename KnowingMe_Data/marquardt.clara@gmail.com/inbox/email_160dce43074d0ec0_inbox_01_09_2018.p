@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <cmarquardt@uchicago.edu>'
+p4
+sS'msg_to'
+p5
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'inbox'
+p8
+sS'msg_id'
+p9
+V160dce43074d0ec0
+p10
+sS'msg_threadid'
+p11
+V160dce43074d0ec0
+p12
+sS'msg_date'
+p13
+S'Tue, 9 Jan 2018 21:47:08 +0000'
+p14
+sS'msg_id_mime'
+p15
+S'<CY1PR11MB0761BA7144D528A45B4E10D4A7100@CY1PR11MB0761.namprd11.prod.outlook.com>'
+p16
+sS'msg_text'
+p17
+S'Hi Jann,\nHope things are going well with the job search process!\nI was talking to Jens earlier today, and he asked me to quickly confirm something with you.\nSome quick context: CBT paper / multiple treatment arms\nSuggested method: Essentially everything stays the same but (a) we use a multiclass predictor (e.g. xgb with softmax) and (b) we calculate a multiclass loss, e.g. overall accuracy or multiclass loss. Code structure below.\nDoes this seem like a reasonable approach to you?\nBest wishes,\nClara\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

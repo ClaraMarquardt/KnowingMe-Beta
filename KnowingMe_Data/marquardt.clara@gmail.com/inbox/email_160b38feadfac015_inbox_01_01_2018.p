@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'Shreyas Lakhtakia <shreyaslakhtakia@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V160b38feadfac015
+p11
+sS'msg_threadid'
+p12
+V160b1c020d20e847
+p13
+sS'msg_date'
+p14
+S'Mon, 01 Jan 2018 21:10:30 +0000'
+p15
+sS'msg_id_mime'
+p16
+S'<CALEjPT8VKHW7VfdWzaxE+_6K3sQ7Ek4iVtzzO27GizG_BQpwcw@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S"Hi!\nHappy 1st and here's to a wonderful new year! Apologies for the delay in\ngetting to this. Spent some time looking at this and just gathering my\nthoughts and organizing feedback. Would you have time to talk in 15?\nBest,\nShreyas\n"
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<C71151CB-BA38-424B-8825-CA7C587964B2@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.

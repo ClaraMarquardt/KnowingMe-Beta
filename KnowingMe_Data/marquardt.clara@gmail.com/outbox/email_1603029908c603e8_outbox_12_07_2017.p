@@ -1,0 +1,49 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'Ulla Marquardt <ulla.marquardt@yahoo.de>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V1603029908c603e8
+p10
+sS'msg_threadid'
+p11
+V1603029908c603e8
+p12
+sS'msg_date'
+p13
+S'Thu, 7 Dec 2017 02:48:35 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<ED9AF9B6-7904-428B-982A-37098912C7B0@gmail.com>'
+p16
+sS'msg_text'
+p17
+S'Tiger, habe noch keine zeit gehabt deine \xc3\x84nderungen (die sehr hilfreich sind!) einzubauen - das mache ich morgen. DANKE : ) : )\nIn der Zwischenzeit aber hier ein neuer Vorschlag zu booth falls du ein paar Minuten zeit hast- immer noch geht es um die Struktur - geschrieben ist es noch sehr schlecht. No need to make detailed comments (!) aber es w\xc3\xa4re interessant zuh\xc3\xb6ren was du von dieser Struktur haelst - insbesondere vom ersten und letzen paragraph die jetzt etwas anders strukturiert sind\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VSENT
+p22
+asS'msg_cc'
+p23
+NsS'msg_bcc'
+p24
+Ns.

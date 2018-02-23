@@ -1,0 +1,49 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'Ulla Marquardt <ulla.marquardt@yahoo.de>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V16073e23f14f9bb5
+p10
+sS'msg_threadid'
+p11
+V16073e23f14f9bb5
+p12
+sS'msg_date'
+p13
+S'Wed, 20 Dec 2017 06:24:47 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<94EC1322-79F7-4224-94F6-2D14E837E07F@gmail.com>'
+p16
+sS'msg_text'
+p17
+S'LBS: wieder etwas ver\xc3\xa4ndert also nicht ganz ausformuliert\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VSENT
+p22
+asS'msg_cc'
+p23
+NsS'msg_bcc'
+p24
+Ns.

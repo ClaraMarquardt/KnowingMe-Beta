@@ -1,0 +1,49 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'Ulla Marquardt <ulla.marquardt@yahoo.de>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V160f69011f315b0f
+p10
+sS'msg_threadid'
+p11
+V160f69011f315b0f
+p12
+sS'msg_date'
+p13
+S'Sun, 14 Jan 2018 15:25:20 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<5398FCD5-E95E-4C93-854E-BC1B6E924090@gmail.com>'
+p16
+sS'msg_text'
+p17
+S'Tiger,\nHier der link zu einem folder mit allen aufnahmen (https://drive.google.com/drive/folders/1XQn-Bv8aKnCEvQaqQpE5PU5F8ZBW3V1e?usp=sharing <https://drive.google.com/drive/folders/1XQn-Bv8aKnCEvQaqQpE5PU5F8ZBW3V1e?usp=sharing>). Sind doch einige - tut mir leid. Aber zu deiner Belustigung kann ich dir garantieren das einige ganz lustig sind (habe oft nicht die Kamera gestoppt zwischen videos\xe2\x80\xa6.)\nInsgesamt - feedback? Sind manche dieser videos brauchbar?\n(1) Habe Kamera runter gemacht, 3:4 format und h\xc3\xb6chste Qualit\xc3\xa4t - ist das alles ok?\n(2) Habe manche versucht n\xc3\xa4her an der Kamera/manche etwas weiter weg//manche mit Schal manche ohne - was ist besser?\n(3) Lampe - ich habe alles versucht - es bleibt immer eine kleine reflektion der Lampe auf meiner Brille - schlimm? was kann man machen (wenn etwas)?\nBasierend auf deinem feedback versuche ich dann morgen nochmal ein paar mal. Dann m\xc3\xbcssen wir entscheiden und eins ausw\xc3\xa4hlen. \nHabe die auf skype ja dir format Bestimmungen geschickt - mp4 oder mov gehen beide (doch bei mov gibt es irgendwelche Beschr\xc3\xa4nkungen - steht in dem text den ich dir geschickt habe). Bis zu 5GB also keine problem. \nDANKE'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VSENT
+p22
+asS'msg_cc'
+p23
+NsS'msg_bcc'
+p24
+Ns.

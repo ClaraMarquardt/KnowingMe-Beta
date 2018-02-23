@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S'Re: Chatting about LBS'
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'cmueller.mba2019@london.edu'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V1617effa181abc6b
+p11
+sS'msg_threadid'
+p12
+V161671e529511d7a
+p13
+sS'msg_date'
+p14
+S'Sat, 10 Feb 2018 03:15:36 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<B37AF686-69B3-4981-AAF7-CF9954685017@gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Hi Christoph, \nJust wanted to follow-up to see if next Wednesday would still be a good time for you to chat about LBS. I had suggested 2 pm London time but any time in the afternoon (London time) would work for me. Please let me know whatever time is most convenient for you!\nMany thanks again, \nClara\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<98BA817D-0AD5-47FA-BB69-6B47362720B7@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVSENT
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

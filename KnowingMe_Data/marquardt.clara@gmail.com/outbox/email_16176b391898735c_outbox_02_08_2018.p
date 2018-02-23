@@ -1,0 +1,52 @@
+(dp1
+S'msg_subject'
+p2
+S'LBS Interview'
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'lisachristensen214@gmail.com'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V16176b391898735c
+p11
+sS'msg_threadid'
+p12
+V16176b391898735c
+p13
+sS'msg_date'
+p14
+S'Thu, 8 Feb 2018 12:35:31 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<701B089F-CBA0-4D3C-B1A9-492DB1CEC56B@gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Hi Lisa, \nI am reaching out with regards to my London Business School interview - I am very much looking forward to speaking with you in the coming weeks!\n \nAlexandra mentioned that you are currently traveling extensively. Many thanks for still offering to find the time to interview me and I will do my very best to work around your schedule. \nStarting the week of the 19th, my work commitments are a lot more flexible, and I will be able to make any weekday or weekend depending on what works best for you. In case an earlier date would be more convenient - please let me know what dates/times would work, and I will attempt to re-schedule work accordingly. \nMany thanks again and I look forward to meeting you!\nKind Regards, \nClara Marquardt'
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VIMPORTANT
+p23
+aVSENT
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

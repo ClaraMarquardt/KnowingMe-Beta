@@ -1,0 +1,52 @@
+(dp1
+S'msg_subject'
+p2
+S'UW 2018 Science Job & Internship Fair - You are Invited!'
+p3
+sS'msg_from'
+p4
+S'"Donna D. Chen" <chend3@uw.edu>'
+p5
+sS'msg_to'
+p6
+S'"\'application@systemsmedicinelab.org\'"\r\n\t<application@systemsmedicinelab.org>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V15fc292814811125
+p11
+sS'msg_threadid'
+p12
+V15fc1571f5d48da3
+p13
+sS'msg_date'
+p14
+S'Wed, 15 Nov 2017 23:04:34 +0000'
+p15
+sS'msg_id_mime'
+p16
+S'<CY4PR08MB245584A4924BD887B765D074F5290@CY4PR08MB2455.namprd08.prod.outlook.com>'
+p17
+sS'msg_text'
+p18
+S"Dear Sendhil,\nHappy Wednesday! Greetings from the University of Washington Career and Internship Center-Seattle campus.\n2018 UW Science Job and Internship Fair\nThursday, February 1st, 2018\n2:00-5:00pm; Mary Gates Hall Commons (UW Seattle campus)\nhttp://washington-csm.symplicity.com/events/Science2018. $250 per booth\nSpaces are limited. We highly encourage you to register early to secure a booth\nWe are thrilled to invite you to join us for the UW 2018 Science Job and Internship Career Fair. This fair will give you the opportunity to connect with our talented BA/BS-level UW students and alumni from all 3 campuses- who are all interested in pursuing careers and internships in the sciences (particularly in Life Sciences, Natural Sciences, Social Sciences, Physical Sciences, Chemical Engineering and Bioengineering).\nLast year, over 400 students from disciplines such as Biology, Bio Engineering, Biochemistry, Chemistry, Environmental Health, and more in attendance. Our students in the sciences have diverse interests, and this great recruiting opportunity will give you the chance to recruit for part-time, full-time, and internship candidates and to gain visibility on Seattle campus.\nPlease don't hesitate contact Donna Chen at ccsevent@uw.edu<mailto:ccsevent@uw.edu>  with any questions about this event. We look forward to receiving your registration! Thank you for your support in our HUSKIES!\nHappy Holidays!\nBest,\nDonna\nDonna Chen\nEvents Coordinator -Career & Internship Center\n134 Mary Gates Hall / Box 352810 / Seattle, WA 98195\nOffice 206.543.0535 / Direct 206.543.9108\nChend3@uw.edu<mailto:Chend3@uw.edu>\n[cid:image001.png@01D218D5.61908E90]<http://www.careers.uw.edu/>\n"
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

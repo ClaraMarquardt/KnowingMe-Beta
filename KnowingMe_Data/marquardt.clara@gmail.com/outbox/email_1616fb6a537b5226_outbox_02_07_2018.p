@@ -1,0 +1,54 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V1616fb6a537b5226
+p10
+sS'msg_threadid'
+p11
+V1616fb05c31a6620
+p12
+sS'msg_date'
+p13
+S'Wed, 7 Feb 2018 04:01:36 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<CAC77MjJyhfn2XyT=KSdFTZUEUfM32f9va6PXUZ1sKeNGGT5H5w@mail.gmail.com>'
+p16
+sS'msg_text'
+p17
+S"Extent to which o involved in urban innovation Maduro institute\nOpportunity to work directly rough professor xxxxx\nWork late get Bach to the city\nBooth hacks hoffe many people can chat kisser\nIf for instance was need to start design thinking club glitter easy\ndifficult\nHow much tone affluent writing, researching doubt thibgs - doing buildibg\nLink back to own everyone's\nUtica sailing\n"
+p18
+sS'msg_reply_to_id_mime'
+p19
+S'<CAC77Mj+ekUKPd295Xu9gakKZg=2e4e_HQhtPb54UyqaJ_V2SZg@mail.gmail.com>'
+p20
+sS'msg_label'
+p21
+(lp22
+VIMPORTANT
+p23
+aVSENT
+p24
+aVINBOX
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

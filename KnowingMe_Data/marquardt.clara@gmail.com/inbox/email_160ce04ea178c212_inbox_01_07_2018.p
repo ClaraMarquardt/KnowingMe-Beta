@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'alf zips <alfzips@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V160ce04ea178c212
+p11
+sS'msg_threadid'
+p12
+V160cae524f17eafa
+p13
+sS'msg_date'
+p14
+S'Sun, 7 Jan 2018 01:28:34 +0100'
+p15
+sS'msg_id_mime'
+p16
+S'<CAF34eQFEoxhwzJbPgXVmkDDKrLau0b3_5poawpZOiOEgeXsChA@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S'hallo h\xc3\xbchnchen...\nhoffenttlich last du noch ein paar hare stehen, die w\xc3\xa4rmen n\xc3\xa4mlich ( ich\nmuss es ja wissen)\nanbei neuenr Versuch\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<B49C06D0-B977-4AED-889C-0BD9A8DE8FF5@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.

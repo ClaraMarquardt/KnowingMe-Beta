@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'Shreyas Lakhtakia <shreyaslakhtakia@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V160fb3e61bbd97db
+p11
+sS'msg_threadid'
+p12
+V160f935d2dc7fd95
+p13
+sS'msg_date'
+p14
+S'Mon, 15 Jan 2018 19:14:05 +0000'
+p15
+sS'msg_id_mime'
+p16
+S'<CALEjPT8NqxPfvfWs+pyuwuv3B9vNw57payyz1UFkUgEF4uC5DA@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S"Hmm -- that makes sense, got it. Just make sure the details in the examples\nalways prioritize that right things though (not that they don't, but just a\nquick that I wanted to note!)\nYou're almost done!! Let me know if helpful to talk to discuss more!\nBest,\nShreyas\n"
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<FBFDC390-1C3A-46DF-A9BE-D25E0C0B7E33@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.

@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'alfzips <alfzips@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V1611082dbbf081cc
+p11
+sS'msg_threadid'
+p12
+V160fe08b93de5149
+p13
+sS'msg_date'
+p14
+S'Fri, 19 Jan 2018 16:21:06 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<CAC77MjJQ+BE9pehMBPPPvKfAgdjc3SZ3N7sK2bMzXgm6TK8SyA@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S'\xf0\x9f\x90\xa5\nEs gibt eine Rufnummer f\xc3\xbcr H\xc3\xa4hnchen wie dich um deine schlachtnummer zu\nbekommen 0800 1000 4800\nIch Ruf da mal an.\xf0\x9f\x98\x8e\nAm 19.01.2018 22:59 schrieb "Clara Marquardt" <marquardt.clara@gmail.com>:\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<CAC77MjKc5QtTkQUhD7wWDgriuYThRJw7078UgNowN2nScN-4Qg@mail.gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVSENT
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

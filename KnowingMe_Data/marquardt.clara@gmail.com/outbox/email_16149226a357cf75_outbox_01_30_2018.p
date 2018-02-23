@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'"marquardt.clara@gmail.com" <marquardt.clara@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V16149226a357cf75
+p10
+sS'msg_threadid'
+p11
+V16149226a357cf75
+p12
+sS'msg_date'
+p13
+S'Tue, 30 Jan 2018 16:13:15 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<5a70ee2f.945d240a.61620.8b89@mx.google.com>'
+p16
+sS'msg_text'
+p17
+S'\nSent from Mail for Windows 10\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVSENT
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

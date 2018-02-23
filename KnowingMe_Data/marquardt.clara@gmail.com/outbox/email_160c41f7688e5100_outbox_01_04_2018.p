@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'alf zips <alfzips@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V160c41f7688e5100
+p11
+sS'msg_threadid'
+p12
+V160c036e830c596b
+p13
+sS'msg_date'
+p14
+S'Thu, 4 Jan 2018 20:21:22 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<E0B7A0CE-A96C-46AB-9BB4-5151EE71978D@gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Musste lange in meinem Papier Stapel suchen um diesen fress Zettel zu finden : ) : )\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<CAF34eQEt_0Uh6DuqxY-N_Fbh9ikfgjB4JGxp-2HJ+VPE_h_aVA@mail.gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVSENT
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

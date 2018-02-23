@@ -1,0 +1,52 @@
+(dp1
+S'msg_subject'
+p2
+S'Chatting about LBS'
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'cmueller.mba2019@london.edu'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V161671e529511d7a
+p11
+sS'msg_threadid'
+p12
+V161671e529511d7a
+p13
+sS'msg_date'
+p14
+S'Mon, 5 Feb 2018 11:58:13 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<98BA817D-0AD5-47FA-BB69-6B47362720B7@gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Hi Christoph, \nI had reached out previously on LinkedIn. Thank you for your very kind reply!\nWednesday next week (the 14th) would be perfect! \nAnytime after 1 pm UK time would work for me. How about 2 pm London time?\nMy Skype name is claramarquardt.\nMany thanks again for making time for this and I look forward to speaking next week,\nClara\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VIMPORTANT
+p23
+aVSENT
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

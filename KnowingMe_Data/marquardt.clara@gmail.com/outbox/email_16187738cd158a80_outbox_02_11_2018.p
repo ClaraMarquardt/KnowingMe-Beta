@@ -1,0 +1,49 @@
+(dp1
+S'msg_subject'
+p2
+S"Fwd: Your Domino's Order"
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Shreyas Lakhtakia <shreyaslakhtakia@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V16187738cd158a80
+p11
+sS'msg_threadid'
+p12
+V161875806a55d70a
+p13
+sS'msg_date'
+p14
+S'Sun, 11 Feb 2018 18:39:11 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<32934149-897E-49ED-A2EA-4EDE7240F431@gmail.com>'
+p17
+sS'msg_text'
+p18
+S'\n'
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VSENT
+p22
+asS'msg_cc'
+p23
+NsS'msg_bcc'
+p24
+Ns.

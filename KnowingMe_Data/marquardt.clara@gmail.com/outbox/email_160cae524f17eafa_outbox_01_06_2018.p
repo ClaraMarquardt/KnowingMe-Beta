@@ -1,0 +1,51 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'alf zips <alfzips@gmail.com>,\r\n Ulla Marquardt <ulla.marquardt@yahoo.de>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V160cae524f17eafa
+p10
+sS'msg_threadid'
+p11
+V160cae524f17eafa
+p12
+sS'msg_date'
+p13
+S'Sat, 6 Jan 2018 03:55:00 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<DF8D04DF-6C9C-4610-8175-A72278B7E50E@gmail.com>'
+p16
+sS'msg_text'
+p17
+S'Also es ist noch viel Arbeit - \n(a) ich glaube die Struktur passt \n(b) es ist 200 W\xc3\xb6rter zu lang (max 330 ohne die Begr\xc3\xbc\xc3\x9fung und das Dankesch\xc3\xb6n)\n(c) das Haupt problem sind die Beispiele die nicht sehr ausgereift sind - diese m\xc3\xbcssen VIEl k\xc3\xbcrzer werden\ndann muss nat\xc3\xbcrlich noch alles besser vormuliert werden\nIch muss morgen diesen essay irgendwie in form bringen - Sonntag dan die presentation\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVSENT
+p23
+asS'msg_cc'
+p24
+NsS'msg_bcc'
+p25
+Ns.

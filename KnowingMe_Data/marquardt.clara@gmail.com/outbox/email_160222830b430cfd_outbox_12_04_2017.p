@@ -1,0 +1,51 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V160222830b430cfd
+p10
+sS'msg_threadid'
+p11
+V160222830b430cfd
+p12
+sS'msg_date'
+p13
+S'Mon, 4 Dec 2017 09:32:22 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<CD08A9A5-1BE2-450B-A966-1A99888846CB@gmail.com>'
+p16
+sS'msg_text'
+p17
+S'Hallo - \nAttached die neuen Versionen von sloan und booth (mit lass ich erstmal da sp\xc3\xa4ter due) - habe bis jetzt nur angefangen die essays zu \xc3\xbcberarbeiten - an den SAQ (short answer questions arbeite ich dann w\xc3\xa4hren der Woche).\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVSENT
+p23
+asS'msg_cc'
+p24
+NsS'msg_bcc'
+p25
+Ns.

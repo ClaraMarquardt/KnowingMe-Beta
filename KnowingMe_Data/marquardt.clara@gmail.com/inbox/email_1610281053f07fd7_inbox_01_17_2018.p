@@ -1,0 +1,52 @@
+(dp1
+S'msg_subject'
+p2
+S'Resolve 2 security issues found on your Google account'
+p3
+sS'msg_from'
+p4
+S'Google <no-reply@accounts.google.com>'
+p5
+sS'msg_to'
+p6
+S'marquardt.clara@gmail.com'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V1610281053f07fd7
+p11
+sS'msg_threadid'
+p12
+V1610281053f07fd7
+p13
+sS'msg_date'
+p14
+S'Wed, 17 Jan 2018 01:43:12 +0000 (UTC)'
+p15
+sS'msg_id_mime'
+p16
+S'<UzFu4sgx411H2C0UVmagJA@notifications.google.com>'
+p17
+sS'msg_text'
+p18
+S'Clara Marquardt\n<https://accounts.google.com/AccountChooser?Email=marquardt.clara@gmail.com&continue=https://myaccount.google.com/security-checkup?utm_source%3Demail%26utm_medium%3Demail%26utm_campaign%3Dsa%26aneid%3D-1702618219453679447%26rfn%3D1516153392889%26anexp%3Dsagf-f8--sayf-f19--sayug-yellow--sasgug-green--sasyug-yellow--saeb-f2--sapy-on>\n2 security issues found on your account\nmarquardt.clara@gmail.com\nWe\xe2\x80\x99ve upgraded the Security Checkup to give you specific, personalized\nrecommendations to strengthen the security of your Google Account.\nTake the 2-minute checkup\n<https://accounts.google.com/AccountChooser?Email=marquardt.clara@gmail.com&continue=https://myaccount.google.com/security-checkup?utm_source%3Demail%26utm_medium%3Demail%26utm_campaign%3Dsa%26aneid%3D-1702618219453679447%26rfn%3D1516153392889%26anexp%3Dsagf-f8--sayf-f19--sayug-yellow--sasgug-green--sasyug-yellow--saeb-f2--sapy-on>\ntoday to see the actions you should take to make your account more secure.\nTake action\n<https://accounts.google.com/AccountChooser?Email=marquardt.clara@gmail.com&continue=https://myaccount.google.com/security-checkup?utm_source%3Demail%26utm_medium%3Demail%26utm_campaign%3Dsa%26aneid%3D-1702618219453679447%26rfn%3D1516153392889%26anexp%3Dsagf-f8--sayf-f19--sayug-yellow--sasgug-green--sasyug-yellow--saeb-f2--sapy-on>\n<https://accounts.google.com/AccountChooser?Email=marquardt.clara@gmail.com&continue=https://myaccount.google.com/security-checkup?utm_source%3Demail%26utm_medium%3Demail%26utm_campaign%3Dsa%26aneid%3D-1702618219453679447%26rfn%3D1516153392889%26anexp%3Dsagf-f8--sayf-f19--sayug-yellow--sasgug-green--sasyug-yellow--saeb-f2--sapy-on>\nSecurity Checkup is available in My Account (https://myaccount.google.com)\nYou received this email to let you know about important changes to your\nGoogle Account and services.\n\xc2\xa9 2018 Google Inc.,1600 Amphitheatre Parkway, Mountain View, CA 94043, USA\net:166\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

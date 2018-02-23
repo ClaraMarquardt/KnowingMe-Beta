@@ -1,0 +1,54 @@
+(dp1
+S'msg_subject'
+p2
+S'Invitation: Knowing me - Weekly team call @ Thu Feb 8, 2018 14:00 -\n 15:15 (CST) (Clara Marquardt)'
+p3
+sS'msg_from'
+p4
+S'cameron_cohen@college.harvard.edu'
+p5
+sS'msg_to'
+p6
+S'marquardt.clara@gmail.com, Bec Weeks <weeks.rebecca@gmail.com>, \r\n\tjeff morin <morin.jeff@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V1616dafec02b4b9f
+p11
+sS'msg_threadid'
+p12
+V1616dafec02b4b9f
+p13
+sS'msg_date'
+p14
+S'Wed, 07 Feb 2018 00:35:01 +0000'
+p15
+sS'msg_id_mime'
+p16
+S'<001a114df03234a8a00564947767@google.com>'
+p17
+sS'msg_text'
+p18
+S'You have been invited to the following event.\nTitle: Knowing me - Weekly team call\nWhen: Thu Feb 8, 2018 14:00 \xe2\x80\x93 15:15 Central Time\nWhere: https://zoom.us/j/489775317\nCalendar: Clara Marquardt\nWho:\n     * cameron_cohen@college.harvard.edu - organizer\n     * Clara Marquardt\n     * Bec Weeks\n     * jeff morin\nEvent details:  \nhttps://www.google.com/calendar/event?action=VIEW&eid=XzhncGoyZGk1NnNwNGNiOW04NHM0OGI5azY0b2s2YjlvNmwxajRiYTY3MTJqMGMyMjY4cGs2ZTFpNmMgbWFycXVhcmR0LmNsYXJhQG0&tok=MzMjY2FtZXJvbl9jb2hlbkBjb2xsZWdlLmhhcnZhcmQuZWR1ZWJjZmFhZDM5ZmYzMjQ0ZmE0NjkzNmEzMDg2YjljZTJiM2RkM2M0ZQ&ctz=America/Chicago&hl=en\nInvitation from Google Calendar: https://www.google.com/calendar/\nYou are receiving this email at the account marquardt.clara@gmail.com  \nbecause you are subscribed for invitations on calendar Clara Marquardt.\nTo stop receiving these emails, please log in to  \nhttps://www.google.com/calendar/ and change your notification settings for  \nthis calendar.\nForwarding this invitation could allow any recipient to modify your RSVP  \nresponse. Learn more at  \nhttps://support.google.com/calendar/answer/37135#forwarding\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VIMPORTANT
+p23
+aVCATEGORY_PERSONAL
+p24
+aVINBOX
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

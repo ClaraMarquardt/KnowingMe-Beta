@@ -1,0 +1,49 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'alf zips <alfzips@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V16004ebdda0dc637
+p10
+sS'msg_threadid'
+p11
+V16004ebdda0dc637
+p12
+sS'msg_date'
+p13
+S'Wed, 29 Nov 2017 00:17:32 +0100'
+p14
+sS'msg_id_mime'
+p15
+S'<E2EAF8E5-852F-4993-B843-9267887B0ECD@gmail.com>'
+p16
+sS'msg_text'
+p17
+S"Huhn, \nhabe fuer baumer jetzt jun - august 2016 (3 Monate). Ich glaube das war das was wir zuletzt besprochen hatten. \nAls Titel habe ich 'digital innovation consultant\xe2\x80\x99 - passt das? falls nicht - kann auch einen anderen Titel nehmen : ) \nGanz vielen dank!"
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VSENT
+p22
+asS'msg_cc'
+p23
+NsS'msg_bcc'
+p24
+Ns.

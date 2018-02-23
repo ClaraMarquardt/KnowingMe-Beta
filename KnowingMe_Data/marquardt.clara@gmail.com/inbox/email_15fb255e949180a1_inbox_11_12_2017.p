@@ -1,0 +1,52 @@
+(dp1
+S'msg_subject'
+p2
+S'Alf Z. sent you a message on Fitbit'
+p3
+sS'msg_from'
+p4
+S'"Fitbit" <messages-noreply@fitbit.com>'
+p5
+sS'msg_to'
+p6
+S'marquardt.clara@gmail.com'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V15fb255e949180a1
+p11
+sS'msg_threadid'
+p12
+V15fb204afb3b8e0b
+p13
+sS'msg_date'
+p14
+S'Sun, 12 Nov 2017 22:24:54 +0000 (UTC)'
+p15
+sS'msg_id_mime'
+p16
+S'<A93UcfSYQmupGLWyy6f7LQ@ismtpd0025p1las1.sendgrid.net>'
+p17
+sS'msg_text'
+p18
+S"Alf Z. sent you a message:\n \n  \n-------------------------------------------------------------------------------\n  \nSchau fir mein Schlaf kurven an...dann siehst dass ich keine zeit habe \xf0\x9f\x98\x8e\n  \n-------------------------------------------------------------------------------\n  \nREPLY:\nhttps://www.fitbit.com/friends?sender=5TFHSG&recipient=64695L&recipientName=Alf Zipd&recipientPhoto=https://static0.fitbit.com/images/profile/defaultProfile_125_male.png&senderPhoto=https://static0.fitbit.com/images/profile/defaultProfile_125_female.png\n  \nView friends:\nhttps://www.fitbit.com/friends\n  \nYou're receiving this email because you have Message Alerts enabled on your account. Not interested anymore? Unsubscribe.\n https://www.fitbit.com/user/profile/notifications\n \nFitbit and the Fitbit Logo are registered trademarks of Fitbit, Inc.\nFitbit, Inc. - 199 Fremont Street San Francisco, CA 94105 USA."
+p19
+sS'msg_reply_to_id_mime'
+p20
+Fnan
+sS'msg_label'
+p21
+(lp22
+VCATEGORY_PERSONAL
+p23
+aVINBOX
+p24
+asS'msg_cc'
+p25
+NsS'msg_bcc'
+p26
+Ns.

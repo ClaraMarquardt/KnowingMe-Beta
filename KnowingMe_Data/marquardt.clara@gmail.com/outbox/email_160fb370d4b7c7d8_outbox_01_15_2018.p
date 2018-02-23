@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'Shreyas Lakhtakia <shreyaslakhtakia@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V160fb370d4b7c7d8
+p11
+sS'msg_threadid'
+p12
+V160f935d2dc7fd95
+p13
+sS'msg_date'
+p14
+S'Mon, 15 Jan 2018 13:06:14 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<FBFDC390-1C3A-46DF-A9BE-D25E0C0B7E33@gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Thank you for taking the time to give such detailed feedback!\nWill need to reflect - they ask for very specific content (including 1-2 detailed examples) rather than a standard cover letter which explains why I opted to choose a different format and content. \nBest,\nClara\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<0A57DAE0-977E-4238-87B0-080BD55497D1@gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVSENT
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

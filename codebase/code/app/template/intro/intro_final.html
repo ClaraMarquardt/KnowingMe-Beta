@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
+<title>KnowingMe</title>
+
+<!-- HEADER -->
+<header>
+
+  <!-- Style -->
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css')}}">
+  
+  <!-- Dependencies -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <script>
+            var messages = {{ messages | safe }};
+            for (var i=0; i<messages.length; i++) {
+              alert(messages[i]);
+            }
+        </script>
+      {% endif %}
+  {% endwith %}
+
+</header>
+
+<!-- BODY -->
+<body>
+
+  <!-- Header Section -->
+  <div id="content">
+    <center>
+    <div class="ribbon">
+    <img src="{{ user_photo }}" style="width:40px;height:40px;"/>
+    <br>
+    {{ user_email }}
+    <br>
+    <a href="{{ url_for('logout_view') }}">Switch User</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="{{ url_for('landing_view') }}">Home Page</a>
+
+    </div>
+    </center>
+  </div>
+
+  <!-- Content -->
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  
+  <h3><p style="text-align:center;">Let's Get Started</p></h3>
+  <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">
+  <br>All this, using your emails. So let’s dive in!
+  <br>We’re going to start by comparing how you communicate with men versus with women. 
+  <br>(Later, you can pick different groups to compare)
+  </font></p>
+
+      
+</body>
+</html>
+
+<!-- END -->

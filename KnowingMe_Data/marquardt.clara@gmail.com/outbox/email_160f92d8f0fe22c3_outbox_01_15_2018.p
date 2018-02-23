@@ -1,0 +1,51 @@
+(dp1
+S'msg_subject'
+p2
+S''
+sS'msg_from'
+p3
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p4
+sS'msg_to'
+p5
+S'Ulla Marquardt <ulla.marquardt@yahoo.de>,\r\n alf zips <alfzips@gmail.com>'
+p6
+sS'msg_inbox_outbox'
+p7
+S'outbox'
+p8
+sS'msg_id'
+p9
+V160f92d8f0fe22c3
+p10
+sS'msg_threadid'
+p11
+V160f92d8f0fe22c3
+p12
+sS'msg_date'
+p13
+S'Mon, 15 Jan 2018 03:36:38 -0600'
+p14
+sS'msg_id_mime'
+p15
+S'<17809447-1022-4CF4-8508-0F766D0111B6@gmail.com>'
+p16
+sS'msg_text'
+p17
+S'was haltet ihr von neuer version - ist wieder ein paar W\xc3\xb6rter zu land (337 - optimal bestimmt so 320-325) aber ich bin schon etwas happier damit - ich denke der kern Punkt der Ideen/beispiele kommt mehr r\xc3\xbcber\nwas meint ihr\nDANKE\n'
+p18
+sS'msg_reply_to_id_mime'
+p19
+Fnan
+sS'msg_label'
+p20
+(lp21
+VIMPORTANT
+p22
+aVSENT
+p23
+asS'msg_cc'
+p24
+NsS'msg_bcc'
+p25
+Ns.

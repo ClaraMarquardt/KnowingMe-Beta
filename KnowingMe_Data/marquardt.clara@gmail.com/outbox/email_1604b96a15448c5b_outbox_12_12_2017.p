@@ -1,0 +1,53 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p5
+sS'msg_to'
+p6
+S'alfzips <alfzips@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'outbox'
+p9
+sS'msg_id'
+p10
+V1604b96a15448c5b
+p11
+sS'msg_threadid'
+p12
+V1604a4e67bd81ce9
+p13
+sS'msg_date'
+p14
+S'Tue, 12 Dec 2017 10:37:31 -0600'
+p15
+sS'msg_id_mime'
+p16
+S'<CAC77MjJERf0ouZzZ+syzWY_MgUBV0yHj6Xzpmz_Xasc4+ZtW3g@mail.gmail.com>'
+p17
+sS'msg_text'
+p18
+S'Huehnchen komisch werden darf man rest als richtiger rentner ;)\n'
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<CAF34eQHJhB8k87G_mDsO5OrqgAUJWHZ=-_wrWhC=mKgPMOtmkg@mail.gmail.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVSENT
+p25
+asS'msg_cc'
+p26
+NsS'msg_bcc'
+p27
+Ns.

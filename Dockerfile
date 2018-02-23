@@ -1,10 +1,24 @@
-# Basic Setup
-# -------------------
-# -------------------
+# ----------------------------------------------------------------------- #
+
+# KnowingMe 
+
+# File:         Dockerfile
+# Purpose:      Build docker image - Production (Github Code)
+# Maintainer:   Clara Marquardt
+# Last Updated: 2018-01-09
+# Language:     Python 2.7
+# Notes:        See the README for instructions on how to build the image
+
+# ------------------------------------------------------------------------ #
+
+# Basic Setup (Ubuntu + Core dependencies incl. git, python, pip, postgresql)
+# ------------------------------------------------------------------------ #
+
 FROM ubuntu:latest  
 RUN apt-get update  
 RUN apt-get install --no-install-recommends --no-install-suggests -y --reinstall build-essential
-RUN apt-get install --no-install-recommends --no-install-suggests -y g++-4.8 git bash python python-setuptools gcc python-pip libc-dev unixodbc-dev python-dev
+RUN apt-get install --no-install-recommends --no-install-suggests -y g++-4.8 git bash python python-setuptools \
+gcc python-pip libc-dev unixodbc-dev python-dev
 RUN pip install --upgrade pip
 
 RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8
@@ -12,78 +26,62 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc
 RUN apt-get update && apt-get install -y python-software-properties software-properties-common postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3
 
 # Info
-# -------------------
-# -------------------
+# ------------------------------------------------------------------------ #
 MAINTAINER Clara Marquardt "marquardt.clara@gmail.com”
 RUN pwd
 RUN ls root/
 
 
-# *Add Local Code
-# -------------------
-# -------------------
-
-# *Add Env Var
-# -------------------
-# -------------------
+# Environment Variables
+# ------------------------------------------------------------------------ #
 ENV PORT 8000
 ENV DEBUG "False"
-ENV OUTPUT "/KnowingMe_Data/"
 
-# Obtain Codebase
-# -------------------
-# -------------------
-RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@github.com/ClaraMarquardt/KnowingMeBeta.git
-RUN mv /KnowingMeBeta /KnowingMe
+# Obtain Codebase (From Github)
+# ------------------------------------------------------------------------ #
+RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@github.com/ClaraMarquardt/KnowingMe.git
 RUN pwd
 
 # Installation
-# -------------------
-# -------------------
+# ------------------------------------------------------------------------ #
 
 # Installation - Setup
-# -------------------
+# ---------------------------------------------
 RUN pwd
 WORKDIR /KnowingMe/
 RUN chmod -R a+rwx .
 
-# Installation - App Settings (app_setting.json)
-# -------------------
+# Installation - Python Dependencies
+# ---------------------------------------------
 
-# System Check 
-# -------------------
-RUN python codebase/setup/system_check.py
+## Install Dependencies
 
-# Installation 
-# -------------------
-# [1] Install main Python dependencies (Using 'pip')
 RUN pip install --no-binary scipy scikit-learn  
-RUN pip --no-cache-dir install -r codebase/setup/dependency.txt           	   # general dependencies (1)
-RUN python codebase/setup/dependency.py            			                   # general dependencies (2)
-RUN pip install --upgrade google-api-python-client        			           # google api dependency
+RUN pip --no-cache-dir install -r codebase/setup/dependency.txt           	   
+RUN pip install --upgrade google-api-python-client        			           
 
-# [2] NLTK
+## Test Dependencies
+
+RUN python codebase/setup/dependency_test.sh
 RUN python codebase/setup/nltk_test.py  
-
-# [3] Spacy
 RUN python codebase/setup/spacy_test.py  
 
+# Database Initialization
+# ---------------------------------------------
 USER postgres
-RUN    /etc/init.d/postgresql start &&\
+RUN /etc/init.d/postgresql start &&\
     psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
     createdb -O docker docker
 
 RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.3/main/pg_hba.conf
-
-# And add ``listen_addresses`` to ``/etc/postgresql/9.3/main/postgresql.conf``
 RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
 
-# Expose the PostgreSQL port
-EXPOSE 5432
 # Launch
-# -------------------
-# -------------------
-VOLUME /KnowingMe_Data/
+# ---------------------------------------------
+VOLUME /KnowingMe_Data
 WORKDIR /KnowingMe/
 EXPOSE  $PORT
-CMD ["/KnowingMe/codebase/KnowingMe_exec.sh"]
+CMD ["/KnowingMe/codebase/docker/Docker_Start.sh"]
+
+# ------------------------------------------------------------------------ #
+# ------------------------------------------------------------------------ #

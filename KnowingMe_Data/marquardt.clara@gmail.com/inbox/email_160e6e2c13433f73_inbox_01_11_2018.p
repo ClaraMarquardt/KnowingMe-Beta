@@ -1,0 +1,55 @@
+(dp1
+S'msg_subject'
+p2
+S'Re:'
+p3
+sS'msg_from'
+p4
+S'Ulla Marquardt <ulla.marquardt@yahoo.de>'
+p5
+sS'msg_to'
+p6
+S'Clara Marquardt <marquardt.clara@gmail.com>'
+p7
+sS'msg_inbox_outbox'
+p8
+S'inbox'
+p9
+sS'msg_id'
+p10
+V160e6e2c13433f73
+p11
+sS'msg_threadid'
+p12
+V160e6d8dd18a1cf4
+p13
+sS'msg_date'
+p14
+S'Thu, 11 Jan 2018 20:21:43 +0000 (UTC)'
+p15
+sS'msg_id_mime'
+p16
+S'<1004319119.2472638.1515702103263@mail.yahoo.com>'
+p17
+sS'msg_text'
+p18
+S'Gro\xc3\x9fartig!\nWie findest du ihn???\nIch schicke dir die Apricot Creme.\nciao bella\n      Von: Clara Marquardt <marquardt.clara@gmail.com>\n An: Ulla Marquardt <ulla.marquardt@yahoo.de> \n Gesendet: 21:11 Donnerstag, 11.Januar 2018\n Betreff: \n   \n<!--#yiv6938527694 _filtered #yiv6938527694 {font-family:"Cambria Math";panose-1:2 4 5 3 5 4 6 3 2 4;} _filtered #yiv6938527694 {font-family:Calibri;panose-1:2 15 5 2 2 2 4 3 2 4;}#yiv6938527694 #yiv6938527694 p.yiv6938527694MsoNormal, #yiv6938527694 li.yiv6938527694MsoNormal, #yiv6938527694 div.yiv6938527694MsoNormal {margin:0in;margin-bottom:.0001pt;font-size:11.0pt;font-family:"Calibri", sans-serif;}#yiv6938527694 a:link, #yiv6938527694 span.yiv6938527694MsoHyperlink {color:blue;text-decoration:underline;}#yiv6938527694 a:visited, #yiv6938527694 span.yiv6938527694MsoHyperlinkFollowed {color:#954F72;text-decoration:underline;}#yiv6938527694 .yiv6938527694MsoChpDefault {} _filtered #yiv6938527694 {margin:1.0in 1.0in 1.0in 1.0in;}#yiv6938527694 div.yiv6938527694WordSection1 {}-->Hallo tiger,  \xc2\xa0MANTEL ist heute morgen angekommen !!! Ein wahres wunder : ) \xc2\xa0Da dass ja funktioniert hat \xe2\x80\x93 koenntest du mir wenn du mal wieder im reformhaus bist die apricot cr\xc3\xa8me schicken? Bestelle ja normalerweise bei amzon/boerlind direct doch scheinen die gerade alle ausverkauft zu sein  \xc2\xa0 \xc2\xa0DANKE \xc2\xa0Sent from Mail for Windows 10 \xc2\xa0\n  '
+p19
+sS'msg_reply_to_id_mime'
+p20
+S'<5a57c4d4.1550240a.b2701.6de5@mx.google.com>'
+p21
+sS'msg_label'
+p22
+(lp23
+VIMPORTANT
+p24
+aVCATEGORY_PERSONAL
+p25
+aVINBOX
+p26
+asS'msg_cc'
+p27
+NsS'msg_bcc'
+p28
+Ns.
