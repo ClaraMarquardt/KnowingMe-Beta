@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+    <!-- CONTENT -->    
+    <center>
+    
+     <div id="chart"></div>
+     <br>
+     <div id="text"></div>
+     <br>
+     <div id="text_link"></div>
+    {% if insight_mode == "intro" %}
+
+      {% if insight_name_next == "dashboard" %}
+        <a href="{{ url_for('dashboard_intro_view') }}" id="navigation_text">Let's Explore</a>
+      {% else %}
+        <a href="{{ url_for('insight_intro_view',insight_name=insight_name_next, insight_current=insight_name) }}" id="navigation_text">Next Insight</a>
+      {% endif %}
+    
+    {% else %}
+      <a href="{{ url_for('dashboard_view') }}" id="navigation_text">Return to Dashboard</a>
+    {% endif %}
+
+
+    </center>
+    
+    <!-- SCRIPT -->    
+    <script type="text/javascript">
+       {% include "vis_prep/"+insight_name+"/"+insight_name+"_prep.js" %}
+        update_raw_data(raw_data={{ insight_data|tojson|safe }})
+    </script>
+
+    <!--  Vis Functions -->    
+    <script src="{{ url_for('static', filename='vis/'+'vis_template'+'/'+'vis_function.js') }}"></script>
+    <script src="{{ url_for('static', filename='vis/'+'vis_template'+'/'+'vis_vis.js') }}"></script>
+  
+    <!--  Vis -->    
+    <script src="{{ url_for('static', filename='vis/'+insight_name+'/'+insight_name+'_vis_ext.js') }}"></script>
+
+</html>
+
+
+

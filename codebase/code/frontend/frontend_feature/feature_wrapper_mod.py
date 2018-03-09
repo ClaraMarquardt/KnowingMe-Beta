@@ -33,18 +33,21 @@ from feature_simplelang_mod import *
 feature_function = dict()
 
 ## nlp
-feature_function['sentiment']         = sentiment
-feature_function['politeness']        = politeness
-feature_function['coordination']      = coordination
+feature_function['sentiment_dict']    = sentiment_dict_feature
+feature_function['sentiment']         = sentiment_feature
+feature_function['politeness']        = politeness_feature
+feature_function['coordination']      = coordination_feature
 
 ## simplelang
-feature_function['talkative']         = talkative
-feature_function['lengthimbalance']   = lengthimbalance
-feature_function['birthday']          = birthday
+feature_function['language']          = language_feature
+feature_function['talkative']         = talkative_feature
+feature_function['lengthimbalance']   = lengthimbalance_feature
+feature_function['birthday']          = birthday_feature
 
 ## nonlang
-feature_function['responsiveness']    = responsiveness
-feature_function['firstlast']         = firstlast
+feature_function['responsiveness']    = responsiveness_feature
+feature_function['firstlast']         = firstlast_feature
+feature_function['contact']           = contact_feature
 
 #----------------------------------------------------------------------------#
 #			                Function Definition                              #
@@ -52,7 +55,7 @@ feature_function['firstlast']         = firstlast
 
 # generate_insight_feature
 #---------------------------------------------#
-def generate_feature_wrapper(feature_list, email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date): 
+def generate_feature_wrapper(feature_list, email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df): 
 
 	## initialize
 	feature_dict = dict()
@@ -62,7 +65,7 @@ def generate_feature_wrapper(feature_list, email_link_df, link_id, msg_id, msg_t
 		
 		print(feature_name)
 		
-		feature_temp   = feature_function[feature_name](email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date)
+		feature_temp   = feature_function[feature_name](email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df)
 		email_link_df  = pd.merge(feature_temp, email_link_df, on='link_id', how='outer')
 
 	return(email_link_df)

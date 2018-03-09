@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+{% include 'template/general/title.html' %}
+
+<!-- HEADER -->
+<header>
+
+  <!-- Dependencies & Co -->
+  {% include 'template/general/dependency.html' %}
+  {% include 'template/general/flash_message.html' %}
+
+</header>
+
+<!-- BODY -->
+<body scroll="no" style="overflow: hidden">
+
+  <!-- Header Section -->
+  {% include 'template/general/header_user.html' %}
+
+  <!-- Content Section -->
+  {% include 'template/space/main_top_space.html' %}
+
+  <h3><p style="text-align:center;">Go forth with wisdom
+  </p></h3>
+  <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">Now that you have a sense of what this app can do, why not explore some more? There are so many more insights to check out, and we’re adding new features all the time. Have a play! </font></p>
+  <center><a href="{{ url_for('dashboard_view') }}">Let's Explore</a></center>
+
+  {% include 'template/space/main_bottom_space.html' %}
+   
+  <!-- SCRIPTS -->
+  {% include 'template/general/scroll_page.html' %}
+   
+</body>
+</html>
+<!-- END -->

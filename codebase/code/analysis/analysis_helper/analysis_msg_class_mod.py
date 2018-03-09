@@ -26,7 +26,7 @@ from __init_setting__ import *
 
 # Dependencies - Internal
 sys.path.append(os.path.normpath(os.path.join(app_root, 'code','analysis')))
-from analysis_helper import analysis_clean_mod, analysis_parse_mod, analysis_token_mod, analysis_bag_of_word_mod, analysis_polite_mod, analysis_conver_mod
+from analysis_helper import analysis_clean_mod, analysis_sentiment_mod, analysis_parse_mod, analysis_token_mod, analysis_bag_of_word_mod, analysis_polite_mod, analysis_conver_mod
 
 sys.path.append(os.path.normpath(os.path.join(app_root,'code')))
 from misc import *
@@ -255,21 +255,26 @@ class text:
 		self.character_count         = len(self.character)
 
 		# * linguistic attributes
-		self.parse                   								  = analysis_parse_mod.dep_parse(self.sentence)
-		self.pos, self.pos_dict      							      = analysis_parse_mod.pos_tag(self.sentence)
-		self.pos_count, self.pos_set,self.pos_set_agg, self.pos_indic = analysis_bag_of_word_mod.pos_word_bag(self.pos_dict)
+		self.lang, self.eng                                             = analysis_parse_mod.lang_parse(self.text)
+		
+		## > NOTE BELOW ONLY GENERATED FOR ENGLISH MESSAGES
+		self.parse                   								    = analysis_parse_mod.dep_parse(self.sentence,  self.eng)
 			
+		self.pos, self.pos_dict      							        = analysis_parse_mod.pos_tag(self.sentence, self.eng)
+		self.pos_count, self.pos_set,self.pos_set_agg, self.pos_indic   = analysis_bag_of_word_mod.pos_word_bag(self.pos_dict,self.eng)
+		
 		# * misc
 		self.message_sentence        = ' ///\n\n '.join(self.sentence)
 
 		## INSIGHT SPECIFIC 
 
 		# * politeness 
-		self.request                 = [analysis_polite_mod.request_identification(x, y) for (x,y) in zip(self.sentence, self.parse)]
+		self.request                 = [analysis_polite_mod.request_identification(x, y, z) for (x,y, z) in zip(self.sentence, self.parse, np.tile(self.eng, len(self.sentence)))]
 		self.polite                  = analysis_polite_mod.polite_score(self.sentence, self.parse, self.unigram, self.bigram, self.request)
-
+		
 		# * sentiment 
-		self.sentiment_count, self.sentiment_set,self.sentiment_set_agg, self.sentiment_indic   = analysis_bag_of_word_mod.sentiment_word_bag(self.unigram, self.bigram)
+		self.sentiment_score_score_vader, self.sentiment_score_dist_vader, self.sentiment_score_score, self.sentiment_score_score_label, self.sentiment_score_dist, self.sentiment_score_dist_score, self.sentiment_score_dist_label = analysis_sentiment_mod.sentiment_score(self.sentence, self.eng)
+		self.sentiment_count, self.sentiment_set,self.sentiment_set_agg, self.sentiment_indic   = analysis_bag_of_word_mod.sentiment_word_bag(self.unigram, self.bigram, self.eng)
 
 
 #----------------------------------------------------------------------------#

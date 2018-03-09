@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+
+      <center>
+      	{% if insight_mode=="intro" %}
+      		<img src="{{ url_for('static', filename='image/nav/overview_'+insight_name+'.png') }}" style="width:536px;height:45px;"/><br>
+      	{% else %}
+      		<img src="{{ url_for('static', filename='image/nav/main_'+insight_name+'.png') }}" style="width:536px;height:45px;"/><br>
+      	{% endif %}
+      </center> 
+
+</html>
+<!-- END -->

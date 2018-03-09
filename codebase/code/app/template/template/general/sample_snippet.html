@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+    <!-- CONTENT -->    
+    <input type="text" id="sample_1_main" size="80" readonly>
+    <input type="text" id="sample_1_reply" size="80" readonly>
+    <input type="text" id="sample_1_alt_reply" size="80" readonly><br><br>
+   	<input type="submit" id="sample_1_analysis" value="Which snippet best completes the exchange?" style="width:300px" click=>
+
+    <br><br>
+
+    <input type="text" id="sample_2_main" size="80" readonly> 
+    <input type="text" id="sample_2_alt_reply" size="80" readonly>
+    <input type="text" id="sample_2_reply" size="80" readonly><br><br>
+   	<input type="submit" id="sample_2_analysis" value="Which snippet best completes the exchange?" style="width:300px" click=>
+
+   	 <br><br>
+
+    <script>
+    	
+    	// # update data function
+    	var update_answer = function() {
+
+    		$("#sample_1_reply").attr("value", $sample_1_reply)
+    		$("#sample_1_alt_reply").attr("value", $sample_1_alt_reply)
+
+    		$("#sample_2_reply").attr("value", $sample_2_reply)
+    		$("#sample_2_alt_reply").attr("value", $sample_2_alt_reply)
+
+    	}
+
+    	// # initialize data
+    	$("#sample_1_main").attr("value", $sample_1)
+    	$("#sample_2_main").attr("value", $sample_2)
+
+    	setTimeout(update_answer, 1000)
+  
+      	// # click function
+
+    	var reveal_answer_1 = function() {
+			$("#sample_1_reply").css('color', "green")
+			$("#sample_1_analysis").attr('value', "Notice the mirroring of the preposition ('at').")
+    	}
+
+    	var reveal_answer_2 = function() {
+			$("#sample_2_reply").css('color', "green")
+			$("#sample_2_analysis").attr('value', "Notice the mirroring of the quantifier ('least' / 'much').")
+
+    	}
+
+    	$("#sample_1_analysis").on("click", function(){reveal_answer_1()})
+    	$("#sample_2_analysis").on("click", function(){reveal_answer_2()})
+
+
+    </script>
+</html>

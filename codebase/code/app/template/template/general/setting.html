@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+  <center>
+  
+  <div class="nav3">
+     
+	<!-- RESET -->     
+	<span class="icons">Reset<a href="{{ url_for('reset_view',initial_page='setting_view') }}" ><img src="{{ url_for('static', filename='image/icon/reset.png') }}" style="width:30px;height:30px;"></a></span>
+
+	<!-- TIMEFRAME SETTING -->     
+   	{% if access_level==True %}
+     	<span class="icons">Time Frame<a href="{{ url_for('timeframe_setting_view') }}" ><img src="{{ url_for('static', filename='image/icon/timeframe.png') }}" style="width:30px;height:30px;"></a></span>
+    {% else %}
+    	<span class="icons"><font color="#e2e2e2">Time Frame</font><img src="{{ url_for('static', filename='image/icon/timeframe.png') }}" style="width:30px;height:30px;opacity:0.3;"></a></span>
+	{% endif %}
+ 
+ 	<!-- CONTACT GROUP SETTING -->   
+    <span class="icons"><font color="#e2e2e2">Contact Groups</font><img src="{{ url_for('static', filename='image/icon/contact.png') }}" style="width:30px;height:30px;opacity:0.3;"></a></span>
+  
+
+  </div> 
+
+  <br><br>
+
+  </center> 
+  
+</html>
+<!-- END -->

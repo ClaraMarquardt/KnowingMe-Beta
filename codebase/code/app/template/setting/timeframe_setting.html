@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+{% include 'template/general/title.html' %}
+
+<!-- HEADER -->
+<header>
+  
+  <!-- Dependencies & Co -->
+  {% include 'template/general/dependency.html' %}
+  {% include 'template/general/flash_message.html' %}
+
+</header>
+
+<!-- BODY -->
+<body scroll="no" style="overflow: hidden">
+
+  <!-- Header Section -->
+  {% include 'template/general/header_user.html' %}
+
+  <!-- Content Section -->
+  <div>
+
+    <center>
+    
+      <!-- Title & Co -->
+      {% include 'template/space/insight_vis_top_space.html' %}
+    
+      <h3><p style="text-align:center;">Timeframe Setting</p></h3>
+
+      <!-- Visualization -->
+      {% include 'vis_prep/'+insight_name+'/'+insight_name+'.html' %}
+
+    </center>
+  
+  </div>
+
+  {% include 'template/space/insight_main_bottom_space.html' %}
+
+  <!-- SCRIPTS -->
+  {% include 'template/general/scroll_page.html' %}
+
+</body>
+</html>
+<!-- END -->
+
+

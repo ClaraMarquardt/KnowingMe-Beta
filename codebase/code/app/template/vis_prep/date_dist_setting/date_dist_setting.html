@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+    <!-- CONTENT -->    
+    <center>
+    
+        <div id="chart"></div>
+        <br>
+        <div id="text"></div>
+        <br>
+    
+    </center>
+
+    <!-- FORM -->    
+    <div id="form">
+
+      <form id="send" method="post" action="{{ url_for('timeframe_setting_store_view') }}">        
+
+        <input type="text" id="start_date" name="start_date" value="">
+        <input type="text" id="end_date" name="end_date" value="">  
+       
+        <br><br>
+        <input type="Submit" id="Submit" value="Update Timeframe Settings" />
+
+      </form> 
+
+
+    </div>
+
+
+    <br>
+    <input type="Submit" id="Reset" value="Reset Timeframe Settings"/>
+
+    <!-- SCRIPT -->    
+    <script type="text/javascript">
+       {% include "vis_prep/"+insight_name+"/"+insight_name+"_prep.js" %}
+        update_raw_data(raw_data={{ insight_data|tojson|safe }})
+    </script>
+
+    <!--  Vis Functions -->    
+    <script src="{{ url_for('static', filename='vis/'+'vis_template'+'/'+'vis_function.js') }}"></script>
+    <script src="{{ url_for('static', filename='vis/'+'vis_template'+'/'+'vis_vis.js') }}"></script>
+
+    <!--  Vis -->    
+    <script src="{{ url_for('static', filename='vis/'+insight_name+'/'+insight_name+'_vis.js') }}"></script>
+
+</html>
+
+
+

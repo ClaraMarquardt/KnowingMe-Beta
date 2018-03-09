@@ -48,6 +48,16 @@ def get_email_list(service, user, filter, max_result_page=200):
 	
 	return email_list
 
+# get_diff_range
+#---------------------------------------------#
+def get_diff_range(earliest_date_temp, latest_date_temp):
+	
+	diff_temp  = int((parser.parse(str(latest_date_temp)) - parser.parse(str(earliest_date_temp))).days) + 1
+	
+	range_temp = [(datetime.datetime.strptime(str(latest_date_temp),'%m/%d/%Y') - datetime.timedelta(days=x)).strftime("%m/%d/%Y") for x in range(0,diff_temp)]
+
+	return(diff_temp, range_temp)
+
 # get_msg_text
 #---------------------------------------------#
 def get_msg_text(msg):
@@ -95,23 +105,25 @@ def get_msg_meta(msg):
 	msg_meta['msg_threadid'] = msg['threadId']
 
 	# response to
-	msg_meta['msg_id_mime']          = mime_msg['Message-ID']
+	msg_meta['msg_id_mime']              = mime_msg['Message-ID']
 	if 'In-Reply-To' in mime_msg.keys():
 		msg_meta['msg_reply_to_id_mime'] = mime_msg['In-Reply-To']
 	else:
 		msg_meta['msg_reply_to_id_mime'] = np.nan
 
 	# labels (GMAIL)
-	msg_meta['msg_label'] = msg['labelIds']
+	msg_meta['msg_label']   = msg['labelIds']
 	
-	# date (MAIL)
-	msg_meta['msg_date'] = mime_msg['date']
+	# date (MAIL) > Convert from UTC to local timezone
+	msg_meta['msg_date']    = int(msg['internalDate'])
+	msg_meta['msg_date']    = datetime.datetime.utcfromtimestamp(msg_meta['msg_date']/1000)
+	msg_meta['msg_date']    = str(msg_meta['msg_date'] - datetime.timedelta(hours=timezone_offset))
 
 	# sender/recipient (MAIL)
-	msg_meta['msg_from'] = mime_msg["from"]
-	msg_meta['msg_to']   = mime_msg["to"]
-	msg_meta['msg_cc']   = mime_msg["cc"]
-	msg_meta['msg_bcc']  = mime_msg["bcc"]
+	msg_meta['msg_from']    = mime_msg["from"]
+	msg_meta['msg_to']      = mime_msg["to"]
+	msg_meta['msg_cc']      = mime_msg["cc"]
+	msg_meta['msg_bcc']     = mime_msg["bcc"]
 
 	# subject (MAIL)
 	msg_meta['msg_subject'] = clean_msg_text(mime_msg["subject"])
@@ -148,7 +160,9 @@ def clean_msg_text(msg_text):
 	msg_text_clean = re.sub("[0-9]{4}-[0-9]{2}-[0-9]{2}.*<.*>:","", msg_text_clean,flags=re.DOTALL)
 	msg_text_clean = re.sub("(\r\n[\r]*[\n]*){1,}", "\n", msg_text_clean)
 	msg_text_clean = re.sub("(\n\r[\n]*[\r]*){1,}", "\n", msg_text_clean)
-	
+	msg_text_clean = re.sub("(<--)(.*)(-->)", "", msg_text_clean)
+	msg_text_clean = re.sub("(<!DOCTYPE html>)(.*)(</html>)", "", msg_text_clean)
+
 	# basic	- special characters
 	msg_text_clean = re.sub("&#39;|&quot;|&lt;|&gt;"," ",msg_text_clean)
 	
@@ -164,6 +178,7 @@ def process_email(request_id, response, exception):
 
 	# define globals
 	global error_count
+	global error_list
 	global excluded_count
 	global global_var
 	global store_dir
@@ -175,32 +190,56 @@ def process_email(request_id, response, exception):
 	try: 
 	
 		# Obtain the email meta-data
-		email_meta = get_msg_meta(response)
+		email_meta             = get_msg_meta(response)
 
 		# Obtain the email-text
-		email_text = get_msg_text(response)
+		email_text 	           = get_msg_text(response)
+		email_text_clean       = clean_msg_text(email_text)
+
+		if (len(re.sub("\r|\n", "", email_text_clean))>0):
 				
-		# Combine the meta data & text
-		email_data = email_meta
-		email_data['msg_text'] = clean_msg_text(email_text)
+			# Combine the meta data & text
+			email_data 			   = email_meta
+			email_data['msg_text'] = email_text_clean
 		
-		# Save the email
-		if email_data['msg_inbox_outbox'] == 'inbox':
-			email_filename=os.path.normpath(os.path.join(store_dir, "inbox", 'email_' + email_data['msg_id'] + '_' + email_data['msg_inbox_outbox'] + '_' + parser.parse(email_data['msg_date']).strftime('%m_%d_%Y') + '.p'))
+			# Save the email
+			if email_data['msg_inbox_outbox'] == 'inbox':
+				email_filename=os.path.normpath(os.path.join(store_dir, "inbox", 'email_' + email_data['msg_id'] + '_' + email_data['msg_inbox_outbox'] + '_' + parser.parse(email_data['msg_date']).strftime('%m_%d_%Y') + '.p'))
+			else:
+				email_filename=os.path.normpath(os.path.join(store_dir, "outbox", 'email_' + email_data['msg_id'] + '_' + email_data['msg_inbox_outbox'] + '_' + parser.parse(email_data['msg_date']).strftime('%m_%d_%Y') + '.p'))
+		
+			pickle.dump(email_data, open(email_filename, "wb" ))
+			print("save")
+
+			print("---------------------------")
+
 		else:
-			email_filename=os.path.normpath(os.path.join(store_dir, "outbox", 'email_' + email_data['msg_id'] + '_' + email_data['msg_inbox_outbox'] + '_' + parser.parse(email_data['msg_date']).strftime('%m_%d_%Y') + '.p'))
-		
-		pickle.dump( email_data, open(email_filename, "wb" ) )
-		print("save")
 
-		print("---------------------------")
+				print("Empty Email")
+				print(email_text_clean)
+	
+				try: 
+			
+					error_list.append(email_meta['msg_id'])
 
+				except Exception as e: 
+
+					print("Empty Email - Not added to error list")
+				
 	except Exception as e: 
 
 		print("Error Encountered")
 		print(e)
-
 		error_count = error_count + 1
+
+		try: 
+			
+			error_list.append(email_meta['msg_id'])
+
+		except Exception as e: 
+
+			print("Error Encountered - Not added to error list")
+			print(e)
 
 
 # process_date
@@ -227,7 +266,7 @@ def process_date(request_id, response, exception):
 
 # overview_email
 #---------------------------------------------#
-def overview_email(service, user, current_date, timelag_day, overview_day, birthday_day, output_dir):
+def overview_email(service, user, current_date, timelag_overview, overview_day, birthday_day, output_dir, timezone_utc_offset):
 
 	# Define globals
 	global global_var
@@ -237,7 +276,7 @@ def overview_email(service, user, current_date, timelag_day, overview_day, birth
 	birthday_filename=os.path.normpath(os.path.join(output_dir, "other", 'birthday_'+ datetime.datetime.strptime(current_date,'%m/%d/%Y').strftime("%m_%d_%Y") + '.p'))
 
 	# Initialize global var
-	global_var['status_overview_max'] = len(range(timelag_day,overview_day+timelag_day))
+	global_var['status_overview_max'] = len(range(timelag_overview,overview_day+timelag_overview))
 
 	# Overview file do not exist > Generate
 	if not os.path.exists(overview_filename):
@@ -246,25 +285,33 @@ def overview_email(service, user, current_date, timelag_day, overview_day, birth
 		email_dict = dict()
 		
 		# loop over days
-		for i in range(timelag_day,overview_day+timelag_day): 
+		for i in range(timelag_overview,overview_day+timelag_overview): 
 
-			# define date filter
+
+			# define end dates
 			date_start = (datetime.datetime.strptime(current_date,'%m/%d/%Y') - datetime.timedelta(days=i)).strftime("%m/%d/%Y")
 			date_end   = (datetime.datetime.strptime(current_date,'%m/%d/%Y') - datetime.timedelta(days=i-1)).strftime("%m/%d/%Y")
-			date_filter = "before: {0} after: {1}".format(datetime.datetime.strptime(date_end,'%m/%d/%Y').strftime('%Y/%m/%d'),
-					   datetime.datetime.strptime(date_start,'%m/%d/%Y').strftime('%Y/%m/%d'))
+
+			# convert to UTC
+			date_start_utc  = parser.parse(date_start) + datetime.timedelta(hours=timezone_utc_offset)
+			date_end_utc    = parser.parse(date_end)   + datetime.timedelta(hours=timezone_utc_offset)
+
+			date_start_utc_timestamp  = str(calendar.timegm((parser.parse(date_start) + datetime.timedelta(hours=timezone_utc_offset)).timetuple())).split(".")[0]
+			date_end_utc_timestamp    = str(calendar.timegm((parser.parse(date_end)   + datetime.timedelta(hours=timezone_utc_offset)).timetuple())).split(".")[0]
+
+			# define date filter
+			date_filter = "before: {0} after: {1}".format(date_end_utc_timestamp, date_start_utc_timestamp)
 			exclude_text = ["opt-out", "viewing the newsletter", "edit your preferences", "update profile", "smartunsuscribe","secureunsuscribe","group-digests","yahoogroups"]
 			text_filter = " ".join(["AND NOT: \""+a+"\"" for a in exclude_text])
-			q = "(label:sent " + date_filter + ") OR (label:inbox category:personal " + date_filter + " " + text_filter + ")"
-		
+			q  = "(category:personal OR label:sent) AND ("+ date_filter +") " + text_filter + " -from:'no-reply@accounts.google.com'"
+			
 			# obtain email_ids
 			msg_list = get_email_list(service, user, q)
 			msg_list =[msg['id'] for msg in msg_list]
-		
+
 			# store in dictionary
 			date_start_format = str(datetime.datetime.strptime(date_start,'%m/%d/%Y').strftime("%m/%d/%Y"))
 			email_dict[date_start_format] = msg_list
-
 			global_var['status_overview_load'] = global_var['status_overview_load']+1
 
 		# save
@@ -276,6 +323,7 @@ def overview_email(service, user, current_date, timelag_day, overview_day, birth
 		time.sleep(3)
 
 		global_var['status_overview_load'] = global_var['status_overview_max']
+		
 		time.sleep(3)
 
 	# Birthday file do not exist > Generate
@@ -286,7 +334,7 @@ def overview_email(service, user, current_date, timelag_day, overview_day, birth
 		date_list = []
 
 		# define birthday filter
-		birthday_query = [('in:inbox +{"happy birthday OR bday"} -{belated OR late} newer_than:'+str(birthday_day)+'d')]
+		birthday_query = [('in:inbox +{"happy birthday OR bday"} -{belated OR late}')]
 		
 		# obtain email_ids
 		msg_list = get_email_list(service, user, birthday_query)
@@ -319,7 +367,7 @@ def overview_email(service, user, current_date, timelag_day, overview_day, birth
 
 # timeframe_email
 #---------------------------------------------#
-def timeframe_email(current_date, timelag_day, min_day, overview_day, email_max, output_dir):
+def timeframe_email(current_date, timelag_day, timelag_overview, min_day, overview_day, email_max, output_dir):
 
 	# default earliest / latest date
 	email_latest   = (datetime.datetime.strptime(current_date,'%m/%d/%Y') - datetime.timedelta(days=timelag_day)).strftime("%m/%d/%Y")
@@ -331,21 +379,19 @@ def timeframe_email(current_date, timelag_day, min_day, overview_day, email_max,
 		email_dict     = pickle.load(file)
 
 	# obtain the date diff / range
-	email_diff  = int((parser.parse(str(email_latest)) - parser.parse(str(email_earliest))).days)
-	email_range = [(datetime.datetime.strptime(str(email_latest),'%m/%d/%Y') - datetime.timedelta(days=x)).strftime("%m/%d/%Y") for x in range(0,email_diff+1)]
+	email_diff, email_range   = get_diff_range(email_earliest, email_latest)
 
 	# subset emails 
 	msg_list    = [email_dict[x] for x in email_range]
 	msg_list    = sum(msg_list, [])
 
-	while (len(msg_list) < email_max and email_diff < overview_day):
-		
+	while (len(msg_list) < email_max and (email_diff + timelag_day) < (overview_day + timelag_overview)):
+
 		# update date
-		email_earliest = (datetime.datetime.strptime(str(email_earliest),'%m/%d/%Y') - datetime.timedelta(days=(timelag_day+min_day))).strftime("%m/%d/%Y")
+		email_earliest = (datetime.datetime.strptime(str(email_earliest),'%m/%d/%Y') - datetime.timedelta(days=1)).strftime("%m/%d/%Y")
 
 		# update date diff / range
-		email_diff  = int((parser.parse(str(email_latest)) - parser.parse(str(email_earliest))).days)
-		email_range = [(datetime.datetime.strptime(str(email_latest),'%m/%d/%Y') - datetime.timedelta(days=x)).strftime("%m/%d/%Y") for x in range(0,email_diff+1)]
+		email_diff, email_range   = get_diff_range(email_earliest, email_latest)
 		
 		# update message selection
 		msg_list    = [email_dict[x] for x in email_range]
@@ -355,24 +401,28 @@ def timeframe_email(current_date, timelag_day, min_day, overview_day, email_max,
 
 # get_email
 #---------------------------------------------#
-def get_email(service, user, email_range, output_dir,current_date, user_address):
+def get_email(service, user, email_range, output_dir,current_date, user_address, timezone_utc_offset):
 
 	# define globals
 	global global_var
 	global error_count
 	global excluded_count
-	
+	global error_list
+
 	global own_address
 	global store_dir
+	global timezone_offset
 
-	error_count    = 0
-	excluded_count = 0
-	own_address    = user_address
-	store_dir      = output_dir
+	error_count     = 0
+	error_list      = []
+	excluded_count  = 0
+	own_address     = user_address
+	store_dir       = output_dir
+	timezone_offset = timezone_utc_offset
 
 	# initialize (log file)
 	old_stdout   = sys.stdout
-	log_filename = os.path.normpath(os.path.join(output_dir, "email_log.log"))
+	log_filename = os.path.normpath(os.path.join(output_dir, "dev", "email_log.log"))
 	log_file     = open(log_filename,"w")
 	sys.stdout   = log_file
 
@@ -381,10 +431,24 @@ def get_email(service, user, email_range, output_dir,current_date, user_address)
 	with open(email_dict_file) as file:
 		email_dict     = pickle.load(file)
 
+	# load error file (if it exists)
+	email_error_file = os.path.normpath(os.path.join(output_dir, "other", 'error_'+ datetime.datetime.strptime(current_date,'%m/%d/%Y').strftime("%m_%d_%Y") + '.p'))
+	if (os.path.exists(email_error_file)): 
+		
+		with open(email_error_file, "rb") as file:
+			email_error_dict   = pickle.load(file)
+
+		error_list = list(email_error_dict)
+
+
 	# subset to relevant emails
 	msg_list = [email_dict[x] for x in email_range]
 	msg_list = sum(msg_list, [])
 	print('Found ' + str(len(msg_list)) + ' emails')
+
+	# subset to non-error emails
+	msg_list   = [x for x in msg_list if x not in error_list]
+	print('Found ' + str(len(msg_list)) + ' emails (Non Error)')
 
 	# subset to emails not previously downloaded
 	msg_list_saved = np.concatenate((glob.glob(os.path.join(output_dir,'inbox', 'email*.p')), 
@@ -419,6 +483,17 @@ def get_email(service, user, email_range, output_dir,current_date, user_address)
 					batch.add(service.users().messages().get(userId=user, id=msg_id, format="raw", metadataHeaders =["In-Reply-To","References","Message-ID","Subject"]), callback=process_email)
 				batch.execute()
 
+		time.sleep(3)	
+			
+	else:
+
+		time.sleep(7)
+
+	# Save error file
+	error_list = np.array(error_list)
+
+	with open(email_error_file, "wb") as file:
+		pickle.dump(error_list, file)
 
 	# Reset log file
 	sys.stdout = old_stdout

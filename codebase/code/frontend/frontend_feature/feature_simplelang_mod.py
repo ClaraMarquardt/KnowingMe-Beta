@@ -36,10 +36,46 @@ from misc import *
 #			                Function Definition                              #
 #----------------------------------------------------------------------------#
 
+
+# language
+#---------------------------------------------#
+def language_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df):
+	
+	# print("Launching - language")
+
+	"""
+
+	"""
+
+	# insight generation successful
+	try:
+
+		# character, word, sentence count
+		language = np.array([msg_text_data[x].lang for x in msg_id])
+		english  = np.array([msg_text_data[x].eng for x in msg_id])
+	
+	# insight generation unsuccessful
+	except Exception as e: 
+		
+		# error message
+		print("Error Encountered - language")
+		print(e)
+
+		# character, word, sentence count
+		language = global_fun_mod.fill_array(len(msg_id), np.nan)
+		english  = global_fun_mod.fill_array(len(msg_id), np.nan)
+
+	# format
+	language_df_tmp = pd.DataFrame({'link_id':link_id, 'language..language':language,'language..english':english})
+
+	# return
+	# print("Successfully Completed - language")
+	return(language_df_tmp)
+
 # talkative
 #---------------------------------------------#
 
-def talkative(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date):
+def talkative_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df):
 	
 	# print("Launching - talkative")
 
@@ -79,7 +115,7 @@ def talkative(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data,
 # lengthimbalance
 #---------------------------------------------#
 
-def lengthimbalance(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date):
+def lengthimbalance_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df):
 	
 	# print("Launching - lengthimbalance")
 
@@ -97,9 +133,9 @@ def lengthimbalance(email_link_df, link_id, msg_id, msg_threadid, msg_data, link
 		with warnings.catch_warnings():
 			warnings.simplefilter("ignore")
 
-			length_imbalance_character              = [np.mean([response_balance(y, msg_text_data, 'character_count') for y in x]) for x in response_link_pair]
-			length_imbalance_word                   = [np.mean([response_balance(y, msg_text_data, 'word_count') for y in x]) for x in response_link_pair]
-			length_imbalance_sentence               = [np.mean([response_balance(y, msg_text_data, 'sentence_count') for y in x]) for x in response_link_pair]
+			length_imbalance_character              = [np.nanmean([response_balance(y, msg_text_data, 'character_count') for y in x]) for x in response_link_pair]
+			length_imbalance_word                   = [np.nanmean([response_balance(y, msg_text_data, 'word_count') for y in x]) for x in response_link_pair]
+			length_imbalance_sentence               = [np.nanmean([response_balance(y, msg_text_data, 'sentence_count') for y in x]) for x in response_link_pair]
 
 
 	# insight generation unsuccessful
@@ -128,7 +164,7 @@ def lengthimbalance(email_link_df, link_id, msg_id, msg_threadid, msg_data, link
 # birthday
 #---------------------------------------------#
 
-def birthday(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date):
+def birthday_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df):
 
 	# print("Launching - birthday")
 

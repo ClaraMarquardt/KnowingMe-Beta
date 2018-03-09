@@ -24,6 +24,12 @@ table.dataframe, .dataframe th, .dataframe td {
 
 }
 
+textarea{
+  display:inline-block;
+  vertical-align:middle;
+
+}
+
 /* Bar Vis */
 
 .bar {
@@ -143,5 +149,187 @@ path.spiral {
 
 .dropdown-content a:hover {/*background-color: #f1f1f1*/}
 .show {display:block;}
+
+
+/* Vertical menu */
+.parent_1 {
+    margin-right:0px;
+    margin-left:20px;
+    float:left;
+    width:100px;
+}
+
+.parent_2 {
+    margin-right:0px;
+    float:left;
+    width:80%;
+}
+
+.vertical-menu {
+    width: 110px; 
+}
+
+.vertical-menu a {
+    color: black; 
+    display: block; 
+    padding: 15px; 
+    text-decoration: none; 
+}
+
+.vertical-menu a:hover {
+}
+
+.vertical-menu a.active {
+  color: white;
+  background-color: #ccc; 
+}
+
+/* Dashboard icons */
+.nav3 {
+    height: auto;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-right: 50px;
+}
+
+.icons{
+    display:inline-block;
+    width:50px; 
+    height: 40px; 
+    padding-right: 50px;
+    padding-left: 50px;
+
+   }
+
+.icons_big{
+    display:inline-block;
+    width:320px; 
+    height: 350px; 
+    padding-right: 0px;
+    padding-left: 0px;
+
+   }
+
+.icons_big_text{
+    display:inline-block;
+    width:320px; 
+    height: 300px; 
+    padding-right: 0px;
+    padding-left: 0px;
+    vertical-align: top;
+
+   }
+
+/* Heatmap */
+rect.bordered {
+  stroke: #ffffff;
+  stroke-width:3px;   
+}
+
+text.mono {
+  font-size: 7pt;
+/*  font-family: Consolas, courier;
+*/}
+ 
+text.mono_week {
+  font-size: 7pt;
+/*  font-family: Consolas, courier;
+*/  fill: #aaa;
+}
+
+text.axis-workweek {
+  fill: #000;
+}
+
+/* Network */
+#chart_small {
+  font: 10px sans-serif;
+}
+
+.chord path {
+  fill-opacity: .67;
+  stroke: #000;
+  stroke-width: .5px;
+}
+
+#circle circle {
+  fill: none;
+  pointer-events: all;
+}
+
+#circle:hover path.fade {
+  display: none;
+}
+
+#control {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+}
+
+/* Buttons */
+.button rect {
+  stroke:#848383
+  stroke-width: 2px;
+}
+
+.button rect.pressed {
+  fill: #848383; 
+  opacity: 0.2
+}
+
+.button #gradient-start {
+  stop-color: #ffffff; 
+  stop-opacity: 1;
+}
+
+.button #gradient-stop {
+  stop-color: #ffffff; 
+  stop-opacity: 1;
+}
+
+.button #gradient-start.active, .button #gradient-start.pressed {
+  stop-color: #848383; 
+}
+
+.button #gradient-stop.active, .button #gradient-stop.pressed {
+  stop-color: #ffffff; 
+}
+
+.button text {
+  font-size: 7px;
+  fill: #00000;
+  pointer-events: none;
+  text-anchor: left;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.button text.pressed {
+  font-size: 7px;
+  fill: #FFF;
+  pointer-events: none;
+  text-anchor: left;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.resize path {
+  fill: #666;
+  fill-opacity: .8;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.brush .extent {
+  stroke: #fff;
+  stroke-opacity: .6;
+  stroke-width: 2px;
+  fill-opacity: .1;
+  shape-rendering: crispEdges;
+}
+
 
 /**************************************/

@@ -147,16 +147,18 @@ def add_date(date):
 
 		## new date var > indictors
 		msg_date_daypart  = "/"
-		if (msg_date_hour>6) & (msg_date_hour<12):
-			msg_date_daypart     = "1-morning (6am-noon)"
-		elif (msg_date_hour>=12) & (msg_date_hour<21):
-			msg_date_daypart   = "2-afternoon (noon-9pm)"
-		elif (msg_date_hour>=21) | (msg_date_hour<=06):
-			msg_date_daypart  = "3-night (9pm-6am)"
+		if (msg_date_hour>=6) & (msg_date_hour<12):
+			msg_date_daypart     = "1-morning [6am-noon)"
+		elif (msg_date_hour>=12) & (msg_date_hour<18):
+			msg_date_daypart   = "2-afternoon [noon-6pm)"
+		elif (msg_date_hour>=18) & (msg_date_hour<=23):
+			msg_date_daypart  = "3-evening [6pm-midnight)"
+		elif (msg_date_hour<6):
+			msg_date_daypart  = "4-night [midnight-6am)"
 
 		## basic date/time components - format
 		map_dayofweek 	      = {0:'0-Sunday',1:'1-Monday',2:'2-Tuesday',3:'3-Wednesday',4:'4-Thursday',5:'5-Friday',6:'6-Saturday'}
-		map_month    	   	  = {0:'0-Jan',1:'1-Feb',2:'2-March',3:'3-April',4:'4-May',5:'5-June',6:'6-July',7:'7-Aug',8:'8-Sept',9:'9-Oct', 10:'10-Nov', 11:'11-Dec'}
+		map_month    	   	  = {1:'1-Jan',2:'2-Feb',3:'3-March',4:'4-April',5:'5-May',6:'6-June',7:'7-July',8:'8-Aug',9:'9-Sept',10:'10-Oct', 11:'11-Nov', 12:'12-Dec'}
 
 		msg_date_month        = pd.Series(msg_date_month).map(map_month)[0]
 		msg_date_weekday      = pd.Series(msg_date_weekday).map(map_dayofweek)[0]
@@ -205,7 +207,7 @@ def clean_contact(msg_contact):
 	try: 
 
 		if pd.notnull(msg_contact_clean):
-
+			
 			msg_contact_clean = re.sub("\n|\t|\r","",msg_contact_clean)
 			msg_contact_clean = re.sub(msg_omit_word, "", msg_contact_clean)
 			msg_contact_clean_tmp = []
@@ -221,7 +223,7 @@ def clean_contact(msg_contact):
 			msg_contact_clean = [str.lower(x) for x in msg_contact_clean if x] 
 			msg_contact_clean = [re.sub(msg_omit_word,"",x) for x in msg_contact_clean] 
 			msg_contact_clean = [x for x in msg_contact_clean if x]
-
+			
 			# separate names and contacts
 			msg_contact_clean_name       = [re.sub("(.*)<(.*)","\\1",x) for x in msg_contact_clean]
 			msg_contact_clean_name       = [re.sub("^$","/",x) for x in msg_contact_clean_name]
@@ -231,10 +233,22 @@ def clean_contact(msg_contact):
 			# clean names
 			msg_contact_clean_name       = [re.sub("[ ]*$","",x) for x in msg_contact_clean_name]
 			msg_contact_clean_name       = [re.sub("^[ ]*","",x) for x in msg_contact_clean_name]
-
+			msg_contact_clean_name       = [x.split('@')[0] for x in msg_contact_clean_name]
+			
 			# clean addresses
-			msg_contact_clean_address    = [re.sub("[ ]*$","",x) for x in msg_contact_clean_address]
-			msg_contact_clean_address    = [re.sub("^[ ]*","",x) for x in msg_contact_clean_address]
+			msg_contact_clean_address     = [re.sub("[ ]*$","",x) for x in msg_contact_clean_address]
+			msg_contact_clean_address     = [re.sub("^[ ]*","",x) for x in msg_contact_clean_address]
+
+			# replace names with address if missing
+			msg_contact_clean_name_temp   = np.array(msg_contact_clean_name, dtype=object)
+			name_na_index                 = np.where(msg_contact_clean_name_temp=="/")
+			
+			if (len(name_na_index)>0):
+				msg_contact_clean_address_temp             = np.array(msg_contact_clean_address)
+				msg_contact_clean_name_temp[name_na_index] = msg_contact_clean_address_temp[name_na_index]
+				msg_contact_clean_name_temp                = [x.split('@')[0] for x in msg_contact_clean_name_temp]
+				msg_contact_clean_name_temp                = list(msg_contact_clean_name_temp)
+				msg_contact_clean_name                     = msg_contact_clean_name_temp
 
 		else:
 			
@@ -253,7 +267,7 @@ def clean_contact(msg_contact):
 
 	msg_contact_clean_name		  = [x for x in msg_contact_clean_name if x not in ['none']]
 	msg_contact_clean_address     = [x for x in msg_contact_clean_address if x not in ['none']]
-
+	
 	# return
 	# print("Successfully Completed - clean_contact")
 	return({"name":np.array(msg_contact_clean_name), "address": np.array(msg_contact_clean_address)})

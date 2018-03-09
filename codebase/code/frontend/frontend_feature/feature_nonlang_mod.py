@@ -27,6 +27,7 @@ from __init_setting__ import *
 # Dependencies - Internal
 sys.path.append(os.path.normpath(os.path.join(app_root, 'code','analysis','analysis_helper')))
 from analysis_conver_mod import conver_timediff
+from analysis_contact_mod import contact_labeller
 
 sys.path.append(os.path.normpath(os.path.join(app_root,'code')))
 from misc import *
@@ -38,7 +39,7 @@ from misc import *
 # responsiveness
 #---------------------------------------------#
 
-def responsiveness(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date):
+def responsiveness_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df):
 	
 	# print("Launching - responsiveness")
 
@@ -70,7 +71,7 @@ def responsiveness(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_
 		
 		with warnings.catch_warnings():
 			warnings.simplefilter("ignore")
-			responsiveness_df_tmp['response_time']   = [np.mean([conver_timediff(y,msg_data) for y in x]) for x in response_link_pair]
+			responsiveness_df_tmp['response_time']   = [np.nanmean([conver_timediff(y,msg_data) for y in x]) for x in response_link_pair]
 			
 	# insight generation unsuccessful
 	except Exception as e: 
@@ -97,7 +98,7 @@ def responsiveness(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_
 # firstlast
 #---------------#
 
-def firstlast(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date):
+def firstlast_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df):
 	
 	# print("Launching - firstlast")
 
@@ -144,6 +145,61 @@ def firstlast(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data,
 	# return
 	# print("Successfully Completed - firstlast")
 	return(firstlast_df_tmp)
+
+# contact
+#---------------#
+
+def contact_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df):
+	
+	# print("Launching - contact")
+
+	"""
+
+	"""
+	
+	# initialize
+	contact_df_tmp = pd.DataFrame({'link_id':link_id, 'msg_id':msg_id})
+
+	# insight generation successful
+	try:
+
+		# initialize
+		user_group_male           = np.array(contact_df.loc[contact_df['contact_gender']=='M','contact'])
+		user_group_female         = np.array(contact_df.loc[contact_df['contact_gender']=='F','contact'])
+		user_group_unknown_gender = np.array(contact_df.loc[contact_df['contact_gender']=='I','contact'])
+
+		contact_xwalk_contact 	  = np.concatenate([user_group_male, user_group_female, user_group_unknown_gender])
+		contact_xwalk_label       = np.concatenate([np.array(global_fun_mod.fill_array(len(user_group_male), "M")), np.array(global_fun_mod.fill_array(len(user_group_female), "F")), np.array(global_fun_mod.fill_array(len(user_group_unknown_gender), "I"))])
+
+		# generate contact flag, etc.
+		contact_flag, contact_flag_msg, contact_flag_thread = contact_labeller(contact_xwalk_contact, contact_xwalk_label,
+		email_link_df['link_contact'] ,email_link_df['msg_id'] ,email_link_df['msg_threadid'] )
+		
+		# merge in 
+		contact_df_tmp['contact_group']        = contact_flag
+		contact_df_tmp['contact_group_msg']    = contact_flag_msg
+		contact_df_tmp['contact_group_thread'] = contact_flag_thread
+
+
+	# insight generation unsuccessful
+	except Exception as e: 
+		
+		# error message
+		print("Error Encountered - contact")
+		print(e)
+		
+		contact_df_tmp['contact_group']        = global_fun_mod.fill_array(len(msg_id), np.nan)
+		contact_df_tmp['contact_group_msg']    = global_fun_mod.fill_array(len(msg_id), np.nan)
+		contact_df_tmp['contact_group_thread'] = global_fun_mod.fill_array(len(msg_id), np.nan)
+
+
+	# format
+	contact_df_tmp = contact_df_tmp[['link_id', 'contact_group','contact_group_msg','contact_group_thread']] 
+
+	# return
+	# print("Successfully Completed - contact")
+	return(contact_df_tmp)
+
 
 #----------------------------------------------------------------------------#
 #----------------------------------------------------------------------------#

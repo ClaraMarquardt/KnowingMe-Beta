@@ -39,7 +39,7 @@ from misc import *
 
 # sentiment
 #---------------------------------------------#
-def sentiment(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date):
+def sentiment_dict_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df):
 	
 	# print("Launching - sentiment")
 
@@ -48,7 +48,7 @@ def sentiment(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data,
 	"""
 	
 	# initialize
-	sentiment_df_tmp = pd.DataFrame({'link_id':link_id})
+	sentiment_dict_df_tmp = pd.DataFrame({'link_id':link_id})
 
 	# insight generation successful
 	try:
@@ -58,14 +58,14 @@ def sentiment(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data,
 		
 		for word_list_name in word_list:
 		
-			word_list_col_count             	  = 'sentiment..unigram_bigram_count_' + word_list_name
-			word_list_col_set               	  = 'sentiment.__unigram_bigram_set_' + word_list_name
-			sentiment_df_tmp[word_list_col_count] = np.array([msg_text_data[x].sentiment_count[word_list_name] for x in msg_id])
-			sentiment_df_tmp[word_list_col_set]   = np.array([str(msg_text_data[x].sentiment_set_agg[word_list_name]) for x in msg_id])
+			word_list_col_count             	       = 'sentiment_dict..unigram_bigram_count_' + word_list_name
+			word_list_col_set               	       = 'sentiment_dict.__unigram_bigram_set_' + word_list_name
+			sentiment_dict_df_tmp[word_list_col_count] = np.array([msg_text_data[x].sentiment_count[word_list_name] for x in msg_id])
+			sentiment_dict_df_tmp[word_list_col_set]   = np.array([str(msg_text_data[x].sentiment_set_agg[word_list_name]) for x in msg_id])
 			
 		# pos / neg
-		sentiment_df_tmp['sentiment..pos_msg']    = np.array([msg_text_data[x].sentiment_indic['positive_aggregate'] for x in msg_id])
-		sentiment_df_tmp['sentiment..neg_msg']    = np.array([msg_text_data[x].sentiment_indic['negative_aggregate'] for x in msg_id])
+		sentiment_dict_df_tmp['sentiment_dict..pos_msg']    = np.array([msg_text_data[x].sentiment_indic['positive_aggregate'] for x in msg_id])
+		sentiment_dict_df_tmp['sentiment_dict..neg_msg']    = np.array([msg_text_data[x].sentiment_indic['negative_aggregate'] for x in msg_id])
 
 	# insight generation unsuccessful
 	except Exception as e: 
@@ -74,15 +74,62 @@ def sentiment(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data,
 		print("Error Encountered - sentiment")
 		print(e)
 
-		sentiment_df_tmp = sentiment_df_tmp
+		sentiment_dict_df_tmp = sentiment_dict_df_tmp
 
 	# return
 	# print("Successfully Completed - sentiment")
-	return(sentiment_df_tmp)
+	return(sentiment_dict_df_tmp)
+
+# sentiment
+#---------------------------------------------#
+def sentiment_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df):
+	
+	# print("Launching - sentiment_score")
+
+	"""
+				
+	"""
+	
+	# initialize
+	sentiment_score_df_tmp = {}
+	
+	# insight generation successful
+	try:
+	   
+		sentiment   	   = np.array([msg_text_data[x].sentiment_score_score_vader for x in msg_id])
+
+		# response time 
+		response_link_pair                          = np.array([link_data[x].link_response_id_pair for x in link_id])
+		
+		# balance
+		with warnings.catch_warnings():
+			warnings.simplefilter("ignore")
+			
+			sentiment_balance                 = [np.nanmean([response_balance(y, msg_text_data, 'sentiment_score_score_vader') for y in x]) for x in response_link_pair]
+
+
+	# insight generation unsuccessful
+	except Exception as e: 
+		
+		# error message
+		print("Error Encountered - politeness")
+		print(e)
+		
+		sentiment             = global_fun_mod.fill_array(len(msg_id), np.nan)
+
+		sentiment_balance     = global_fun_mod.fill_array(len(msg_id), np.nan)
+
+	# format
+	sentiment_score_df_tmp = pd.DataFrame({'link_id':link_id, 'sentiment..sentiment':sentiment, 	
+		'sentiment..sentiment_imbalance':sentiment_balance})
+
+	# return
+	# print("Successfully Completed - politeness")
+	return(sentiment_score_df_tmp)
 
 # politeness
 #---------------------------------------------#
-def politeness(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_datea):
+def politeness_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df):
 	
 	# print("Launching - politeness")
 
@@ -106,7 +153,7 @@ def politeness(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data
 		# balance
 		with warnings.catch_warnings():
 			warnings.simplefilter("ignore")
-			politeness_balance              		= [np.mean([response_balance(y, msg_text_data, 'polite') for y in x]) for x in response_link_pair]
+			politeness_balance              		= [np.nanmean([response_balance(y, msg_text_data, 'polite') for y in x]) for x in response_link_pair]
 
 
 	# insight generation unsuccessful
@@ -130,7 +177,7 @@ def politeness(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data
 
 # coordination
 #---------------------------------------------#
-def coordination(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date):
+def coordination_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df):
 	
 	# print("Launching - coordination")
 
@@ -180,7 +227,7 @@ def coordination(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_da
 		print("Error Encountered - coordination")
 		print(e)
 		
-		coordination_df_tmp              		     = coordination_df_tmp
+		coordination_df_tmp              		       = coordination_df_tmp
 
 	# return
 	# print("Successfully Completed - coordination")

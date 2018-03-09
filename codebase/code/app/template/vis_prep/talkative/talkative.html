@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+
+    <!-- CONTENT -->    
+    <center>
+    
+     <div id="text_main">{% include "vis_prep/"+insight_name+"/"+insight_name+"_text.html" %}</div>
+     <div id="text_link"></div>
+     <div id="text"></div>
+     <br>
+     <a href="{{ url_for(next_page, insight_name=insight_name_next,insight_current=insight_name) }}" id="navigation_text">Continue</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="{{ url_for('insight_intro_view',insight_name=insight_name) }}" id="navigation_text">Return To Insight Intro</a>
+    
+    </center>
+    
+    <!-- SCRIPT -->    
+    <script type="text/javascript">
+       {% include "vis_prep/"+insight_name+"/"+insight_name+"_prep.js" %}
+        update_raw_data(raw_data={{ insight_data|tojson|safe }})
+    </script>
+
+</html>
+

@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+{% include 'template/general/title.html' %}
+
+<!-- HEADER -->
+<header>
+
+	<!-- Style -->
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css')}}">
+	
+	 <!-- Dependencies & Co -->
+  {% include 'template/general/dependency.html' %}
+  {% include 'template/general/flash_message.html' %}
+
+</header>
+
+<!-- BODY -->
+<body scroll="no" style="overflow: hidden">
+
+
+  <!-- Header Section -->
+  {% include 'template/general/header_user.html' %}
+  {% include 'template/general/header_ribbon_intro.html' %}
+
+  <!-- Content Section -->
+  <div>
+
+    <center>
+    
+      <!-- Title & Co -->
+      {% include 'template/space/insight_vis_top_space.html' %}
+    
+      <h3><p style="text-align:center;">{{ insight_title }}</p></h3>
+
+      <!-- Visualization -->
+      {% include 'vis_prep/'+insight_name+'/'+insight_name+'.html' %}
+      
+      <!-- Link Modification -->      
+      {% if insight_name_next == "insight" %}
+        <script>
+           
+           var a      = document.getElementById('navigation_text');
+           a.href     = "{{ url_for('intro_final_view') }}" 
+
+        </script>
+      {% endif %}
+      
+      </center>
+  
+  </div>
+
+  {% include 'template/space/insight_main_bottom_space.html' %}
+
+  <!-- SCRIPTS -->
+  {% include 'template/general/scroll_page.html' %}
+
+</body>
+</html>
+<!-- END -->

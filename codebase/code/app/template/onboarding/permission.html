@@ -1,83 +1,59 @@
 <!doctype html>
 <html>
-<link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
-<title>KnowingMe</title>
+{% include 'template/general/title.html' %}
+
 
 <!-- HEADER -->
 <header>
 
-  <!-- Style -->
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css')}}">
-  
-  <!-- Dependencies -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-  <!-- Flash Messages -->
-  {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <script>
-            var messages = {{ messages | safe }};
-            for (var i=0; i<messages.length; i++) {
-              alert(messages[i]);
-            }
-        </script>
-      {% endif %}
-  {% endwith %}
+  <!-- Dependencies & Co -->
+  {% include 'template/general/dependency.html' %}
+  {% include 'template/general/flash_message.html' %}
 
 </header>
 
 <!-- BODY -->
 <body scroll="no" style="overflow: hidden">
 
-  <!-- Permission Page Section -->
-
+  <!-- Content Section - MAIN -->
   <section id="section01" class="demo">
   
-  <br><br><br><br><br><br>
+    {% include 'template/space/main_top_space.html' %}
   
-  <h3><p style="text-align:center;">Let's Get Logged In</p></h3>
+    <h3><p style="text-align:center;">Let's Get Logged In</p></h3>
   
-  <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">In order to create these insights about the way you communicate with others, <br>we need to read your email data including your email contacts which is why we are asking you to authenticate with your gmail account. <br><br> If you have not previously authenticated with the account, you’ll see a request for permission on the next page.<br><br>We take data privacy really seriously. We don’t store the text of your emails or details about the senders of emails you receive or recipients of emails you send. 
-  </font></p>
+    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">In order to create these insights about the way you communicate with others, <br>we need to read your email data including your email contacts which is why we are asking you to authenticate with your gmail account. <br><br> If you have not previously authenticated with the account, you’ll see a request for permission on the next page.<br><br>We take data privacy really seriously. We don’t store the text of your emails or details about the senders of emails you receive or recipients of emails you send. 
+    </font></p>
 
-  <p style="text-align:center;"><a href={{ auth_url }}>This Sounds Great</a>&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;&nbsp;<a href="#section02">Learn More</a></p>
+    <p style="text-align:center;"><a href={{ auth_url }}>This Sounds Great</a>&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;&nbsp;<a href="#section02">Learn More</a></p>
 
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    {% include 'template/space/insight_main_scroll_bottom_space.html' %}
+
   
   </section>
 
-  <!-- Permission Page - Additional Info Section -->
-
+  <!-- Content Section - ADDITIONAL -->
   <section id="section02" class="demo">
   
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    {% include 'template/space/landing_scroll_top_space.html' %}
 
-  <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241"><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel gravida risus, quis vulputate magna. Donec eu suscipit leo, vel vestibulum ipsum. Maecenas vel velit nulla. Vestibulum sed iaculis turpis. Nam congue enim mauris. Integer sit amet elementum enim, sit amet viverra libero. Maecenas eget placerat dui, tincidunt gravida massa. Vestibulum gravida accumsan pretium.
+    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241"><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel gravida risus, quis vulputate magna. Donec eu suscipit leo, vel vestibulum ipsum. Maecenas vel velit nulla. Vestibulum sed iaculis turpis. Nam congue enim mauris. Integer sit amet elementum enim, sit amet viverra libero. Maecenas eget placerat dui, tincidunt gravida massa. Vestibulum gravida accumsan pretium.
 
-  <br><br>Nullam dapibus dolor quis elit varius commodo. Suspendisse efficitur sapien odio, vel ornare ex imperdiet non. Quisque finibus fringilla lorem a gravida. Praesent vitae dignissim nisi. Nam elementum libero nisi, euismod rutrum tortor rutrum laoreet. Fusce dictum nibh in massa rhoncus, vitae viverra purus fermentum. Integer accumsan elit sed rhoncus bibendum. Nunc mattis lacus eget consequat tempus.
+    <br><br>Nullam dapibus dolor quis elit varius commodo. Suspendisse efficitur sapien odio, vel ornare ex imperdiet non. Quisque finibus fringilla lorem a gravida. Praesent vitae dignissim nisi. Nam elementum libero nisi, euismod rutrum tortor rutrum laoreet. Fusce dictum nibh in massa rhoncus, vitae viverra purus fermentum. Integer accumsan elit sed rhoncus bibendum. Nunc mattis lacus eget consequat tempus.
 
-  <br><br>Curabitur sit amet pretium ligula. Nulla eu dolor eu libero volutpat molestie vitae tempor enim. Donec quis pulvinar sapien. Donec convallis nunc neque, a fringilla velit congue at. Sed rutrum a nisl non efficitur. Ut vitae est sed nisl sagittis tincidunt a non risus. Proin eu faucibus odio, sit amet facilisis felis. Nam fringilla, arcu in vestibulum volutpat, sem ex faucibus elit, in congue tortor ligula at ante. Donec venenatis, erat fringilla porta tincidunt, enim elit ullamcorper massa, porta ullamcorper mauris nunc et neque.</i>
+    <br><br>Curabitur sit amet pretium ligula. Nulla eu dolor eu libero volutpat molestie vitae tempor enim. Donec quis pulvinar sapien. Donec convallis nunc neque, a fringilla velit congue at. Sed rutrum a nisl non efficitur. Ut vitae est sed nisl sagittis tincidunt a non risus. Proin eu faucibus odio, sit amet facilisis felis. Nam fringilla, arcu in vestibulum volutpat, sem ex faucibus elit, in congue tortor ligula at ante. Donec venenatis, erat fringilla porta tincidunt, enim elit ullamcorper massa, porta ullamcorper mauris nunc et neque.</i>
 
-  <br>
+    <br><br>
 
-  <p style="text-align:center;"><a href="#section01">Return To Permission Page</a></p>
+    <p style="text-align:center;"><a href="#section01">Return To Permission Page</a></p>
 
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    {% include 'template/space/landing_scroll_bottom_space.html' %}
 
   </section>
 
-  <!-- Scroll Down Script -->
-
-  <script>
-    $(function() {
-        $('a[href*=#]').on('click', function(e) {
-          e.preventDefault();
-          $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
-        });
-    });
-  </script>
+  <!-- SCRIPTS -->
+  {% include 'template/general/scroll_page.html' %}
 
 </body>
 </html>
-
 <!-- END -->

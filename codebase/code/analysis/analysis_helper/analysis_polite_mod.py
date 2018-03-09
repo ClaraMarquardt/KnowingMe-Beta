@@ -47,14 +47,16 @@ def polite_score(msg_sentence, msg_parse, msg_unigram, msg_bigram, msg_sentence_
 
 	"""
 
-
 	# politeness scoring successful
 	try: 
 		request_sentence = np.array(msg_sentence).tolist()
 		
 		if len(request_sentence)>0 and len(msg_sentence_request)>0:
 		
-			# Initialize
+			# initialize
+			polite_score_list = []
+
+			# initialize model
 			request_sentence = np.array(msg_sentence)[np.array(msg_sentence_request)].tolist()
 			request_unigram  = np.array(msg_unigram)[np.array(msg_sentence_request)].tolist()
 			request_bigram   = np.array(msg_bigram)[np.array(msg_sentence_request)].tolist()
@@ -62,28 +64,40 @@ def polite_score(msg_sentence, msg_parse, msg_unigram, msg_bigram, msg_sentence_
 			
 			if len(request_sentence)>0:
 		
-				# Generate dictionary
-				request_text    = ' '.join(request_sentence)
-				request_unigram = sum(request_unigram, [])
-				request_bigram  = sum(request_bigram, [])
-				request_bigram  = [tuple(x) for x in request_bigram]		
-		
-				request         = {"text":request_text, "sentences":request_sentence, "bigrams":request_bigram, "unigrams":request_unigram, "parses":request_parses}
-				
 				# Load model, initialize vectorizer
 				clf 	   = cPickle.load(open(polite_model_path))
 				vectorizer = PolitenessFeatureVectorizer()
+		
+				# Loop over sentences
+				for i in range(0,len(request_sentence)): 
+									
+					# Generate dictionary
+					request_text_temp    = request_sentence[i]
+					request_unigram_temp = request_unigram[i]
+					request_bigram_temp  = request_bigram[i]
+					request_bigram_temp  = [tuple(x) for x in request_bigram_temp]		
+					request_parses_temp  = request_parses[i]
+
+					request         = {"text":request_text_temp, "sentences":request_text_temp, "bigrams":request_bigram_temp, "unigrams":request_unigram_temp, "parses":request_parses_temp}
+				
+					# vectorizer returns {feature-name: value} dict
+					features   = vectorizer.features(request)
+					fv         = [features[f] for f in sorted(features.iterkeys())]
 			
-				# vectorizer returns {feature-name: value} dict
-				features   = vectorizer.features(request)
-				fv         = [features[f] for f in sorted(features.iterkeys())]
+					# single-row sparse matrix
+					X     = csr_matrix(np.asarray([fv]))
+					probs = clf.predict_proba(X)
 			
-				# Single-row sparse matrix
-				X     = csr_matrix(np.asarray([fv]))
-				probs = clf.predict_proba(X)
+					# return format
+					polite_score = probs[0][0]
+
+					# append
+					polite_score_list.append(polite_score)
 			
-				# Massage return format
-				polite_score = probs[0][0]
+				# aggregate
+				polite_score_list = sorted(polite_score_list)
+				# polite_score    = polite_score_list[int(np.argmax([np.absolute(x-0.5) for x in polite_score_list]))]
+				polite_score      = np.min(polite_score_list)
 			
 			else:
 		
@@ -109,7 +123,7 @@ def polite_score(msg_sentence, msg_parse, msg_unigram, msg_bigram, msg_sentence_
 # request_identification
 #---------------------------------------------#
 
-def request_identification(sentence, sentence_parsed):
+def request_identification(sentence, sentence_parsed, english):
 
 	# print("Launching - request_identification")
 
@@ -119,13 +133,15 @@ def request_identification(sentence, sentence_parsed):
 
 	# request identification successful
 	try: 
-	
-		if "?" in sentence:
-			request = True
-		elif check_elems_for_strategy(sentence_parsed, initial_polar) or check_elems_for_strategy(sentence_parsed, aux_polar):
-			request = True
-		else:
-			request = False
+		
+		if (english==1): 
+
+			if "?" in sentence:
+				request = True
+			elif check_elems_for_strategy(sentence_parsed, initial_polar) or check_elems_for_strategy(sentence_parsed, aux_polar):
+				request = True
+			else:
+				request = False
 
 	# request identification unsuccessful
 	except Exception as e: 

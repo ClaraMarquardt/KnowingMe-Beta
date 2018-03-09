@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+
+    <!-- CONTENT -->    
+	<form action = "{{ url_for('insight_b_view') }}" method="get" onsubmit="text_submit(analysis_text_id=1)">
+    	<input type="text" id="analysis_text_1" name="analysis_text" size="80" readonly>
+    	<input type="submit" id="analysis_button_1" value="Score {{ insight_name }}" style="width:150px">
+    	
+    	<input type="hidden" name="analysis_text_id" size="25" value="1"> 
+    	<input type="hidden" name="insight_name" size="25" value="{{ insight_name }}">
+	</form>
+
+	<br><br>
+
+	<form action = "{{ url_for('insight_b_view') }}" method="get" onsubmit="text_submit(analysis_text_id=2)">
+    	<input type="text" id="analysis_text_2" name="analysis_text" size="80" value="Sorry :) I dont want to hack the system!! :) is there another way?" readonly>
+    	<input type="submit" id="analysis_button_2" value="Score {{ insight_name }}" style="width:150px">
+    	
+    	<input type="hidden" name="analysis_text_id" size="25" value="2"> 
+    	<input type="hidden" name="insight_name" size="25" value="{{ insight_name }}">
+	</form>
+
+	<br><br>
+
+	<form action = "{{ url_for('insight_b_view') }}" method="get" onsubmit="text_submit(analysis_text_id=3)">
+    	<input type="text" id="analysis_text_3" name="analysis_text" size="80" value="What are you trying to do?  Why can\'t you just store the 'Range'?" readonly>
+    	 <input type="submit" id="analysis_button_3" value="Score {{ insight_name }}" style="width:150px">
+    	
+    	<input type="hidden" name="analysis_text_id" size="25" value="3"> 
+    	<input type="hidden" name="insight_name" size="25" value="{{ insight_name }}">
+	</form>
+
+	<br><br>
+
+	<form action = "{{ url_for('insight_b_view') }}" method="get" onsubmit="text_submit(analysis_text_id=4)">
+    	<input type="text" id="analysis_text_4" name="analysis_text" size="80" value="This was supposed to have been moved to &lt;url&gt; per the cfd. why wasn't it moved?" readonly>
+    	<input type="submit" id="analysis_button_4" value="Score {{ insight_name }}" style="width:150px">
+    	
+    	<input type="hidden" name="analysis_text_id" size="25" value="4">  	
+    	<input type="hidden" name="insight_name" size="25" value="{{ insight_name }}">
+	</form>
+
+	<br><br>
+
+	<form action = "{{ url_for('insight_b_view') }}" method="get" onsubmit="text_submit(analysis_text_id=5)">
+    	<textarea id="analysis_text_5" name="analysis_text" value="" cols=78 rows=1></textarea>
+    	<input type="submit" id="analysis_button_5" value="Score {{ insight_name }}" style="width:150px">
+
+    	<input type="hidden" name="analysis_text_id" size="25" value="5">
+    	<input type="hidden" name="insight_name" size="25" value="{{ insight_name }}">
+	</form>
+
+	<br><br>
+
+    <!-- SCRIPT -->    
+
+	<!--  Initialize Text -->	
+	<script>
+		
+		$("#analysis_text_1").val($sample_1)
+		$("#analysis_text_2").val($sample_2)
+		$("#analysis_text_3").val($sample_3)
+		$("#analysis_text_4").val($sample_4)
+
+	</script>
+
+	<!--  Update Text -->	
+	<script>
+	
+		var text_submit = function(analysis_text_id) {
+		
+			$("#"+analysis_text_id).val($("#"+analysis_text_id).val()+"xxxxxx")
+		}
+	
+		$("#analysis_text_5").attr("placeholder",$warning)
+	
+	</script>
+
+
+	<!--  Update Output -->
+ 	{% if analysis_data %}
+
+ 		<script>
+
+ 			if (isNaN(parseFloat("{{ analysis_data }}"))==true) {
+
+ 				if ("{{ analysis_data }}"!="None") {
+ 					
+ 					// # update result
+ 					$("#analysis_button_"+"{{ analysis_text_id}}" ).val("{{ analysis_data }}")
+ 					$("#analysis_text_"+"{{ analysis_text_id}}" ).val("{{ analysis_data_text }}")
+
+ 				}
+
+ 			} else {
+ 				
+ 				// # update result
+ 				$("#analysis_button_"+"{{ analysis_text_id}}" ).val(parseFloat("{{ analysis_data }}").toFixed(2))
+ 				$("#analysis_text_"+"{{ analysis_text_id}}" ).val("{{ analysis_data_text }}")
+	
+ 				// # update color
+ 				if (parseFloat("{{ analysis_data }}").toFixed(2)>0.7) {
+ 	 				$("#analysis_button_"+"{{ analysis_text_id}}" ).css('background','green')
+ 				} else if (parseFloat("{{ analysis_data }}").toFixed(2)<=0.7 & parseFloat("{{ analysis_data }}").toFixed(2)	>0.5) {
+ 				 	$("#analysis_button_"+"{{ analysis_text_id}}" ).css('background','grey')
+ 				} else {
+ 					$("#analysis_button_"+"{{ analysis_text_id}}" ).css('background','red')
+ 				} 
+ 			}
+ 			
+ 		</script>
+
+ 	{% endif %}
+
+
+</html>

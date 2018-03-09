@@ -28,12 +28,24 @@ from __init_lib__ import *
 # Generic Variables
 # ------------------------------------------------------------------------ #
 
+# date helper function (returns e.g. 6 > 6 hours behind UTC)
+def local_time_offset(t=None):
+    if t is None:
+        t = time.time()
+
+    if time.localtime(t).tm_isdst and time.daylight:
+        return time.altzone
+    else:
+        return time.timezone
+
 # date
-current_date      = datetime.datetime.now()
-current_date      = current_date.strftime("%m/%d/%Y")
+timezone_utc_offset = local_time_offset()/60/60
+timezone_utc_name   = time.strftime("%Z", time.gmtime())
+current_date        = datetime.datetime.now()
+current_date        = current_date.strftime("%m/%d/%Y")
 
 # platform
-platform          = sys.platform
+platform            = sys.platform
 
 # ------------------------------------------------------------------------ #
 # Directory
@@ -72,11 +84,19 @@ else:
 	spacy_dir = os.path.normpath(os.path.join(app_root, 'dependencies', 'spacy','en_core_web_sm-1.2.0','en_core_web_sm','en_core_web_sm-1.2.0'))
 nlp = spacy.load(spacy_dir)
 
+# CORENLP
+# core_nlp          =  StanfordCoreNLP("http://localhost" + ":" + "9000")
+
+# VADER
+vader_nlp           =  SentimentIntensityAnalyzer()
+
 # Other Paths
 pos_dict_path       = os.path.normpath(os.path.join(app_root, 'code','analysis','analysis_model', 'coordination', 'pos_dict.json'))
 polite_model_path   = os.path.normpath(os.path.join(app_root, 'code','analysis','analysis_model', 'politeness','politeness_svm.p')) 
 sentiment_dict_path = os.path.normpath(os.path.join(app_root, 'code','analysis','analysis_model', 'sentiment', 'sentiment_dict.json'))
 gender_path         = os.path.normpath(os.path.join(app_root, 'code','analysis','analysis_model', 'gender','gender_database.csv')) 
+insight_text_path   = os.path.normpath(os.path.join(app_root, 'code','app','static', 'text','insight_text.csv')) 
+insight_title_path  = os.path.normpath(os.path.join(app_root, 'code','app','static', 'text','insight_title.csv')) 
 
 # ------------------------------------------------------------------------ #
 # Variable Initialization Functions
@@ -84,19 +104,30 @@ gender_path         = os.path.normpath(os.path.join(app_root, 'code','analysis',
 
 # initialize variables
 # ---------------------------------------------#
-def var_initialization():
+def var_initialization(reset_user=True, key_var_old=np.nan):
 
 	# initialize
 	key_var   = {}	
+
+	# user variables
+	key_var['user']                		 	 = ''
+	key_var['user_name']    				 = ''
+	key_var['user_photo']          		     = ''
+	key_var['service']          		     = ''
 
 	# status variables
 	key_var['api_success']  				 = 'False'
 	key_var['feature_success']    			 = 'False'
 	
-	# user variables
-	key_var['user']                		 	 = ""
-	key_var['user_name']    				 = ""
-	key_var['user_photo']          		     = ""
+	# insight variables
+	key_var['insight_intro_id']              = 0
+	key_var['sample_insight_intro_id']       = 0
+	
+	key_var['insight_mode']                  = "intro"
+	key_var['intro_release']                 = False
+	
+	key_var['current_insight'] 			 	 = ""
+	key_var['current_insight'] 			 	 = ""
 
 	# user group variables
 	key_var['user_group_1_store']  		     = np.array([])
@@ -112,7 +143,57 @@ def var_initialization():
 	key_var['user_group_name_list_address']  = ['/user_group_load_gender','/user_group_load_blank','/user_group_store_rand']
 	key_var['user_group_name_list_name']     = ['**Gender_Default','**Blank_Default','**Random_Default']
 	
+	if (reset_user == False): 
+	
+		# user variables
+		key_var['user']                		 	 = key_var_old['user']
+		key_var['user_name']    				 = key_var_old['user_name']
+		key_var['user_photo']          		     = key_var_old['user_photo']
+		key_var['service']          		     = key_var_old['service']
+
 	return(key_var)
+
+# initialize insight variables
+# ---------------------------------------------#
+def insight_initialization():
+
+	# initialize
+	insight_data     = {}	
+	insight_text     = {}	
+	insight_title    = {}		
+
+	# initialize data - insight list
+	insight_data['sample_insight_list']   	 = ['date_dist', 'time_dist','network', 'sample_sentiment']
+	insight_data['intro_insight_list']    	 = ['talkative','sentiment','politeness','coordination']
+	insight_data['main_insight_list']        = ['date_dist', 'time_dist','network', 'talkative','reponsiveness', 'firstlast', 'sentiment','politeness','coordination']
+
+	insight_data['setting_insight_list']     = ['date_dist_setting']
+
+	insight_data['skip_sample_insight_list'] = ['talkative','responsiveness', 'firstlast']
+
+	# initialize data - feature list
+	nlp_feature_list                      	 = ['sentiment', 'politeness', 'coordination']  
+	simplelang_feature_list               	 = ['language', 'talkative', 'lengthimbalance', 'birthday']
+	nonlang_feature_list                  	 = ['responsiveness','firstlast','contact']
+	feature_list                          	 = [nlp_feature_list, simplelang_feature_list, nonlang_feature_list]
+	insight_data['feature_list']          	 = sum(feature_list, [])
+	## OMIT: sentiment_dict
+
+	# load text
+	insight_text_temp = pd.read_csv(insight_text_path)
+	
+	for i in list(insight_text_temp['insight']):
+		insight_text[i] = dict()
+		for j in insight_text_temp['screen']:
+			insight_text[i][j] = unicode(np.array(insight_text_temp.loc[insight_text_temp['insight']==i][insight_text_temp['screen']==j]['text'])[0], errors="ignore")
+
+	# load title
+	insight_title_temp = pd.read_csv(insight_title_path)
+	
+	for i in list(insight_title_temp['insight']):
+		insight_title[i] = np.array(insight_title_temp.loc[insight_title_temp['insight']==i]['title'])[0]
+
+	return(insight_data, insight_text, insight_title)
 
 # initialize user setting variables
 # ---------------------------------------------#
@@ -124,6 +205,7 @@ def user_setting_initialization():
 	# user settings (load)
 	with open(user_setting_file) as data_file:    
 		user_setting_data   = json.load(data_file)
+	
 	user_setting['min_day']                 = int(user_setting_data['min_day'])
 	user_setting['min_email']               = int(user_setting_data['min_email'])
 	user_setting['email_max']               = int(user_setting_data['email_max'])
@@ -131,14 +213,15 @@ def user_setting_initialization():
 	user_setting['timelag_day']             = int(user_setting_data['timelag_day'])
 	user_setting['birthday_day']            = int(user_setting_data['birthday_day'])
 	user_setting['overview_day']            = int(user_setting_data['overview_day'])
+	user_setting['timelag_overview']        = int(user_setting_data['timelag_overview'])
 
 	user_setting['output_dir']              = os.path.expanduser(str(user_setting_data['output_dir']))
 	user_setting['output_dir_base']         = os.path.expanduser(str(user_setting_data['output_dir']))
 	user_setting['output_dir_raw']          = str(user_setting_data['output_dir'])
 
 	# Modify user settings (based on execution settings (environment variables))
-	user_setting['output_dir'] = str(os.path.expanduser(os.getenv("OUTPUT", user_setting['output_dir'])))
-	user_setting['output_dir_base'] = str(os.path.expanduser(os.getenv("OUTPUT", user_setting['output_dir_base'])))
+	user_setting['output_dir']              = str(os.path.expanduser(os.getenv("OUTPUT", user_setting['output_dir'])))
+	user_setting['output_dir_base']         = str(os.path.expanduser(os.getenv("OUTPUT", user_setting['output_dir_base'])))
 
 	# return
 	return(user_setting)
@@ -155,10 +238,12 @@ def app_setting_initialization():
 		app_setting_data   = json.load(data_file)
 	app_setting['app_port']                 = str(app_setting_data['app_port'])
 	app_setting['app_debug']                = str(app_setting_data['app_debug'])
-	
+	app_setting['offline_mode']             = str(app_setting_data['offline_mode'])
+
 	# Modify app settings (based on execution settings (environment variables))
-	app_setting['app_port']  = int(os.getenv("PORT", app_setting['app_port']))
-	app_setting['app_debug'] = str(os.getenv("DEBUG", app_setting['app_debug']))=='True'
+	app_setting['app_port']  	= int(os.getenv("PORT", app_setting['app_port']))
+	app_setting['app_debug'] 	= str(os.getenv("DEBUG", app_setting['app_debug']))=='True'
+	app_setting['offline_mode'] = str(os.getenv("OFFLINE", app_setting['offline_mode']))=='True'
 
 	# return
 	return(app_setting)
@@ -180,6 +265,8 @@ def user_data_dir_init(user_data_dir):
 		os.makedirs(os.path.join(user_data_dir, "other"))
 	if not os.path.exists(os.path.join(user_data_dir, "contact")):
 		os.makedirs(os.path.join(user_data_dir, "contact"))
+	if not os.path.exists(os.path.join(user_data_dir, "dev")):
+		os.makedirs(os.path.join(user_data_dir, "dev"))
 
 # clear user data directory
 # ---------------------------------------------#

@@ -36,7 +36,7 @@ import random
 import time
 import cPickle as pickle
 from scipy.sparse import csr_matrix
-
+import calendar
 import math
 import pandas as pd
 import numpy as np
@@ -79,6 +79,10 @@ from   email.parser import Parser
 # NLP
 import nltk
 import spacy
+import pycorenlp
+from   pycorenlp.corenlp import StanfordCoreNLP
+from   langdetect import detect
+from   vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 # ML & Co
 import scipy
@@ -92,6 +96,8 @@ pd.options.display.max_colwidth    = 1000
 warnings.filterwarnings("ignore", message="numpy.dtype size changed")
 warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 warnings.filterwarnings("ignore", message="Boolean Series key will be reindexed to match DataFrame index.")
+warnings.filterwarnings("ignore", message="Mean of empty slice.")
+warnings.filterwarnings("ignore", message="invalid value encountered in double_scalars")
 
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #

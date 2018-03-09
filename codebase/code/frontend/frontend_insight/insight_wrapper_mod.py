@@ -25,6 +25,7 @@ from __init_lib__ import *
 
 sys.path.append(os.path.normpath(os.path.join(app_root, 'code', 'frontend','frontend_insight')))
 from insight_sample_mod import *
+from insight_main_mod import *
 
 # Define dictionary - insight_name / insight_function
 insight_function = dict()
@@ -35,6 +36,19 @@ insight_function['time_dist']         = time_dist
 insight_function['network']           = network
 insight_function['sample_sentiment']  = sample_sentiment
 
+## main
+insight_function['talkative']         = talkative
+insight_function['responsiveness']    = responsiveness
+insight_function['firstlast']         = firstlast
+
+
+insight_function['politeness']        = politeness
+insight_function['sentiment']         = sentiment
+insight_function['coordination']      = coordination
+
+## setting
+insight_function['date_dist_setting'] = date_dist
+
 #----------------------------------------------------------------------------#
 #			                Function Definition                              #
 #----------------------------------------------------------------------------#
@@ -43,18 +57,15 @@ insight_function['sample_sentiment']  = sample_sentiment
 #---------------------------------------------#
 def generate_insight_wrapper(insight_list, email_link_df, current_date, email_date_df, email_diff, contact_df, user_name, user_email, email_range): 
 
-	## initialize
-	insight_dict = dict()
+	print(insight_list)
+	
+	# generate unique copy of the email_link_df
+	email_link_df_unique       = email_link_df.drop_duplicates(subset="msg_id", keep='first', inplace=False)
 
-	## loop over insights
-	for insight_name in insight_list:
+	# generate insight
+	insight_temp               = insight_function[insight_list](email_link_df, email_link_df_unique, current_date, email_date_df, email_diff, contact_df, user_name, user_email, email_range)
 
-		print(insight_name)
-		
-		insight_temp               = insight_function[insight_name](email_link_df, current_date, email_date_df, email_diff, contact_df, user_name, user_email, email_range)
-		insight_dict[insight_name] = insight_temp
-
-	return(insight_dict)
+	return(insight_temp)
 
 #----------------------------------------------------------------------------#
 #----------------------------------------------------------------------------#

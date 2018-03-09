@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+{% include 'template/general/title.html' %}
+
+<!-- HEADER -->
+<header>
+  
+  <!-- Dependencies & Co -->
+  {% include 'template/general/dependency.html' %}
+  {% include 'template/general/flash_message.html' %}
+
+</header>
+
+<!-- BODY -->
+<body scroll="no" style="overflow: hidden">
+
+  <!-- Header Section -->
+  {% include 'template/general/header_user.html' %}
+  {% include 'template/general/header_ribbon.html' %}
+        
+  <!-- Nav Bar -->
+  {% include 'template/general/nav_bar.html' %}
+
+  <!-- Content Section -->
+  <div class="parent_2">
+  
+    <center>
+
+    {% include 'template/space/insight_main_top_space.html' %}
+    
+    <h3><p style="text-align:center;">{{ insight_title }} - Intro</p></h3>
+    <p style="text-align:center; padding-left:150px; padding-right:150px;"  ><font color="#464241">{{ insight_text }} </font></p>
+    <center>
+
+    <a href="{{ url_for('insight_a_view',insight_name=insight_name) }}">Insight Overview</a></center>
+  
+    </center>
+  
+  </div>
+
+  {% include 'template/space/main_bottom_space.html' %}
+     
+  <!-- SCRIPTS -->
+  {% include 'template/general/scroll_page.html' %}
+ 
+</body>
+</html>
+<!-- END -->

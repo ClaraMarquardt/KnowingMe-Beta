@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    
+    <div class="vertical-menu parent_1">
+    
+    <br><br><br><br><br><br>
+
+    {% if insight_mode=="explore" %}
+      {% if insight_name=='date_dist' %}
+        <a href="{{ url_for('insight_c_view',insight_name='date_dist') }}" class="active"><font color ="#8f9299">Date</font></a>
+      {% else %}
+         <a href="{{ url_for('insight_c_view',insight_name='date_dist') }}""><font color="#8f9299">Date</font></a>   
+      {% endif %}
+
+      {% if insight_name=='time_dist' %}
+        <a href="{{ url_for('insight_c_view',insight_name='time_dist') }}" class="active"><font color ="#8f9299">Time</font></a>
+      {% else %}
+         <a href="{{ url_for('insight_c_view',insight_name='time_dist') }}""><font color="#8f9299">Time</font></a>   
+      {% endif %}
+
+      {% if insight_name=='network' %}
+        <a href="{{ url_for('insight_c_view',insight_name='network') }}" class="active"><font color ="#8f9299">Network</font></a>
+      {% else %}
+         <a href="{{ url_for('insight_c_view',insight_name='network') }}""><font color="#8f9299">Network</font></a>   
+      {% endif %}
+
+      {% if insight_name=='talkative' %}
+        <a href="{{ url_for('insight_c_view',insight_name='talkative') }}" class="active"><font color ="#8f9299">Talkativeness</font></a>
+      {% else %}
+         <a href="{{ url_for('insight_c_view',insight_name='talkative') }}""><font color="#8f9299">Talkativeness</font></a>   
+      {% endif %}
+  
+      {% if insight_name=='responsiveness' %}
+        <a href="{{ url_for('insight_c_view',insight_name='responsiveness') }}" class="active"><font color ="#8f9299">Responsiveness</font></a>
+      {% else %}
+         <a href="{{ url_for('insight_c_view',insight_name='responsiveness') }}""><font color="#8f9299">Responsiveness</font></a>   
+      {% endif %}
+
+      {% if insight_name=='firstlast' %}
+        <a href="{{ url_for('insight_c_view',insight_name='firstlast') }}" class="active"><font color ="#8f9299">First-Last</font></a>
+      {% else %}
+         <a href="{{ url_for('insight_c_view',insight_name='firstlast') }}""><font color="#8f9299">First-Last</font></a>   
+      {% endif %}
+
+      {% if insight_name=='sentiment' %}
+        <a href="{{ url_for('insight_c_view',insight_name='sentiment') }}" class="active"><font color ="#8f9299">Sentiment</font></a>
+      {% else %}
+         <a href="{{ url_for('insight_c_view',insight_name='sentiment') }}""><font color="#8f9299">Sentiment</font></a>   
+      {% endif %}
+  
+      {% if insight_name=='politeness' %}
+        <a href="{{ url_for('insight_c_view',insight_name='politeness') }}" class="active"><font  color="#8f9299">Politeness</font></a>
+      {% else %}
+         <a href="{{ url_for('insight_c_view',insight_name='politeness') }}""><font color="#8f9299">Politeness</font></a>   
+      {% endif %}
+  
+      {% if insight_name=='coordination' %}
+        <a href="{{ url_for('insight_c_view',insight_name='coordination') }}" class="active"><font  color="#8f9299">Coordination</font></a>
+      {% else %}
+         <a href="{{ url_for('insight_c_view',insight_name='coordination') }}""><font color="#8f9299">Coordination</font></a>   
+      {% endif %}
+    
+    {% else %}
+      
+      <font color ="#8f9299"></font>
+      <font color ="#8f9299"></font>
+      <font color ="#8f9299"></font>
+      <font color ="#8f9299"></font>
+      <font color ="#8f9299"></font>
+      <font color ="#8f9299"></font>
+      <font color ="#8f9299"></font>
+    
+    {% endif %}
+    
+    </div>
+    
+</html>
+<!-- END -->
+

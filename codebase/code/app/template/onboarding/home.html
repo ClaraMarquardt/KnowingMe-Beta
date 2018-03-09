@@ -1,28 +1,13 @@
 <!doctype html>
 <html>
-<link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
-<title>KnowingMe</title>
+{% include 'template/general/title.html' %}
 
 <!-- HEADER -->
 <header>
 
-	<!-- Style -->
-	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css')}}">
-	
-	<!-- Dependencies -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-	<!-- Flash Messages -->
-	{% with messages = get_flashed_messages() %}
-  		{% if messages %}
-    		<script>
-      			var messages = {{ messages | safe }};
-      			for (var i=0; i<messages.length; i++) {
-        			alert(messages[i]);
-      			}
-    		</script>
-  		{% endif %}
-	{% endwith %}
+  <!-- Dependencies & Co -->
+  {% include 'template/general/dependency.html' %}
+  {% include 'template/general/flash_message.html' %}
 
 </header>
 
@@ -30,21 +15,10 @@
 <body scroll="no" style="overflow: hidden">
 
   <!-- Header Section -->
-  <div id="content">
-    <center>
-    <div class="ribbon">
-    <img src="{{ user_photo }}" style="width:40px;height:40px;"/>
-    <br>
-    {{ user_email }}
-    <br>
-    <a href="{{ url_for('logout_view') }}">Switch User</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="{{ url_for('landing_view') }}">Home Page</a>
+  {% include 'template/general/header_user.html' %}
 
-    </div>
-    </center>
-  </div>
-
-  <!-- Content -->
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <!-- Content Section -->
+  {% include 'template/space/main_top_space.html' %}
 
   <div style="text-align:center;vertical-align:middle;"><font color="#464241"><h3>Hello {{ user }}</h3></font></p>
 
@@ -52,9 +26,11 @@
 
   <p style="text-align:center;"><a href="{{ url_for('intro_load_a_view') }}">Continue</a></p>
 
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  {% include 'template/space/main_bottom_space.html' %}
+
+  <!-- SCRIPTS -->
+  {% include 'template/general/scroll_page.html' %}
 
 </body>
 </html>
-
 <!-- END -->

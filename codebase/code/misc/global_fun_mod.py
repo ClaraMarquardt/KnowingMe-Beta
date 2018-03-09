@@ -424,7 +424,7 @@ def dict_key_df(dict_list, id_name_1, id_name_2=None, incl_data=False):
 	df_list = []
 
 	for i in dict_list.keys():
-		
+
 		if id_name_2 is not None:
 
 			df_temp = pd.DataFrame({id_name_1:getattr(dict_list[i],id_name_1),id_name_2:getattr(dict_list[i],id_name_2)})
@@ -434,7 +434,7 @@ def dict_key_df(dict_list, id_name_1, id_name_2=None, incl_data=False):
 			df_temp = pd.DataFrame({id_name_1:[getattr(dict_list[i],id_name_1)]})
 				
 		if incl_data==True:
-		
+				
 			excl_id_attr       = ['msg_id','msg_threadid','link_id']
 			excl_msg_text_attr = ['unigram', 'bigram','sentence','word','character','sentence_count','word_count', 'character_count','parse','pos','pos_dict','pos_count','pos_set','pos_indic', 'pos_set_agg','request','polite','sentiment_count','sentiment_indic','sentiment_set','sentiment_set_agg']
 			excl_link_attr     = ['link_response_id_pair', 'link_reply_id_pair', 'link_response_count','link_reply_count','link_reply','link_responses']
@@ -446,7 +446,6 @@ def dict_key_df(dict_list, id_name_1, id_name_2=None, incl_data=False):
 			attr_list          = [x for x in dir(dict_list[i]) if "__" not in x and x not in excl_attr]
 			
 			for x in attr_list:
-
 				obj_temp   = getattr(dict_list[i],x)
 
 				## special case #1 - contact

@@ -2,7 +2,7 @@
 
 # KnowingMe 
 
-# File:         feature_generation_mod
+# File:         analysis_mod
 # Purpose:      Module - Define analysis functions
 # Maintainer:   Clara Marquardt
 # Last Updated: 2018-01-09
@@ -43,8 +43,10 @@ def analysis(email_file_array, user_address, output_dir, current_date, earliest_
 	global global_var
 	
 	# initialize
-	global_var['status_analysis_max'] = 9
-	feature_dict_file                 = os.path.normpath(os.path.join(output_dir, "other", 'feature_'+ 
+	global_var['status_analysis_load'] = 0
+	global_var['status_analysis_max']  = 9
+	
+	feature_dict_file                  = os.path.normpath(os.path.join(output_dir, "other", 'feature_'+ 
 		datetime.datetime.strptime(current_date,'%m/%d/%Y').strftime("%m_%d_%Y") + '_' +
 		datetime.datetime.strptime(earliest_date,'%m/%d/%Y').strftime("%m_%d_%Y") + '_' +
 		datetime.datetime.strptime(latest_date,'%m/%d/%Y').strftime("%m_%d_%Y") + '.p'))
@@ -52,7 +54,6 @@ def analysis(email_file_array, user_address, output_dir, current_date, earliest_
 	# Import & basic processing > email_df
 	# -------------------------------------------#
 	if (not os.path.exists(feature_dict_file)):
-
 
 		# load
 		# ---------------------------#	
@@ -128,7 +129,7 @@ def analysis(email_file_array, user_address, output_dir, current_date, earliest_
 		msg_text_parser     = analysis_msg_class_mod.text
 		msg_text_parsed     = [msg_text_parser(x,y) for (x,y) in zip(msg_text, msg_id)]
 		msg_text_parsed     = dict([(x,y) for (x,y) in zip(msg_id, msg_text_parsed)])
-		
+
 		print("Successfully completed - text analysis")
 		global_var['status_analysis_load'] = global_var['status_analysis_load'] + 1
 
@@ -138,11 +139,13 @@ def analysis(email_file_array, user_address, output_dir, current_date, earliest_
 		print("Launching - contact aggregation & labelling ")
 
 		# contact lists & gender labelling
-		agg_contact_df                   = analysis_contact_mod.contact_list(msg_parsed, user_address)
-		agg_contact_df['contact_gender'] = analysis_gender_mod.gender_labeler(agg_contact_df['contact_name'],agg_contact_df['contact'])
+		agg_contact_df                     = analysis_contact_mod.contact_list(msg_parsed, user_address)
+		agg_contact_df['contact_gender']   = analysis_gender_mod.gender_labeler(agg_contact_df['contact_name'],agg_contact_df['contact'])
 
 		global_var['status_analysis_load'] = global_var['status_analysis_load'] + 1
 
+		print("Successfully completed - contact aggregation & labelling ")
+	
 		# Generate output
 		# -------------------------------------------#	
 		
@@ -150,7 +153,7 @@ def analysis(email_file_array, user_address, output_dir, current_date, earliest_
 		email_link_df = pd.merge(global_fun_mod.dict_key_df(conver_parsed, "msg_threadid","msg_id"), global_fun_mod.dict_key_df(msg_parsed, "msg_id","link_id"), 
 			on='msg_id', how='right')
 		email_link_df = email_link_df.reset_index(drop=True, inplace=False)
-
+		
 		# extract data
 		conver_data     = global_fun_mod.dict_key_df(conver_parsed, id_name_1="msg_threadid", incl_data=True)
 		msg_data        = global_fun_mod.dict_key_df(msg_parsed, id_name_1="msg_id", incl_data=True)
@@ -162,7 +165,6 @@ def analysis(email_file_array, user_address, output_dir, current_date, earliest_
 		insight_df      = pd.merge(insight_df, msg_data, on='msg_id', how='left')
 		insight_df      = pd.merge(insight_df, msg_text_data, on='msg_id', how='left')
 		insight_df      = pd.merge(insight_df, link_data, on='link_id', how='left')
-		
 		global_var['status_analysis_load'] = global_var['status_analysis_load'] + 1
 
 		# save output

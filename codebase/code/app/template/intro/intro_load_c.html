@@ -1,30 +1,15 @@
 <!doctype html>
 <html>
-<link rel="shortcut icon" href="{{ url_for('static', filename='image/icon/favicon.ico') }}">
-<title>KnowingMe</title>
+{% include 'template/general/title.html' %}
 
 <!-- HEADER -->
 <header>
 
-  <!-- Style -->
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style/general_style.css')}}">
-  
-  <!-- Dependencies -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <!-- Dependencies & Co -->
+  {% include 'template/general/dependency.html' %}
+  {% include 'template/general/flash_message.html' %}
 
-  <!-- Flash Messages -->
-  {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <script>
-            var messages = {{ messages | safe }};
-            for (var i=0; i<messages.length; i++) {
-              alert(messages[i]);
-            }
-        </script>
-      {% endif %}
-  {% endwith %}
-
-  <!-- Progress -->
+  <!-- Progress Script -->
   <script>
     $(document).ready(function() {
       var refresh_id = setInterval(function() {
@@ -35,7 +20,7 @@
               $('#total_step').text(data.status_analysis_max);
 
               if (data.status == 'finished') {
-                window.location.replace("{{ url_for('intro_a_view') }}");
+                window.location.replace("{{ url_for('intro_main_view',insight_name=insight_name, insight_current=insight_name) }}");
               } else if (data.status == 'error') {
                 window.location.replace("{{ url_for('error_view') }}"); 
               }
@@ -51,37 +36,21 @@
 <body scroll="no" style="overflow: hidden">
 
   <!-- Header Section -->
-  <div id="content">
-    <center>
-    <div class="ribbon">
-    <img src="{{ user_photo }}" style="width:40px;height:40px;"/>
-    <br>
-    {{ user_email }}
-    <br>
-    <a href="{{ url_for('logout_view') }}">Switch User</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="{{ url_for('landing_view') }}">Home Page</a>
-    </div>
-    </center>
+  {% include 'template/general/header_user.html' %}
+  {% include 'template/general/header_ribbon_load_analysis.html' %}
 
-    <!-- Header Section - progress -->
-     <br><br><br>
-     <center>
-     <img src="{{ url_for('static', filename='image/icon/analysis_map_analysis.png') }}" style="width:500px;height:30px;"/><br>
-     </center>
-
-  </div>
- 
-  <!-- Content -->
-  <br><br><br><br><br><br>
+  <!-- Content Section -->
+  {% include 'template/space/insight_main_top_space.html' %}
 
   <h3><p style="text-align:center;">The Analysis</p></h3>
   <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">
 
-  <br>World-leading academics have built sophisticated algorithms that sifted through millions of pieces of communication to work these things out. 
+  <br>World-leading academics have built sophisticated algorithms 
+  <br>that sifted through millions of pieces of communication to work these things out. 
   <br>
   <br>We can now apply these algorithms to your emails. 
   <br>We take your sent and received emails, we break down the email data into the bits we need 
   <br>for our analysis, and then apply these cutting-edge algorithms to show you how you communicate.
-  <br>
   <br>
   </font></p>
   
@@ -97,10 +66,11 @@
   We Have Completed <div id="load_step" style="display: inline">....</div> Out Of <div id="total_step" style="display: inline">....</div> Analysis Steps</i></font>
   </center>
 
-  <br><br>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  {% include 'template/space/insight_main_bottom_space.html' %}
+
+  <!-- SCRIPTS -->
+  {% include 'template/general/scroll_page.html' %}
    
 </body>
 </html>
-
 <!-- END -->

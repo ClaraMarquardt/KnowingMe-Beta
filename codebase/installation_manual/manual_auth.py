@@ -1,20 +1,20 @@
-#----------------------------------------------------------------------------#
-# ----------------------------------------------------------------------- #
+# #----------------------------------------------------------------------------#
+# # ----------------------------------------------------------------------- #
 
-# KnowingMe 
+# # KnowingMe 
 
-# File:         manual_auth
-# Purpose:      Manually authenticate gmail api (oauth2)
-# Maintainer:   Clara Marquardt
-# Last Updated: 2018-01-09
-# Language:     Python 2.7
-# Notes:
+# # File:         manual_auth
+# # Purpose:      Manually authenticate gmail api (oauth2)
+# # Maintainer:   Clara Marquardt
+# # Last Updated: 2018-01-09
+# # Language:     Python 2.7
+# # Notes:
 
-# ------------------------------------------------------------------------ #
+# # ------------------------------------------------------------------------ #
 
-# ------------------------------------------------------------------------ #
-# Initialisation
-# ------------------------------------------------------------------------ #
+# # ------------------------------------------------------------------------ #
+# # Initialisation
+# # ------------------------------------------------------------------------ #
 
 # Path
 import os, sys
@@ -54,8 +54,8 @@ def get_credentials():
 	print('Using preexisting credentials')
 
 	# No preexisting credentials - new authentication
-	if not credentials or credentials.invalid:
-		flow = client.flow_from_clientsecrets(api_auth_file, api_auth_scope)
+	if not credentials or credentials.invalid or 3==3:
+		flow = client.flow_from_clientsecrets(api_auth_file_manual, api_auth_scope)
 		flow.user_agent = application_name
 		if flags:
 			credentials = tools.run_flow(flow, store, flags)
@@ -95,7 +95,5 @@ service = log_in()
 user    = get_user(service)
 user_id = 'me'
 
-#----------------------------------------------------------------------------#
-#----------------------------------------------------------------------------#
-
-
+# #----------------------------------------------------------------------------#
+# #----------------------------------------------------------------------------#

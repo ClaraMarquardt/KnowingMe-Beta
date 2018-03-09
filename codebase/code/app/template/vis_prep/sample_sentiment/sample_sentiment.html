@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+    <!-- CONTENT -->    
+    <span class="icons_big" id="a" style="overflow:hidden"></span>
+    <span class="icons_big_text" id="c" style="overflow:scroll"></span>
+    <span class="icons_big" id="b" style="overflow:hidden"></span>
+    <br>
+    <div id="text"></div>
+    <br>
+    <button id="insight_update" type="button">Other Samples</button>
+    <br><br>
+    <a href="{{ url_for(next_page, insight_name=insight_name_next, insight_current=insight_name) }}" id="navigation_text">Continue</a>
+
+    <!-- SCRIPT -->    
+    <script type="text/javascript">
+       {% include "vis_prep/"+insight_name+"/"+insight_name+"_prep.js" %}
+       update_raw_data(raw_data={{ insight_data|tojson|safe }})
+    </script>
+
+    <!--  Vis Functions -->    
+    <script src="{{ url_for('static', filename='vis/'+'vis_template'+'/'+'vis_function.js') }}"></script>
+    <script src="{{ url_for('static', filename='vis/'+'vis_template'+'/'+'vis_vis.js') }}"></script>
+
+    <!--  Vis -->    
+    <script src="{{ url_for('static', filename='vis/'+insight_name+'/'+insight_name+'_vis.js') }}"></script>
+ 
+    <!--  Update Functions -->    
+   <script>
+        $('#insight_update').click(function() {
+            update_insight(reset_class=[".dist_sample", ".text_sample"], 
+                insight_name="{{ insight_name }}", redirect_url="{{ url_for('insight_update_view', insight_name=insight_name) }}")
+      
+        })
+    </script>
+
+</html>
+

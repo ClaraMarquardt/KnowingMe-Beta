@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+    <!-- CONTENT -->    
+    <center>
+    
+     <div id="chart"></div>
+     <br>
+     <div id="text"></div>
+     <br>
+     <div id="text_link"></div>
+    {% if insight_mode == "intro" %}
+
+      {% if insight_name_next == "dashboard" %}
+        <a href="{{ url_for('dashboard_intro_view') }}" id="navigation_text">Let's Explore</a>
+      {% else %}
+        <a href="{{ url_for('insight_intro_view',insight_name=insight_name_next, insight_current=insight_name) }}" id="navigation_text">Next Insight</a>
+      {% endif %}
+    
+    {% else %}
+      <a href="{{ url_for('dashboard_view') }}" id="navigation_text">Return to Dashboard</a>
+    {% endif %}
+
+
+    </center>
+    
+</html>
+
+
+

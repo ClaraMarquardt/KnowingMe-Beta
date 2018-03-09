@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+{% include 'template/general/title.html' %}
+
+<!-- HEADER -->
+<header>
+  
+  <!-- Dependencies & Co -->
+  {% include 'template/general/dependency.html' %}
+  {% include 'template/general/flash_message.html' %}
+
+</header>
+
+<!-- BODY -->
+<body scroll="no" style="overflow: hidden">
+
+  <section id="section01">
+
+    <!-- Header Section -->
+    {% include 'template/general/header_user.html' %}
+    {% include 'template/general/header_ribbon.html' %}
+
+    <!-- Nav Section -->
+    {% include 'template/general/nav_bar.html' %}
+
+    <!-- Content Section - MAIN -->
+    <section id="section01" class="parent_2">
+    
+      <center>
+      
+      {% include 'template/space/insight_main_top_space.html' %}
+    
+      <h3><p style="text-align:center;">{{ insight_title }} - Overview</p></h3>
+    
+      <p style="text-align:center; padding-left:150px; padding-right:150px;">{{ insight_text }}<font color= "#464241"></font></p>
+  
+      <p style="text-align:center;"><a href="{{ url_for('insight_b_view',insight_name=insight_name) }}"">Insight Example</a>&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;&nbsp;<a href="#section02">Learn More</a></p>
+  
+      {% include 'template/space/insight_main_scroll_bottom_space.html' %}
+    
+      </center>
+    
+    </section>
+  
+  </section>
+
+  <!-- Content Section - ADDITIONAL -->
+  <section id="section02" class="parent_2">
+
+    {% include 'template/space/insight_scroll_top_space.html' %}
+  
+    <p style="text-align:center; padding-left:300px; padding-right:150px;"><font color="#464241"><i>{{  insight_text_extra }} </i>
+  
+    <br>
+  
+    <p style="text-align:center; padding-left:300px; padding-right:150px;"><a href="#section01">Return To Insight Page</a></p>
+  
+    {% include 'template/space/insight_scroll_bottom_space.html' %}
+
+  </section>
+
+  <!-- SCRIPTS -->
+  {% include 'template/general/scroll_page.html' %}
+
+</body>
+</html>
+<!-- END -->

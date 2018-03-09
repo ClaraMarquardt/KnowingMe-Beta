@@ -11,6 +11,12 @@
 
 # ------------------------------------------------------------------------ #
 
+# Environment Variables
+# ------------------------------------------------------------------------ #
+ENV PORT 8000
+ENV PORT_NLP 9000
+ENV DEBUG "False"
+
 # Basic Setup (Ubuntu + Core dependencies incl. git, python, pip, postgresql)
 # ------------------------------------------------------------------------ #
 
@@ -25,17 +31,13 @@ RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys B97
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 RUN apt-get update && apt-get install -y python-software-properties software-properties-common postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3
 
+RUN apt-get install -y openjdk-8-jre python-pycurl
+
 # Info
 # ------------------------------------------------------------------------ #
 MAINTAINER Clara Marquardt "marquardt.clara@gmail.com”
 RUN pwd
 RUN ls root/
-
-
-# Environment Variables
-# ------------------------------------------------------------------------ #
-ENV PORT 8000
-ENV DEBUG "False"
 
 # Obtain Codebase (From Github)
 # ------------------------------------------------------------------------ #
@@ -81,6 +83,7 @@ RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
 VOLUME /KnowingMe_Data
 WORKDIR /KnowingMe/
 EXPOSE  $PORT
+EXPOSE  $PORT_NLP
 CMD ["/KnowingMe/codebase/docker/Docker_Start.sh"]
 
 # ------------------------------------------------------------------------ #
