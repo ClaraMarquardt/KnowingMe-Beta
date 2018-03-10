@@ -11,11 +11,6 @@
 
 # ------------------------------------------------------------------------ #
 
-# Environment Variables
-# ------------------------------------------------------------------------ #
-ENV PORT 8000
-ENV PORT_NLP 9000
-ENV DEBUG "False"
 
 # Basic Setup (Ubuntu + Core dependencies incl. git, python, pip, postgresql)
 # ------------------------------------------------------------------------ #
@@ -39,9 +34,15 @@ MAINTAINER Clara Marquardt "marquardt.clara@gmail.com”
 RUN pwd
 RUN ls root/
 
+# Environment Variables
+# ------------------------------------------------------------------------ #
+ENV PORT 8000
+ENV PORT_NLP 9000
+ENV DEBUG "False"
+
 # Obtain Codebase (From Github)
 # ------------------------------------------------------------------------ #
-RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@github.com/ClaraMarquardt/KnowingMe.git
+RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@github.com/ClaraMarquardt/KnowingMeBeta.git
 RUN pwd
 
 # Installation
@@ -50,7 +51,7 @@ RUN pwd
 # Installation - Setup
 # ---------------------------------------------
 RUN pwd
-WORKDIR /KnowingMe/
+WORKDIR /KnowingMeBeta/
 RUN chmod -R a+rwx .
 
 # Installation - Python Dependencies
@@ -59,14 +60,14 @@ RUN chmod -R a+rwx .
 ## Install Dependencies
 
 RUN pip install --no-binary scipy scikit-learn  
-RUN pip --no-cache-dir install -r codebase/setup/dependency.txt           	   
+RUN pip --no-cache-dir install -r codebase/installation/dependency.txt           	   
 RUN pip install --upgrade google-api-python-client        			           
 
 ## Test Dependencies
 
-RUN python codebase/setup/dependency_test.sh
-RUN python codebase/setup/nltk_test.py  
-RUN python codebase/setup/spacy_test.py  
+RUN python codebase/installation/dependency_test.sh
+RUN python codebase/installation/nltk_test.py  
+RUN python codebase/installation/spacy_test.py  
 
 # Database Initialization
 # ---------------------------------------------
@@ -81,10 +82,10 @@ RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
 # Launch
 # ---------------------------------------------
 VOLUME /KnowingMe_Data
-WORKDIR /KnowingMe/
+WORKDIR /KnowingMeBeta/
 EXPOSE  $PORT
 EXPOSE  $PORT_NLP
-CMD ["/KnowingMe/codebase/docker/Docker_Start.sh"]
+CMD ["/KnowingMeBeta/codebase/docker/Docker_Start.sh"]
 
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #
