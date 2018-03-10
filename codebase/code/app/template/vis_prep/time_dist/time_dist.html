@@ -4,11 +4,14 @@
     <!-- CONTENT -->    
     <center>
     
+        <p style="text-align:center; padding-left:350px; padding-right:350px;">
+        Let's have a look at some patterns in terms of the days and times at which <br>you were most likely to send and receive emails.
+        </p>
         <div id="chart"></div>
         <div id="text_link"></div>
         <div id="text"></div>
         <br>
-        <a href="{{ url_for(next_page, insight_name=insight_name_next, insight_current=insight_name) }}" id="navigation_text">Continue</a>
+        <a href="{{ url_for(next_page, insight_name=insight_name_next, insight_current=insight_name) }}" id="navigation_text"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a>
     
     </center>
     

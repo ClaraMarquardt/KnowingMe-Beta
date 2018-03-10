@@ -28,13 +28,16 @@
     
     {% include 'template/space/insight_main_top_space.html' %}
 
-    <h3><p style="text-align:center;">{{ insight_title }} - Example</p></h3>
-    <p style="text-align:center; padding-left:150px; padding-right:150px;"><font color="#464241">{{ insight_text }} </font></p>
+    <h3><p style="text-align:center;">Illustrating {{ insight_title }}</p></h3>
+
+    {% autoescape false %}
+    <p style="text-align:center; padding-left:250px; padding-right:250px;"><font color="#464241">{{ insight_text }} </font></p>
+    {% endautoescape %}
     
     <!-- Examples -->
     {% include 'vis_prep/'+insight_name+'/'+insight_name+'_sample.html' %}
 
-    <center><a href="{{ url_for('insight_c_view',insight_name=insight_name) }}">Insight Main</a></center>
+    <center><a href="{{ url_for('insight_c_view',insight_name=insight_name) }}"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a></center>
 
     </center>
   

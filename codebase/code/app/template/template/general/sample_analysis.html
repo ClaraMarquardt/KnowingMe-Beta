@@ -3,7 +3,7 @@
 
     <!-- CONTENT -->    
 	<form action = "{{ url_for('insight_b_view') }}" method="get" onsubmit="text_submit(analysis_text_id=1)">
-    	<input type="text" id="analysis_text_1" name="analysis_text" size="80" readonly>
+    	<input type="text" id="analysis_text_1" name="analysis_text" size="80" readonly>&nbsp;&nbsp;
     	<input type="submit" id="analysis_button_1" value="Score {{ insight_name }}" style="width:150px">
     	
     	<input type="hidden" name="analysis_text_id" size="25" value="1"> 
@@ -13,7 +13,7 @@
 	<br><br>
 
 	<form action = "{{ url_for('insight_b_view') }}" method="get" onsubmit="text_submit(analysis_text_id=2)">
-    	<input type="text" id="analysis_text_2" name="analysis_text" size="80" value="Sorry :) I dont want to hack the system!! :) is there another way?" readonly>
+    	<input type="text" id="analysis_text_2" name="analysis_text" size="80" value="Sorry :) I dont want to hack the system!! :) is there another way?" readonly>&nbsp;&nbsp;
     	<input type="submit" id="analysis_button_2" value="Score {{ insight_name }}" style="width:150px">
     	
     	<input type="hidden" name="analysis_text_id" size="25" value="2"> 
@@ -23,7 +23,7 @@
 	<br><br>
 
 	<form action = "{{ url_for('insight_b_view') }}" method="get" onsubmit="text_submit(analysis_text_id=3)">
-    	<input type="text" id="analysis_text_3" name="analysis_text" size="80" value="What are you trying to do?  Why can\'t you just store the 'Range'?" readonly>
+    	<input type="text" id="analysis_text_3" name="analysis_text" size="80" value="What are you trying to do?  Why can\'t you just store the 'Range'?" readonly>&nbsp;&nbsp;
     	 <input type="submit" id="analysis_button_3" value="Score {{ insight_name }}" style="width:150px">
     	
     	<input type="hidden" name="analysis_text_id" size="25" value="3"> 
@@ -33,7 +33,7 @@
 	<br><br>
 
 	<form action = "{{ url_for('insight_b_view') }}" method="get" onsubmit="text_submit(analysis_text_id=4)">
-    	<input type="text" id="analysis_text_4" name="analysis_text" size="80" value="This was supposed to have been moved to &lt;url&gt; per the cfd. why wasn't it moved?" readonly>
+    	<input type="text" id="analysis_text_4" name="analysis_text" size="80" value="This was supposed to have been moved to &lt;url&gt; per the cfd. why wasn't it moved?" readonly>&nbsp;&nbsp;
     	<input type="submit" id="analysis_button_4" value="Score {{ insight_name }}" style="width:150px">
     	
     	<input type="hidden" name="analysis_text_id" size="25" value="4">  	
@@ -43,7 +43,7 @@
 	<br><br>
 
 	<form action = "{{ url_for('insight_b_view') }}" method="get" onsubmit="text_submit(analysis_text_id=5)">
-    	<textarea id="analysis_text_5" name="analysis_text" value="" cols=78 rows=1></textarea>
+    	<textarea id="analysis_text_5" name="analysis_text" value="" cols=78 rows=1></textarea>&nbsp;&nbsp;
     	<input type="submit" id="analysis_button_5" value="Score {{ insight_name }}" style="width:150px">
 
     	<input type="hidden" name="analysis_text_id" size="25" value="5">

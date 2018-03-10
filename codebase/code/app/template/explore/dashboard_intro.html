@@ -16,14 +16,15 @@
 
   <!-- Header Section -->
   {% include 'template/general/header_user.html' %}
+  {% include 'template/general/header_ribbon_dashboard.html' %}
 
   <!-- Content Section -->
   {% include 'template/space/main_top_space.html' %}
 
-  <h3><p style="text-align:center;">Go forth with wisdom
+  <h3><p style="text-align:center;">Go Forth With The Wisdom
   </p></h3>
   <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">Now that you have a sense of what this app can do, why not explore some more? There are so many more insights to check out, and we’re adding new features all the time. Have a play! </font></p>
-  <center><a href="{{ url_for('dashboard_view') }}">Let's Explore</a></center>
+  <center><a href="{{ url_for('dashboard_view') }}"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a></center>
 
   {% include 'template/space/main_bottom_space.html' %}
    

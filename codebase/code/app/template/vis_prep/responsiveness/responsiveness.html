@@ -8,7 +8,7 @@
      <div id="text_link"></div>
      <div id="text"></div>
      <br>
-     <a href="{{ url_for(next_page, insight_name=insight_name_next,insight_current=insight_name) }}" id="navigation_text">Continue</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="{{ url_for('insight_intro_view',insight_name=insight_name) }}" id="navigation_text">Return To Insight Intro</a>
+     <a href="{{ url_for(next_page, insight_name=insight_name_next,insight_current=insight_name) }}" id="navigation_text"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a><br><a href="{{ url_for('insight_intro_view',insight_name=insight_name) }}" id="navigation_text">(Return to Insight Introduction)</a>
     
     </center>
     

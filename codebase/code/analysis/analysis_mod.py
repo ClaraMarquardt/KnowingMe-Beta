@@ -37,7 +37,7 @@ from misc import *
 
 # feature_generation
 #---------------------------------------------#
-def analysis(email_file_array, user_address, output_dir, current_date, earliest_date, latest_date):
+def analysis(email_file_array, user_address, output_dir, current_date, earliest_date, latest_date, restart=False):
 	
 	# global variables
 	global global_var
@@ -53,7 +53,7 @@ def analysis(email_file_array, user_address, output_dir, current_date, earliest_
 
 	# Import & basic processing > email_df
 	# -------------------------------------------#
-	if (not os.path.exists(feature_dict_file)):
+	if (restart==False and not os.path.exists(feature_dict_file) ):
 
 		# load
 		# ---------------------------#	
@@ -177,15 +177,24 @@ def analysis(email_file_array, user_address, output_dir, current_date, earliest_
 	# -------------------------------------------#
 	else:
 
-		# load
-		with open(feature_dict_file, "rb") as file:
-			feature_dict = dill.load(file)
-		time.sleep(5)
-
-		# update status
-		global_var['status_analysis_load'] = global_var['status_analysis_max']
-
+		try:
+			
+			# load
+			with open(feature_dict_file, "rb") as file:
+				feature_dict = dill.load(file)
+			time.sleep(5)
 		
+			# update status
+			global_var['status_analysis_load'] = global_var['status_analysis_max']
+
+		except Exception as e: 
+
+			if (restart==False):
+				
+				print("File corrupt - regenerating")
+				
+				analysis(email_file_array, user_address, output_dir, current_date, earliest_date, latest_date, restart=True)
+	
 	# Return Output
 	# -------------------------------------------#	
 	return(feature_dict)

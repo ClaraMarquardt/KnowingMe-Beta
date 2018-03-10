@@ -40,7 +40,8 @@ var update_data  = function(mode) {
           value_default_min:     d3.min($politeness),
           label:                 $politeness_label[i],
           label_alt:             $politeness_label_alt[i],
-          color:                 color[i]
+          color:                 color[i], 
+          mode:                  "Politeness (All Emails)"
     });}
 
 
@@ -51,7 +52,8 @@ var update_data  = function(mode) {
           value_default_min:     d3.min($politeness),
           label:                 $politeness_label[i],
           label_alt:             $politeness_label_alt[i],
-          color:                 color[i]
+          color:                 color[i], 
+          mode:                  "Politeness (Sent Emails)"
     });} 
 
     for (var i = 0; i < Object.keys($politeness).length; i++) {
@@ -61,7 +63,8 @@ var update_data  = function(mode) {
           value_default_min:     d3.min($politeness),
           label:                 $politeness_label[i],
           label_alt:             $politeness_label_alt[i],
-          color:                 color[i]
+          color:                 color[i], 
+          mode:                  "Politeness (Received Emails)"
     });} 
 
     for (var i = 0; i < Object.keys($politeness).length; i++) {
@@ -71,7 +74,8 @@ var update_data  = function(mode) {
           value_default_min:     d3.min($politeness_imbalance),
           label:                 $imbalance_label[i],
           label_alt:             $imbalance_label_alt[i],
-          color:                 color_imbalance[i]
+          color:                 color_imbalance[i], 
+          mode:                  "Politeness Imbalance"
     });} 
              
     if (mode=="All Emails") {
@@ -203,7 +207,7 @@ var stage_0 = function(mode="All Emails") {
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content  = ["Let's Look At Your Overall Politeness.", "Most Emails Are Relatively Polite - Let's Zoom In.", 
+  text_content  = ["Let's look at your overall politeness.", "Most emails are relatively polite - let's zoom in.", 
     text_temp.main_text, "LINK"]
   text_delay    = [0, 2000, 3500, 3500]
   text_duration = [1000,1000,1000,1000]
@@ -222,7 +226,7 @@ var stage_1 = function(mode="Sent Emails") {
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content =["Let's Look At The Politeness Of Your Sent Emails.",  
+  text_content =["Let's look at the politeness of your sent emails.",  
     text_temp.main_text, "LINK"]
   text_delay    =[0, 3500, 3500]
   text_duration =[1000,1000,1000]
@@ -242,7 +246,7 @@ var stage_2 = function(mode="Received Emails") {
   text_temp = update_text(mode=mode)
  
   // # Define
-  text_content =["Let's Look At The Politeness Of Your Received Emails.",  
+  text_content =["Let's look at the politeness of your received emails.",  
     text_temp.main_text, "LINK"]
   text_delay    =[0, 3500, 3500]
   text_duration =[1000,1000,1000]
@@ -262,7 +266,7 @@ var stage_3 = function(mode="Politeness Imbalance") {
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content  = ["Let's Look At The Politeness Imbalance Of Your Emails.",  
+  text_content  = ["Let's look at the politeness imbalance of your emails.",  
     text_temp.main_text, "LINK"]
   text_delay    = [0, 3500, 3500]
   text_duration = [1000,1000,1000]

@@ -82,6 +82,21 @@ def firstlast(email_link_df, email_link_df_unique, current_date, email_date_df, 
 	# initialize
 	firstlast_dict     = dict()
 
+	# initialize
+	firstlast_dict     = dict()
+	
+	# generate graph data    				
+	for contact_type, contact_type_name in zip(["F|M","M","F"], ["","_male","_female"]):
+
+		first_conversation_df = email_link_df.ix[(email_link_df['contact_group_thread'].str.contains(contact_type)) & (email_link_df['firstlast.__conversation']==1) &  (email_link_df['conversation_first']==1)]
+		first_conversation_df = first_conversation_df.drop_duplicates(subset="msg_threadid", keep='first', inplace=False)
+		firstlast_dict['stat_mean_first'+contact_type_name]  = np.nanmean(first_conversation_df['inbox_outbox']=="outbox") * float(100)
+
+	for contact_type, contact_type_name in zip(["F|M","M","F"], ["","_male","_female"]):
+
+		last_conversation_df = email_link_df.ix[(email_link_df['contact_group_thread'].str.contains(contact_type)) & (email_link_df['firstlast.__conversation']==1) &  (email_link_df['conversation_last']==1)]
+		last_conversation_df = last_conversation_df.drop_duplicates(subset="msg_threadid", keep='first', inplace=False)
+		firstlast_dict['stat_mean_last'+contact_type_name]  = np.nanmean(last_conversation_df['inbox_outbox']=="outbox") * float(100)
 
 	return(firstlast_dict)
 

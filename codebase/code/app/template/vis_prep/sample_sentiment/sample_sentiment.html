@@ -2,20 +2,32 @@
 <html>
 
     <!-- CONTENT -->    
+    <p style="text-align:center; padding-left:350px; padding-right:350px;">
+        Having looked at the volume of your emails, time and day patterns, and your network - let's now have a look at how we construct some of the insights that you will explore throughout the app. 
+        <br>As an illustration, we will examine how we assess the positiveness of your emails. <br> (You can explore this insight in more detail later).</p>
     <span class="icons_big" id="a" style="overflow:hidden"></span>
-    <span class="icons_big_text" id="c" style="overflow:scroll"></span>
+    <span class="icons_big_text" id="c" style="overflow:scroll"><br><b><i>Sample Email</i></b></font><br><br></span>
     <span class="icons_big" id="b" style="overflow:hidden"></span>
     <br>
     <div id="text"></div>
-    <br>
-    <button id="insight_update" type="button">Other Samples</button>
     <br><br>
-    <a href="{{ url_for(next_page, insight_name=insight_name_next, insight_current=insight_name) }}" id="navigation_text">Continue</a>
+    <a href="{{ url_for(next_page, insight_name=insight_name_next, insight_current=insight_name) }}" id="navigation_text"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a>
 
     <!-- SCRIPT -->    
     <script type="text/javascript">
        {% include "vis_prep/"+insight_name+"/"+insight_name+"_prep.js" %}
        update_raw_data(raw_data={{ insight_data|tojson|safe }})
+    </script>
+
+    <!--  Update Functions -->    
+   <script>
+
+    var update_text_sample = function() {
+           
+           update_insight(reset_class=[".dist_sample", ".text_sample"], 
+                insight_name="{{ insight_name }}", redirect_url="{{ url_for('insight_update_view', insight_name=insight_name) }}")
+      
+        }
     </script>
 
     <!--  Vis Functions -->    
@@ -25,14 +37,6 @@
     <!--  Vis -->    
     <script src="{{ url_for('static', filename='vis/'+insight_name+'/'+insight_name+'_vis.js') }}"></script>
  
-    <!--  Update Functions -->    
-   <script>
-        $('#insight_update').click(function() {
-            update_insight(reset_class=[".dist_sample", ".text_sample"], 
-                insight_name="{{ insight_name }}", redirect_url="{{ url_for('insight_update_view', insight_name=insight_name) }}")
-      
-        })
-    </script>
 
 </html>
 

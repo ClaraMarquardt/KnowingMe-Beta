@@ -115,7 +115,7 @@ def reset(reset_user=True):
 		del feature_data
 
 	# display reset message
-	flask.flash('App Successfully Reset')
+	flask.flash('App Successfully Reset.')
 
 
 # access checks
@@ -186,7 +186,7 @@ def access_check(access_level):
 def access_denied():
 
 	# update
-	flask.flash("It looks like you tried to open a page that you are not authorized for. You will be returned to the landing page.")
+	flask.flash("It looks like you tried to open a page that you are not authorized to access. You will now be redirected to the landing page.")
 
 	# return page
 	return_page = "landing_view"
@@ -272,10 +272,11 @@ def intro_load_analysis_wrapper(user, user_name, email_range, email_diff, output
 
 	# launch process
 	try: 
+
 			
 		# obtain email lists
-		email_range_list = [str(datetime.datetime.strptime(x,'%m/%d/%Y').strftime('%m_%d_%Y')) for x in email_range]
-		email_range_list = string.join(email_range_list,"|")
+		email_range_list  = [str(datetime.datetime.strptime(x,'%m/%d/%Y').strftime('%m_%d_%Y')) for x in email_range]
+		email_range_list  = string.join(email_range_list,"|")
 
 		email_array       = np.concatenate((glob.glob(os.path.join(output_dir,'inbox', 'email*.p')), 
 			glob.glob(os.path.join(output_dir,'outbox', 'email*.p'))))
@@ -294,6 +295,7 @@ def intro_load_analysis_wrapper(user, user_name, email_range, email_diff, output
 
 		else:
 		
+
 			# data preparation 
 			# -----------------------
 	
@@ -743,7 +745,7 @@ def intro_main_view():
 				insight_name = insight_name, 
 				insight_name_next = key_var['next_insight'],  
 				insight_data = insight_data[insight_name], 
-				insight_title = insight_title[insight_name], 
+				insight_title = insight_title[insight_name],
 				next_page = 'intro_main_view',
 				release_mode=key_var["intro_release"])
 	
@@ -802,6 +804,12 @@ def intro_final_view():
 # ------------------------------------------------------------------------ #
 @app.route('/dashboard_intro')
 def dashboard_intro_view():
+
+	# define globals
+	global key_var
+
+	# update status
+	key_var['intro_release'] = True
 
 	# render
 	return flask.render_template('explore/dashboard_intro.html',user=key_var['user_name'],user_email=key_var['user'], 
@@ -1005,6 +1013,14 @@ def insight_a_view():
 	
 		# if insight exists
 		if (insight_name in insight_data.keys()):
+
+			if insight_name in insight_data['add_info_list']:
+				more_info          = True
+				insight_text_extra = insight_text[insight_name]['screen_add']
+			else:
+				more_info          = False
+				insight_text_extra = ""
+	
 	
 			# render
 			return flask.render_template('insight/insight_a.html', user=key_var['user_name'],user_email=key_var['user'], 
@@ -1012,12 +1028,13 @@ def insight_a_view():
 				earliest_date = user_setting["email_earliest"], 
 				latest_date = user_setting["email_latest"], date_diff=user_setting["email_diff"],
 				insight_text = insight_text[insight_name]['screen_1'], 
-				insight_text_extra = insight_text[insight_name]['screen_add'], 
+				insight_text_extra = insight_text_extra, 
 				insight_data = insight_data[insight_name], 
 				insight_name = insight_name, 
 				insight_mode = key_var['insight_mode'], 
 				insight_title = insight_title[insight_name],
-				release_mode=key_var["intro_release"])
+				release_mode = key_var["intro_release"], 
+				more_info = more_info)
 	
 		# if insight does not exist
 		else:
@@ -1116,7 +1133,6 @@ def insight_c_view():
 				user_photo=key_var['user_photo'],timezone_utc_offset = timezone_utc_offset, timezone_utc_name = timezone_utc_name,
 				earliest_date = user_setting["email_earliest"], 
 				latest_date = user_setting["email_latest"], date_diff=user_setting["email_diff"],
-				insight_text = insight_text[insight_name]['screen_3'], 
 				insight_data = insight_data[insight_name], 
 				insight_name = insight_name,
 				insight_name_next = insight_name,
@@ -1166,10 +1182,6 @@ def insight_d_view():
 		else: 
 
 			key_var['next_insight'] 			= "dashboard"
-		
-		if (key_var['insight_intro_id']==2):
-			
-			key_var['intro_release'] = True
 
 		if (insight_name not in insight_data['sample_insight_list']):
 	
@@ -1181,7 +1193,6 @@ def insight_d_view():
 					user_photo=key_var['user_photo'],timezone_utc_offset = timezone_utc_offset, timezone_utc_name = timezone_utc_name,
 					earliest_date = user_setting["email_earliest"], 
 					latest_date = user_setting["email_latest"], date_diff=user_setting["email_diff"],
-					insight_text = insight_text[insight_name]['screen_4'], 
 					insight_data = insight_data[insight_name], 
 					insight_name = insight_name,
 					insight_name_next = key_var['next_insight'],
@@ -1228,19 +1239,49 @@ def insight_info_view():
 		# initialize
 		insight_name      = flask.request.args.get('insight_name')
 		
+		if insight_name in insight_data['add_info_list']:
+			more_info          = True
+			insight_text_extra = insight_text[insight_name]['screen_add']
+		else:
+			more_info          = False
+			insight_text_extra = ""
+	
+
 		# render
 		return flask.render_template('insight/insight_info.html', user=key_var['user_name'],user_email=key_var['user'], 
 			user_photo=key_var['user_photo'],timezone_utc_offset = timezone_utc_offset, timezone_utc_name = timezone_utc_name,
 			earliest_date = user_setting["email_earliest"], 
 			latest_date = user_setting["email_latest"], date_diff=user_setting["email_diff"],
 			insight_text = insight_text[insight_name]['screen_1'], 
-			insight_text_extra = insight_text[insight_name]['screen_add'], 
-			insight_data = insight_data[insight_name], 
+			insight_text_extra = insight_text_extra, 
 			insight_name = insight_name, 
 			insight_mode = key_var['insight_mode'], 
 			insight_title = insight_title[insight_name],
-			release_mode=key_var["intro_release"])
+			release_mode = key_var["intro_release"],
+			more_info = more_info)
 	
+
+	else: 
+
+		# access denied 
+		access_denied_url = access_denied()
+
+		# render
+		return flask.redirect(flask.url_for(access_denied_url))
+
+
+
+# references
+# ------------------------------------------------------------------------ #
+@app.route('/references')
+def references_view():
+
+	if (access_check(access_level=1)) == True: 
+
+		# render
+		return flask.render_template('explore/references.html', 
+			user=key_var['user_name'],user_email=key_var['user'], 
+			user_photo=key_var['user_photo'])
 
 	else: 
 

@@ -11,7 +11,7 @@ var days               = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
 var times              = ["0a", "1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a", "12p", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p"]
 var days_long          = ["Monday ", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 var times_long         = ["0am-1am", "1am-2am", "2am-3am", "3am-4am", "4am-5am", "5am-6am", "6am-7am", "7am-8am", "8am-9am", "9am-10am", "10am-11am", "11am-12pm", "12pm-1pm", "1pm-2pm", "2pm-3pm", "3pm-4pm", "4pm-5pm", "5pm-6pm", "6pm-7pm", "7pm-8pm", "8pm-9pm", "9pm-10pm", "10pm-11pm", "11pm-12pm"]
-var daytime            = ["", "", "Night \uf236", "", "", "", "", "", "Morning \uf0f4", "", "", "", "", "", "Afternoon \uf185", "", "", "", "", "", "Evening \uf186", "", "", ""]
+var daytime            = ["", "", "Night  \uf236", "", "", "", "", "", "Morning  \uf0f4", "", "", "", "", "", "Afternoon  \uf185", "", "", "", "", "", "Evening  \uf186", "", "", ""]
 
 // KEY
 var width      = 700
@@ -80,7 +80,7 @@ var update_text  = function(mode) {
   // # All Emails
   if (mode=="All Emails") {
 
-    main_text = "You corresponded the most on " + $date_weekday_most + ". You corresponded the most in the "+ $date_daypart_most + ".<br> "+"You corresponded the least on " + $date_weekday_least + ". You corresponded the least in the " + $date_daypart_least + ".<br><i> (All times are rendered in " + $timezone_utc_name + " (UTC-" + $timezone_utc_offset+"))</i>" 
+    main_text = "You corresponded the most on " + $date_weekday_most + ". You corresponded the most in the "+ $date_daypart_most + ".<br> "+"You corresponded the least on " + $date_weekday_least + ". You corresponded the least in the " + $date_daypart_least + ".<br><i> All times are rendered in " + $timezone_utc_name + " (UTC-" + $timezone_utc_offset+").</i>" 
 
 
   } 
@@ -155,7 +155,8 @@ var stage_entry = function() {
   generate_button(width=70, displ_x_origin=170,displ_x_step=150, displ_y_origin=-35,displ_y_step=0,
     button_label    = ["All Emails", "Sent Emails", "Received Emails"],
     button_function = [stage_0, stage_1, stage_2],
-    button_type = ["button","button","button"])
+    button_type = ["button","button","button"],
+    button_move = [10,10,3])
 
 }
 

@@ -17,7 +17,8 @@
             "{{ url_for('intro_load_update_view') }}",
             function(data) {
               $('#load_email').text(data.status_email_load);
-              $('#total_email').text(data.status_email_max);
+              $('#total_email_1').text(data.status_email_max);
+              $('#total_email_2').text(data.status_email_max);
               if (data.status == 'finished') {
                 window.location.replace("{{ url_for('intro_load_c_view') }}");
               } else if (data.status == 'error') {
@@ -45,12 +46,12 @@
   
   <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">
   <br>When you write an email, you’re saying things explicitly. 
-  <br>But you’re also communicating subtly in other ways
+  <br>But you’re also communicating subtly in other ways.
   <br>
   <br>Sometimes your tone might be more polite, or more curt. 
-  <br>
   <br>Sometimes you know how you’ve made an email more polite. 
-  <br>Other times, you follow an intuition but you probably couldn’t articulate what you did.
+  <br>Other times, you follow an intuition, but you probably couldn’t articulate what you did.
+  <br>
   </font></p>
 
   <br><br>
@@ -60,8 +61,8 @@
   
   <br><br>
 
-  <font color="#575a60"><i>We Are Preparing Your Emails Between {{ earliest_date }} And {{ latest_date }} For Analysis ({{ date_diff }} Days) 
-  <br> We Have Prepared <div id="load_email" style="display: inline">....</div> out of <div id="total_email" style="display: inline">....</div> Emails</i></font>
+  <font color="#6d6666">We are preparing <div id="total_email_1" style="display: inline">....</div> of your recent personal emails for a closer analysis. 
+  <br><i>We have prepared <div id="load_email" style="display: inline">....</div> out of <div id="total_email_2" style="display: inline">....</div> emails.</i></font>
   </center>
 
   {% include 'template/space/insight_main_bottom_space.html' %}

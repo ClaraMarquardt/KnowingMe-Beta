@@ -16,13 +16,14 @@
 
   <!-- Header Section -->
   {% include 'template/general/header_user.html' %}
+  {% include 'template/general/header_ribbon_home.html' %}
 
   <!-- Content Section -->
   {% include 'template/space/main_top_space.html' %}
 
   <div style="text-align:center;vertical-align:middle;"><font color="#464241"><h3>Hello {{ user }}</h3></font></p>
 
-  <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">While we’re getting your data ready, <br> let’s take a quick look at we’ll be working through together</font></p>
+  <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">While we’re getting your data ready, <br> let’s take a quick look at we’ll be working through together.</font></p>
 
   <p style="text-align:center;"><a href="{{ url_for('intro_load_a_view') }}">Continue</a></p>
 

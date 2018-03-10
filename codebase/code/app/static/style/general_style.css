@@ -165,6 +165,13 @@ path.spiral {
     width:80%;
 }
 
+.parent_3 {
+    margin-right:0px;
+    float:left;
+    width:100%;
+}
+
+
 .vertical-menu {
     width: 110px; 
 }
@@ -187,26 +194,28 @@ path.spiral {
 /* Dashboard icons */
 .nav3 {
     height: auto;
-    padding-left: 50px;
-    padding-top: 20px;
-    padding-right: 50px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    text-align: center;
 }
 
 .icons{
     display:inline-block;
-    width:50px; 
+    width:70px; 
     height: 40px; 
     padding-right: 50px;
     padding-left: 50px;
-
+    text-align: center;
    }
 
 .icons_big{
     display:inline-block;
     width:320px; 
-    height: 350px; 
+    height: 320px; 
     padding-right: 0px;
     padding-left: 0px;
+    text-align: center;
 
    }
 
@@ -233,8 +242,7 @@ text.mono {
  
 text.mono_week {
   font-size: 7pt;
-/*  font-family: Consolas, courier;
-*/  fill: #aaa;
+  fill: #aaa;
 }
 
 text.axis-workweek {
@@ -269,8 +277,9 @@ text.axis-workweek {
 
 /* Buttons */
 .button rect {
-  stroke:#848383
-  stroke-width: 2px;
+  stroke:#090177
+  stroke-width: 3px;
+  opacity: 0.9
 }
 
 .button rect.pressed {

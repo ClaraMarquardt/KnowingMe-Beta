@@ -16,6 +16,9 @@ var generate_multi_bar = function(mode, chart_data, bar_number, delay_bar = 2000
       d3.selectAll(".bar_vis").style("opacity", 0.3)
       d3.selectAll(".bar_vis_"+bar_number).style("opacity", 1)
 
+      d3.selectAll(".circle_vis").style("opacity", 0.3)
+      d3.selectAll(".circle_vis_"+bar_number).style("opacity", 1)
+
     }
 
 
@@ -35,7 +38,7 @@ var generate_multi_bar = function(mode, chart_data, bar_number, delay_bar = 2000
 
       // # Initialize
       // # -------------
-      gap            = d3.max(chart_data, function(d) { return d.value_default; })/3
+      gap            = d3.max(chart_data, function(d) { return d.value_default; })/2.5
       min_transition = d3.min(chart_data, function(d) { return d.value_default_min; }) - gap
       min_transition = d3.max([0, min_transition])
       min_transition = d3.max(chart_data, function(d) { return d.value_default; })-min_transition
@@ -116,7 +119,7 @@ var generate_multi_bar = function(mode, chart_data, bar_number, delay_bar = 2000
           .on('mouseover', function(d) {
         
             tooltip.select('.date').html("<b>" + d.label + "</b>");
-            tooltip.select('.value').html("Score: <b>" + d.value.toFixed(3) + "<b>");
+            tooltip.select('.value').html(d.mode +": <b>" + d.value.toFixed(3) + "<b>");
             tooltip.style('display', 'block');
             tooltip.style('opacity',2);
         
@@ -151,8 +154,8 @@ var generate_multi_bar = function(mode, chart_data, bar_number, delay_bar = 2000
         bar = g.selectAll(".bar")
                .data(function(d) { 
                  var data = []; 
-                 d3.range(Math.round(chart_data[j].count)).forEach(function(){
-                 data.push({color: "red",count:chart_data[j].count,label:chart_data[j].label});}); 
+                 d3.range(d3.min([500, Math.round(chart_data[j].count)])).forEach(function(){
+                 data.push({color: "red",count:chart_data[j].count,label:chart_data[j].label, mode:chart_data[j].mode});}); 
                 return data;})
                .enter()
                .append("g")
@@ -225,7 +228,7 @@ var generate_multi_bar = function(mode, chart_data, bar_number, delay_bar = 2000
           .on('mouseover', function(d) {
         
             tooltip.select('.date').html("<b>" + d.label + "</b>");
-            tooltip.select('.value').html("Score: <b>" + d.count.toFixed(3) + "<b>");
+            tooltip.select('.value').html(d.mode + ": <b>" + d.count.toFixed(3) + "<b>");
             tooltip.style('display', 'block');
             tooltip.style('opacity',2);
         
@@ -243,9 +246,124 @@ var generate_multi_bar = function(mode, chart_data, bar_number, delay_bar = 2000
         
         });
 
+  } else if (vis_type=="circle") {
+
+  d3.selectAll(".circle_vis").style("opacity", 0.3)
+
+  // ## Helper function
+  function arcTween(a) {
+    var i = d3v2.interpolate(this._current, a);
+    this._current = i(0);
+    return function(t) {
+    return arc(i(t));
+    };
   }
 
+  function change() {
+    for (var m = 0; m < 3; m++) {
+
+      var value = this.value;
+      path_temp=path_array[m]
+      pie.value(function(d) { return d.perc; }); 
+      path_temp = path_temp.data(pie);
+      path_temp.transition().delay(m*1000).duration(1500).attrTween("d", arcTween); 
+    }
+  }
+
+  //# Visualization
+
+  var path_array = []
+
+  for (var i = 0; i < chart_data.length; i++) {
+
+    // ## generate data
+    chart_data_temp = []
+
+    for (var j = 0; j < Object.keys(chart_data[i].perc).length; j++) {
+      chart_data_temp.push({
+      perc:            chart_data[i].perc[j],
+      perc_alt:        chart_data[i].perc_alt[j]
+
+    });}
+
+    color = chart_data[i].color
+
+    // ## generate pie
+    var pie = d3v2.layout.pie()
+                  .sort(null)
+                  .value(function(d) { return d.perc_alt; });
+  
+    var arc = d3v2.svg.arc()
+                  .innerRadius(radius - 100)
+                  .outerRadius(radius - 20);
+  
+  
+    path_array[i] = svg.append("g")
+                       .datum(chart_data_temp)
+                       .selectAll("path")
+                       .data(pie)
+                       .enter()
+                       .append("path")
+                       .attr("transform", "translate(" + (140+200*i) + "," + (50+bar_number*150) + ")")
+                       .attr("d", arc)
+                       .each(function(d) { this._current = d; }) 
+                       .attr("class", "circle_vis circle_vis_vis circle_vis_"+bar_number)
+                       .attr("opacity",1)
+                       .attr("fill", function(d,i) { return color[i]; })
+                       .on("click",function(d){ text_function(mode, bar_number) })
+    
+    svg.append("text")
+       .text(Math.round(chart_data[i].perc[0])+"%")
+       .style("font-family","Lucida Grande")
+       .style("fill", "black" )
+       .style("stroke", "black" )
+       .style("text-anchor", "middle")
+       .style("font-size", "10px" )
+       .attr("class", "circle_vis circle_vis_"+bar_number)
+       .style("opacity",0)
+       .attr("transform", "translate(" + (140+200*i) + "," + (70+bar_number*150) + ")")
+       .transition()
+       .delay(1400*i)
+       .style("opacity",1)
+
+    svg.append("text")
+       .text(chart_data[i].label)
+       .style("font-family","Lucida Grande")
+       .style("fill", "black" )
+       .style("stroke", "black" )
+       .style("text-anchor", "middle")
+       .style("font-size", "10px" )
+       .style("opacity",0)
+       .attr("class", "circle_vis circle_vis_"+bar_number)
+       .attr("transform", "translate(" + (140+200*i) + "," + (-20+bar_number*150) + ")")
+       .transition()
+       .delay(1400*i)
+       .style("opacity",1)
+
+
+  
+    setTimeout(function () {change();}, 100);                  
+
+  }
+
+  svg.append("text")
+     .text(label_main)
+     .style("font-family","Lucida Grande")
+     .attr("class", "circle_vis circle_vis_"+bar_number)
+     .style("fill", "black" )
+     .style("stroke", "black" )
+     .style("text-anchor", "middle")
+     .style("font-size", "10px" )
+     .style("opacity",0)
+     .attr("transform", "translate(" + (70) + "," + (50+bar_number*150) + ") rotate(270)")
+     .transition()
+     .delay(1400*i)
+     .style("opacity",1)
+
+}
+
 };
+
 
 // # VERTICAL BAR
 // # ------------------------------
@@ -275,7 +393,7 @@ var x = d3.scaleLinear()
       .attr("height", y.bandwidth())
       .style("fill", function(d) { return d.color})
       .transition()
-      .duration(000)
+      .duration(1500)
       .attr("x", function (d) {return x(Math.min(0, d.value));})
       .attr("width", function (d) {return Math.abs(x(d.value) - x(0));})
 
@@ -303,7 +421,7 @@ var x = d3.scaleLinear()
     .on('mouseover', function(d) {
   
       tooltip.select('.date').html("<b>" + d.label + "</b>");
-      tooltip.select('.value').html("Score: <b>" + d.value.toFixed(3) + "<b>");
+      tooltip.select('.value').html(d.mode + ": <b>" + d.value.toFixed(3) + "<b>");
       tooltip.style('display', 'block');
       tooltip.style('opacity',2);
   
@@ -328,10 +446,13 @@ var x = d3.scaleLinear()
 // # ------------------------------
 var generate_histogram = function(mode) {
 
+    d3.selectAll(".vis").attr("opacity",1)
+    
+    
     // # Initialize visualization functions
     // # -------------
     var x = d3.scaleLinear()
-        .rangeRound([0, width]);
+        .rangeRound([0, width_svg]);
     
     var bins = d3.histogram()
         .domain([0,1])
@@ -354,14 +475,19 @@ var generate_histogram = function(mode) {
   
       bar.append("rect")
          .attr("x", 1)
+         .attr("class","vis")
          .attr("width", x(bins[0].x1) - x(bins[0].x0) - 1)
          .attr("height", function(d) { return height_svg - y(d.length); })
+         .attr("fill","darkblue")
          .on("click", function(d){
+          
+          d3.selectAll(".vis").attr("opacity",0.1)
+          d3.select(this).attr("opacity",1)
           stage_1()
 
          // # clear/update text
         d3.select("#c").selectAll(".text_sample").remove().exit()
-        d3.select("#c").append("text").attr("class", "text_sample").text($sentiment_score_sample[Math.ceil(d.x0*10)])
+        d3.select("#c").append("text").attr("class", "text_sample").text($sentiment_score_sample[Math.ceil(d.x0*10)]).style("font-style","italic").style("color", "darkblue")
         
         // # clear/update dist
         d3.selectAll(".dist_sample").remove().exit()
@@ -429,7 +555,6 @@ var generate_heatmap = function(chart_data) {
   var dayLabels = svg.selectAll(".dayLabel")
                      .data(days)
                      .enter().append("text")
-                     .attr("font-family", "FontAwesome")
                      .text(function(d) { return d })
                      .attr("x", 0)
                      .attr("y", function (d, i) { return i * gridSize; })
@@ -440,7 +565,7 @@ var generate_heatmap = function(chart_data) {
   var timeLabels = svg.selectAll(".timeLabel")
                       .data(times)
                       .enter().append("text")
-                      .html(function(d) { return d; })
+                      .text(function(d) { return d; })
                       .attr("x", function(d, i) { return i * gridSize; })
                       .attr("y", 0)
                       .style("text-anchor", "middle")
@@ -570,7 +695,7 @@ var generate_bar_brush = function(chart_data) {
       localBrush_daylag  = original_end_id + 1
       localBrush_daydiff =  original_start_id - original_end_id
       if (localBrush_email > $max_email | localBrush_email< $min_email | localBrush_daylag < $timelag_min| localBrush_daydiff < $min_day |  localBrush_daydiff < 0) {
-        alert("You need to select a timeframe which spands at least "+$min_day+" days and does not begin within the past "+$timelag_min+" days. The timeframe you select needs to contain between "+$min_email+" and " + $max_email + " Emails.")
+        alert("You need to select a timeframe which spands at least "+$min_day+" days and does not begin within the past "+$timelag_min+" days. The timeframe you select needs to contain between "+$min_email+" and " + $max_email + " emails.")
         
         brushinit(original_start_id=$start_date_id_original, original_end_id=$end_date_id_original)
       } else {
@@ -579,7 +704,7 @@ var generate_bar_brush = function(chart_data) {
           brush.extent([original_start_id, original_end_id]);
           svg.select(".brush").call(brush);
         
-          d3.select("#text").text(localBrush_email + " Emails");
+          d3.select("#text").text("The selected timeframe contains " + localBrush_email + " emails.");
           d3.select("#end_date").property("value", $email_date[original_end_id]);
           d3.select("#start_date").property("value", $email_date[original_start_id]);
 
@@ -634,7 +759,7 @@ var generate_bar_brush = function(chart_data) {
       });
 
       // ## update the text fields
-      d3.select("#text").text(localBrush_email + " Emails");
+      d3.select("#text").text("The selected timeframe contains " + localBrush_email + " emails.");
       d3.select("#end_date").property("value", $email_date[localBrush_end_date]);
       d3.select("#start_date").property("value", $email_date[localBrush_start_date]);
 
@@ -654,12 +779,12 @@ var generate_bar_brush = function(chart_data) {
       localBrush_daylag  = localBrush_end_date + 1
       localBrush_daydiff =   localBrush_start_date - localBrush_end_date
       if (localBrush_email > $max_email | localBrush_email< $min_email | localBrush_daylag < $timelag_min| localBrush_daydiff < $min_day |  localBrush_daydiff < 0) {
-        alert("You need to select a timeframe which spands at least "+$min_day+" days and does not begin within the past "+$timelag_min+" days. The timeframe you select needs to contain between "+$min_email+" and " + $max_email + " Emails.")
+        alert("You need to select a timeframe which spands at least "+$min_day+" days and does not begin within the past "+$timelag_min+" days. The timeframe you select needs to contain between "+$min_email+" and " + $max_email + " emails.")
         
         brushinit(original_start_id=$start_date_id_original, original_end_id=$end_date_id_original)
       } else {
 
-      d3.select("#text").text(localBrush_email + " Emails");
+      d3.select("#text").text("The selected timeframe contains " + localBrush_email + " emails.");
       d3.select("#end_date").property("value", $email_date[localBrush_end_date]);
       d3.select("#start_date").property("value", $email_date[localBrush_start_date]);
     }
@@ -757,8 +882,12 @@ var generate_bar = function(chart_data) {
    .enter().append("rect")
    .attr("class", "bar")
    .attr("x", function(d) { return x(d.date); })
+   .attr("y", function(d) {  return height_svg; })
+   .attr("width", x.bandwidth()/2)
+   .attr("height", function(d) { return 0 })
+   .transition()
+   .duration(1000)
    .attr("y", function(d) {  return y(d.value); })
-   .attr("width", x.bandwidth())
    .attr("height", function(d) { return height_svg - y(d.value)+1; })
 
   // ## TOOLTIP
@@ -808,7 +937,7 @@ var generate_spiral = function(chart_data) {
 
   // # Prepare Visualization variables
   // # -------------
-  var r      = d3.min([width, height]) / 2 - 40;
+  var r      = d3.min([width, height]) / 2 - 20;
   var radius = d3.scaleLinear()
                  .domain([start, end])
                  .range([40, r]);
@@ -949,7 +1078,7 @@ var generate_spiral = function(chart_data) {
         .style("stroke","#000000")
         .style("stroke-width","2px");
   
-      tooltip.select('.date').html("Date: <b>" + d.date.toDateString() + "</b>");
+      tooltip.select('.date').html("<b>" + d.date.toDateString() + "</b>");
       tooltip.select('.value').html("Emails: <b>" + Math.round(d.value*100)/100 + "<b>");
       tooltip.style('display', 'block');
       tooltip.style('opacity',2);
@@ -978,7 +1107,7 @@ var generate_spiral = function(chart_data) {
 // # CHORD
 // # ------------------------------
 // # ------------------------------
-function generate_chord( chart_data, chart_data_general) {
+function generate_chord( chart_data, chart_data_general,most_send, delay_1=3500, delay_2=6000) {
     
     // # Initialize
     // # -------------
@@ -1120,7 +1249,7 @@ function generate_chord( chart_data, chart_data_general) {
           .duration(1500)
           .attr("opacity", 0.5) 
           .attrTween("d", arcTween( last_layout ))
-          .transition().duration(100).attr("opacity", 0.7);
+          .transition().duration(100).attr("opacity", 0.7)
     
     newGroups.append("svg:text")
              .attr("dy", ".35em")
@@ -1222,14 +1351,20 @@ function generate_chord( chart_data, chart_data_general) {
               .remove();
     
     chordPaths.transition()
-              .duration(1500)
-              .attr("opacity", 0.5) 
+              .duration(2000)
+              .attr("opacity", 0.2) 
               .style("fill", function (d) {
                 return group_color(chart_data_general[d3v2.max([d.source.index,d.target.index])].group, 
                   female_color=female_color, male_color=male_color,na_color=na_color)
               })
               .attrTween("d", chordTween(last_layout))
-              .transition().duration(100).attr("opacity", 0.7);
+              .transition().delay(delay_1).duration(1000).attr("opacity", function(d,i) {
+            target_id       = chart_data_general[d3v2.max([d.source.index,d.target.index])].label
+            if (target_id==most_send) {
+              return 1
+            } else {
+            return 0.2}})
+            .transition().delay(delay_2).duration(2000).attr("opacity", 0.5)
 
     groupG.on("mouseover", function(d) {
         

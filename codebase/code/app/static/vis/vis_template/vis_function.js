@@ -71,12 +71,12 @@ var generate_next_link = function(obj_id="#text_link", text_new="<i>See More</i>
 
    		d3.select(obj_id)
         .append("svg")
-        .attr("width",15)
-        .attr("height",15)   
+        .attr("width",17)
+        .attr("height",17)   
         .append("image")
         .attr('xlink:href','static/image/icon/next.png')
-        .attr("width",15)
-        .attr("height",15)
+        .attr("width",17)
+        .attr("height",17)
         // .attr("x", 150)
    		  .on("click", function() { function_new() })
 
@@ -136,9 +136,9 @@ button_d3 = function() {
 
   var dispatch = d3.dispatch('press', 'release');
 
-  var padding = 3,
-      radius = 3,
-      stdDeviation = 5,
+  var padding = 2,
+      radius = 1,
+      stdDeviation = 1,
       offsetX = 1,
       offsetY = 1;
 
@@ -148,13 +148,16 @@ button_d3 = function() {
           .attr('id', 'd3-button' + i)
           .attr('transform', 'translate(' + d.x + ',' + d.y + ')');
 
-      var text = g.append('text').text(d.label);
+      var text = g.append('text')
+                  .text(d.label)
+                  .style("font-family","Lucida Grande")
+                  .style("text-anchor", "right")
+                  .style("font-size", d.fontsize )
       var defs = g.append('defs');
       var bbox = text.node().getBBox();
       var rect = g.insert('rect', 'text')
-          .attr("x", bbox.x - padding)
+          .attr("x", bbox.x - padding-d.move)
           .attr("y", bbox.y - padding)
-          // .attr("width", bbox.width + 2 * padding)
           .attr("width", function(d, i) { return d.width})
           .attr("height", bbox.height + 2 * padding)
           .attr('rx', radius)
@@ -173,7 +176,7 @@ button_d3 = function() {
     var gradient = defs.append('linearGradient')
         .attr('id', 'gradient' + i)
         .attr('x1', '0%')
-        .attr('y1', '0%')
+        .attr('y1', '100%')
         .attr('x2', '0%')
         .attr('y2', '100%');
 
@@ -200,7 +203,7 @@ button_d3 = function() {
 
     shadow.append('feGaussianBlur')
         .attr('in', 'SourceAlpha')
-        .attr('stdDeviation', 2)
+        .attr('stdDeviation', 0.5)
 
     shadow.append('feOffset')
         .attr('dx', offsetX)
@@ -262,9 +265,6 @@ button_d3 = function() {
     dispatch.call('press', this, d, i)
     d3.select(this).classed('pressed', true);
     var shadow = d3.select(this.parentNode).select('filter')
-    // if (!shadow.node()) return;
-    // shadow.select('feOffset').attr('dx', 0).attr('dy', 0);
-    // shadow.select('feGaussianBlur').attr('stdDeviation', 0);
   }
 
   function release(d, i) {
@@ -291,7 +291,7 @@ button_d3 = function() {
 
 // ## generate_button
 // # ------------------------------
-var generate_button = function (width, displ_x_origin,displ_x_step, displ_y_origin,displ_y_step, button_label, button_text, button_type) {
+var generate_button = function (width, displ_x_origin,displ_x_step, displ_y_origin,displ_y_step, button_label, button_text, button_type,button_move, fontsize="8px") {
 
     var button_data = []
     var displ_x     = displ_x_origin
@@ -306,16 +306,20 @@ var generate_button = function (width, displ_x_origin,displ_x_step, displ_y_orig
           function_click: button_function[i],
           x:              displ_x,
           y:              displ_y, 
-          width:          width
+          width:          width, 
+          move:           button_move[i],
+          fontsize:       fontsize
         })
 
       } else {
 
         g.append("text")
-           .style("font-size", "7px")
+           .style("font-size", "9px")
            .style("font-style", "italic")
+           .style("font-family","Lucida Grande")
+           .style("text-anchor", "right")
            .text(button_label[i])
-           .attr("transform", "translate(" + (displ_x-12) + "," + (displ_y+5) + ")")
+           .attr("transform", "translate(" + (displ_x-12) + "," + (displ_y+1) + ")")
 
       }
      
@@ -323,7 +327,6 @@ var generate_button = function (width, displ_x_origin,displ_x_step, displ_y_orig
       displ_y = displ_y + displ_y_step
 
     }
-
 
     var button_class = button_d3()
         .on('press', function(d, i) {console.log("Pressed", d, i, this.parentNode);})

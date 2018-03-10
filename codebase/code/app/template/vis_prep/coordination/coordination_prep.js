@@ -18,8 +18,8 @@ var update_raw_data = function(raw_data) {
 	$text_dict   = {};
 	
 	$text_dict["All Emails"] 						 = {};
-	$text_dict["All Emails"].equal  			 	 = "You Coordinate To The Same Degree With Female and Male Contacts.";
-	$text_dict["All Emails"].female_coordinate       = "You Coordinate More With Female Contacts Than With Male Contacts.";
-	$text_dict["All Emails"].male_coordinate    	 = "You Coordinate More With Male Contacts Than With Female Contacts.";
+	$text_dict["All Emails"].equal  			 	 = "You coordinate to the same degree with female and male contacts.";
+	$text_dict["All Emails"].female_coordinate       = "You coordinate more with female contacts than with male contacts.";
+	$text_dict["All Emails"].male_coordinate    	 = "You coordinate more with male contacts than with female contacts.";
 		
 }

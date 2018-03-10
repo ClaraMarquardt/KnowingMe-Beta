@@ -40,7 +40,8 @@ var update_data  = function(mode) {
           value_default_min:     d3.min($response_rate),
           label:                 $responsiveness_label[i],
           label_alt:             $responsiveness_label_alt[i],
-          color:                 color_rate[i]
+          color:                 color_rate[i], 
+          mode:                  "Received Response (%)"
     });}
 
     for (var i = 0; i < Object.keys($response_rate_received).length; i++) {
@@ -50,7 +51,8 @@ var update_data  = function(mode) {
           value_default_min:     d3.min($response_rate),
           label:                 $responsiveness_label[i],
           label_alt:             $responsiveness_label_alt[i],
-          color:                 color_rate[i]
+          color:                 color_rate[i], 
+          mode:                  "Sent Response (%)"
     });}
 
     for (var i = 0; i < Object.keys($response_time_sent).length; i++) {
@@ -60,7 +62,8 @@ var update_data  = function(mode) {
           value_default_min:     d3.min($response_time),
           label:                 $responsiveness_label[i],
           label_alt:             $responsiveness_label_alt[i],
-          color:                 color_time[i]
+          color:                 color_time[i], 
+          mode:                  "Time to Response Receipt (Min)"
     });}
 
     for (var i = 0; i < Object.keys($response_time_received).length; i++) {
@@ -70,16 +73,17 @@ var update_data  = function(mode) {
           value_default_min:     d3.min($response_time),
           label:                 $responsiveness_label[i],
           label_alt:             $responsiveness_label_alt[i],
-          color:                 color_time[i]
+          color:                 color_time[i], 
+          mode:                  "Time to Sent Response (Min)"
     });}
              
-    if (mode=="Response Rate - Others (%)") {
+    if (mode=="Received Response (%)") {
         chart_data=chart_data_rate_sent
-    } else if (mode=="Response Rate - You (%)") {
+    } else if (mode=="Sent Response (%)") {
          chart_data=chart_data_rate_received
-    } else if (mode=="Response Time - Others (Min)") {
+    } else if (mode=="Time to Response Receipt (Min)") {
         chart_data=chart_data_time_sent
-    } else if (mode=="Response Time - You (Min)") {
+    } else if (mode=="Time to Sent Response (Min)") {
         chart_data=chart_data_time_received
     }
     return({chart_data:chart_data})
@@ -92,7 +96,7 @@ var update_data  = function(mode) {
 var update_text  = function(mode) {
 
   // # All Emails
-  if (mode=="Response Rate - Others (%)") {
+  if (mode=="Received Response (%)") {
 
     if ($mean_response_rate_sent_female>($mean_response_rate_sent_male+$comparison_cutoff_response_rate)) {
       main_text = $text_dict[mode].female_respond
@@ -104,7 +108,7 @@ var update_text  = function(mode) {
   } 
 
   // # Sent Emails
-  if (mode=="Response Rate - You (%)") {
+  if (mode=="Sent Response (%)") {
 
    if ($mean_response_rate_received_female>($mean_response_rate_received_male+$comparison_cutoff_response_rate)) {
       main_text = $text_dict[mode].female_respond
@@ -116,12 +120,12 @@ var update_text  = function(mode) {
   } 
 
   // # Received Emails
-  if (mode=="Response Time - Others (Min)") {
+  if (mode=="Time to Response Receipt (Min)") {
 
     if ($mean_response_time_sent_female>($mean_response_time_sent_male+$comparison_cutoff_response_time)) {
-      main_text = $text_dict[mode].female_respond
-    } else if ($mean_response_time_sent_male>($mean_response_time_sent_female+$comparison_cutoff_response_time)) {
       main_text = $text_dict[mode].male_respond
+    } else if ($mean_response_time_sent_male>($mean_response_time_sent_female+$comparison_cutoff_response_time)) {
+      main_text = $text_dict[mode].female_respond
     } else {
       main_text = $text_dict[mode].equal
     }
@@ -129,12 +133,12 @@ var update_text  = function(mode) {
   }
 
   // # response_time imbalance
-  if (mode=="Response Time - You (Min)") {
+  if (mode=="Time to Sent Response (Min)") {
 
     if ($mean_response_time_received_female>($mean_response_time_received_male+$comparison_cutoff_response_time)) {
-      main_text = $text_dict[mode].female_respond
-    } else if ($mean_response_time_received_male>($mean_response_time_received_female+$comparison_cutoff_response_time)) {
       main_text = $text_dict[mode].male_respond
+    } else if ($mean_response_time_received_male>($mean_response_time_received_female+$comparison_cutoff_response_time)) {
+      main_text = $text_dict[mode].female_respond
     } else {
       main_text = $text_dict[mode].equal
     }
@@ -159,7 +163,7 @@ var update_vis = function(mode, bar_number, text_content, text_duration, text_de
   // # Update Vis 
   generate_multi_bar(mode, chart_data = data_temp.chart_data, bar_number=bar_number, 
     delay_bar = 2000, duration_bar = 2000, delay_label = 2600, duration_label = 1000,
-    label_main=mode, text_function="", label_size="10px")
+    label_main=mode, text_function="", label_size="9px")
 
   // # Update Text
   generate_text_main(text_content=text_content, text_duration=text_duration, 
@@ -182,13 +186,13 @@ var stage_entry = function() {
 }
 
 // ## stage_0
-var stage_0 = function(mode="Response Rate - Others (%)") {
+var stage_0 = function(mode="Received Response (%)") {
   
   // # Call
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content  = ["Let's Look At The Rate At Which Your Contacts Respond To Emails You Send.", 
+  text_content  = ["Let's look at the rate at which your contacts responded to emails you sent.", 
     text_temp.main_text, "LINK"]
   text_delay    = [0, 3500, 3500]
   text_duration = [1000,1000,1000]
@@ -201,13 +205,13 @@ var stage_0 = function(mode="Response Rate - Others (%)") {
 }
 
 // ## stage_1
-var stage_1 = function(mode="Response Rate - You (%)") {
+var stage_1 = function(mode="Sent Response (%)") {
 
   // # Generate text
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content =["Let's Look At The Rate At Which You Respond To Emails.",  
+  text_content =["Let's look at the rate at which you responded to emails.",  
     text_temp.main_text, "LINK"]
   text_delay    =[0, 3500, 3500]
   text_duration =[1000,1000,1000]
@@ -221,13 +225,13 @@ var stage_1 = function(mode="Response Rate - You (%)") {
 }
 
 // ## stage_2
-var stage_2 = function(mode="Response Time - Others (Min)") {
+var stage_2 = function(mode="Time to Response Receipt (Min)") {
  
   // # Generate text
   text_temp = update_text(mode=mode)
  
   // # Define
-  text_content =["Let's Look At How Quickly Your Contacts Respond To Emails You Send.",  
+  text_content =["Let's look at how quickly your contacts responded to emails you sent.",  
     text_temp.main_text, "LINK"]
   text_delay    =[0, 3500, 3500]
   text_duration =[1000,1000,1000]
@@ -241,13 +245,13 @@ var stage_2 = function(mode="Response Time - Others (Min)") {
 }
 
 // ## stage_3
-var stage_3 = function(mode="Response Time - You (Min)") {
+var stage_3 = function(mode="Time to Sent Response (Min)") {
   
   // # Generate text
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content  = ["Let's Look At How Quickly You Respond To Emails.",  
+  text_content  = ["Let's look at how quickly you responded to emails.",  
     text_temp.main_text, "LINK"]
   text_delay    = [0, 3500, 3500]
   text_duration = [1000,1000,1000]

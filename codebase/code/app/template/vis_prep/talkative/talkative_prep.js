@@ -47,19 +47,19 @@ var update_raw_data = function(raw_data) {
 	$text_dict   = {};
 	
 	$text_dict["Count"] 					 = {};
-	$text_dict["Count"].equal  			     = "The Emails You Sent To Female and Male Contacts Were Equally Long.";
-	$text_dict["Count"].female_talkative     = "The Emails You Sent To Female Contacts Were Longer <br>Than Those You Sent To Male Contacts.";
-	$text_dict["Count"].male_talkative    	 = "The Emails You Sent To Male Contacts Were Longer <br>Than Those You Sent To Female Contacts.";
+	$text_dict["Count"].equal  			     = "The emails you sent to female and male contacts were equally long.";
+	$text_dict["Count"].female_talkative     = "The emails you sent to female contacts were longer than those you sent to male contacts.";
+	$text_dict["Count"].male_talkative    	 = "The emails you sent to male contacts were longer than those you sent to female contacts.";
 	
 	$text_dict["Imbalance"] 				 = {};
 	$text_dict["Imbalance"]['female']	     = {};
-	$text_dict["Imbalance"].female.equal     = "The Emails You Sent To Female Contacts Were As Long As The Emails You Responded To.";
-	$text_dict["Imbalance"].female.pos       = "The Emails You Sent To Female Contacts Were Meaningfully Longer Than The Emails You Responded To.";
-	$text_dict["Imbalance"].female.neg       = "The Emails You Sent To Female Contacts Were Meaningfully Shorter Than The Emails You Responded To.";
+	$text_dict["Imbalance"].female.equal     = "The emails you sent to female contacts were as long as the emails you responded to.";
+	$text_dict["Imbalance"].female.pos       = "The emails you sent to female contacts were longer than the emails you responded to.";
+	$text_dict["Imbalance"].female.neg       = "The emails you sent to female contacts were shorter than the emails you responded to.";
 	
 	$text_dict["Imbalance"]['male']	         = {};
-	$text_dict["Imbalance"].male.equal       = "The Emails You Sent To Male Contacts Were As Long As The Emails You Responded To.";
-	$text_dict["Imbalance"].male.pos         = "The Emails You Sent To Male Contacts Were Meaningfully Longer Than The Emails You Responded To.";
-	$text_dict["Imbalance"].male.neg         = "The Emails You Sent To Male Contacts Were Meaningfully Shorter Than The Emails You Responded To.";
+	$text_dict["Imbalance"].male.equal       = "The emails you sent to male contacts were as long as the emails you responded to.";
+	$text_dict["Imbalance"].male.pos         = "The emails you sent to male contacts were longer than the emails you responded to.";
+	$text_dict["Imbalance"].male.neg         = "The emails you sent to male contacts were shorter than the emails you responded to.";
 
 }

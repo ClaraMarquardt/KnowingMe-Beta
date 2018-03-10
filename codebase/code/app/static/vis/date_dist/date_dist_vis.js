@@ -11,8 +11,8 @@ var fill_color  = ["#02091e", "#002fbc"]
 // KEY
 var width      = 700
 var width_svg  = 700
-var height     = 480
-var height_svg = 430
+var height     = 400
+var height_svg = 350
 var start      = 0
 var end        = 2.25
 var numSpirals = 3
@@ -109,13 +109,13 @@ var update_text  = function(mode) {
   // # Overview
   if (mode=="Overview") {
 
-    main_text = "Over The Past 365 Days You Sent and Received " + $email_count_total + " Emails - That's "+ Math.round($email_count_total_per_day) +" Emails/Day."
+    main_text = "Over the past 365 days you sent and received " + $email_count_total + " emails - that's "+ Math.round($email_count_total_per_day) +" emails per day."
   
   } 
 
   if (mode=="Overview Subset") {
 
-    main_text = "We've Analysed Your Last "+ $email_count_subset_total +" Emails Over The Period "+ $earliest_date +" to "+ $latest_date + ". <br> To Make the Analysis Meaningful We Have Focused On All Emails With Text Content."
+    main_text = "We've closely analyzed your last "+ $email_count_subset_total +" emails over the period "+ $earliest_date +" to "+ $latest_date + ". <br> To ensure that the analysis is meaningful we have focused on all emails with text content."
   
   } 
 
@@ -123,7 +123,7 @@ var update_text  = function(mode) {
   if (mode=="All Emails") {
 
 
-    main_text = "Over The "+ $email_diff +" Days You Sent and Received "+ $email_count_subset_total  +" Emails .<br><i> " + "(" + Math.round($lang_perc_eng)  + "% Of Those Emails Were In English - For Some Analyses we Will Only Be Looking at This Subset of Emails.)</i>"
+    main_text = "Over these "+ $email_diff +" days you sent and received "+ $email_count_subset_total  +" emails.<br><i> " + "" + Math.round($lang_perc_eng)  + "% of those emails were in English - for some insights we will only be looking at this subset of emails.</i>"
 
 
   } 
@@ -131,14 +131,14 @@ var update_text  = function(mode) {
   // # Sent Emails
   if (mode=="Sent Emails") {
 
-    main_text = "Over The "+ $email_diff +" Days You Sent "+ $email_count_subset_sent_total  +" Emails."
+    main_text = "Over these "+ $email_diff +" days you sent "+ $email_count_subset_sent_total  +" emails."
 
   } 
 
   // # Received Emails
   if (mode=="Received Emails") {
 
-    main_text = "Over The "+ $email_diff +" Days You Received "+ $email_count_subset_received_total  +" Emails."
+    main_text = "Over these "+ $email_diff +" days you received "+ $email_count_subset_received_total  +" emails."
 
   }
 
@@ -232,10 +232,11 @@ var stage_2 = function() {
   stage_3()
 
   // # Initialize buttons
-  generate_button(width=60, displ_x_origin=230,displ_x_step=100, displ_y_origin=20,displ_y_step=0,
+  generate_button(width=80, displ_x_origin=230,displ_x_step=100, displ_y_origin=20,displ_y_step=0,
     button_label    = ["All Emails", "Sent Emails", "Received Emails"],
     button_function = [stage_3, stage_4, stage_5],
-    button_type = ["button","button","button"])
+    button_type = ["button","button","button"], 
+    button_move = [16,16,8,0])
 
 }
 
@@ -246,9 +247,9 @@ var stage_3 = function(mode="All Emails") {
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content  = [text_temp.main_text, "Hover Over Individual Days To See Sample Emails", "LINK"]
+  text_content  = [text_temp.main_text, "Hover over any bar to see an email that you sent or received on the day in question.<br><i> Throughout the app you can hover over any visualization to get more information.</i>", "LINK"]
   text_duration = [1000,1000,1000]
-  text_delay    = [0,3000,3000]
+  text_delay    = [0,4000,4000]
   function_new  = ""
 
   // # Execute

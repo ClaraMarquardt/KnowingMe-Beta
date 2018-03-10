@@ -41,7 +41,8 @@ var update_data  = function(mode) {
           value_default_min:     d3.min($positivity),
           label:                 $positivity_label[i],
           label_alt:             $positivity_label_alt[i],
-          color:                 color[i]
+          color:                 color[i], 
+          mode:                  "Positivity (All Emails)"
     });}
 
     for (var i = 0; i < Object.keys($positivity).length; i++) {
@@ -51,7 +52,8 @@ var update_data  = function(mode) {
           value_default_min:     d3.min($positivity),
           label:                 $positivity_label[i],
           label_alt:             $positivity_label_alt[i],
-          color:                 color[i]
+          color:                 color[i], 
+          mode:                  "Positivity (Sent Emails)"
     });} 
 
     for (var i = 0; i < Object.keys($positivity).length; i++) {
@@ -61,7 +63,8 @@ var update_data  = function(mode) {
           value_default_min:     d3.min($positivity),
           label:                 $positivity_label[i],
           label_alt:             $positivity_label_alt[i],
-          color:                 color[i]
+          color:                 color[i], 
+          mode:                  "Positivity (Received Emails)"
     });} 
 
     for (var i = 0; i < Object.keys($positivity).length; i++) {
@@ -71,7 +74,8 @@ var update_data  = function(mode) {
           value_default:         $positivity_imbalance[i],
           label:                 $imbalance_label[i],
           label_alt:             $imbalance_label_alt[i],
-          color:                 color_imbalance[i]
+          color:                 color_imbalance[i], 
+          mode:                  "Positivity Imbalance"
     });} 
 
     if (mode=="All Emails") {
@@ -202,7 +206,7 @@ var stage_0 = function(mode="All Emails") {
   text_temp = update_text(mode=mode)
 
   // # Call
-  text_content  = ["Let's Look At Your Overall Positivity.", "Most Emails Are Relatively Positive - Let's Zoom In.", 
+  text_content  = ["Let's look at your overall positivity.", "Most emails are relatively positive - let's zoom in.", 
     text_temp.main_text, "LINK"]
   text_delay    = [0, 2000, 3500, 3500]
   text_duration = [1000,1000,1000,1000]
@@ -222,7 +226,7 @@ var stage_1 = function(mode="Sent Emails") {
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content =["Let's Look At The Positivity Of Your Sent Emails.",  
+  text_content =["Let's look at the positivity of your sent emails.",  
     text_temp.main_text, "LINK"]
   text_delay    =[0, 3500, 3500]
   text_duration =[1000,1000,1000]
@@ -242,7 +246,7 @@ var stage_2 = function(mode="Received Emails") {
   text_temp = update_text(mode=mode)
   
   // # Define
-  text_content =["Let's Look At The Positivity Of Your Received Emails.",  
+  text_content =["Let's look at the positivity of your received emails.",  
     text_temp.main_text, "LINK"]
   text_delay    =[0, 3500, 3500]
   text_duration =[1000,1000,1000]
@@ -262,7 +266,7 @@ var stage_3 = function(mode="Positivity Imbalance") {
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content  = ["Let's Look At The Positivity Imbalance Of Your Emails.",  
+  text_content  = ["Let's look at the positivity imbalance of your emails.",  
     text_temp.main_text, "LINK"]
   text_delay    = [0, 3500, 3500]
   text_duration = [1000,1000,1000]

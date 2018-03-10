@@ -27,33 +27,54 @@
   
         {% include 'template/space/insight_main_top_space.html' %}
     
-        <h3><p style="text-align:center;">{{ insight_title }} - Info</p></h3>
+        <h3><p style="text-align:center;">Introducing {{ insight_title }}</p></h3>
     
+        {% autoescape false %}
         <p style="text-align:center; padding-left:350px; padding-right:350px;">{{ insight_text }}<font color= "#464241"></font></p>
-  
-        <p style="text-align:center;"><a href="{{ url_for('dashboard_view') }}"">Return To Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;&nbsp;<a href="#section02">Learn More</a></p  >
-  
-        {% include 'template/space/insight_main_scroll_bottom_space.html' %}
+        {% endautoescape %}
+
+      {% if more_info==True %}
+        <p style="text-align:center;"><a href="{{ url_for('dashboard_view') }}"">Dashboard</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="#section02">Learn More</a></p  >
+      {% else %}
+        <p style="text-align:center;"><a href="{{ url_for('dashboard_view') }}"">Dashboard</a></p  >
+      {% endif %}
+
+      {% include 'template/space/insight_main_scroll_bottom_space.html' %}
     
         </center>
       </section>
     </section>
   
+ {% if more_info==True %}
   <!-- Content Section - ADDITIONAL -->
-  <section id="section02" class="parent_2">
+  <section id="section02">
 
-    {% include 'template/space/insight_scroll_top_space.html' %}
+    <!-- Header Section -->
+    {% include 'template/general/header_user.html' %}
+    {% include 'template/general/header_ribbon.html' %}
+
+    {% include 'template/space/landing_scroll_top_space.html' %}
+ 
+    <center>
+
+    <h3><p style="text-align:center;">Learn More About {{ insight_title }}</p></h3>
+
+    {% autoescape false %}
+    <p style="text-align:center; padding-left:250px; padding-right:250px;"><font color="#464241">{{  insight_text_extra }} 
+    {% endautoescape %}
+    <br><br>
   
-    <p style="text-align:center; padding-left:300px; padding-right:150px;"><font color="#464241"><i>{{  insight_text_extra }} </i>
-  
+    <i>Links to all papers and algorithms can be found in the <a href="{{ url_for('references_view') }}">reference section</a></i>.
+
     <br>
   
-    <p style="text-align:center; padding-left:300px; padding-right:150px;"><a href="#section01">Return To Insight Page</a></p>
+    <p style="text-align:center; padding-left:250px; padding-right:250px;"><a href="#section01"><img src="{{url_for('static', filename='image/icon/top.png')}}" style="width:15px;height:15px;"/></a></p>
   
     {% include 'template/space/insight_scroll_bottom_space.html' %}
   
   </section>
-
+ {% endif %}
+ 
   <!-- SCRIPTS -->
   {% include 'template/general/scroll_page.html' %}
 

@@ -40,7 +40,8 @@ var update_data  = function(mode) {
         chart_data_character_count_sent.push({
           count:            $character_count_sent[i]   ,
           label:            $count_label[i],
-          label_alt:        $count_label_alt[i]
+          label_alt:        $count_label_alt[i],
+          mode:             "Average Length (Characters)"
  
     });}
 
@@ -51,14 +52,16 @@ var update_data  = function(mode) {
           value_default:         $character_imbalance[i],
           label:                 $imbalance_label[i],
           label_alt:             $imbalance_label_alt[i],
-          color:                 color_imbalance[i]
+          color:                 color_imbalance[i],
+          mode:                  "Length Imbalance (Characters)"
     });} 
 
     for (var i = 0; i < Object.keys($word_count_sent).length; i++) {
         chart_data_word_count_sent.push({
           count:            $word_count_sent[i]   ,
           label:            $count_label[i],
-          label_alt:        $count_label_alt[i]
+          label_alt:        $count_label_alt[i],
+          mode:             "Average Length (Words)"
  
     });}
 
@@ -69,14 +72,16 @@ var update_data  = function(mode) {
           value_default:         $word_imbalance[i],
           label:                 $imbalance_label[i],
           label_alt:             $imbalance_label_alt[i],
-          color:                 color_imbalance[i]
+          color:                 color_imbalance[i],
+          mode:                  "Length Imbalance (Words)"
     });} 
 
     for (var i = 0; i < Object.keys($sentence_count_sent).length; i++) {
         chart_data_sentence_count_sent.push({
           count:            $sentence_count_sent[i]   ,
           label:            $count_label[i],
-          label_alt:        $count_label_alt[i]
+          label_alt:        $count_label_alt[i],
+          mode:             "Average Length (Sentences)"
  
     });}
 
@@ -87,7 +92,8 @@ var update_data  = function(mode) {
           value_default:         $sentence_imbalance[i],
           label:                 $imbalance_label[i],
           label_alt:             $imbalance_label_alt[i],
-          color:                 color_imbalance[i]
+          color:                 color_imbalance[i],
+          mode:                  "Length Imbalance (Sentences)"
     });} 
              
     if (mode=="Character Count") {
@@ -267,10 +273,11 @@ var stage_entry = function() {
   stage_0()
 
   // # Initialize buttons 
-  generate_button(width=70, displ_x_origin=170,displ_x_step=150, displ_y_origin=-35,displ_y_step=0,
-    button_label    = ["Characters", "Words", "Sentences"],
+  generate_button(width=90, displ_x_origin=170,displ_x_step=150, displ_y_origin=-35,displ_y_step=0,
+    button_label    = ["Character Length", "Word Length", "Sentence Length"],
     button_function = [stage_0, stage_2, stage_4],
-    button_type = ["button","button","button"])
+    button_type = ["button","button","button"], 
+    button_move = [13,19,13])
 
 }
 
@@ -281,10 +288,10 @@ var stage_0 = function(mode="Character Count") {
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content  = ["Let's Look At The Lenght Of The Emails You Sent In Terms Of Characters.", 
-    text_temp.main_text, "LINK"]
-  text_delay    = [0, 3500, 3500]
-  text_duration = [1000,1000,1000]
+  text_content  = ["Let's look at the average length of the emails you sent in terms of the number of characters.<br> Each square represents one character in an average length email that you sent.", 
+  "You can also look at the length in terms of the number of words and sentences.", text_temp.main_text, "LINK"]
+  text_delay    = [0, 5500,9500, 9500]
+  text_duration = [1000,1000, 1000,1000]
   function_new  = stage_1
 
   // # Execute
@@ -301,7 +308,7 @@ var stage_1 = function(mode="Character Imbalance") {
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content  = ["Let's Look At The Length Imbalance Of Your Emails In Terms Of Characters.",  
+  text_content  = ["Let's look at the length imbalance of your emails in terms of the number of characters.",  
     text_temp.main_text, "LINK"]
   text_delay    = [0, 3500, 3500]
   text_duration = [1000,1000,1000]
@@ -322,10 +329,10 @@ var stage_2 = function(mode="Word Count") {
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content  = ["Let's Look At The Length Of The Emails You Sent In Terms Of Words.",  
-    text_temp.main_text, "LINK"]
-  text_delay    = [0, 3500, 3500]
-  text_duration = [1000,1000,1000]
+  text_content  = ["Let's look at the average length of the emails you sent in terms of the number of words.<br> Each square represents one word in an average length email that you sent.", 
+  text_temp.main_text, "LINK"]
+  text_delay    = [0, 5500, 5500]
+  text_duration = [1000,1000, 1000]
   function_new  = stage_3
 
   // # Execute
@@ -342,7 +349,7 @@ var stage_3 = function(mode="Word Imbalance") {
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content  = ["Let's Look At The Length Imbalance Of Your Emails In Terms Of Words.",  
+  text_content  = ["Let's look at the length imbalance of your emails in terms of the number of words.",  
     text_temp.main_text, "LINK"]
   text_delay    = [0, 3500, 3500]
   text_duration = [1000,1000,1000]
@@ -363,10 +370,10 @@ var stage_4 = function(mode="Sentence Count") {
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content  = ["Let's Look At The Length Of The Emails You Sent In Terms Of Sentences.",  
-    text_temp.main_text, "LINK"]
-  text_delay    = [0, 3500, 3500]
-  text_duration = [1000,1000,1000]
+  text_content  = ["Let's look at the average length of the emails you sent in terms of the number of sentences.<br> Each square represents one sentence in an average length email that you sent.", 
+  text_temp.main_text, "LINK"]
+  text_delay    = [0, 5500, 5500]
+  text_duration = [1000,1000, 1000]
   function_new  = stage_5
 
   // # Execute
@@ -383,7 +390,8 @@ var stage_5 = function(mode="Sentence Imbalance") {
   text_temp = update_text(mode=mode)
 
   // # Define
-  text_content  = ["Let's Look At The Length Imbalance Of Your Emails In Terms Of Sentences.",  
+  // # Define
+  text_content  = ["Let's look at the length imbalance of your emails in terms of the number of sentences.",  
     text_temp.main_text, "LINK"]
   text_delay    = [0, 3500, 3500]
   text_duration = [1000,1000,1000]

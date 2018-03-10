@@ -37,29 +37,29 @@ var update_raw_data = function(raw_data) {
 	$text_dict   = {};
 	
 	$text_dict["All Emails"] 						 = {};
-	$text_dict["All Emails"].equal  			 	 = "The Emails You Sent And Received From Female and Male Contacts Were Equally Polite.";
-	$text_dict["All Emails"].female_polite    		 = "The Emails You Sent And Received From Female Contacts Were More Polite <br>Than Those You Received From Male Contacts.";
-	$text_dict["All Emails"].male_polite    	 	 = "The Emails You Sent And Received From Male Contacts Were More Polite <br>Than Those You Received From Female Contacts.";
+	$text_dict["All Emails"].equal  			 	 = "The emails you sent and received from female and male contacts were equally polite.";
+	$text_dict["All Emails"].female_polite    		 = "The emails you sent and received from female contacts were more polite <br>than those you received From male contacts.";
+	$text_dict["All Emails"].male_polite    	 	 = "The emails you sent and received from male contacts were more polite <br>than those you received From female contacts.";
 	
 	$text_dict["Sent Emails"] 						 = {};
-	$text_dict["Sent Emails"].equal          	  	 = "The Emails You Sent To Female and Male Contacts Were Equally Polite.";
-	$text_dict["Sent Emails"].female_polite  		 = "The Emails You Sent To Female Contacts Were More Polite <br>Than Those You Sent To Male Contacts.";
-	$text_dict["Sent Emails"].male_polite    		 = "The Emails You Sent To Male Contacts Were More Polite <br>Than Those You Sent To Female Contacts.";
+	$text_dict["Sent Emails"].equal          	  	 = "The emails you sent to female and male contacts were equally polite.";
+	$text_dict["Sent Emails"].female_polite  		 = "The emails you sent to female contacts were more polite <br>than those you sent to male contacts.";
+	$text_dict["Sent Emails"].male_polite    		 = "The emails you sent to male contacts were more polite <br>than those you sent to female contacts.";
 	
 	$text_dict["Received Emails"] 				     = {};
-	$text_dict["Received Emails"].equal          	 = "The Emails You Received From Female and Male Contacts Were Equally Polite.";
-	$text_dict["Received Emails"].female_polite      = "The Emails You Received From Female Contacts Were More Polite <br>Than Those You Received From Male Contacts.";
-	$text_dict["Received Emails"].male_polite        = "The Emails You Received From Male Contacts Were More Polite <br>Than Those You Received From Female Contacts.";
+	$text_dict["Received Emails"].equal          	 = "The emails you received from female and male contacts were equally polite.";
+	$text_dict["Received Emails"].female_polite      = "The emails you received from female contacts were more polite <br>than those you received from male contacts.";
+	$text_dict["Received Emails"].male_polite        = "The emails you received from male contacts were more polite <br>than those you received from female contacts.";
 	
 	$text_dict["Politeness Imbalance"] 				  = {};
 	$text_dict["Politeness Imbalance"]['female']	  = {};
-	$text_dict["Politeness Imbalance"].female.equal   = "The Emails You Sent To Female Contacts Were As Polite As The Emails You Responded To.";
-	$text_dict["Politeness Imbalance"].female.pos     = "The Emails You Sent To Female Contacts Were Meaningfully More Polite Than The Emails You Responded To.";
-	$text_dict["Politeness Imbalance"].female.neg     = "The Emails You Sent To Female Contacts Were Meaningfully Less Polite Than The Emails You Responded To.";
+	$text_dict["Politeness Imbalance"].female.equal   = "The emails you sent to female contacts were as polite as the emails you responded to.";
+	$text_dict["Politeness Imbalance"].female.pos     = "The emails you sent to female contacts were more polite than the emails you responded to.";
+	$text_dict["Politeness Imbalance"].female.neg     = "The emails you sent to female contacts were less polite than the emails you responded to.";
 	
 	$text_dict["Politeness Imbalance"]['male']	      = {};
-	$text_dict["Politeness Imbalance"].male.equal     = "The Emails You Sent To Male Contacts Were As Polite As The Emails You Responded To.";
-	$text_dict["Politeness Imbalance"].male.pos       = "The Emails You Sent To Male Contacts Were Meaningfully More Polite Than The Emails You Responded To.";
-	$text_dict["Politeness Imbalance"].male.neg       = "The Emails You Sent To Male Contacts Were Meaningfully Less Polite Than The Emails You Responded To.";
+	$text_dict["Politeness Imbalance"].male.equal     = "The emails you sent to male contacts were as polite as the emails you responded to.";
+	$text_dict["Politeness Imbalance"].male.pos       = "The emails you sent to male contacts were more polite than the emails you responded to.";
+	$text_dict["Politeness Imbalance"].male.neg       = "The emails you sent to male contacts were less polite than the emails you responded to.";
 
 }

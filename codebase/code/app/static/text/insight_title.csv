@@ -1,11 +1,11 @@
 insight,title
-talkative,Talkative
-sentiment,Sentiment
+talkative,Talkativeness
+sentiment,Positiveness
 politeness,Politeness
 coordination,Coordination
-date_dist,Date Distribution
-time_dist,Time Distribution
-network,Network
-sample_sentiment,Sentiment (Sample)
+date_dist,Volume
+time_dist,Patterns
+network,Networks
+sample_sentiment,Positiveness - An Illustration
 responsiveness,Responsiveness
-firstlast,First-Last
+firstlast,Proactiveness

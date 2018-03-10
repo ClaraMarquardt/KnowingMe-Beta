@@ -16,6 +16,7 @@
 
   <!-- Header Section -->
   {% include 'template/general/header_user.html' %}
+  {% include 'template/general/header_ribbon_settings.html' %}
 
   <!-- Content Section -->
   <div>
@@ -25,7 +26,7 @@
       <!-- Title & Co -->
       {% include 'template/space/insight_vis_top_space.html' %}
     
-      <h3><p style="text-align:center;">Timeframe Setting</p></h3>
+      <h3><p style="text-align:center;">Selecting the Analysis Timeframe</p></h3>
 
       <!-- Visualization -->
       {% include 'vis_prep/'+insight_name+'/'+insight_name+'.html' %}

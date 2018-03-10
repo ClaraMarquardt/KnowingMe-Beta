@@ -32,7 +32,8 @@ var update_data  = function() {
           value:     $coordination[i],
           label:     $coordination_label[i],
           label_alt: $coordination_label_alt[i],
-          color:     color[i]
+          color:     color[i], 
+          mode:      "Linguistic Coordination"
     });}
 
 
@@ -101,7 +102,7 @@ var stage_0 = function(mode="All Emails") {
 
 
   // # Define
-  text_content  = ["Let's Look At Your Overall Coordination.", text_temp.main_text]
+  text_content  = ["Let's look at your overall coordination.", text_temp.main_text]
   text_delay    = [0, 2000]
   text_duration = [1000,1000]
   function_new  = ""

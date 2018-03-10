@@ -36,24 +36,24 @@ var update_raw_data = function(raw_data) {
 	// DYNAMIC TEXT
 	$text_dict   = {};
 	
-	$text_dict["Response Rate - Others (%)"] 				       = {};
-	$text_dict["Response Rate - Others (%)"].equal  		       = "Female And Male Contacts Responded To Your Emails At The Same Rate.";
-	$text_dict["Response Rate - Others (%)"].female_respond        = "Female Contacts Responded To Your Emails At A Higher Rate Than Male Contacts.";
-	$text_dict["Response Rate - Others (%)"].male_respond     	   = "Male Contacts Responded To Your Emails At A Higher Rate Than Female Contacts.";
+	$text_dict["Received Response (%)"] 				        = {};
+	$text_dict["Received Response (%)"].equal  		            = "Female and male contacts responded to your emails at the same rate.";
+	$text_dict["Received Response (%)"].female_respond          = "Female contacts responded to your emails at a higher rate than male contacts.";
+	$text_dict["Received Response (%)"].male_respond     	    = "Male contacts responded to your emails at a higher rate than female contacts.";
 	
-	$text_dict["Response Rate - You (%)"] 				   			= {};
-	$text_dict["Response Rate - You (%)"].equal  		   			= "You Responded To Female And Male Contacts At The Same Rate.";
-	$text_dict["Response Rate - You (%)"].female_respond   			= "You Responded To Female Contacts At A Higher Rate Than To Male Contacts.";
-	$text_dict["Response Rate - You (%)"].male_respond     			= "You Responded To Male Contacts At A Higher Rate Than To Female Contacts.";
+	$text_dict["Sent Response (%)"] 				   			= {};
+	$text_dict["Sent Response (%)"].equal  		   			    = "You responded to female and male contacts at the same rate.";
+	$text_dict["Sent Response (%)"].female_respond   			= "You responded to female contacts at a higher rate than to male contacts.";
+	$text_dict["Sent Response (%)"].male_respond     			= "You responded to male contacts at a higher rate than to female contacts.";
 
-	$text_dict["Response Time - Others (Min)"] 				       	= {};
-	$text_dict["Response Time - Others (Min)"].equal  		       	= "Female And Male Contacts Responded To Your Emails Equally Quickly.";
-	$text_dict["Response Time - Others (Min)"].female_respond       = "Female Contacts Responded To Your Emails More Quickly Than Male Contacts.";
-	$text_dict["Response Time - Others (Min)"].male_respond     	= "Male Contacts Responded To Your Emails More Quickly Than Female Contacts.";
+	$text_dict["Time to Response Receipt (Min)"] 				= {};
+	$text_dict["Time to Response Receipt (Min)"].equal  		= "Female and male contacts responded to your emails equally quickly.";
+	$text_dict["Time to Response Receipt (Min)"].female_respond = "Female contacts responded to your emails more quickly than male contacts.";
+	$text_dict["Time to Response Receipt (Min)"].male_respond   = "Male contacts responded to your emails more quickly than female contacts.";
 	
-	$text_dict["Response Time - You (Min)"] 				   			= {};
-	$text_dict["Response Time - You (Min)"].equal  		   			= "You Responded To Female And Male Contacts Equally Quickly.";
-	$text_dict["Response Time - You (Min)"].female_respond   			= "You Responded To Female Contacts More Quickly Than To Male Contacts.";
-	$text_dict["Response Time - You (Min)"].male_respond     			= "You Responded To Male Contacts More Quickly Than To Female Contacts.";
+	$text_dict["Time to Sent Response (Min)"] 				   	= {};
+	$text_dict["Time to Sent Response (Min)"].equal  		   	= "You responded to female and male contacts equally quickly.";
+	$text_dict["Time to Sent Response (Min)"].female_respond   	= "You responded to female contacts more quickly than to male contacts.";
+	$text_dict["Time to Sent Response (Min)"].male_respond     	= "You responded to male contacts more quickly than to female contacts.";
 		
 }

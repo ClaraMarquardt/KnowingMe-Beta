@@ -8,8 +8,8 @@ console.log("date_dist vis")
 // KEY
 var width      = 900
 var width_svg  = 900
-var height     = 400
-var height_svg = 400
+var height     = 350
+var height_svg = 350
 var margin     = {top:0,bottom:0,left:0,right:0}
 
 var svg = d3v2.select("#chart").append("svg")

@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+{% include 'template/general/title.html' %}
+
+
+<!-- HEADER -->
+<header>
+
+  <!-- Dependencies & Co -->
+  {% include 'template/general/dependency.html' %}
+  {% include 'template/general/flash_message.html' %}
+
+</header>
+
+<!-- BODY -->
+<body scroll="no" style="overflow: hidden">
+
+  <!-- Content Section - MAIN -->
+  <section id="section01" class="demo">
+    
+    <!-- Header Section -->
+    {% include 'template/general/header_user.html' %}
+    {% include 'template/general/header_ribbon_references.html' %}
+  
+    <!-- Content Section -->
+    {% include 'template/space/landing_main_top_space.html' %}
+    
+    
+    <h3><p style="text-align:center;">References</p></h3>
+  
+    <p style="text-align:center; padding-left:200px; padding-right:200px;"><font color="#464241">
+
+    <img src="{{url_for('static', filename='image/icon/idea.png')}}" style="width:50px;height:50px;"/><br>
+    <b>Academics + Papers</b>
+    <br>
+    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
+    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
+    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
+    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
+    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
+    <br><br><br>
+
+     <img src="{{url_for('static', filename='image/icon/algorithm.png')}}" style="width:60px;height:50px;"/><br>
+    <b>Algorithms</b>
+    <br>
+    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
+    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
+    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
+    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
+    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
+    <br><br>
+    </font></p>
+ 
+        <p style="text-align:center;"><a href="{{ url_for('dashboard_view') }}"">Dashboard</a></p  >
+
+    {% include 'template/space/insight_main_bottom_space.html' %}
+
+  
+  </section>
+
+  <!-- SCRIPTS -->
+  {% include 'template/general/scroll_page.html' %}
+
+</body>
+</html>
+<!-- END -->

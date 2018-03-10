@@ -30,12 +30,18 @@
       
       {% include 'template/space/insight_main_top_space.html' %}
     
-      <h3><p style="text-align:center;">{{ insight_title }} - Overview</p></h3>
+      <h3><p style="text-align:center;">Introducing {{ insight_title }}</p></h3>
     
-      <p style="text-align:center; padding-left:150px; padding-right:150px;">{{ insight_text }}<font color= "#464241"></font></p>
-  
-      <p style="text-align:center;"><a href="{{ url_for('insight_b_view',insight_name=insight_name) }}"">Insight Example</a>&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;&nbsp;<a href="#section02">Learn More</a></p>
-  
+      {% autoescape false %}
+      <p style="text-align:center; padding-left:250px; padding-right:250px;">{{ insight_text }}<font color= "#464241"></font></p>
+      {% endautoescape %}
+
+      {% if more_info==True %}
+        <p style="text-align:center;"><a href="{{ url_for('insight_b_view',insight_name=insight_name) }}""><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a><br><a href="#section02">(Learn More)</a></p>
+      {% else %}
+        <p style="text-align:center;"><a href="{{ url_for('insight_b_view',insight_name=insight_name) }}""><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a></p>
+      {% endif %}
+
       {% include 'template/space/insight_main_scroll_bottom_space.html' %}
     
       </center>
@@ -44,20 +50,42 @@
   
   </section>
 
+{% if more_info==True %}
   <!-- Content Section - ADDITIONAL -->
-  <section id="section02" class="parent_2">
 
-    {% include 'template/space/insight_scroll_top_space.html' %}
+  <section id="section02" class="parent_3">
+
+    <!-- Header Section -->
+    {% include 'template/general/header_user.html' %}
+    {% include 'template/general/header_ribbon.html' %}
+
+    <!-- Nav Section -->
+    {% include 'template/general/nav_bar.html' %}
+
+    <div class="parent_2">
+    
+
+    {% include 'template/space/landing_scroll_top_space.html' %}
+
+    <center>
+
+    <h3><p style="text-align:center;">Learn More About {{ insight_title }}</p></h3>
+
+    {% autoescape false %}
+    <p style="text-align:center; padding-left:250px; padding-right:250px;"><font color="#464241">{{  insight_text_extra }} 
+    {% endautoescape %}
+    <br><br>
   
-    <p style="text-align:center; padding-left:300px; padding-right:150px;"><font color="#464241"><i>{{  insight_text_extra }} </i>
-  
+    <i>Links to all papers and algorithms can be found in the <a href="{{ url_for('references_view') }}">reference section</a></i>.
+
     <br>
-  
-    <p style="text-align:center; padding-left:300px; padding-right:150px;"><a href="#section01">Return To Insight Page</a></p>
-  
-    {% include 'template/space/insight_scroll_bottom_space.html' %}
 
+    <p style="text-align:center; padding-left:250px; padding-right:250px;"><a href="#section01"><img src="{{url_for('static', filename='image/icon/top.png')}}" style="width:15px;height:15px;"/></a></p>
+    </center>
+    {% include 'template/space/insight_scroll_bottom_space.html' %}
+    </div>
   </section>
+{% endif %}
 
   <!-- SCRIPTS -->
   {% include 'template/general/scroll_page.html' %}

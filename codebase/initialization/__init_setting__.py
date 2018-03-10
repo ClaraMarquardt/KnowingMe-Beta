@@ -164,12 +164,12 @@ def insight_initialization():
 
 	# initialize data - insight list
 	insight_data['sample_insight_list']   	 = ['date_dist', 'time_dist','network', 'sample_sentiment']
-	insight_data['intro_insight_list']    	 = ['talkative','sentiment','politeness','coordination']
+	insight_data['intro_insight_list']    	 = ['talkative','sentiment','politeness']
 	insight_data['main_insight_list']        = ['date_dist', 'time_dist','network', 'talkative','reponsiveness', 'firstlast', 'sentiment','politeness','coordination']
-
 	insight_data['setting_insight_list']     = ['date_dist_setting']
 
 	insight_data['skip_sample_insight_list'] = ['talkative','responsiveness', 'firstlast']
+	insight_data['add_info_list']            = ['sentiment','politeness', 'coordination']
 
 	# initialize data - feature list
 	nlp_feature_list                      	 = ['sentiment', 'politeness', 'coordination']  
@@ -185,7 +185,11 @@ def insight_initialization():
 	for i in list(insight_text_temp['insight']):
 		insight_text[i] = dict()
 		for j in insight_text_temp['screen']:
-			insight_text[i][j] = unicode(np.array(insight_text_temp.loc[insight_text_temp['insight']==i][insight_text_temp['screen']==j]['text'])[0], errors="ignore")
+			try: 
+				insight_text[i][j] = unicode(np.array(insight_text_temp.loc[insight_text_temp['insight']==i][insight_text_temp['screen']==j]['text'])[0], errors="ignore")
+				insight_text[i][j] = re.sub("\r", "<br>", insight_text[i][j])
+			except Exception as e: 
+				insight_text[i][j] = ""
 
 	# load title
 	insight_title_temp = pd.read_csv(insight_title_path)

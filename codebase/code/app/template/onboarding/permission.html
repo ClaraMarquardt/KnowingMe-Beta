@@ -17,15 +17,21 @@
 
   <!-- Content Section - MAIN -->
   <section id="section01" class="demo">
-  
+    
+    <!-- Header Section -->
+    {% include 'template/general/header_user_blank.html' %}
+    {% include 'template/general/header_ribbon_authentication.html' %}
+    
+    <!-- Content Section -->
     {% include 'template/space/main_top_space.html' %}
+    
+    
+    <h3><p style="text-align:center;">Let's Get Logged-In</p></h3>
   
-    <h3><p style="text-align:center;">Let's Get Logged In</p></h3>
-  
-    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">In order to create these insights about the way you communicate with others, <br>we need to read your email data including your email contacts which is why we are asking you to authenticate with your gmail account. <br><br> If you have not previously authenticated with the account, you’ll see a request for permission on the next page.<br><br>We take data privacy really seriously. We don’t store the text of your emails or details about the senders of emails you receive or recipients of emails you send. 
+    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">In order to create these insights about the way you communicate with others, we need to read your email data including your email contacts which is why we are asking you to authenticate with your Gmail account. If you have not previously authenticated, you’ll see a request for permission on the next page.<br><br>Your email data is personal, and we take your trust really seriously. <br>  &#8226; <i>No data leaves your computer. <br> &#8226; Any data that is generated is deleted once you log out or close the app.</i>
     </font></p>
-
-    <p style="text-align:center;"><a href={{ auth_url }}>This Sounds Great</a>&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;&nbsp;<a href="#section02">Learn More</a></p>
+ 
+    <p style="text-align:center;"><a href={{ auth_url }}>Authenticate</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="#section02">Learn More</a>&nbsp;&nbsp;</p>
 
     {% include 'template/space/insight_main_scroll_bottom_space.html' %}
 
@@ -35,17 +41,21 @@
   <!-- Content Section - ADDITIONAL -->
   <section id="section02" class="demo">
   
+      <!-- Header Section -->
+    {% include 'template/general/header_user_blank.html' %}
+    {% include 'template/general/header_ribbon_authentication.html' %}
+
+    {% include 'template/space/landing_scroll_top_space.html' %}
+    {% include 'template/space/landing_scroll_top_space.html' %}
     {% include 'template/space/landing_scroll_top_space.html' %}
 
-    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241"><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel gravida risus, quis vulputate magna. Donec eu suscipit leo, vel vestibulum ipsum. Maecenas vel velit nulla. Vestibulum sed iaculis turpis. Nam congue enim mauris. Integer sit amet elementum enim, sit amet viverra libero. Maecenas eget placerat dui, tincidunt gravida massa. Vestibulum gravida accumsan pretium.
+    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">At KnowingMe, we want to help you understand how you communicate. <br>To do this, we pull the text and meta-data of your emails from your Gmail and run it through our analytical package. In this current version, all processing takes place locally on your computer. No data leaves your computer, and all data is deleted once you log out or close the app.<br>
 
-    <br><br>Nullam dapibus dolor quis elit varius commodo. Suspendisse efficitur sapien odio, vel ornare ex imperdiet non. Quisque finibus fringilla lorem a gravida. Praesent vitae dignissim nisi. Nam elementum libero nisi, euismod rutrum tortor rutrum laoreet. Fusce dictum nibh in massa rhoncus, vitae viverra purus fermentum. Integer accumsan elit sed rhoncus bibendum. Nunc mattis lacus eget consequat tempus.
-
-    <br><br>Curabitur sit amet pretium ligula. Nulla eu dolor eu libero volutpat molestie vitae tempor enim. Donec quis pulvinar sapien. Donec convallis nunc neque, a fringilla velit congue at. Sed rutrum a nisl non efficitur. Ut vitae est sed nisl sagittis tincidunt a non risus. Proin eu faucibus odio, sit amet facilisis felis. Nam fringilla, arcu in vestibulum volutpat, sem ex faucibus elit, in congue tortor ligula at ante. Donec venenatis, erat fringilla porta tincidunt, enim elit ullamcorper massa, porta ullamcorper mauris nunc et neque.</i>
+    <br><br><i>We realize that you're placing a large trust in our service. <br>If you have concerns that aren't covered here, please <a href="http://knowingmeapp.com/contact-us/">contact us</a></i>.
 
     <br><br>
 
-    <p style="text-align:center;"><a href="#section01">Return To Permission Page</a></p>
+    <p style="text-align:center;"><a href="#section01"><img src="{{url_for('static', filename='image/icon/top.png')}}" style="width:15px;height:15px;"/></a></p>
 
     {% include 'template/space/landing_scroll_bottom_space.html' %}
 
