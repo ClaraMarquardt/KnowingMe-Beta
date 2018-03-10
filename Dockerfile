@@ -64,8 +64,7 @@ RUN pip --no-cache-dir install -r codebase/installation/dependency.txt
 RUN pip install --upgrade google-api-python-client        			           
 
 ## Test Dependencies
-
-RUN python codebase/installation/dependency_test.sh
+# RUN python codebase/installation/dependency_test.sh
 RUN python codebase/installation/nltk_test.py  
 RUN python codebase/installation/spacy_test.py  
 

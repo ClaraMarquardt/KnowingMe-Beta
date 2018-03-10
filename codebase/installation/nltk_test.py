@@ -17,11 +17,11 @@
 
 # Paths
 import os, sys
-app_root = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))  
+app_root     = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))  
 
 # Dependencies
 import nltk
-nltk_dir          = os.path.normpath(os.path.join(app_root_init, 'dependencies', 'nltk'))
+nltk_dir     = os.path.normpath(os.path.join(app_root, 'dependencies', 'nltk'))
 
 # ------------------------------------------------------------------------ #
 # Test Installation

@@ -472,7 +472,7 @@ var generate_histogram = function(mode) {
     
       // # Create visualization
       // # -------------
-  
+     
       bar.append("rect")
          .attr("x", 1)
          .attr("class","vis")
@@ -512,16 +512,60 @@ var generate_histogram = function(mode) {
         g2.selectAll(".hh")
           .data(dist_sample_data_all)
           .enter().append("rect")
-          .attr("class", "dist_sample")
+          .attr("class", "dist_sample dist_sample_rect")
           .attr("x", function(d,i) { return x_bar(d.label); })
           .attr("y", function(d,i) {  return y_bar(d.value); })
           .attr("width", x_bar.bandwidth())
           .attr("height", function(d) { return height_svg - y_bar(d.value)+1; })
-    
+      
+ 
         g2.append("g")
           .attr("class", "dist_sample")
           .attr("transform", "translate(0," + (height_svg) + ")")
           .call(d3.axisBottom(x_bar));
+
+  var tooltip = d3.select("#a")
+                      .append('div')
+                      .attr('class', 'tooltip');
+      
+      tooltip.append('div')
+             .attr('class', 'weekday')
+      tooltip.append('div')
+            .attr('class', 'hour')
+      tooltip.append('div')
+          .attr('class', 'value')
+
+      d3.selectAll(".dist_sample_rect")
+         .on('mouseover', function(d) {
+
+          d3.select(this)
+            .style("fill","white")
+            .style("stroke","black")
+            .style("stroke-width","1px");
+
+          tooltip.select('.weekday').html("<b>"+d.label+":</b>");
+          tooltip.select('.hour').html((d.value*100).toFixed(3));
+          tooltip.style('display', 'block');
+          tooltip.style('opacity',2);
+      
+      })
+      .on('mousemove', function(d) {
+          
+          tooltip.style('top', (d3.event.layerY + 200) + 'px')
+                 .style('left', (d3.event.layerX + 550) + 'px');
+      
+      })
+      .on('mouseout', function(d) {
+        
+        d3.select(this)
+          .style("fill","black" )
+          .style("stroke","black")
+          .style("stroke-width","1px");
+      
+        tooltip.style('display', 'none')
+               .style('opacity',0);
+      
+      });
 
         })  
   
