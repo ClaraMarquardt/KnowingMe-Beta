@@ -26,6 +26,7 @@ from __init_lib__ import *
 sys.path.append(os.path.normpath(os.path.join(app_root, 'code', 'frontend','frontend_insight')))
 from insight_sample_mod import *
 from insight_main_mod import *
+from insight_other_mod import *
 
 # Define dictionary - insight_name / insight_function
 insight_function = dict()
@@ -48,6 +49,7 @@ insight_function['coordination']      = coordination
 
 ## setting
 insight_function['date_dist_setting'] = date_dist
+insight_function['group_setting']     = group_setting
 
 #----------------------------------------------------------------------------#
 #			                Function Definition                              #

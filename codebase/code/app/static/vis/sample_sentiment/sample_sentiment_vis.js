@@ -102,7 +102,7 @@ var stage_1 = function(mode="Supplement") {
 
   // # Define
  text_content = [
-    "The graph on the right shows you the % of text in the email that is negative, neutral, positive.<br> Click on 'Other Examples' to see other examples."]
+    "The graph on the right shows you the % of text in the email that is negative, neutral or positive.<br> Click on 'Other Examples' to see other examples."]
 
   text_duration = [1000]
   text_delay    = [0]

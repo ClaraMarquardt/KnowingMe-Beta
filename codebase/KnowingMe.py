@@ -941,21 +941,45 @@ def timeframe_setting_store_view():
 	# render
 	return flask.redirect(flask.url_for('intro_load_b_view'))
 
-# # contact_group
-# # ------------------------------------------------------------------------ #
-# @app.route('/contact_group')
-# def contact_group_view():
+# group_setting
+# ------------------------------------------------------------------------ #
+@app.route('/contact_group')
+def group_setting_view():
 
-# 	# render
-# 	return flask.render_template('setting/contact_group.html')
+	# access check
+	if (access_check(access_level=4)) == True: 
 
-# # contact_group_new
-# # ------------------------------------------------------------------------ #
-# @app.route('/contact_group_new')
-# def contact_group_new_view():
+		# initialize
+		insight_name = 'group_setting'
+	
+		# generate insight
+		if (insight_name not in insight_data.keys()):
 
-# 	# render
-# 	return flask.render_template('setting/contact_group_new.html')
+			insight_data[insight_name] = insight_wrapper_mod.generate_insight_wrapper(insight_list=insight_name, 
+				email_link_df=feature_data['email_link_df'], current_date=current_date, email_date_df=feature_data['email_date_df'], 
+				email_diff=user_setting['email_diff'], contact_df=feature_data['agg_contact_df'], user_name=key_var['user_name'], 
+				user_email=key_var['user'], email_range=user_setting['email_range'])
+
+	
+		# render
+		return flask.render_template('setting/group_setting.html', user=key_var['user_name'],user_email=key_var['user'], 
+			user_photo=key_var['user_photo'], earliest_date = user_setting["email_earliest"], 
+			latest_date = user_setting["email_latest"], date_diff=user_setting["email_diff"],
+			timezone_utc_offset = timezone_utc_offset, timezone_utc_name = timezone_utc_name,
+			insight_name = insight_name, 
+			insight_data = insight_data[insight_name], 
+			min_day=user_setting['min_day'], min_email=user_setting['min_email'], 
+			max_email=user_setting['email_max'], timelag_min=user_setting['timelag_day'],
+			release_mode=key_var["intro_release"])
+
+	else: 
+
+		# access denied 
+		access_denied_url = access_denied()
+
+		# render
+		return flask.redirect(flask.url_for(access_denied_url))
+
 
 # Insight
 # ------------------------------------------------------------------------ #

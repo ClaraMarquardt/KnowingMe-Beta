@@ -20,7 +20,7 @@
 /etc/init.d/postgresql start
 
 ## Launch app
-python /KnowingMe/codebase/KnowingMe.py
+python /KnowingMeBeta/codebase/KnowingMe.py
 
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #

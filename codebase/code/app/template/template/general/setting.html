@@ -13,11 +13,14 @@
      	<span class="icons">Timeframe<a href="{{ url_for('timeframe_setting_view') }}" ><br><img src="{{ url_for('static', filename='image/icon/timeframe.png') }}" style="width:30px;height:30px;"></a></span>
     {% else %}
     	<span class="icons"><font color="#e2e2e2">Timeframe</font><br><img src="{{ url_for('static', filename='image/icon/timeframe.png') }}" style="width:30px;height:30px;opacity:0.3;"></a></span>
-	{% endif %}
+	  {% endif %}
  
  	<!-- CONTACT GROUP SETTING -->   
-    <span class="icons"><font color="#e2e2e2">Groups</font><br><img src="{{ url_for('static', filename='image/icon/contact.png') }}" style="width:30px;height:30px;opacity:0.3;"></a></span>
-  
+   {% if access_level==True %}
+      <span class="icons">Groups<a href="{{ url_for('group_setting_view') }}" ><br><img src="{{ url_for('static', filename='image/icon/contact.png') }}" style="width:30px;height:30px;"></a></span>
+    {% else %}
+      <span class="icons"><font color="#e2e2e2">Groups</font><br><img src="{{ url_for('static', filename='image/icon/contact.png') }}" style="width:30px;height:30px;opacity:0.3;"></a></span>
+    {% endif %}  
 
   </div> 
 

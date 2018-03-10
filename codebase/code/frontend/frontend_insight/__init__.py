@@ -11,4 +11,4 @@
 
 # ------------------------------------------------------------------------ #
 
-__all__ = ["insight_sample_mod", "insight_main_mod", "insight_wrapper_mod"]
+__all__ = ["insight_sample_mod","insight_other_mod", "insight_main_mod", "insight_wrapper_mod"]

@@ -17,8 +17,10 @@
 docker build --no-cache -t knowingmebeta .
 
 # Push docker image
-docker login --username=knowingmeatideas42        # KnowingMe    
-docker tag knowingmebeta knowingmebeta_v1.0
-docker push knowingmebeta_v1.0
+docker login --username=knowingmeatideas42        					# KnowingMe    
+docker tag knowingmebeta knowingmeatideas42/knowingmebeta
+docker push knowingmeatideas42/knowingmebeta
 
 #----------------------------------------------------------------------------#
+
+

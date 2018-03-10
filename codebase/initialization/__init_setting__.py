@@ -166,7 +166,7 @@ def insight_initialization():
 	insight_data['sample_insight_list']   	 = ['date_dist', 'time_dist','network', 'sample_sentiment']
 	insight_data['intro_insight_list']    	 = ['talkative','sentiment','politeness']
 	insight_data['main_insight_list']        = ['date_dist', 'time_dist','network', 'talkative','reponsiveness', 'firstlast', 'sentiment','politeness','coordination']
-	insight_data['setting_insight_list']     = ['date_dist_setting']
+	insight_data['setting_insight_list']     = ['date_dist_setting', 'group_setting']
 
 	insight_data['skip_sample_insight_list'] = ['talkative','responsiveness', 'firstlast']
 	insight_data['add_info_list']            = ['sentiment','politeness', 'coordination']

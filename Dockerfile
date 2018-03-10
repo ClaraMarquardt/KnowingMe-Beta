@@ -84,7 +84,7 @@ VOLUME /KnowingMe_Data
 WORKDIR /KnowingMeBeta/
 EXPOSE  $PORT
 EXPOSE  $PORT_NLP
-CMD ["/KnowingMeBeta/codebase/docker/Docker_Start.sh"]
+CMD ["/KnowingMeBeta/codebase/docker/docker_start.sh"]
 
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #
