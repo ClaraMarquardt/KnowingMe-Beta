@@ -1,7 +1,7 @@
 {
     "min_day": 7, 
     "min_email": 50, 
-    "email_max": 800, 
+    "email_max": 700, 
     "timelag_day":30,
     "timelag_overview":1,
     "birthday_day":1825,
