@@ -213,20 +213,20 @@ def intro_load_overview_wrapper(offline_mode, service, user, current_date, timel
 	try: 
 	
 		if (offline_mode==False):	
-
+			print('###216')
 			# email & birthday overview
 			overview_email(service, user, current_date, timelag_overview, overview_day, birthday_day, output_dir, timezone_utc_offset)
-
+			print('###219')
 		# determine analysis timeframe
 		user_setting['email_earliest'], user_setting['email_latest'], user_setting['email_diff'], user_setting['email_range']  = timeframe_email(current_date, timelag_day, timelag_overview, min_day, overview_day, email_max, output_dir)
-
+		print('###222')
 		# modify based on user settings
 		if (pd.isnull(user_setting['email_earliest_user'])==False):
 			user_setting['email_earliest'] = email_earliest_user
 			user_setting['email_latest']   = email_latest_user
 			user_setting['email_diff']     = email_diff_user
 			user_setting['email_range']    = email_range_user
-			
+		print('###229')
 		# update thread status
 		key_var['api_success'] = 'True'
 
@@ -321,9 +321,6 @@ def intro_load_analysis_wrapper(user, user_name, email_range, email_diff, output
 			## other data preparation
 			feature_data['email_date_df'] = dict()
 			for i in email_array_other:
-				if bool(re.search('birthday',i))==True: 
-					with open(i, "rb") as file:
-						feature_data['email_date_df']['birthday'] = pickle.load(file)
 				if bool(re.search('overview',i))==True: 
 					with open(i, "rb") as file:
 						feature_data['email_date_df']['overview'] = pickle.load(file)

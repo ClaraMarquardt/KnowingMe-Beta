@@ -242,24 +242,6 @@ def process_email(request_id, response, exception):
 			print(e)
 
 
-# process_date
-#---------------------------------------------#
-def process_date(request_id, response, exception):
-
-	# define flobals	
-	global date_list
-
-	## format
-	msg_str  = base64.urlsafe_b64decode(response['raw'].encode('ASCII'))
-	mime_msg = email.message_from_string(msg_str)
-
-	mime_msg_date = mime_msg['date']
-	mime_msg_date = parser.parse(mime_msg_date)
-	mime_msg_date = mime_msg_date.strftime("%m-%d")
-
-	date_list.append(mime_msg_date)
-
-
 #----------------------------------------------------------------------------#
 #			                     Functions                                   #
 #----------------------------------------------------------------------------#
@@ -273,8 +255,7 @@ def overview_email(service, user, current_date, timelag_overview, overview_day, 
 
 	# Define filenames
 	overview_filename=os.path.normpath(os.path.join(output_dir, "other", 'overview_'+ datetime.datetime.strptime(current_date,'%m/%d/%Y').strftime("%m_%d_%Y") + '.p'))
-	birthday_filename=os.path.normpath(os.path.join(output_dir, "other", 'birthday_'+ datetime.datetime.strptime(current_date,'%m/%d/%Y').strftime("%m_%d_%Y") + '.p'))
-
+	print(overview_filename)
 	# Initialize global var
 	global_var['status_overview_max'] = len(range(timelag_overview,overview_day+timelag_overview))
 
@@ -286,31 +267,34 @@ def overview_email(service, user, current_date, timelag_overview, overview_day, 
 		
 		# loop over days
 		for i in range(timelag_overview,overview_day+timelag_overview): 
-
-
+			print(i)
 			# define end dates
 			date_start = (datetime.datetime.strptime(current_date,'%m/%d/%Y') - datetime.timedelta(days=i)).strftime("%m/%d/%Y")
 			date_end   = (datetime.datetime.strptime(current_date,'%m/%d/%Y') - datetime.timedelta(days=i-1)).strftime("%m/%d/%Y")
-
+			print(date_start)
+			print(date_end)
 			# convert to UTC
 			date_start_utc  = parser.parse(date_start) + datetime.timedelta(hours=timezone_utc_offset)
 			date_end_utc    = parser.parse(date_end)   + datetime.timedelta(hours=timezone_utc_offset)
-
+			print(date_start_utc)
+			print(date_end_utc)
 			date_start_utc_timestamp  = str(calendar.timegm((parser.parse(date_start) + datetime.timedelta(hours=timezone_utc_offset)).timetuple())).split(".")[0]
 			date_end_utc_timestamp    = str(calendar.timegm((parser.parse(date_end)   + datetime.timedelta(hours=timezone_utc_offset)).timetuple())).split(".")[0]
-
+			print(date_start_utc_timestamp)
+			print(date_end_utc_timestamp)
 			# define date filter
 			date_filter = "before: {0} after: {1}".format(date_end_utc_timestamp, date_start_utc_timestamp)
 			exclude_text = ["opt-out", "viewing the newsletter", "edit your preferences", "update profile", "smartunsuscribe","secureunsuscribe","group-digests","yahoogroups"]
 			text_filter = " ".join(["AND NOT: \""+a+"\"" for a in exclude_text])
 			q  = "(category:personal OR label:sent) AND ("+ date_filter +") " + text_filter + " -from:'no-reply@accounts.google.com'"
-			
+			print(q)
 			# obtain email_ids
 			msg_list = get_email_list(service, user, q)
 			msg_list =[msg['id'] for msg in msg_list]
 
 			# store in dictionary
 			date_start_format = str(datetime.datetime.strptime(date_start,'%m/%d/%Y').strftime("%m/%d/%Y"))
+			print(date_start_format)
 			email_dict[date_start_format] = msg_list
 			global_var['status_overview_load'] = global_var['status_overview_load']+1
 
@@ -325,44 +309,6 @@ def overview_email(service, user, current_date, timelag_overview, overview_day, 
 		global_var['status_overview_load'] = global_var['status_overview_max']
 		
 		time.sleep(3)
-
-	# Birthday file do not exist > Generate
-	if not os.path.exists(birthday_filename):
-	
-		# initialize
-		global date_list 
-		date_list = []
-
-		# define birthday filter
-		birthday_query = [('in:inbox +{"happy birthday OR bday"} -{belated OR late}')]
-		
-		# obtain email_ids
-		msg_list = get_email_list(service, user, birthday_query)
-		msg_list =[msg['id'] for msg in msg_list]
-		
-		if len(msg_list)>0:
-
-			for i in range(0,int(np.ceil(len(msg_list)/25))+1):
-			
-				start = np.minimum(i*25, len(msg_list)-1)
-				end   = np.minimum(start+25, len(msg_list)-1)
-	
-				if end>start:
-					msg_list_temp=msg_list[start:end]
-				else:
-					msg_list_temp=msg_list[start]
-		
-				# Batch process emails 
-				batch = service.new_batch_http_request()
-				for msg_id in msg_list_temp:
-					batch.add(service.users().messages().get(userId=user, id=msg_id, format="raw", metadataHeaders =["Date"]), callback=process_date)
-				batch.execute()
-	
-		date_dict = dict()
-		date_dict['birthday'] = date_list
-
-		with open(birthday_filename, 'wb') as out_file:
-			pickle.dump(date_dict, out_file)
 
 
 # timeframe_email
