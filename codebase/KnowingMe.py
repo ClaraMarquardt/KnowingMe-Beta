@@ -33,7 +33,7 @@ user_setting                                   = user_setting_initialization()
 app_setting                                    = app_setting_initialization()
 key_var                         			   = var_initialization()
 insight_data, insight_text, insight_title      = insight_initialization()
-
+print(user_setting)
 # Dependency settings
 warnings.filterwarnings("ignore", message="numpy.dtype size changed")
 warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
@@ -384,7 +384,7 @@ def landing_view():
 	# create user data folder (if it does not exist)
 	if not os.path.exists(user_setting['output_dir']):
 		os.makedirs(user_setting['output_dir'])
-	
+
 	# render
 	return flask.render_template('onboarding/landing.html')
 
@@ -404,9 +404,9 @@ def home_view():
 		user_setting['output_dir'] = os.path.join(user_setting['output_dir_base'], key_var['user'])
 		if not os.path.exists(user_setting['output_dir']):
 			os.makedirs(user_setting['output_dir'])
-	
-		user_data_dir_init(user_setting['output_dir'])
 		
+		user_data_dir_init(user_setting['output_dir'])
+		print(user_setting)
 		# render
 		return flask.render_template('onboarding/home.html', user=key_var['user_name'],user_email=key_var['user'], 
 			user_photo=key_var['user_photo'], release_mode=key_var["intro_release"])
