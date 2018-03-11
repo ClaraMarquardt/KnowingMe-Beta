@@ -6,5 +6,5 @@
     "timelag_overview":1,
     "birthday_day":1825,
     "overview_day":365,
-    "output_dir": "KnowingMe_Data"
+    "output_dir": "/KnowingMe_Data"
 }

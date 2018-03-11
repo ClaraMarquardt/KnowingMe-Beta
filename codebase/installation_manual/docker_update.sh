@@ -14,7 +14,8 @@
 
 # Build docker image
 # docker build -t knowingmebeta .
-docker build --no-cache -t knowingmebeta .
+# docker build --no-cache -t knowingmebeta .
+docker build --build-arg RESTART=`date +%s` -t knowingmebeta .
 
 # Push docker image
 docker login --username=knowingmeatideas42        					# KnowingMe    

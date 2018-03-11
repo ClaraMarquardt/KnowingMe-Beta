@@ -11,6 +11,9 @@
 
 # ------------------------------------------------------------------------ #
 
+# STAGE BASIC
+# ------------------------------------------------------------------------ #
+# ------------------------------------------------------------------------ #
 
 # Basic Setup (Ubuntu + Core dependencies incl. git, python, pip, postgresql)
 # ------------------------------------------------------------------------ #
@@ -59,7 +62,6 @@ RUN chmod -R a+rwx .
 # ---------------------------------------------
 
 ## Install Dependencies
-
 RUN pip install --no-binary scipy scikit-learn  
 RUN pip --no-cache-dir install -r codebase/installation/dependency.txt           	   
 RUN pip install --upgrade google-api-python-client        			           
@@ -68,6 +70,28 @@ RUN pip install --upgrade google-api-python-client
 # RUN python codebase/installation/dependency_test.sh
 RUN python codebase/installation/nltk_test.py  
 RUN python codebase/installation/spacy_test.py  
+
+
+
+# STAGE RESTARST
+# ------------------------------------------------------------------------ #
+# ------------------------------------------------------------------------ #
+
+# Restart
+# ---------------------------------------------
+ARG RESTART=unknown
+RUN RESTART=${RESTART} echo "stage_restart" # comment to restart here
+
+# Reinstall codebase
+# ---------------------------------------------
+WORKDIR /
+RUN pwd
+RUN rm -rf /KnowingMeBeta
+
+RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@github.com/ClaraMarquardt/KnowingMeBeta.git
+
+WORKDIR /KnowingMeBeta/
+RUN chmod -R a+rwx .
 
 # Database Initialization
 # ---------------------------------------------
