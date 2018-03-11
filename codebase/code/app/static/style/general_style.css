@@ -24,6 +24,13 @@ table.dataframe, .dataframe th, .dataframe td {
 
 }
 
+#chart2 {
+  height: 400px;
+  width:  650px;
+  border:1px solid #000;
+  overflow: scroll;
+ }
+
 textarea{
   display:inline-block;
   vertical-align:middle;

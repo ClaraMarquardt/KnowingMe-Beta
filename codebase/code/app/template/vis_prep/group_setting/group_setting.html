@@ -1,7 +1,32 @@
 <!doctype html>
 <html>
 
+    <!-- CONTENT -->    
+    <center>
+    
+        <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">Below you can modify the gender classification of any of your contacts over the timeperiod in question. </font></p>
 
+        <div id="chart2" style="overflow:scroll"></div>
+        <br>
+
+    </center>
+    
+    <!-- FORM -->    
+    <div id="form">
+
+      <form id="send" method="post" action="{{ url_for('group_setting_store_view') }}">        
+
+        <input type="hidden" id="contact_gender_updated" name="contact_gender_updated">
+        <input type="hidden" id="contact_email_updated" name="contact_email_updated">
+    
+        <input type="Submit" id="Submit" value="Update Groups" />
+
+      </form> 
+
+
+    </div>
+
+    
     <!-- SCRIPT -->    
     <script type="text/javascript">
        {% include "vis_prep/"+insight_name+"/"+insight_name+"_prep.js" %}

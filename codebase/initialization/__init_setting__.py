@@ -130,26 +130,15 @@ def var_initialization(reset_user=True, key_var_old=np.nan):
 	key_var['current_insight'] 			 	 = ""
 
 	# user group variables
-	key_var['user_group_1_store']  		     = np.array([])
-	key_var['user_group_2_store']  		     = np.array([])
-	key_var['user_group_na_store']           = np.array([])
-	key_var['user_group_1']  		         = []
-	key_var['user_group_2']  		         = []
-	key_var['user_group_na']			     = []
-	key_var['user_group_name']               = "**Blank_Default"
-	key_var['user_group_name_a']             = "Group A"
-	key_var['user_group_name_b']             = "Group B"
-	key_var['user_group_name_basis']  		 = "**Blank_Default"
-	key_var['user_group_name_list_address']  = ['/user_group_load_gender','/user_group_load_blank','/user_group_store_rand']
-	key_var['user_group_name_list_name']     = ['**Gender_Default','**Blank_Default','**Random_Default']
+	key_var['contact_group_user']  		     = np.nan
 	
 	if (reset_user == False): 
 	
 		# user variables
-		key_var['user']                		 	 = key_var_old['user']
-		key_var['user_name']    				 = key_var_old['user_name']
-		key_var['user_photo']          		     = key_var_old['user_photo']
-		key_var['service']          		     = key_var_old['service']
+		key_var['user']                		 = key_var_old['user']
+		key_var['user_name']    		     = key_var_old['user_name']
+		key_var['user_photo']          		 = key_var_old['user_photo']
+		key_var['service']          		 = key_var_old['service']
 
 	return(key_var)
 
@@ -223,6 +212,12 @@ def user_setting_initialization():
 	user_setting['output_dir_base']         = os.path.expanduser(str(user_setting_data['output_dir']))
 	user_setting['output_dir_raw']          = str(user_setting_data['output_dir'])
 
+	# default variables
+	user_setting['email_earliest_user']     = np.nan
+	user_setting['email_latest_user']       = np.nan
+	user_setting['email_range_user']        = np.nan
+	user_setting['email_diff_user']         = np.nan
+
 	# Modify user settings (based on execution settings (environment variables))
 	user_setting['output_dir']              = str(os.path.expanduser(os.getenv("OUTPUT", user_setting['output_dir'])))
 	user_setting['output_dir_base']         = str(os.path.expanduser(os.getenv("OUTPUT", user_setting['output_dir_base'])))
@@ -267,8 +262,6 @@ def user_data_dir_init(user_data_dir):
 		os.makedirs(os.path.join(user_data_dir, "outbox"))
 	if not os.path.exists(os.path.join(user_data_dir, "other")):
 		os.makedirs(os.path.join(user_data_dir, "other"))
-	if not os.path.exists(os.path.join(user_data_dir, "contact")):
-		os.makedirs(os.path.join(user_data_dir, "contact"))
 	if not os.path.exists(os.path.join(user_data_dir, "dev")):
 		os.makedirs(os.path.join(user_data_dir, "dev"))
 
@@ -283,30 +276,6 @@ def user_data_dir_clear(user_data_dir):
 				os.remove(f)
 		purge(user_data_dir, ["log","json","csv", "txt","p"])
 
-# initialize user-specific contact groupings
-# ---------------------------------------------#
-def contact_group_intialization(user_data_dir, user_group_name_list_name, user_group_name_list_address):
-
-	contact_path = glob.glob(os.path.join(user_data_dir,'contact', 'contact_df_*.csv'))
-	contact_path = [re.sub("(.*(\/)*)(contact_df_)([^$]*)\$([^$]*)\$([^$]*)\$([^$]*)(\.csv)","\\4",x) for x in contact_path]
-	contact_path = [x for x in contact_path if bool(re.match("\*",x))==False]
-
-	user_group_name_list_name_temp = []
-	for i in contact_path:
-		user_group_name_list_name_temp.append(i)
-
-	user_group_name_list_name_temp = [x for x in user_group_name_list_name_temp if x not in user_group_name_list_name]
-	
-	if (len(user_group_name_list_name_temp)>0):
-		user_group_name_list_name_temp = list(set(user_group_name_list_name_temp))
-		user_group_name_list_address_temp = ['/user_group_load_' + x for x in user_group_name_list_name_temp]	
-
-		for i in user_group_name_list_name_temp:
-			user_group_name_list_name.append(i)
-		for i in user_group_name_list_address_temp:
-			user_group_name_list_address.append(i)
-
-	return(user_group_name_list_name,user_group_name_list_address)
 
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #

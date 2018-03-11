@@ -200,7 +200,7 @@ def access_denied():
 
 # intro_load_overview_wrapper
 # --------------------------------#
-def intro_load_overview_wrapper(offline_mode, service, user, current_date, timelag_day, timelag_overview, overview_day, birthday_day, email_max, min_day,output_dir,timezone_utc_offset):
+def intro_load_overview_wrapper(offline_mode, service, user, current_date, timelag_day, timelag_overview, overview_day, birthday_day, email_max, min_day,output_dir,timezone_utc_offset,email_earliest_user, email_latest_user, email_diff_user, email_range_user):
 
 	# define globals
 	global key_var
@@ -220,6 +220,13 @@ def intro_load_overview_wrapper(offline_mode, service, user, current_date, timel
 		# determine analysis timeframe
 		user_setting['email_earliest'], user_setting['email_latest'], user_setting['email_diff'], user_setting['email_range']  = timeframe_email(current_date, timelag_day, timelag_overview, min_day, overview_day, email_max, output_dir)
 
+		# modify based on user settings
+		if (pd.isnull(user_setting['email_earliest_user'])==False):
+			user_setting['email_earliest'] = email_earliest_user
+			user_setting['email_latest']   = email_latest_user
+			user_setting['email_diff']     = email_diff_user
+			user_setting['email_range']    = email_range_user
+			
 		# update thread status
 		key_var['api_success'] = 'True'
 
@@ -302,8 +309,16 @@ def intro_load_analysis_wrapper(user, user_name, email_range, email_diff, output
 			## main data preparation
 			feature_data         = analysis(email_array, user, output_dir, current_date, earliest_date, latest_date)
 			
-			## other data preparation
+			## modify contact df (user settings)
+			if (isinstance(key_var['contact_group_user'], pd.DataFrame)):
+				contact_df_user_relevant_filter = [x in np.array(feature_data['agg_contact_df']['contact']) for x in np.array(key_var['contact_group_user']['contact'])]
+				contact_df_user_relevant        = key_var['contact_group_user'][contact_df_user_relevant_filter]
+				if (len(contact_df_user_relevant)>0): 
+					feature_data['agg_contact_df'] = pd.merge(feature_data['agg_contact_df'], contact_df_user_relevant,on='contact', how='outer')
+					feature_data['agg_contact_df'].ix[~pd.isnull(feature_data['agg_contact_df']['contact_gender_user']),'contact_gender']=np.array(feature_data['agg_contact_df'][~pd.isnull(feature_data['agg_contact_df']['contact_gender_user'])]['contact_gender_user'])
+					feature_data['agg_contact_df'] = feature_data['agg_contact_df'].drop('contact_gender_user', axis=1)
 			
+			## other data preparation
 			feature_data['email_date_df'] = dict()
 			for i in email_array_other:
 				if bool(re.search('birthday',i))==True: 
@@ -394,11 +409,7 @@ def home_view():
 			os.makedirs(user_setting['output_dir'])
 	
 		user_data_dir_init(user_setting['output_dir'])
-	
-		# initialize contact groupings
-		key_var['user_group_name_list_name'], key_var['user_group_name_list_address'] = contact_group_intialization(user_setting['output_dir'], 
-			key_var['user_group_name_list_name'], key_var['user_group_name_list_address'])
-	
+		
 		# render
 		return flask.render_template('onboarding/home.html', user=key_var['user_name'],user_email=key_var['user'], 
 			user_photo=key_var['user_photo'], release_mode=key_var["intro_release"])
@@ -599,7 +610,10 @@ def intro_load_a_view():
 			key_var['user']       = login_data['user'] 
 	
 			# launch processing thread
-			th = Thread(target=intro_load_overview_wrapper, args=(app_setting['offline_mode'], key_var['service'], 'me', current_date,  user_setting['timelag_day'], user_setting['timelag_overview'], user_setting['overview_day'], user_setting['birthday_day'], user_setting['email_max'], user_setting['min_day'],user_setting['output_dir'],timezone_utc_offset))
+			th = Thread(target=intro_load_overview_wrapper, args=(app_setting['offline_mode'], key_var['service'], 'me', current_date,  
+				user_setting['timelag_day'], user_setting['timelag_overview'], user_setting['overview_day'], user_setting['birthday_day'], 
+				user_setting['email_max'], user_setting['min_day'],user_setting['output_dir'],timezone_utc_offset,user_setting['email_earliest_user'], 
+				user_setting['email_latest_user'], user_setting['email_diff_user'], user_setting['email_range_user']))
 			th.start()
 	
 			return flask.render_template('intro/intro_load_a.html', user=key_var['user_name'],user_email=key_var['user'], 
@@ -917,20 +931,17 @@ def timeframe_setting_store_view():
 	global user_setting, insight_data, insight_text, insight_title
 
 	# obtain user data
-	earliest_date_user         			= flask.request.form.get('start_date')
-	latest_date_user           			= flask.request.form.get('end_date')
-	
-	print(earliest_date_user)
-	print(latest_date_user)
-	
+	earliest_date_user         				= flask.request.form.get('start_date')
+	latest_date_user           				= flask.request.form.get('end_date')
+		
 	# generate new data		
-	email_diff_user, email_range_user   = get_diff_range(earliest_date_user, latest_date_user)
+	email_diff_user, email_range_user       = get_diff_range(earliest_date_user, latest_date_user)
 
 	# update user settings
-	user_setting['email_earliest']  	= earliest_date_user
-	user_setting['email_latest']    	= latest_date_user
-	user_setting['email_diff']      	= email_diff_user
-	user_setting['email_range']     	= email_range_user
+	user_setting['email_earliest_user']  	= earliest_date_user
+	user_setting['email_latest_user']    	= latest_date_user
+	user_setting['email_diff_user']      	= email_diff_user
+	user_setting['email_range_user']     	= email_range_user
 
 	# reset insights
 	insight_data, insight_text, insight_title      = insight_initialization()
@@ -939,7 +950,7 @@ def timeframe_setting_store_view():
 	flask.flash("The timeframe settings have been updated. The analysis will now be re-run.")
 
 	# render
-	return flask.redirect(flask.url_for('intro_load_b_view'))
+	return flask.redirect(flask.url_for('intro_load_a_view'))
 
 # group_setting
 # ------------------------------------------------------------------------ #
@@ -980,6 +991,46 @@ def group_setting_view():
 		# render
 		return flask.redirect(flask.url_for(access_denied_url))
 
+
+
+# group_setting_store
+# ------------------------------------------------------------------------ #
+@app.route('/group_setting_store', methods=['POST','GET'])
+def group_setting_store_view():
+
+	## NO ACCESS CHECK (BACKEND)
+
+	# define globals
+	global user_setting, insight_data, insight_text, insight_title, key_var
+
+	# obtain user data
+	contact_email_user         			= np.array(flask.request.form.get('contact_email_updated').split(","))
+	contact_gender_user           		= np.array(flask.request.form.get('contact_gender_updated').split(","))
+
+	map_gender 	                        = {'1':'F','2':'M','3':'I'}	
+	contact_gender_user                 = list(np.array(pd.Series(contact_gender_user).map(map_gender)))
+	
+	# update feature set	
+	contact_df_user 				    = pd.DataFrame({'contact':contact_email_user, 'contact_gender_user':contact_gender_user})
+	print(contact_df_user)
+
+	if (isinstance(key_var['contact_group_user'], pd.DataFrame)):
+		key_var['contact_group_user']  = key_var['contact_group_user'].rename(columns={'contact_gender_user': 'contact_gender'})
+		key_var['contact_group_user']  = pd.merge(key_var['contact_group_user'], contact_df_user, on='contact', how='outer')
+		key_var['contact_group_user'].ix[~pd.isnull(key_var['contact_group_user']['contact_gender_user']),'contact_gender']=np.array(key_var['contact_group_user'][~pd.isnull(key_var['contact_group_user']['contact_gender_user'])]['contact_gender_user'])
+		key_var['contact_group_user']  = key_var['contact_group_user'].drop('contact_gender_user', axis=1)
+		key_var['contact_group_user']  = key_var['contact_group_user'].rename(columns={'contact_gender': 'contact_gender_user'})
+	else: 
+		key_var['contact_group_user']  = contact_df_user
+
+	# reset insights
+	insight_data, insight_text, insight_title      = insight_initialization()
+
+	# status
+	flask.flash("The groups have been updated. The analysis will now be re-run.")
+
+	# render
+	return flask.redirect(flask.url_for('intro_load_c_view'))
 
 # Insight
 # ------------------------------------------------------------------------ #

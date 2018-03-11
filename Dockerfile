@@ -39,6 +39,7 @@ RUN ls root/
 ENV PORT 8000
 ENV PORT_NLP 9000
 ENV DEBUG "False"
+ENV OFFLINE "False"
 
 # Obtain Codebase (From Github)
 # ------------------------------------------------------------------------ #

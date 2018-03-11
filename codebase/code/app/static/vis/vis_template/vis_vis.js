@@ -365,6 +365,69 @@ var generate_multi_bar = function(mode, chart_data, bar_number, delay_bar = 2000
 };
 
 
+// # GRID
+// # ------------------------------
+// # ------------------------------
+
+var generate_grid_vis = function(chart_data, chart_data_text) {
+
+// boxes
+var row = svg.selectAll(".row")
+              .data(chart_data)
+              .enter().append("svg:g")
+
+var col = row.selectAll(".cell")
+             .data(function (d) { return d; })
+             .enter().append("svg:rect")
+             .attr("class", function(d) { return "rect_"+d.y})
+             .attr("x", function(d) { return d.x})
+             .attr("y", function(d) { return d.y })
+             .attr("width", function(d) { return d.width; })
+             .attr("height", function(d) { return d.height; })
+             .style("fill", function(d,i) { 
+              if (d.higlight==true) {
+                return color[i]
+              } else {
+                return "white"; 
+              }})
+             .style("stroke", '#555')
+             .on('click', function(d,i) {
+                d3.selectAll(".rect_"+d.y).style("fill", "white")
+                d3.select(this).style("fill", color[i])
+                $contact_gender[d.index] = i+1
+
+                d3.select("#contact_email_updated").property("value", $contact_email);
+                d3.select("#contact_gender_updated").property("value", $contact_gender);
+
+             })
+
+// text
+var row_text = svg.selectAll(".row_text")
+                  .data(chart_data_text)
+                  .enter().append("svg:g")
+
+var col_text = row_text.selectAll(".cell_text")
+                       .data(function (d) { return d; })
+                       .enter().append("svg").append("text")
+                       .attr("x", function(d) { return d.x})
+                       .attr("y", function(d) { return d.y })
+                       .text(function(d) {return d.label.replace(/( |^)\w/g, function(l){ return l.toUpperCase() })})
+                       .style("text-anchor", "end")
+
+// labels
+var row_label = svg.selectAll(".row_label")
+                    .data([chart_data[0]])
+                    .enter().append("svg:g")
+
+var col_label = row_label.selectAll(".cell_label")
+                         .data(function (d) {return d; })
+                         .enter().append("svg").append("text")
+                         .attr("transform",function(d) { return "translate("+(d.x+20)+","+(d.y-10)+") rotate(300)"})
+                         .text(function(d) {return d.gender_label})
+
+}
+
+
 // # VERTICAL BAR
 // # ------------------------------
 // # ------------------------------
@@ -738,7 +801,8 @@ var generate_bar_brush = function(chart_data) {
       localBrush_email   = sum_value(chart_data,original_start_id,original_end_id)
       localBrush_daylag  = original_end_id + 1
       localBrush_daydiff =  original_start_id - original_end_id
-      if (localBrush_email > $max_email | localBrush_email< $min_email | localBrush_daylag < $timelag_min| localBrush_daydiff < $min_day |  localBrush_daydiff < 0) {
+
+      if ((original_start_id!= $start_date_id_original| original_end_id!=$end_date_id_original) & (localBrush_email > $max_email | localBrush_email< $min_email | localBrush_daylag < $timelag_min| localBrush_daydiff < $min_day |  localBrush_daydiff < 0)) {
         alert("You need to select a timeframe which spands at least "+$min_day+" days and does not begin within the past "+$timelag_min+" days. The timeframe you select needs to contain between "+$min_email+" and " + $max_email + " emails.")
         
         brushinit(original_start_id=$start_date_id_original, original_end_id=$end_date_id_original)
@@ -763,7 +827,7 @@ var generate_bar_brush = function(chart_data) {
       if ($email_date.indexOf(new_date_start)!=-1) {
          var new_date_start_id = $email_date.indexOf(new_date_start)
           b = brush.extent();
-        localBrush_end_date = (brush.empty()) ? brush_end_date : Math.ceil(b[0]),
+        localBrush_end_date = (brush.empty()) ? brush_end_date : Math.ceil(b[1]),
 
          brushinit(original_end_id=new_date_start_id, original_start_id= localBrush_end_date)
       } else {
@@ -779,7 +843,7 @@ var generate_bar_brush = function(chart_data) {
       if ($email_date.indexOf(new_date_end)!=-1) {
          var new_date_end_id = $email_date.indexOf(new_date_end)
          b = brush.extent();
-         localBrush_end_date = (brush.empty()) ? brush_end_date : Math.ceil(b[1]),
+         localBrush_end_date = (brush.empty()) ? brush_end_date : Math.ceil(b[0]),
          brushinit(original_end_id=localBrush_end_date,original_start_id= new_date_end_id)
       } else {
          alert("Please enter a valid date ('mm/dd/yyyy') within the past year ("+$email_date[$start_date_id_original]+" - "+$email_date[$end_date_id_original]+").")
@@ -822,7 +886,9 @@ var generate_bar_brush = function(chart_data) {
       localBrush_email   = sum_value(chart_data,localBrush_start_date,localBrush_end_date)
       localBrush_daylag  = localBrush_end_date + 1
       localBrush_daydiff =   localBrush_start_date - localBrush_end_date
-      if (localBrush_email > $max_email | localBrush_email< $min_email | localBrush_daylag < $timelag_min| localBrush_daydiff < $min_day |  localBrush_daydiff < 0) {
+        
+      if ((localBrush_start_date!= $start_date_id_original| localBrush_end_date!=$end_date_id_original) & (localBrush_email > $max_email | localBrush_email< $min_email | localBrush_daylag < $timelag_min| localBrush_daydiff < $min_day |  localBrush_daydiff < 0)) {
+
         alert("You need to select a timeframe which spands at least "+$min_day+" days and does not begin within the past "+$timelag_min+" days. The timeframe you select needs to contain between "+$min_email+" and " + $max_email + " emails.")
         
         brushinit(original_start_id=$start_date_id_original, original_end_id=$end_date_id_original)

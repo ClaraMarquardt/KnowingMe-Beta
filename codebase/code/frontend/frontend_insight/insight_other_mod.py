@@ -38,6 +38,19 @@ def group_setting(email_link_df, email_link_df_unique, current_date, email_date_
 	# initialize
 	group_setting_dict     = dict()
 	
+	## raw data
+	contact_df_temp                         		   = contact_df      							   
+	contact_df_temp['contact_gender']				   = contact_df_temp['contact_gender'].replace({'F': 1, 'M':2, 'I':3})
+	contact_df_temp   								   = contact_df_temp.sort_values(by=['contact_gender'], ascending=[True])
+	contact_df_temp['contact_gender']				   = contact_df_temp['contact_gender'].replace({1:'F', 2:'M', 3:'I'})
+
+	group_setting_dict['contact_name']        		   = list(np.array(contact_df_temp['contact_name']))
+	group_setting_dict['contact_email']        		   = list(np.array(contact_df_temp['contact']))
+
+	map_gender 	                                       = {'F':1,'M':2,'I':3}	
+	group_setting_dict['contact_gender']        	   = list(np.array(contact_df_temp['contact_gender']))
+	group_setting_dict['contact_gender']               = list(np.array(pd.Series(group_setting_dict['contact_gender']).map(map_gender)))
+	
 	return(group_setting_dict)
 
 	
