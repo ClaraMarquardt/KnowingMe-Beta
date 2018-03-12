@@ -131,7 +131,8 @@ def var_initialization(reset_user=True, key_var_old=np.nan):
 
 	# user group variables
 	key_var['contact_group_user']  		     = np.nan
-	
+	key_var['scroll_mode']  		         = False
+
 	if (reset_user == False): 
 	
 		# user variables

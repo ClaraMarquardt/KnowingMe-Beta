@@ -13,7 +13,7 @@
 </header>
 
 <!-- BODY -->
-<body scroll="no" style="overflow: hidden">
+<body>
 
   <!-- Content Section - MAIN -->
   <section id="section01" class="demo">
@@ -30,28 +30,32 @@
   
     <p style="text-align:center; padding-left:200px; padding-right:200px;"><font color="#464241">
 
-    <img src="{{url_for('static', filename='image/icon/idea.png')}}" style="width:50px;height:50px;"/><br>
-    <b>Academics + Papers</b>
+    <img src="{{url_for('static', filename='image/icon/idea.png')}}" style="width:35px;height:35px;"/><br>
+    <b><font style="font-size:13px">Papers</font></b>
     <br>
-    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
-    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
-    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
-    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
-    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
-    <br><br><br>
+    <br> <a href="https://nlp.stanford.edu/pubs/politeness.pdf"><i>"A computational approach to politeness with application to social factors"</i></a><br> (Cristian Danescu-Niculescu-Mizil, Moritz Sudhof, Dan Jurafsky, Jure Leskovec, Christopher Potts)<br>
+    <br> <a href="https://www.cs.cornell.edu/~cristian/Echoes_of_power_files/echoes_of_power.pdf"><i>"Echoes of power: Language effects and power differences in social interaction"</i></a><br> (Cristian Danescu-Niculescu-Mizil, Lillian Lee, Bo Pang and Jon Kleinberg)<br>
+    <br> <a href="https://www.nyu.edu/projects/spirling/documents/questions.pdf"><i>"Asking too much? The rhetorical role of questions in political discourse"</i></a><br> (Justine Zhang, Arthur Spirling, and Cristian Danescu-Niculescu-Mizil)<br>
+    <br> <a href="https://mobisocial.stanford.edu/papers/informatics11.pdf"><i>"Sentiment analysis on  personal email archives"</i></a><br> (Sudheendra Hangal and Monica S. Lam) <br>                                         
+    <br> <a href="https://www.cs.cornell.edu/~cristian/A_computational_approach_to_linguistic_coordination_files/cristian_phd_thesis.pdf"><i>"A computational approach to linguistic coordination"</i></a><br> (Cristian Danescu-Niculescu-Mizil)<br>    
+    <br> <a href="http://wwwconference.org/proceedings/www2011/proceedings/p745.pdf"><i>"Mark my words!Linguistic style accommodation in social media"</i></a><br> (Cristian Danescu-Niculescu-Mizil, Michael Gamon and Susan Dumais)<br>
+    <br> <a href="http://comp.social.gatech.edu/papers/icwsm14.vader.hutto.pdf"><i>"VADER: A parsimonious rule-based model for sentiment analysis of social media text"</i></a><br> (C.J. Hutto and Eric Gilbert)<br>
 
-     <img src="{{url_for('static', filename='image/icon/algorithm.png')}}" style="width:60px;height:50px;"/><br>
-    <b>Algorithms</b>
-    <br>
-    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
-    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
-    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
-    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
-    <br> &#8226;&nbsp; Aenean rutrum, turpis et faucibus cursus, nibh dolor lacinia ex.
     <br><br>
+
+    <img src="{{url_for('static', filename='image/icon/algorithm.png')}}" style="width:40px;height:35px;"/><br>
+    <b><font style="font-size:13px">Algorithms</font></b>
+    <br>
+    <br> <a href="https://github.com/sudhof/politeness"><i>"Stanford Politeness API" (Politeness)</i></a><br> (Cristian Danescu-Niculescu-Mizil, Moritz Sudhof, Dan Jurafsky, Jure Leskovec, Christopher Potts)<br> 
+    <br> <a href="http://convokit.infosci.cornell.edu/"><i>"Cornell-Conversational-Analysis-Toolkit"  (Linguistic Coordination)</i></a><br> (Cristian Danescu-Niculescu-Mizil, Lillian Lee, Bo Pang and Jon Kleinberg)<br> 
+    <br> <a href="https://github.com/cjhutto/vaderSentiment"><i>"VADER Sentiment Analysis"  (Positiveness)</i></a><br> (C.J. Hutto and Eric Gilbert)<br> 
+    <br> <a href="https://spacy.io/"><i>"Spacy" (General NLP)</i></a><br> 
+    <br> <a href="https://www.nltk.org/"><i>"NLTK" (General NLP)</i></a><br> 
+
+    <br>
     </font></p>
  
-        <p style="text-align:center;"><a href="{{ url_for('dashboard_view') }}"">Dashboard</a></p  >
+    <p style="text-align:center;"><a href="{{ url_for('dashboard_view') }}""><img src="{{url_for('static', filename='image/icon/top.png')}}" style="width:15px;height:15px;"/></a></p  >
 
     {% include 'template/space/insight_main_bottom_space.html' %}
 

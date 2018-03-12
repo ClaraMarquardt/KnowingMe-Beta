@@ -80,7 +80,7 @@ var stage_entry = function() {
 var stage_0 = function(mode="Main") {
   
   // # Define
- text_content = ["This is the overall distribution of your positiveness (0=Negative, 1=Positive) across all the emails we analyzed.<br>Click on any bar to see a sample email at that positivity level."]
+ text_content = ["This is the overall distribution of your positiveness (0=Negative, 1=Positive) across all the emails we analyzed.<br>Click on any bar to see one of your emails at that positivity level."]
 
   text_duration = [1000]
   text_delay    = [0]
@@ -102,7 +102,7 @@ var stage_1 = function(mode="Supplement") {
 
   // # Define
  text_content = [
-    "The graph on the right shows you the % of text in the email that is negative, neutral or positive.<br> Click on 'Other Examples' to see other examples."]
+    "The graph on the right shows you the % of the text in the email which we classify as negative, neutral or positive.<br> Click on 'Other Examples' to display a different sample email at each positivity level."]
 
   text_duration = [1000]
   text_delay    = [0]

@@ -392,13 +392,22 @@ var col = row.selectAll(".cell")
               }})
              .style("stroke", '#555')
              .on('click', function(d,i) {
-                d3.selectAll(".rect_"+d.y).style("fill", "white")
-                d3.select(this).style("fill", color[i])
-                $contact_gender[d.index] = i+1
+                
+                contact_gender_temp          = $contact_gender
+                contact_gender_temp[d.index] = i+1
 
-                d3.select("#contact_email_updated").property("value", $contact_email);
-                d3.select("#contact_gender_updated").property("value", $contact_gender);
 
+                if ((contact_gender_temp.indexOf(1)!=-1) & (contact_gender_temp.indexOf(2)!=-1)) {
+                  d3.selectAll(".rect_"+d.y).style("fill", "white")
+                  d3.select(this).style("fill", color[i])
+                  $contact_gender[d.index] = i+1
+
+                  d3.select("#contact_email_updated").property("value", $contact_email);
+                  d3.select("#contact_gender_updated").property("value", $contact_gender);
+                
+                } else {
+                  alert("To run the analysis there needs to be at least one female and one male contact.")
+                }
              })
 
 // text
@@ -424,6 +433,10 @@ var col_label = row_label.selectAll(".cell_label")
                          .enter().append("svg").append("text")
                          .attr("transform",function(d) { return "translate("+(d.x+20)+","+(d.y-10)+") rotate(300)"})
                          .text(function(d) {return d.gender_label})
+
+// initialize
+d3.select("#contact_email_updated").property("value", $contact_email);
+d3.select("#contact_gender_updated").property("value", $contact_gender);
 
 }
 

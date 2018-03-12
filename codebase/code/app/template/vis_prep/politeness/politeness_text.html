@@ -3,18 +3,15 @@
 
     <!-- CONTENT -->    
      <div id="text_main"><p style="text-align:center; padding-left:250px; padding-right:250px;"><font color="#464241">
-     So, each of your emails that had a “request” has been analyzed by our algorithm and given a “politeness” score. We'll show you:
+     So, each of your emails that had a request has been analyzed by our algorithm and given a politeness score. We'll show you:
 
      <br>
      
-     <br><img src="{{ url_for('static', filename='image/icon/idea.png') }}" style="width:22px;height:20px;"/>&nbsp;<b>Your Average “Politeness”</b><br>The average politeness score for all of your requests.
+     <br><img src="{{ url_for('static', filename='image/icon/idea.png') }}" style="width:22px;height:20px;"/>&nbsp;<b>Average Politeness</b><br>The average politeness score for all of your sent and received requests.
      <br>
 
-     <br><img src="{{ url_for('static', filename='image/icon/idea.png') }}" style="width:22px;height:20px;"/>&nbsp;<b>Average “Politeness” of Others</b><br>The average politeness score for all requests sent to you.
-
-     <br>
-
-     <br><img src="{{ url_for('static', filename='image/icon/idea.png') }}" style="width:22px;height:20px;"/>&nbsp;<b>Politeness Imbalance</b><br>This shows whether you’re more polite to others, or they’re more polite to you.
+ 
+     <br><img src="{{ url_for('static', filename='image/icon/idea.png') }}" style="width:22px;height:20px;"/>&nbsp;<b>Politeness Imbalance</b><br>The ratio between the politeness of the emails you sent and the politeness of the emails you responded to. A politeness imbalance greater than 1 shows that you're more 'polite' to others than they are to you.
 
      <br>
 

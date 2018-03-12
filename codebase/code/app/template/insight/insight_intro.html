@@ -12,7 +12,7 @@
 </header>
 
 <!-- BODY -->
-<body scroll="no" style="overflow: hidden">
+{% include 'template/general/body_scroll.html' %}
 
   <!-- Header Section -->
   {% include 'template/general/header_user.html' %}
@@ -31,7 +31,7 @@
 
     <h3><p style="text-align:center;">{{ insight_title }}</p></h3>
     {% autoescape false %}
-    <p style="text-align:center; padding-left:250px; padding-right:250px;"><font color="#464241">{{ insight_text }}</font></p>
+   <i> <p style="text-align:center; padding-left:250px; padding-right:250px;"><font color="#464241">{{ insight_text }}</font></p></i>
     {% endautoescape %}
 
     <center>

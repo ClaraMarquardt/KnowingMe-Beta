@@ -13,7 +13,7 @@
 </header>
 
 <!-- BODY -->
-<body scroll="no" style="overflow: hidden">
+{% include 'template/general/body_scroll.html' %}
 
   <!-- Content Section - MAIN -->
   <section id="section01" class="demo">
@@ -28,7 +28,7 @@
     
     <h3><p style="text-align:center;">Let's Get Logged-In</p></h3>
   
-    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">In order to create these insights about the way you communicate with others, we need to read your email data including your email contacts which is why we are asking you to authenticate with your Gmail account. If you have not previously authenticated, you’ll see a request for permission on the next page.<br><br>Your email data is personal, and we take your trust really seriously. <br>  &#8226; <i>No data leaves your computer. <br> &#8226; Any data that is generated is deleted once you log out or close the app.</i>
+    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">To create insights about the way you communicate with others, we need to analyze your email data which is why we are asking you to authenticate with your Gmail account. If you have not previously authenticated, you’ll see a request for permission on the next page.<br><br>Your email data is personal, and we take your trust seriously. <br>  &#8226; <i>No data leaves your computer. <br> &#8226; Any data that is generated is deleted once you log out or close the app.</i>
     </font></p>
  
     <p style="text-align:center;"><a href={{ auth_url }}>Authenticate</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="#section02">Learn More</a>&nbsp;&nbsp;</p>
@@ -49,7 +49,7 @@
     {% include 'template/space/landing_scroll_top_space.html' %}
     {% include 'template/space/landing_scroll_top_space.html' %}
 
-    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">At KnowingMe, we want to help you understand how you communicate. <br>To do this, we pull the text and meta-data of your emails from your Gmail and run it through our analytical package. In this current version, all processing takes place locally on your computer. No data leaves your computer, and all data is deleted once you log out or close the app.<br>
+    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241"> We want to help you understand how you communicate.<br><br>To do this, we pull the text and meta-data of your emails from Gmail and run it through our analytical package. All processing takes place locally on your computer. No data leaves your computer, and all data is deleted once you log out or close the app.<br>
 
     <br><br><i>We realize that you're placing a large trust in our service. <br>If you have concerns that aren't covered here, please <a href="http://knowingmeapp.com/contact-us/">contact us</a></i>.
 

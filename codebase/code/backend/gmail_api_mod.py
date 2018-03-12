@@ -255,7 +255,7 @@ def overview_email(service, user, current_date, timelag_overview, overview_day, 
 
 	# Define filenames
 	overview_filename=os.path.normpath(os.path.join(output_dir, "other", 'overview_'+ datetime.datetime.strptime(current_date,'%m/%d/%Y').strftime("%m_%d_%Y") + '.p'))
-	print(overview_filename)
+
 	# Initialize global var
 	global_var['status_overview_max'] = len(range(timelag_overview,overview_day+timelag_overview))
 
@@ -267,34 +267,31 @@ def overview_email(service, user, current_date, timelag_overview, overview_day, 
 		
 		# loop over days
 		for i in range(timelag_overview,overview_day+timelag_overview): 
-			print(i)
+
 			# define end dates
 			date_start = (datetime.datetime.strptime(current_date,'%m/%d/%Y') - datetime.timedelta(days=i)).strftime("%m/%d/%Y")
 			date_end   = (datetime.datetime.strptime(current_date,'%m/%d/%Y') - datetime.timedelta(days=i-1)).strftime("%m/%d/%Y")
-			print(date_start)
-			print(date_end)
+
 			# convert to UTC
 			date_start_utc  = parser.parse(date_start) + datetime.timedelta(hours=timezone_utc_offset)
 			date_end_utc    = parser.parse(date_end)   + datetime.timedelta(hours=timezone_utc_offset)
-			print(date_start_utc)
-			print(date_end_utc)
+
 			date_start_utc_timestamp  = str(calendar.timegm((parser.parse(date_start) + datetime.timedelta(hours=timezone_utc_offset)).timetuple())).split(".")[0]
 			date_end_utc_timestamp    = str(calendar.timegm((parser.parse(date_end)   + datetime.timedelta(hours=timezone_utc_offset)).timetuple())).split(".")[0]
-			print(date_start_utc_timestamp)
-			print(date_end_utc_timestamp)
+
 			# define date filter
 			date_filter = "before: {0} after: {1}".format(date_end_utc_timestamp, date_start_utc_timestamp)
 			exclude_text = ["opt-out", "viewing the newsletter", "edit your preferences", "update profile", "smartunsuscribe","secureunsuscribe","group-digests","yahoogroups"]
 			text_filter = " ".join(["AND NOT: \""+a+"\"" for a in exclude_text])
 			q  = "(category:personal OR label:sent) AND ("+ date_filter +") " + text_filter + " -from:'no-reply@accounts.google.com'"
-			print(q)
+
 			# obtain email_ids
 			msg_list = get_email_list(service, user, q)
 			msg_list =[msg['id'] for msg in msg_list]
 
 			# store in dictionary
 			date_start_format = str(datetime.datetime.strptime(date_start,'%m/%d/%Y').strftime("%m/%d/%Y"))
-			print(date_start_format)
+
 			email_dict[date_start_format] = msg_list
 			global_var['status_overview_load'] = global_var['status_overview_load']+1
 

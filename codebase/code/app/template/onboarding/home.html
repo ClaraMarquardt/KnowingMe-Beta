@@ -12,7 +12,7 @@
 </header>
 
 <!-- BODY -->
-<body scroll="no" style="overflow: hidden">
+{% include 'template/general/body_scroll.html' %}
 
   <!-- Header Section -->
   {% include 'template/general/header_user.html' %}
@@ -25,7 +25,7 @@
 
   <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">While we’re getting your data ready, <br> let’s take a quick look at what we’ll be working through together.</font></p>
 
-  <p style="text-align:center;"><a href="{{ url_for('intro_load_a_view') }}">Continue</a></p>
+  <p style="text-align:center;"><a href="{{ url_for('intro_load_a_view') }}"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a></p>
 
   {% include 'template/space/main_bottom_space.html' %}
 

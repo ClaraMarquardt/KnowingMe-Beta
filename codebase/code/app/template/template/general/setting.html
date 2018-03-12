@@ -2,27 +2,40 @@
 <html>
 
   <center>
-  
-  <div class="nav3">
-     
-	<!-- RESET -->     
-	<span class="icons">Reset<a href="{{ url_for('reset_view',initial_page='setting_view') }}" ><br><img src="{{ url_for('static', filename='image/icon/reset.png') }}" style="width:30px;height:30px;"></a></span>
-
-	<!-- TIMEFRAME SETTING -->     
-   	{% if access_level==True %}
-     	<span class="icons">Timeframe<a href="{{ url_for('timeframe_setting_view') }}" ><br><img src="{{ url_for('static', filename='image/icon/timeframe.png') }}" style="width:30px;height:30px;"></a></span>
-    {% else %}
-    	<span class="icons"><font color="#e2e2e2">Timeframe</font><br><img src="{{ url_for('static', filename='image/icon/timeframe.png') }}" style="width:30px;height:30px;opacity:0.3;"></a></span>
-	  {% endif %}
  
- 	<!-- CONTACT GROUP SETTING -->   
+   <div class="nav3">
+
+     <!-- TIMEFRAME SETTING -->     
+    {% if access_level==True %}
+      <span class="icons">Timeframe<a href="{{ url_for('timeframe_setting_view') }}" ><br><img src="{{ url_for('static', filename='image/icon/timeframe.png') }}" style="width:30px;height:30px;"></a></span>
+    {% else %}
+      <span class="icons"><font color="#e2e2e2">Timeframe</font><br><img src="{{ url_for('static', filename='image/icon/timeframe.png') }}" style="width:30px;height:30px;opacity:0.3;"></a></span>
+    {% endif %}
+ 
+    <!-- CONTACT GROUP SETTING -->   
    {% if access_level==True %}
       <span class="icons">Groups<a href="{{ url_for('group_setting_view') }}" ><br><img src="{{ url_for('static', filename='image/icon/contact.png') }}" style="width:30px;height:30px;"></a></span>
     {% else %}
       <span class="icons"><font color="#e2e2e2">Groups</font><br><img src="{{ url_for('static', filename='image/icon/contact.png') }}" style="width:30px;height:30px;opacity:0.3;"></a></span>
     {% endif %}  
 
+    <!-- DiSPLAY -->     
+    <span class="icons">Scroll<a href="{{ url_for('scroll_mode_view') }}" ><br><img src="{{ url_for('static', filename='image/icon/display.png') }}" style="width:30px;height:30px;"></a></span>
+
   </div> 
+ 
+  <br><br>
+
+  <div class="nav3">
+     
+	   <!-- RESET -->     
+	  <span class="icons"><font color="#7c7777" style="font-size:11px">Reset</font><a href="{{ url_for('reset_view',initial_page='setting_view') }}" ><br><img src="{{ url_for('static', filename='image/icon/reset.png') }}" style="width:30px;height:30px;opacity:0.5"></a></span>
+
+    <!-- LOGOUT -->     
+    <span class="icons"><font color="#7c7777" style="font-size:11px">Logout</font><a href="{{ url_for('logout_view') }}" ><br><img src="{{ url_for('static', filename='image/icon/logout.png') }}" style="width:30px;height:30px;opacity:0.5"></a></span>
+
+   </div> 
+
 
   <br><br>
 

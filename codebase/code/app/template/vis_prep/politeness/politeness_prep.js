@@ -38,8 +38,8 @@ var update_raw_data = function(raw_data) {
 	
 	$text_dict["All Emails"] 						 = {};
 	$text_dict["All Emails"].equal  			 	 = "The emails you sent and received from female and male contacts were equally polite.";
-	$text_dict["All Emails"].female_polite    		 = "The emails you sent and received from female contacts were more polite <br>than those you received From male contacts.";
-	$text_dict["All Emails"].male_polite    	 	 = "The emails you sent and received from male contacts were more polite <br>than those you received From female contacts.";
+	$text_dict["All Emails"].female_polite    		 = "The emails you sent and received from female contacts were more polite <br>than those you received from male contacts.";
+	$text_dict["All Emails"].male_polite    	 	 = "The emails you sent and received from male contacts were more polite <br>than those you received from female contacts.";
 	
 	$text_dict["Sent Emails"] 						 = {};
 	$text_dict["Sent Emails"].equal          	  	 = "The emails you sent to female and male contacts were equally polite.";

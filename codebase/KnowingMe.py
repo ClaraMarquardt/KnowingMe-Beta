@@ -33,7 +33,7 @@ user_setting                                   = user_setting_initialization()
 app_setting                                    = app_setting_initialization()
 key_var                         			   = var_initialization()
 insight_data, insight_text, insight_title      = insight_initialization()
-print(user_setting)
+
 # Dependency settings
 warnings.filterwarnings("ignore", message="numpy.dtype size changed")
 warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
@@ -213,20 +213,20 @@ def intro_load_overview_wrapper(offline_mode, service, user, current_date, timel
 	try: 
 	
 		if (offline_mode==False):	
-			print('###216')
+
 			# email & birthday overview
 			overview_email(service, user, current_date, timelag_overview, overview_day, birthday_day, output_dir, timezone_utc_offset)
-			print('###219')
+
 		# determine analysis timeframe
 		user_setting['email_earliest'], user_setting['email_latest'], user_setting['email_diff'], user_setting['email_range']  = timeframe_email(current_date, timelag_day, timelag_overview, min_day, overview_day, email_max, output_dir)
-		print('###222')
+
 		# modify based on user settings
 		if (pd.isnull(user_setting['email_earliest_user'])==False):
 			user_setting['email_earliest'] = email_earliest_user
 			user_setting['email_latest']   = email_latest_user
 			user_setting['email_diff']     = email_diff_user
 			user_setting['email_range']    = email_range_user
-		print('###229')
+
 		# update thread status
 		key_var['api_success'] = 'True'
 
@@ -386,7 +386,8 @@ def landing_view():
 		os.makedirs(user_setting['output_dir'])
 
 	# render
-	return flask.render_template('onboarding/landing.html')
+	return flask.render_template('onboarding/landing.html',
+				scroll_mode=key_var['scroll_mode'])
 
 # home 
 # ---------------------------------------------#
@@ -406,10 +407,11 @@ def home_view():
 			os.makedirs(user_setting['output_dir'])
 		
 		user_data_dir_init(user_setting['output_dir'])
-		print(user_setting)
+
 		# render
 		return flask.render_template('onboarding/home.html', user=key_var['user_name'],user_email=key_var['user'], 
-			user_photo=key_var['user_photo'], release_mode=key_var["intro_release"])
+			user_photo=key_var['user_photo'], release_mode=key_var["intro_release"],
+			scroll_mode=key_var['scroll_mode'])
 
 	else: 
 
@@ -501,7 +503,8 @@ def permission_view():
 	if (access_check(access_level=0)) == True: 
 
 		# render
-		return flask.render_template('onboarding/permission.html', auth_url=flask.request.args.get('auth_url'))
+		return flask.render_template('onboarding/permission.html', auth_url=flask.request.args.get('auth_url'),
+				scroll_mode=key_var['scroll_mode'])
 	
 	else: 
 
@@ -614,7 +617,8 @@ def intro_load_a_view():
 			th.start()
 	
 			return flask.render_template('intro/intro_load_a.html', user=key_var['user_name'],user_email=key_var['user'], 
-				user_photo=key_var['user_photo'], release_mode=key_var["intro_release"])
+				user_photo=key_var['user_photo'], release_mode=key_var["intro_release"],
+				scroll_mode=key_var['scroll_mode'])
 	
 		else:
 	
@@ -660,7 +664,8 @@ def intro_load_b_view():
 			return flask.render_template('intro/intro_load_b.html', user=key_var['user_name'],user_email=key_var['user'], 
 				user_photo=key_var['user_photo'], earliest_date = user_setting["email_earliest"], 
 				latest_date = user_setting["email_latest"], date_diff=user_setting["email_diff"],
-				release_mode=key_var["intro_release"])
+				release_mode=key_var["intro_release"],
+				scroll_mode=key_var['scroll_mode'])
 
 		else:
 
@@ -706,7 +711,8 @@ def intro_load_c_view():
 		th.start()
 	
 		return flask.render_template('intro/intro_load_c.html', user=key_var['user_name'],user_email=key_var['user'], 
-			user_photo=key_var['user_photo'], insight_name=insight_intro, release_mode=key_var["intro_release"])
+			user_photo=key_var['user_photo'], insight_name=insight_intro, release_mode=key_var["intro_release"],
+				scroll_mode=key_var['scroll_mode'])
 	
 	else: 
 
@@ -758,7 +764,8 @@ def intro_main_view():
 				insight_data = insight_data[insight_name], 
 				insight_title = insight_title[insight_name],
 				next_page = 'intro_main_view',
-				release_mode=key_var["intro_release"])
+				release_mode=key_var["intro_release"],
+				scroll_mode=key_var['scroll_mode'])
 	
 		# if insight does not exist
 		else:
@@ -797,7 +804,8 @@ def intro_final_view():
 		# render
 		return flask.render_template('intro/intro_final.html', user=key_var['user_name'],user_email=key_var['user'], 
 			user_photo=key_var['user_photo'],insight_intro=insight_intro,
-			release_mode=key_var["intro_release"])
+			release_mode=key_var["intro_release"],
+			scroll_mode=key_var['scroll_mode'])
 
 	else: 
 
@@ -824,7 +832,8 @@ def dashboard_intro_view():
 
 	# render
 	return flask.render_template('explore/dashboard_intro.html',user=key_var['user_name'],user_email=key_var['user'], 
-		user_photo=key_var['user_photo'],release_mode=key_var["intro_release"])
+		user_photo=key_var['user_photo'],release_mode=key_var["intro_release"],
+		scroll_mode=key_var['scroll_mode'])
 
 # dashboard
 # ------------------------------------------------------------------------ #
@@ -842,7 +851,8 @@ def dashboard_view():
 	
 		# render
 		return flask.render_template('explore/dashboard.html',user=key_var['user_name'],user_email=key_var['user'], 
-			user_photo=key_var['user_photo'],release_mode=key_var["intro_release"])
+			user_photo=key_var['user_photo'],release_mode=key_var["intro_release"],
+			scroll_mode=key_var['scroll_mode'])
 
 	else: 
 
@@ -869,7 +879,8 @@ def setting_view():
 
 		# render
 		return flask.render_template('setting/setting.html',user=key_var['user_name'],user_email=key_var['user'], 
-			user_photo=key_var['user_photo'], access_level=access_level_4, release_mode=key_var["intro_release"])
+			user_photo=key_var['user_photo'], access_level=access_level_4, release_mode=key_var["intro_release"],
+			scroll_mode=key_var['scroll_mode'])
 	
 	else: 
 
@@ -907,7 +918,8 @@ def timeframe_setting_view():
 			insight_data = insight_data[insight_name], 
 			min_day=user_setting['min_day'], min_email=user_setting['min_email'], 
 			max_email=user_setting['email_max'], timelag_min=user_setting['timelag_day'],
-			release_mode=key_var["intro_release"])
+			release_mode=key_var["intro_release"],
+			scroll_mode=key_var['scroll_mode'])
 
 	else: 
 
@@ -978,7 +990,8 @@ def group_setting_view():
 			insight_data = insight_data[insight_name], 
 			min_day=user_setting['min_day'], min_email=user_setting['min_email'], 
 			max_email=user_setting['email_max'], timelag_min=user_setting['timelag_day'],
-			release_mode=key_var["intro_release"])
+			release_mode=key_var["intro_release"],
+			scroll_mode=key_var['scroll_mode'])
 
 	else: 
 
@@ -1029,6 +1042,46 @@ def group_setting_store_view():
 	# render
 	return flask.redirect(flask.url_for('intro_load_c_view'))
 
+
+
+# scroll_mode
+# ------------------------------------------------------------------------ #
+@app.route('/scroll_mode')
+def scroll_mode_view():
+
+	# access check
+	if (access_check(access_level=1)) == True: 
+
+		# define globals
+		global key_var
+
+		# update
+		key_var['scroll_mode'] = np.invert(key_var['scroll_mode'])
+	
+		# status
+		if key_var['scroll_mode']==True:
+			flask.flash("The display mode has been adjusted. Scroll mode is now turned on.")
+		else:
+			flask.flash("The display mode has been adjusted. Scroll mode is now turned off.")
+
+		# min access = 1 > reset OK vs. timeframe_setting require 4 / contact_resetting require 4
+		access_level_4 = access_check(access_level=4)
+
+		# render
+		return flask.render_template('setting/setting.html',user=key_var['user_name'],user_email=key_var['user'], 
+			user_photo=key_var['user_photo'], access_level=access_level_4, release_mode=key_var["intro_release"],
+			scroll_mode=key_var['scroll_mode'])
+
+	else: 
+
+		# access denied 
+		access_denied_url = access_denied()
+
+		# render
+		return flask.redirect(flask.url_for(access_denied_url))
+
+
+
 # Insight
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #
@@ -1061,7 +1114,8 @@ def insight_intro_view():
 			insight_name = insight_name, 
 			insight_mode = key_var['insight_mode'], 
 			insight_title = insight_title[insight_name],
-			release_mode=key_var["intro_release"])
+			release_mode=key_var["intro_release"],
+			scroll_mode=key_var['scroll_mode'])
 
 	else: 
 
@@ -1106,7 +1160,8 @@ def insight_a_view():
 				insight_mode = key_var['insight_mode'], 
 				insight_title = insight_title[insight_name],
 				release_mode = key_var["intro_release"], 
-				more_info = more_info)
+				more_info = more_info,
+				scroll_mode=key_var['scroll_mode'])
 	
 		# if insight does not exist
 		else:
@@ -1166,7 +1221,8 @@ def insight_b_view(analysis_data="None",analysis_text_id="None", analysis_data_t
 					analysis_data = analysis_data,
 					analysis_text_id = analysis_text_id,
 					analysis_data_text = analysis_data_text,
-					release_mode=key_var["intro_release"])
+					release_mode=key_var["intro_release"],
+					scroll_mode=key_var['scroll_mode'])
 		
 			# if insight does not exist
 			else:
@@ -1211,7 +1267,8 @@ def insight_c_view():
 				insight_mode = key_var['insight_mode'], 
 				insight_title = insight_title[insight_name], 
 				next_page = 'insight_d_view',
-				release_mode=key_var["intro_release"])
+				release_mode=key_var["intro_release"],
+				scroll_mode=key_var['scroll_mode'])
 		
 		# if insight does not exist
 		else:
@@ -1270,7 +1327,8 @@ def insight_d_view():
 					insight_name_next = key_var['next_insight'],
 					insight_mode = key_var['insight_mode'], 
 					insight_title = insight_title[insight_name],
-					release_mode=key_var["intro_release"])
+					release_mode=key_var["intro_release"],
+					scroll_mode=key_var['scroll_mode'])
 	
 			# if insight does not exist
 			else:
@@ -1330,7 +1388,8 @@ def insight_info_view():
 			insight_mode = key_var['insight_mode'], 
 			insight_title = insight_title[insight_name],
 			release_mode = key_var["intro_release"],
-			more_info = more_info)
+			more_info = more_info,
+			scroll_mode=key_var['scroll_mode'])
 	
 
 	else: 
@@ -1353,7 +1412,8 @@ def references_view():
 		# render
 		return flask.render_template('explore/references.html', 
 			user=key_var['user_name'],user_email=key_var['user'], 
-			user_photo=key_var['user_photo'])
+			user_photo=key_var['user_photo'],
+			scroll_mode=key_var['scroll_mode'])
 
 	else: 
 
@@ -1433,7 +1493,8 @@ def error_view():
 
 	# render
 	return flask.render_template('misc/error.html', error_msg=key_var['error_msg'], user=key_var['user_name'],user_email=key_var['user'], 
-		user_photo=key_var['user_photo'])
+		user_photo=key_var['user_photo'],
+		scroll_mode=key_var['scroll_mode'])
 
 # ------------------------------------------------------------------------ #
 # Launch App                
