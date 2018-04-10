@@ -25,7 +25,8 @@ import spacy, re
 # Initialize Spacy
 platform  = sys.platform
 if bool(re.match("win", platform))==True:
-	spacy_dir = os.path.normpath(os.path.join(app_root, 'dependencies', 'spacy_win','en_core_web_sm','en_core_web_sm-2.0.0'))
+	print("App is currently not compatible with Windows (Spacy)")
+	spacy_dir = os.path.normpath(os.path.join(app_root, 'dependencies', 'spacy','en_core_web_sm-1.2.0','en_core_web_sm','en_core_web_sm-1.2.0'))
 
 else: 
 	spacy_dir = os.path.normpath(os.path.join(app_root, 'dependencies', 'spacy','en_core_web_sm-1.2.0','en_core_web_sm','en_core_web_sm-1.2.0'))
