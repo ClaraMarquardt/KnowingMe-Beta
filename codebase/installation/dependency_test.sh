@@ -14,7 +14,7 @@
 # ------------------------------------------------------------------------ #
 # Intialize - Dependency List
 # ------------------------------------------------------------------------ #
-filename="installation/dependency.txt"
+filename="requirements.txt"
 
 # ------------------------------------------------------------------------ #
 # Loop Over Dependencies - Test Installation

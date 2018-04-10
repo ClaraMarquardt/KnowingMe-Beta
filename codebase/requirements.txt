@@ -6,6 +6,7 @@ apiclient
 oauth2client
 email
 dill
+gunicorn
 spacy==1.9.0
 nose
 future

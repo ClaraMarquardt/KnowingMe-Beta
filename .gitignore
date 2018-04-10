@@ -6,4 +6,3 @@
 *.pyc
 github_backup.sh
 *.log
-codebase/output/user/email*.json

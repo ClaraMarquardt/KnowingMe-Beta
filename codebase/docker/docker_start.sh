@@ -13,9 +13,6 @@
 
 # ------------------------------------------------------------------------ #
 
-## Start nlp server
-# java -mx4g -cp "codebase/dependencies/core_nlp/model/*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -props codebase/dependencies/core_nlp/core_nlp.properties --port 9000 --timeout 10000
-
 ## Start postgresql
 /etc/init.d/postgresql start
 
