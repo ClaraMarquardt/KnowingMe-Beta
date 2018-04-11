@@ -43,7 +43,7 @@ timezone_utc_offset = local_time_offset()/60/60
 timezone_utc_name   = time.strftime("%Z", time.gmtime())
 current_date        = datetime.datetime.now()
 current_date        = current_date.strftime("%m/%d/%Y")
-
+print(current_date)
 # platform
 platform            = sys.platform
 
@@ -79,7 +79,8 @@ nltk.data.path.append(nltk_dir)
 
 # SPACY
 if bool(re.match("win", platform))==True:
-	spacy_dir = os.path.normpath(os.path.join(app_root, 'dependencies', 'spacy_win','en_core_web_sm','en_core_web_sm-2.0.0'))
+	print("App is currently not compatible with Windows (Spacy)")
+	spacy_dir = os.path.normpath(os.path.join(app_root, 'dependencies', 'spacy','en_core_web_sm-1.2.0','en_core_web_sm','en_core_web_sm-1.2.0'))
 else: 
 	spacy_dir = os.path.normpath(os.path.join(app_root, 'dependencies', 'spacy','en_core_web_sm-1.2.0','en_core_web_sm','en_core_web_sm-1.2.0'))
 nlp = spacy.load(spacy_dir)

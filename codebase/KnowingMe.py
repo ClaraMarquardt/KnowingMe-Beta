@@ -219,7 +219,7 @@ def intro_load_overview_wrapper(offline_mode, service, user, current_date, timel
 
 		# determine analysis timeframe
 		user_setting['email_earliest'], user_setting['email_latest'], user_setting['email_diff'], user_setting['email_range']  = timeframe_email(current_date, timelag_day, timelag_overview, min_day, overview_day, email_max, output_dir)
-
+		print(user_setting)
 		# modify based on user settings
 		if (pd.isnull(user_setting['email_earliest_user'])==False):
 			user_setting['email_earliest'] = email_earliest_user
@@ -656,7 +656,7 @@ def intro_load_b_view():
 		login_success, login_data = gmail_reauthentication(offline_mode=app_setting['offline_mode'],output_dir = user_setting['output_dir_base'],current_date=current_date)
 
 		if (login_success=='logged_in'):
-
+			print(user_setting)
 			# launch processing thread
 			th = Thread(target=intro_load_email_wrapper, args=(app_setting['offline_mode'], key_var['service'], 'me', user_setting['email_range'], user_setting['output_dir'], current_date, key_var['user'],timezone_utc_offset))
 			th.start()
@@ -1499,17 +1499,18 @@ def error_view():
 # ------------------------------------------------------------------------ #
 # Launch App                
 # ------------------------------------------------------------------------ #
+if __name__ == "__main__":
+	
+	# Non-Debug Mode
+	if (app_setting['app_debug']==False):
+		print("Starting")
+		http_server = WSGIServer(('', app_setting['app_port']), app)
+		http_server.serve_forever()
 
-# Non-Debug Mode
-if (app_setting['app_debug']==False):
-	print("Starting")
-	http_server = WSGIServer(('', app_setting['app_port']), app)
-	http_server.serve_forever()
-
-# Debug Mode
-elif (app_setting['app_debug']==True):	
-	print("Starting - Debug")
-	app.run(host='0.0.0.0', port=app_setting['app_port'])
+	# Debug Mode
+	elif (app_setting['app_debug']==True):	
+		print("Starting - Debug")
+		app.run(host='0.0.0.0', port=app_setting['app_port'])
 
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #
