@@ -4,23 +4,23 @@
   <center>
   
   <div class="nav3">
-     <span class="icons"><b><font style="font-size:11px">Volume</font></b><a href="{{ url_for('insight_c_view',insight_name='date_dist') }}" ><img src="{{ url_for('static', filename='image/icon/date_dist_circle.png') }}" style="width:30px;height:30px;"></a><br></span>
+     <span class="icons"><b><font style="font-size:11px">Volume</font></b><a href="{{ url_for('insight_c_view',insight_name='date_dist') | safe }}" ><img src="{{ url_for('static', filename='image/icon/date_dist_circle.png') }}" style="width:30px;height:30px;"></a><br></span>
    
-     <span class="icons"><b><font style="font-size:11px">Patterns</font></b><a href="{{ url_for('insight_c_view',insight_name='time_dist') }}" ><img src="{{ url_for('static', filename='image/icon/time_dist_circle.png') }}" style="width:30px;height:30px;"></a><br></span>
+     <span class="icons"><b><font style="font-size:11px">Patterns</font></b><a href="{{ url_for('insight_c_view',insight_name='time_dist') | safe }}" ><img src="{{ url_for('static', filename='image/icon/time_dist_circle.png') }}" style="width:30px;height:30px;"></a><br></span>
   
-     <span class="icons"><b><font style="font-size:11px">Networks</font></b><a href="{{ url_for('insight_c_view',insight_name='network') }}" ><img src="{{ url_for('static', filename='image/icon/network_circle.png') }}" style="width:30px;height:30px;"></a><br></span>
+     <span class="icons"><b><font style="font-size:11px">Networks</font></b><a href="{{ url_for('insight_c_view',insight_name='network') | safe }}" ><img src="{{ url_for('static', filename='image/icon/network_circle.png') }}" style="width:30px;height:30px;"></a><br></span>
 
   </div> 
 
   <br>
   <div class="nav3">
 
-     <span class="icons"><b><font style="font-size:11px">Talkativeness</font></b><a href="{{ url_for('insight_c_view',insight_name='talkative') }}" ><img src="{{ url_for('static', filename='image/icon/talkative_circle.png') }}" style="width:30px;height:30px;"></a><a href="{{ url_for('insight_info_view',insight_name='talkative') }}"><br>Info</a></span>
+     <span class="icons"><b><font style="font-size:11px">Talkativeness</font></b><a href="{{ url_for('insight_c_view',insight_name='talkative') | safe }}" ><img src="{{ url_for('static', filename='image/icon/talkative_circle.png') }}" style="width:30px;height:30px;"></a><a href="{{ url_for('insight_info_view',insight_name='talkative') | safe }}"><br>Info</a></span>
 
   
-     <span class="icons"><b><font style="font-size:11px">Proactiveness</font></b><a href="{{ url_for('insight_c_view',insight_name='firstlast') }}" ><img src="{{ url_for('static', filename='image/icon/firstlast_circle.png') }}" style="width:30px;height:30px;"></a><a href="{{ url_for('insight_info_view',insight_name='firstlast') }}"><br>Info</a></span>
+     <span class="icons"><b><font style="font-size:11px">Proactiveness</font></b><a href="{{ url_for('insight_c_view',insight_name='firstlast') | safe }}" ><img src="{{ url_for('static', filename='image/icon/firstlast_circle.png') }}" style="width:30px;height:30px;"></a><a href="{{ url_for('insight_info_view',insight_name='firstlast') | safe }}"><br>Info</a></span>
 
-    <span class="icons"><b><font style="font-size:11px">Responsiveness</font></b><a href="{{ url_for('insight_c_view',insight_name='responsiveness') }}" ><img src="{{ url_for('static', filename='image/icon/responsiveness_circle.png') }}" style="width:30px;height:30px;"></a><a href="{{ url_for('insight_info_view',insight_name='responsiveness') }}"><br>Info</a></span>
+    <span class="icons"><b><font style="font-size:11px">Responsiveness</font></b><a href="{{ url_for('insight_c_view',insight_name='responsiveness') | safe }}" ><img src="{{ url_for('static', filename='image/icon/responsiveness_circle.png') }}" style="width:30px;height:30px;"></a><a href="{{ url_for('insight_info_view',insight_name='responsiveness') | safe }}"><br>Info</a></span>
 
   </div> 
   <br>
@@ -28,11 +28,11 @@
   <br>
   <div class="nav3">
 
-     <span class="icons"><b><font style="font-size:11px">Positiveness</font></b><a href="{{ url_for('insight_c_view',insight_name='sentiment') }}" ><img src="{{ url_for('static', filename='image/icon/sentiment_circle.png') }}" style="width:30px;height:30px;"></a><a href="{{ url_for('insight_info_view',insight_name='sentiment') }}"><br>Info</a></span>
+     <span class="icons"><b><font style="font-size:11px">Positiveness</font></b><a href="{{ url_for('insight_c_view',insight_name='sentiment') | safe }}" ><img src="{{ url_for('static', filename='image/icon/sentiment_circle.png') }}" style="width:30px;height:30px;"></a><a href="{{ url_for('insight_info_view',insight_name='sentiment') | safe }}"><br>Info</a></span>
 
-     <span class="icons"><b><font style="font-size:11px">Politeness</font></b><a href="{{ url_for('insight_c_view',insight_name='politeness') }}" ><img src="{{ url_for('static', filename='image/icon/politeness_circle.png') }}" style="width:30px;height:30px;"></a><a href="{{ url_for('insight_info_view',insight_name='politeness') }}"><br>Info</a></span>
+     <span class="icons"><b><font style="font-size:11px">Politeness</font></b><a href="{{ url_for('insight_c_view',insight_name='politeness') | safe }}" ><img src="{{ url_for('static', filename='image/icon/politeness_circle.png') }}" style="width:30px;height:30px;"></a><a href="{{ url_for('insight_info_view',insight_name='politeness') | safe }}"><br>Info</a></span>
 
-     <span class="icons"><b><font style="font-size:11px">Coordination</font></b><a href="{{ url_for('insight_c_view',insight_name='coordination') }}" ><img src="{{ url_for('static', filename='image/icon/coordination_circle.png') }}" style="width:30px;height:30px;"></a><a href="{{ url_for('insight_info_view',insight_name='coordination') }}"><br>Info</a></span>
+     <span class="icons"><b><font style="font-size:11px">Coordination</font></b><a href="{{ url_for('insight_c_view',insight_name='coordination') | safe }}" ><img src="{{ url_for('static', filename='image/icon/coordination_circle.png') }}" style="width:30px;height:30px;"></a><a href="{{ url_for('insight_info_view',insight_name='coordination') | safe }}"><br>Info</a></span>
 
   </div> 
   <br>

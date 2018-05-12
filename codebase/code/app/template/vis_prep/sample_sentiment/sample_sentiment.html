@@ -11,7 +11,7 @@
     <br>
     <div id="text"></div>
     <br><br>
-    <a href="{{ url_for(next_page, insight_name=insight_name_next, insight_current=insight_name) }}" id="navigation_text"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a>
+    <a href="{{ url_for(next_page, insight_name=insight_name_next, insight_current=insight_name) | safe }}" id="navigation_text"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a>
 
     <!-- SCRIPT -->    
     <script type="text/javascript">
@@ -25,7 +25,7 @@
     var update_text_sample = function() {
            
            update_insight(reset_class=[".dist_sample", ".text_sample"], 
-                insight_name="{{ insight_name }}", redirect_url="{{ url_for('insight_update_view', insight_name=insight_name) }}")
+                insight_name="{{ insight_name }}", redirect_url="{{ url_for('insight_update_view', insight_name=insight_name) | safe }}")
       
         }
     </script>

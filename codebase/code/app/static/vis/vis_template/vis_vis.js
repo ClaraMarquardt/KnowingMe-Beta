@@ -1166,12 +1166,9 @@ var generate_spiral = function(chart_data) {
     .text(function(d){
       date_ = d.date
       currDay   = date_.getDate()-10;
+      
       currMonth = date_.getMonth();
-      if (currMonth!=11){
-        currMonth = date_.getMonth() + 1;
-      } else {
-        currMonth = 0
-      }
+      currMonth = date_.getMonth() + 1;
       currYear  = date_.getYear()+1900;
       date__ = new Date(currYear, currMonth, currDay);
       return tF(date__);

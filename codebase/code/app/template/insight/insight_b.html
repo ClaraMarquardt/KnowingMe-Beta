@@ -37,7 +37,7 @@
     <!-- Examples -->
     {% include 'vis_prep/'+insight_name+'/'+insight_name+'_sample.html' %}
 
-    <center><a href="{{ url_for('insight_c_view',insight_name=insight_name) }}"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a></center>
+    <center><a href="{{ url_for('insight_c_view',insight_name=insight_name) | safe }}"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a></center>
 
     </center>
   

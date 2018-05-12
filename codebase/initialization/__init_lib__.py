@@ -40,6 +40,7 @@ import calendar
 import math
 import pandas as pd
 import numpy as np
+import uuid
 
 import json
 import re
@@ -56,6 +57,7 @@ import plotly.graph_objs as go
 # Flask
 import webbrowser
 import flask 
+from   flask_httpauth import HTTPBasicAuth
 from   flask_oauth import OAuth
 from   urllib2 import Request, urlopen, URLError
 from   threading import Thread

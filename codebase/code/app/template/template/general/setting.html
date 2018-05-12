@@ -29,7 +29,7 @@
   <div class="nav3">
      
 	   <!-- RESET -->     
-	  <span class="icons"><font color="#7c7777" style="font-size:11px">Reset</font><a href="{{ url_for('reset_view',initial_page='setting_view') }}" ><br><img src="{{ url_for('static', filename='image/icon/reset.png') }}" style="width:30px;height:30px;opacity:0.5"></a></span>
+	  <span class="icons"><font color="#7c7777" style="font-size:11px">Reset</font><a href="{{ url_for('reset_view',initial_page='setting_view') | safe }}" ><br><img src="{{ url_for('static', filename='image/icon/reset.png') }}" style="width:30px;height:30px;opacity:0.5"></a></span>
 
     <!-- LOGOUT -->     
     <span class="icons"><font color="#7c7777" style="font-size:11px">Logout</font><a href="{{ url_for('logout_view') }}" ><br><img src="{{ url_for('static', filename='image/icon/logout.png') }}" style="width:30px;height:30px;opacity:0.5"></a></span>

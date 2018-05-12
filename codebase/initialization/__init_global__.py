@@ -25,25 +25,18 @@ sys.path.append(os.path.normpath(os.path.join(app_root, 'initialize')))
 from __init_lib__ import *
 
 # Global var - initialize
-global_var = dict()
+try:
+	global_var
+except NameError:
+	global_var=dict()
 
-# ------------------------------------------------------------------------ #
-# Variables - Track email downloading/overview
-# ------------------------------------------------------------------------ #
-global_var['status_email_load']  		 = 0
-global_var['status_email_max']           = 0
 
-global_var['status_overview_load']       = 0
-global_var['status_overview_max']        = 0
+# Setting var - initialize
+try:
+	setting_var
+except NameError:
+	setting_var=dict()
 
-global_var['status_analysis_load']       = 0
-global_var['status_analysis_max']        = 0
-
-# ------------------------------------------------------------------------ #
-# Variables - Errors
-# ------------------------------------------------------------------------ #
-global_var['error']  				     = "General Error"
-global_var['error_msg']                  = "General Error"
 
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #

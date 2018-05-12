@@ -211,29 +211,36 @@ def clean_contact(msg_contact):
 			msg_contact_clean = re.sub("\n|\t|\r","",msg_contact_clean)
 			msg_contact_clean = re.sub(msg_omit_word, "", msg_contact_clean)
 			msg_contact_clean_tmp = []
+
 			
 			for line in csv.reader([msg_contact_clean], skipinitialspace=True):
 				msg_contact_clean_tmp.append(line)
 			
 			msg_contact_clean = msg_contact_clean_tmp[0]
-			msg_contact_clean = [re.sub(","," ",x) for x in msg_contact_clean] 
-			msg_contact_clean = [re.sub("[ ]{2,}"," ",x) for x in msg_contact_clean] 
-			msg_contact_clean = [re.sub("^\.","",x) for x in msg_contact_clean] 
-			msg_contact_clean = [re.sub("^\.","",x) for x in msg_contact_clean] 
-			msg_contact_clean = [str.lower(x) for x in msg_contact_clean if x] 
-			msg_contact_clean = [re.sub(msg_omit_word,"",x) for x in msg_contact_clean] 
-			msg_contact_clean = [x for x in msg_contact_clean if x]
+
+			msg_contact_clean 			  = [re.sub("([^,]*,[^,]*)(,)([^<]*)([<.*]*)","\\1 \\4",x) for x in msg_contact_clean]
+			msg_contact_clean 			  = [re.sub("([^,]*)(,[ ]*)([^,<]*)([<.*]*)","\\3 \\1 \\4",x) for x in msg_contact_clean]
+			msg_contact_clean 			  = [re.sub("[ ]{2,}"," ",x) for x in msg_contact_clean] 
+			msg_contact_clean 			  = [re.sub("[ ]{2,}"," ",x) for x in msg_contact_clean] 
+			msg_contact_clean 			  = [re.sub("^\.","",x) for x in msg_contact_clean] 
+			msg_contact_clean 			  = [re.sub("^\.","",x) for x in msg_contact_clean] 
+			msg_contact_clean 			  = [re.sub("(<*)([^ <]*@[^ >]*)(>*)","<\\2>",x) for x in msg_contact_clean] 
+			msg_contact_clean 			  = [str.lower(x) for x in msg_contact_clean if x] 
+			msg_contact_clean 			  = [re.sub(msg_omit_word,"",x) for x in msg_contact_clean] 
+			msg_contact_clean 			  = [x for x in msg_contact_clean if x]
 			
 			# separate names and contacts
-			msg_contact_clean_name       = [re.sub("(.*)<(.*)","\\1",x) for x in msg_contact_clean]
-			msg_contact_clean_name       = [re.sub("^$","/",x) for x in msg_contact_clean_name]
-			msg_contact_clean_address    = [re.sub("(.*)<(.*)", "\\2", x) for x in msg_contact_clean]
-			msg_contact_clean_address 	 = [re.sub("(.*)>(.*)", "\\1", x) for x in msg_contact_clean_address]	
+			msg_contact_clean_name        = [re.sub("(.*)<(.*)","\\1",x) for x in msg_contact_clean]
+			msg_contact_clean_name        = [re.sub("^$","/",x) for x in msg_contact_clean_name]
+			msg_contact_clean_address     = [re.sub("(.*)<(.*)", "\\2", x) for x in msg_contact_clean]
+			msg_contact_clean_address 	  = [re.sub("(.*)>(.*)", "\\1", x) for x in msg_contact_clean_address]	
 			
 			# clean names
-			msg_contact_clean_name       = [re.sub("[ ]*$","",x) for x in msg_contact_clean_name]
-			msg_contact_clean_name       = [re.sub("^[ ]*","",x) for x in msg_contact_clean_name]
-			msg_contact_clean_name       = [x.split('@')[0] for x in msg_contact_clean_name]
+			msg_contact_clean_name        = [re.sub("[ ]*$","",x) for x in msg_contact_clean_name]
+			msg_contact_clean_name        = [re.sub("^[ ]*","",x) for x in msg_contact_clean_name]
+			msg_contact_clean_name        = [re.sub(".*(\\?|=|\\+|do not reply|center|amazon|\\.com|\\.edu).*","/",x) for x in msg_contact_clean_name]
+			msg_contact_clean_name        = [x.split('@')[0] for x in msg_contact_clean_name]
+			msg_contact_clean_name        = [re.sub("(.*)( via| on behalf of| from)(.*)","\\1",x) for x in msg_contact_clean_name]
 			
 			# clean addresses
 			msg_contact_clean_address     = [re.sub("[ ]*$","",x) for x in msg_contact_clean_address]
@@ -242,18 +249,11 @@ def clean_contact(msg_contact):
 			# replace names with address if missing
 			msg_contact_clean_name_temp   = np.array(msg_contact_clean_name, dtype=object)
 			name_na_index                 = np.where(msg_contact_clean_name_temp=="/")
-			
-			if (len(name_na_index)>0):
-				msg_contact_clean_address_temp             = np.array(msg_contact_clean_address)
-				msg_contact_clean_name_temp[name_na_index] = msg_contact_clean_address_temp[name_na_index]
-				msg_contact_clean_name_temp                = [x.split('@')[0] for x in msg_contact_clean_name_temp]
-				msg_contact_clean_name_temp                = list(msg_contact_clean_name_temp)
-				msg_contact_clean_name                     = msg_contact_clean_name_temp
 
 		else:
 			
-			msg_contact_clean_name    = []
-			msg_contact_clean_address = []
+			msg_contact_clean_name    	  = []
+			msg_contact_clean_address     = []
 
 	# cleaning unsuccessful
 	except Exception as e: 

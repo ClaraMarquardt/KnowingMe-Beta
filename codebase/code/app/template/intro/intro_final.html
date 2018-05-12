@@ -28,7 +28,7 @@
   <br>
   </font></p>
   
-  <center><a href="{{ url_for('insight_intro_view',insight_name=insight_intro) }}"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a></center>
+  <center><a href="{{ url_for('insight_intro_view',insight_name=insight_intro) | safe }}"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a></center>
  
    <!-- SCRIPTS -->
   {% include 'template/general/scroll_page.html' %}

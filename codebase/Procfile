@@ -1,1 +1,1 @@
-web: gunicorn KnowingMe:app --preload --log-file=-
+web: gunicorn KnowingMe:app --preload --max-requests 20000 --log-file=-

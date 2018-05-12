@@ -18,9 +18,8 @@
             function(data) {
               $('#load_step').text(data.status_analysis_load);
               $('#total_step').text(data.status_analysis_max);
-
               if (data.status == 'finished') {
-                window.location.replace("{{ url_for('intro_main_view',insight_name=insight_name, insight_current=insight_name) }}");
+                window.location.replace("{{ url_for('intro_main_view',insight_name=insight_name, insight_current_=insight_name) | safe}}");
               } else if (data.status == 'error') {
                 window.location.replace("{{ url_for('error_view') }}"); 
               }

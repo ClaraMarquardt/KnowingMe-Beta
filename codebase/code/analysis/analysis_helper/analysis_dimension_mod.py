@@ -61,7 +61,6 @@ def email_to_link(msg_obj, msg_data, user_address):
 		link_type_tmp = np.nan
 
 		if msg_obj.inbox_outbox=='inbox': 
-	
 			if user_address in msg_obj.contact['msg_to']['address']:
 				link_type_tmp = 'from > you'
 			elif pd.isnull(link_type_tmp) and user_address in msg_obj.contact['msg_cc']['address']:

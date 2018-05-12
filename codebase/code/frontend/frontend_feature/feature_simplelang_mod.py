@@ -161,62 +161,7 @@ def lengthimbalance_feature(email_link_df, link_id, msg_id, msg_threadid, msg_da
 
 
 
-# birthday
-#---------------------------------------------#
 
-def birthday_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, link_data, conver_data, msg_text_data, contact_data, email_date_df, current_date, contact_df):
-
-	# print("Launching - birthday")
-
-	"""
-
-	"""
-
-	# insight generation successful
-	try:
-		birthday_guess        =  date_freq(email_date_df['birthday']['birthday'])
-		birthday_guess_1      =  global_fun_mod.fill_array(len(msg_id), birthday_guess[0][0])
-		birthday_guess_2      =  global_fun_mod.fill_array(len(msg_id), birthday_guess[1][0])
-		birthday_guess_3      =  global_fun_mod.fill_array(len(msg_id), birthday_guess[2][0])
-		birthday_guess_4      =  global_fun_mod.fill_array(len(msg_id), birthday_guess[3][0])
-		birthday_guess_5      =  global_fun_mod.fill_array(len(msg_id), birthday_guess[4][0])
-		birthday_guess_1_freq =  global_fun_mod.fill_array(len(msg_id), birthday_guess[5][0])
-		birthday_guess_2_freq =  global_fun_mod.fill_array(len(msg_id), birthday_guess[6][0])
-		birthday_guess_3_freq =  global_fun_mod.fill_array(len(msg_id), birthday_guess[7][0])
-		birthday_guess_4_freq =  global_fun_mod.fill_array(len(msg_id), birthday_guess[8][0])
-		birthday_guess_5_freq =  global_fun_mod.fill_array(len(msg_id), birthday_guess[9][0])
-
-	# insight generation unsuccessful
-	except Exception as e: 
-		
-		# error message
-		print("Error Encountered - birthday")
-		print(e)
-		
-		birthday_guess_1 =  global_fun_mod.fill_array(len(msg_id), np.nan)
-		birthday_guess_2 =  global_fun_mod.fill_array(len(msg_id), np.nan)
-		birthday_guess_3 =  global_fun_mod.fill_array(len(msg_id), np.nan)
-		birthday_guess_4 =  global_fun_mod.fill_array(len(msg_id), np.nan)
-		birthday_guess_5 =  global_fun_mod.fill_array(len(msg_id), np.nan)
-
-		birthday_guess_1_freq =  global_fun_mod.fill_array(len(msg_id), np.nan)
-		birthday_guess_2_freq =  global_fun_mod.fill_array(len(msg_id), np.nan)
-		birthday_guess_3_freq =  global_fun_mod.fill_array(len(msg_id), np.nan)
-		birthday_guess_4_freq =  global_fun_mod.fill_array(len(msg_id), np.nan)
-		birthday_guess_5_freq =  global_fun_mod.fill_array(len(msg_id), np.nan)
-
-	# format
-	birthday_df_tmp = pd.DataFrame({'link_id':link_id, 
-		'birthday..birthday_guess_1':birthday_guess_1, 'birthday..birthday_guess_2':birthday_guess_2,
-		'birthday..birthday_guess_3':birthday_guess_3,'birthday..birthday_guess_4':birthday_guess_4, 
-		'birthday..birthday_guess_5':birthday_guess_5,'birthday..birthday_guess_1_freq':birthday_guess_1_freq,
-		'birthday..birthday_guess_2_freq':birthday_guess_2_freq,'birthday..birthday_guess_3_freq':birthday_guess_3_freq,
-		'birthday..birthday_guess_4_freq':birthday_guess_4_freq, 
-		'birthday..birthday_guess_5_freq':birthday_guess_5_freq })
-
-	# return
-	# print("Successfully Completed - lengthimbalance")
-	return(birthday_df_tmp)
 
 #----------------------------------------------------------------------------#
 #----------------------------------------------------------------------------#

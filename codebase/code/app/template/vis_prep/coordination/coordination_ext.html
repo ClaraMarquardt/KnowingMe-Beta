@@ -15,7 +15,7 @@
       {% if insight_name_next == "dashboard" %}
         <a href="{{ url_for('dashboard_intro_view') }}" id="navigation_text"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a>
       {% else %}
-        <a href="{{ url_for('insight_intro_view',insight_name=insight_name_next, insight_current=insight_name) }}" id="navigation_text"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a>
+        <a href="{{ url_for('insight_intro_view',insight_name=insight_name_next, insight_current=insight_name) | safe }}" id="navigation_text"><img src="{{ url_for('static', filename='image/icon/next_skip.png') }}" style="width:17px;height:17px;"/></a>
       {% endif %}
     
     {% else %}

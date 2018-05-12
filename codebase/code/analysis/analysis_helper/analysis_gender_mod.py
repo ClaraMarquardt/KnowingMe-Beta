@@ -119,9 +119,8 @@ def gender_labeler(contact_list,contact_email, database_filepath=gender_path):
 
 	#outer loop, matching names
 	for name1, name2, email1 in zip(name1_list, name2_list, email1_list):
-		
 		match_maker1(name1)  
-		match_maker2(name2)
+		match_maker2(name1)
 		
 		# inner loop, deciding name/gender
 		if (match_found1 == True) or (match_found2 == True):

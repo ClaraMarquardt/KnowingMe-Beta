@@ -41,11 +41,18 @@ def local_time_offset(t=None):
 # date
 timezone_utc_offset = local_time_offset()/60/60
 timezone_utc_name   = time.strftime("%Z", time.gmtime())
+timezone_utc_offset = int(os.getenv("TIMEZONE_OFFSET", timezone_utc_offset))
+timezone_utc_name   = str(os.getenv("TIMEZONE_NAME", timezone_utc_name))
+
 current_date        = datetime.datetime.now()
 current_date        = current_date.strftime("%m/%d/%Y")
-print(current_date)
+
 # platform
 platform            = sys.platform
+
+print(current_date)
+print(timezone_utc_offset)
+print(platform)
 
 # ------------------------------------------------------------------------ #
 # Directory
@@ -54,6 +61,7 @@ platform            = sys.platform
 # setting directory
 user_setting_file  = os.path.normpath(os.path.join(app_root,'configuration','default_setting_user.json'))
 app_setting_file   = os.path.normpath(os.path.join(app_root,'configuration','default_setting_app.json'))
+auth_setting_file  = os.path.normpath(os.path.join(app_root,'configuration','default_setting_auth.json'))
 
 # ------------------------------------------------------------------------ #
 # Settings
@@ -120,6 +128,9 @@ def var_initialization(reset_user=True, key_var_old=np.nan):
 	key_var['api_success']  				 = 'False'
 	key_var['feature_success']    			 = 'False'
 	
+	# error variables
+	key_var['error']                		 = ''
+	
 	# insight variables
 	key_var['insight_intro_id']              = 0
 	key_var['sample_insight_intro_id']       = 0
@@ -144,30 +155,30 @@ def var_initialization(reset_user=True, key_var_old=np.nan):
 
 	return(key_var)
 
-# initialize insight variables
+# initialize insight variables - meta data
 # ---------------------------------------------#
-def insight_initialization():
+def insight_meta_initialization():
 
 	# initialize
-	insight_data     = {}	
+	insight_meta_data     = {}	
 	insight_text     = {}	
 	insight_title    = {}		
 
 	# initialize data - insight list
-	insight_data['sample_insight_list']   	 = ['date_dist', 'time_dist','network', 'sample_sentiment']
-	insight_data['intro_insight_list']    	 = ['talkative','sentiment','politeness']
-	insight_data['main_insight_list']        = ['date_dist', 'time_dist','network', 'talkative','reponsiveness', 'firstlast', 'sentiment','politeness','coordination']
-	insight_data['setting_insight_list']     = ['date_dist_setting', 'group_setting']
+	insight_meta_data['sample_insight_list']   	  = ['date_dist', 'time_dist','network', 'sample_sentiment']
+	insight_meta_data['intro_insight_list']    	  = ['talkative','sentiment','politeness']
+	insight_meta_data['main_insight_list']        = ['date_dist', 'time_dist','network', 'talkative','reponsiveness', 'firstlast', 'sentiment','politeness','coordination']
+	insight_meta_data['setting_insight_list']     = ['date_dist_setting', 'group_setting']
 
-	insight_data['skip_sample_insight_list'] = ['talkative','responsiveness', 'firstlast']
-	insight_data['add_info_list']            = ['sentiment','politeness', 'coordination']
+	insight_meta_data['skip_sample_insight_list'] = ['talkative','responsiveness', 'firstlast']
+	insight_meta_data['add_info_list']            = ['sentiment','politeness', 'coordination']
 
 	# initialize data - feature list
 	nlp_feature_list                      	 = ['sentiment', 'politeness', 'coordination']  
-	simplelang_feature_list               	 = ['language', 'talkative', 'lengthimbalance', 'birthday']
+	simplelang_feature_list               	 = ['language', 'talkative', 'lengthimbalance']
 	nonlang_feature_list                  	 = ['responsiveness','firstlast','contact']
 	feature_list                          	 = [nlp_feature_list, simplelang_feature_list, nonlang_feature_list]
-	insight_data['feature_list']          	 = sum(feature_list, [])
+	insight_meta_data['feature_list']        = sum(feature_list, [])
 	## OMIT: sentiment_dict
 
 	# load text
@@ -188,11 +199,12 @@ def insight_initialization():
 	for i in list(insight_title_temp['insight']):
 		insight_title[i] = np.array(insight_title_temp.loc[insight_title_temp['insight']==i]['title'])[0]
 
-	return(insight_data, insight_text, insight_title)
+	return(insight_meta_data, insight_text, insight_title)
+
 
 # initialize user setting variables
 # ---------------------------------------------#
-def user_setting_initialization():
+def user_setting_initialization(session_id):
 	
 	# initialize
 	user_setting   = {}	
@@ -202,8 +214,15 @@ def user_setting_initialization():
 		user_setting_data   = json.load(data_file)
 	
 	user_setting['min_day']                 = int(user_setting_data['min_day'])
+	user_setting['min_day_safe']            = int(user_setting_data['min_day_safe'])
+
 	user_setting['min_email']               = int(user_setting_data['min_email'])
+	user_setting['min_email_safe']          = int(user_setting_data['min_email_safe'])
+
 	user_setting['email_max']               = int(user_setting_data['email_max'])
+	user_setting['email_max_safe']          = int(user_setting_data['email_max_safe'])
+
+	user_setting['safe_mode']               = str(user_setting_data['safe_mode'])
 
 	user_setting['timelag_day']             = int(user_setting_data['timelag_day'])
 	user_setting['birthday_day']            = int(user_setting_data['birthday_day'])
@@ -212,7 +231,6 @@ def user_setting_initialization():
 
 	user_setting['output_dir']              = os.path.expanduser(str(user_setting_data['output_dir']))
 	user_setting['output_dir_base']         = os.path.expanduser(str(user_setting_data['output_dir']))
-	user_setting['output_dir_raw']          = str(user_setting_data['output_dir'])
 
 	# default variables
 	user_setting['email_earliest_user']     = np.nan
@@ -224,6 +242,15 @@ def user_setting_initialization():
 	user_setting['output_dir']              = str(os.path.expanduser(os.getenv("OUTPUT", user_setting['output_dir'])))
 	user_setting['output_dir_base']         = str(os.path.expanduser(os.getenv("OUTPUT", user_setting['output_dir_base'])))
 
+	user_setting['output_dir']              = os.path.join(user_setting['output_dir'], session_id)
+	user_setting['output_dir_base']         = os.path.join(user_setting['output_dir_base'], session_id)
+
+	user_setting['safe_mode']               = str(os.getenv("SAFE_MODE", user_setting['safe_mode']))=='True'
+	if (user_setting['safe_mode']==True):
+		user_setting['min_day']   = user_setting['min_day_safe']
+		user_setting['min_email'] = user_setting['min_email_safe']
+		user_setting['email_max'] = user_setting['email_max_safe']
+	
 	# return
 	return(user_setting)
 
@@ -249,6 +276,52 @@ def app_setting_initialization():
 	# return
 	return(app_setting)
 
+# initialize app setting variables
+# ---------------------------------------------#
+def session_initialization():
+
+	session_id = str(uuid.uuid4())
+
+	return(session_id)
+
+# initialize global variables
+# ---------------------------------------------#
+def global_initialization():
+
+	# initialize
+	global_var = dict()
+
+	# Variables - Track email downloading/overview
+	global_var['status_email_load']  		 = 0
+	global_var['status_email_max']           = 0
+
+	global_var['status_overview_load']       = 0
+	global_var['status_overview_max']        = 0
+
+	global_var['status_analysis_load']       = 0
+	global_var['status_analysis_max']        = 0
+
+	# Variables - Errors
+	global_var['error']  				     = "General Error"
+	global_var['error_msg']                  = "General Error"
+
+	return(global_var)
+
+# initialize authentication variables
+# ---------------------------------------------#
+def auth_initialization():
+
+	with open(auth_setting_file) as data_file:    
+		auth_setting_data   = json.load(data_file)
+
+	app_username = auth_setting_data['app_username']
+	app_password = auth_setting_data['app_password']
+
+	app_auth_data = {
+    	app_username : app_password
+	}
+
+	return(app_username, app_password, app_auth_data)
 
 # ------------------------------------------------------------------------ #
 # User Data Initialization Functions

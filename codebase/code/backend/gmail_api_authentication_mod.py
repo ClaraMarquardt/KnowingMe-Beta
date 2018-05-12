@@ -124,6 +124,16 @@ def gmail_reauthentication(offline_mode, output_dir, current_date):
 		return("error", [e])
 
 
+# gmail_reauthentication_service
+#---------------------------------------------#
+def gmail_reauthentication_service():
+
+	credentials    = client.OAuth2Credentials.from_json(flask.session['credentials'])
+	http_auth      = credentials.authorize(httplib2.Http())
+	service        = discovery.build('gmail', 'v1', http=http_auth)
+
+	return(service)
+	
 # offline_authentication
 #---------------------------------------------#
 def offline_authentication(output_dir, reauthenticate, current_date):

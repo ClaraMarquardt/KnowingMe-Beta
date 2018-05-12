@@ -22,8 +22,8 @@ app_root = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file_
 # Initialize
 sys.path.append(os.path.normpath(os.path.join(app_root, 'initialize')))
 from __init_lib__ import *
-from __init_setting__ import *
 from __init_global__ import *
+from __init_setting__ import *
 
 #----------------------------------------------------------------------------#
 #			                     Helper Functions                            #
@@ -130,8 +130,10 @@ def get_msg_meta(msg):
 
 	# meta labels
 	
-	# inbox/outbox - based on sender address	
-	if own_address in msg_meta['msg_from']:
+	# inbox/outbox - based on sender address 
+	## Note: if not sent from user > assume inbox, e.g. (a) if forward emails from work email
+	## then user will show up in neither sent nor received > inbox (b) cc/bcc > inbox
+ 	if own_address in msg_meta['msg_from']:
 		msg_meta['msg_inbox_outbox'] = "outbox"
 	else:
 		msg_meta['msg_inbox_outbox'] = "inbox"
@@ -145,10 +147,15 @@ def get_msg_meta(msg):
 
 # clean_msg_text
 #---------------------------------------------#
-def clean_msg_text(msg_text):
+def clean_msg_text(msg_text, safe_mode=False):
 	
+	msg_text_clean = msg_text
+
+	if safe_mode==True:
+		msg_text_clean = msg_text_clean[0:40]
+
 	# omit forwarded emails, etc.	
-	msg_text_clean = msg_text.split("\n>")[0]
+	msg_text_clean = msg_text_clean.split("\n>")[0]
 	msg_text_clean = msg_text_clean.split("Begin forwarded message:")[0]
 	msg_text_clean = msg_text_clean.split("---------- Forwarded message ---------")[0]
 	msg_text_clean = msg_text_clean.split("________________________________")[0]
@@ -180,10 +187,11 @@ def process_email(request_id, response, exception):
 	global error_count
 	global error_list
 	global excluded_count
-	global global_var
 	global store_dir
+	global global_var
+	global safe_mode_temp
 
-	global_var['status_email_load'] = global_var['status_email_load']+1
+	global_var[session_id_temp]['status_email_load'] = global_var[session_id_temp]['status_email_load']+1
 
 	print("---------------------------")
 	
@@ -194,7 +202,7 @@ def process_email(request_id, response, exception):
 
 		# Obtain the email-text
 		email_text 	           = get_msg_text(response)
-		email_text_clean       = clean_msg_text(email_text)
+		email_text_clean       = clean_msg_text(email_text, safe_mode_temp)
 
 		if (len(re.sub("\r|\n", "", email_text_clean))>0):
 				
@@ -248,16 +256,17 @@ def process_email(request_id, response, exception):
 
 # overview_email
 #---------------------------------------------#
-def overview_email(service, user, current_date, timelag_overview, overview_day, birthday_day, output_dir, timezone_utc_offset):
+def overview_email(session_id, service, user, current_date, timelag_overview, overview_day, birthday_day, output_dir, timezone_utc_offset, safe_mode):
 
 	# Define globals
 	global global_var
+	global_var[session_id] = global_initialization()
 
 	# Define filenames
 	overview_filename=os.path.normpath(os.path.join(output_dir, "other", 'overview_'+ datetime.datetime.strptime(current_date,'%m/%d/%Y').strftime("%m_%d_%Y") + '.p'))
 
 	# Initialize global var
-	global_var['status_overview_max'] = len(range(timelag_overview,overview_day+timelag_overview))
+	global_var[session_id]['status_overview_max'] = len(range(timelag_overview,overview_day+timelag_overview))
 
 	# Overview file do not exist > Generate
 	if not os.path.exists(overview_filename):
@@ -283,8 +292,12 @@ def overview_email(service, user, current_date, timelag_overview, overview_day, 
 			date_filter = "before: {0} after: {1}".format(date_end_utc_timestamp, date_start_utc_timestamp)
 			exclude_text = ["opt-out", "viewing the newsletter", "edit your preferences", "update profile", "smartunsuscribe","secureunsuscribe","group-digests","yahoogroups"]
 			text_filter = " ".join(["AND NOT: \""+a+"\"" for a in exclude_text])
-			q  = "(category:personal OR label:sent) AND ("+ date_filter +") " + text_filter + " -from:'no-reply@accounts.google.com'"
-
+			
+			if (safe_mode==False): 
+				q  = "(category:personal OR label:sent) AND ("+ date_filter +") " + text_filter + " -from:'no-reply@accounts.google.com'"
+			else: 
+				q  = "(-category:personal) AND (-label:sent) AND ("+ date_filter +") "
+			
 			# obtain email_ids
 			msg_list = get_email_list(service, user, q)
 			msg_list =[msg['id'] for msg in msg_list]
@@ -293,7 +306,7 @@ def overview_email(service, user, current_date, timelag_overview, overview_day, 
 			date_start_format = str(datetime.datetime.strptime(date_start,'%m/%d/%Y').strftime("%m/%d/%Y"))
 
 			email_dict[date_start_format] = msg_list
-			global_var['status_overview_load'] = global_var['status_overview_load']+1
+			global_var[session_id]['status_overview_load'] = global_var[session_id]['status_overview_load']+1
 
 		# save
 		with open(overview_filename, 'wb') as out_file:
@@ -303,7 +316,7 @@ def overview_email(service, user, current_date, timelag_overview, overview_day, 
 		
 		time.sleep(3)
 
-		global_var['status_overview_load'] = global_var['status_overview_max']
+		global_var[session_id]['status_overview_load'] = global_var[session_id]['status_overview_max']
 		
 		time.sleep(3)
 
@@ -344,24 +357,30 @@ def timeframe_email(current_date, timelag_day, timelag_overview, min_day, overvi
 
 # get_email
 #---------------------------------------------#
-def get_email(service, user, email_range, output_dir,current_date, user_address, timezone_utc_offset):
+def get_email(session_id, service, user, email_range, output_dir,current_date, user_address, timezone_utc_offset, safe_mode):
 
 	# define globals
-	global global_var
 	global error_count
 	global excluded_count
 	global error_list
+	global global_var
 
 	global own_address
 	global store_dir
 	global timezone_offset
+	global session_id_temp
+	global safe_mode_temp
 
-	error_count     = 0
-	error_list      = []
-	excluded_count  = 0
-	own_address     = user_address
-	store_dir       = output_dir
-	timezone_offset = timezone_utc_offset
+	error_count     	= 0
+	error_list      	= []
+	excluded_count  	= 0
+	own_address     	= user_address
+	store_dir       	= output_dir
+	timezone_offset 	= timezone_utc_offset
+	session_id_temp     = session_id
+	safe_mode_temp      = safe_mode
+	
+	global_var[session_id] = global_initialization()
 
 	# initialize (log file)
 	old_stdout   = sys.stdout
@@ -400,8 +419,8 @@ def get_email(service, user, email_range, output_dir,current_date, user_address,
 	msg_list_mod   = [x for x in msg_list if x not in msg_list_saved]
 
 	print('Found ' + str(len(msg_list_mod)) + ' emails (New)')
-	global_var['status_email_max']  = len(msg_list)
-	global_var['status_email_load'] = len([x for x in msg_list if x in msg_list_saved])
+	global_var[session_id]['status_email_max']  = len(msg_list)
+	global_var[session_id]['status_email_load'] = len([x for x in msg_list if x in msg_list_saved])
 
 	if len(msg_list_mod)>0:
 		

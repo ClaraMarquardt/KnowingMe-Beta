@@ -23,7 +23,6 @@ app_root   = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__fil
 sys.path.append(os.path.normpath(os.path.join(app_root, 'initialization')))
 from __init_lib__ import *
 from __init_setting__ import *
-from __init_global__ import *
 
 # Dependencies - Internal
 from analysis_helper import *  

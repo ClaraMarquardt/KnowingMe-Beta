@@ -1,10 +1,14 @@
 {
     "min_day": 7, 
     "min_email": 50, 
-    "email_max": 250, 
+    "email_max": 700, 
+    "min_day_safe": 1, 
+    "min_email_safe": 10, 
+    "email_max_safe": 100, 
     "timelag_day":30,
     "timelag_overview":1,
     "birthday_day":1825,
     "overview_day":365,
-    "output_dir": "/app/KnowingMe_Data"
+    "output_dir": "/KnowingMe_Data", 
+    "safe_mode":"False"
 }

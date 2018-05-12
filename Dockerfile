@@ -40,13 +40,15 @@ RUN ls root/
 # Environment Variables
 # ------------------------------------------------------------------------ #
 ENV PORT 8000
-ENV PORT_NLP 9000
 ENV DEBUG "False"
 ENV OFFLINE "False"
+ENV TIMEZONE_OFFSET 4
+ENV TIMEZONE_NAME "EST"
+ENV SAFE_MODE "False"
 
 # Obtain Codebase (From Github)
 # ------------------------------------------------------------------------ #
-RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@github.com/ClaraMarquardt/KnowingMeBeta.git
+RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@github.com/ClaraMarquardt/KnowingMeBeta_Test.git
 RUN pwd
 
 # Installation
@@ -73,7 +75,7 @@ RUN python codebase/installation/spacy_test.py
 
 
 
-# STAGE RESTARST
+# STAGE RESTART
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #
 
@@ -88,7 +90,7 @@ WORKDIR /
 RUN pwd
 RUN rm -rf /KnowingMeBeta
 
-RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@github.com/ClaraMarquardt/KnowingMeBeta.git
+RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@github.com/ClaraMarquardt/KnowingMeBeta_Test.git
 
 WORKDIR /KnowingMeBeta/
 RUN chmod -R a+rwx .
@@ -108,7 +110,6 @@ RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
 VOLUME /KnowingMe_Data
 WORKDIR /KnowingMeBeta/
 EXPOSE  $PORT
-EXPOSE  $PORT_NLP
 CMD ["/KnowingMeBeta/codebase/docker/docker_start.sh"]
 
 # ------------------------------------------------------------------------ #

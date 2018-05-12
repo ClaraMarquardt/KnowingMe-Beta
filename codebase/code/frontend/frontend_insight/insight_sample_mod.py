@@ -149,13 +149,16 @@ def network(email_link_df, email_link_df_unique, current_date, email_date_df, em
 	
 	# generate graph data
 
+	## subset
+	contact_df_temp 								   = contact_df.loc[contact_df['freq_agg']>3]
+
 	## raw data
-	user_name_col        					           = np.concatenate([[user_name], np.array(contact_df['contact_name'])])
-	user_email_col       					           = np.concatenate([[user_email], np.array(contact_df['contact'])])
-	user_gender_col     					           = np.concatenate([[""], np.array(contact_df['contact_gender'])])
-	email_count          				               = np.concatenate([[0], np.array(contact_df['freq_agg'])])
-	email_count_sent     					           = np.concatenate([[0], np.array(contact_df['freq_outbox'])])
-	email_count_received 					  		   = np.concatenate([[0], np.array(contact_df['freq_inbox'])])
+	user_name_col        					           = np.concatenate([[user_name], np.array(contact_df_temp['contact_name'])])
+	user_email_col       					           = np.concatenate([[user_email], np.array(contact_df_temp['contact'])])
+	user_gender_col     					           = np.concatenate([[""], np.array(contact_df_temp['contact_gender'])])
+	email_count          				               = np.concatenate([[0], np.array(contact_df_temp['freq_agg'])])
+	email_count_sent     					           = np.concatenate([[0], np.array(contact_df_temp['freq_outbox'])])
+	email_count_received 					  		   = np.concatenate([[0], np.array(contact_df_temp['freq_inbox'])])
 
 	email_filter_male                                  = np.array([x!='M' for x in user_gender_col])
 	email_count_male    				               = np.array(email_count)

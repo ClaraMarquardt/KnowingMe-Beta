@@ -10,20 +10,26 @@
 
 # ------------------------------------------------------------------------ #
 
-# Settings
+# Flask
+# ------------------------------------------------------------------------ #
+# ------------------------------------------------------------------------ #
 
 export DEBUG=True
-# export DEBUG=False
-
-# export OFFLINE=True
 export OFFLINE=False
+export PORT=8092
+export OUTPUT=/Users/claramarquardt/Desktop/KnowingMe_Data
+export SAFE_MODE=False
 
-export PORT=8090
-
-export OUTPUT=~/Desktop/KnowingMe_Data
+## Note: no need to set TIMEZONE_OFFSET, TIMEZONE_NAME (Run local)
 
 ## Launch app
 python codebase/KnowingMe.py
+
+# Heroku
+# ------------------------------------------------------------------------ #
+# ------------------------------------------------------------------------ #
+heroku local web -e .env_local
+heroku local web
 
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #

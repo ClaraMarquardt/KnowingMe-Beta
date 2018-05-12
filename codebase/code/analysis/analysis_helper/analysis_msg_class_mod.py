@@ -44,7 +44,7 @@ class msg:
 	
 	"""
  
-	def __init__(self, msg_data, conver_data):
+	def __init__(self, msg_data, conver_data, user_address):
 
 		## initialize
 		## --------------
@@ -72,6 +72,13 @@ class msg:
 
 		# * contact
 		self.contact                  	  = dict(msg_from=analysis_clean_mod.clean_contact(msg_data.msg_from),msg_to=analysis_clean_mod.clean_contact(msg_data.msg_to),msg_cc=analysis_clean_mod.clean_contact(msg_data.msg_cc), msg_bcc=analysis_clean_mod.clean_contact(msg_data.msg_bcc))
+		
+		# warnings.simplefilter(action='ignore', category=FutureWarning)
+		if self.inbox_outbox=='inbox' and (user_address not in sum([self.contact['msg_to']['address'].tolist(),self.contact['msg_cc']['address'].tolist(),self.contact['msg_bcc']['address'].tolist()], [])):
+			self.contact['msg_to']['address'] = np.array([user_address])
+		elif self.inbox_outbox=='outbox' and (user_address not in self.contact['msg_from']['address'].tolist()):
+			self.contact['msg_from']['address'] = np.array([user_address])
+
 		if self.inbox_outbox=='inbox':
 			self.contact['msg_contact']   = self.contact['msg_from']['address'].tolist()
 		elif self.inbox_outbox=='outbox':

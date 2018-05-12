@@ -63,12 +63,12 @@ def dep_parse(msg_sentence, english):
 				s = ' '.join(s.split())	
 				doc = nlp(unicode(s))
 				cur = []
-				for sent in doc.sents: 
+				for sent in doc.sents:
 					pos = sent.start
 					for tok in sent:
 						ele = "%s(%s-%d, %s-%d)"%(tok.dep_, tok.head.text, tok.head.i + 1 - pos, tok.text, tok.i + 1 - pos)
 						cur.append(ele)
-					msg_text_parse.append(cur)
+				msg_text_parse.append(cur)
 
 		else:
 

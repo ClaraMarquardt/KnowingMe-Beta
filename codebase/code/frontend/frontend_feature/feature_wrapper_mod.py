@@ -22,7 +22,6 @@ app_root = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file_
 # Initialize
 sys.path.append(os.path.normpath(os.path.join(app_root, 'initialize')))
 from __init_lib__ import *
-from __init_global__ import *
 
 sys.path.append(os.path.normpath(os.path.join(app_root, 'code', 'frontend','frontend_feature')))
 from feature_nlp_mod import *
@@ -42,7 +41,6 @@ feature_function['coordination']      = coordination_feature
 feature_function['language']          = language_feature
 feature_function['talkative']         = talkative_feature
 feature_function['lengthimbalance']   = lengthimbalance_feature
-feature_function['birthday']          = birthday_feature
 
 ## nonlang
 feature_function['responsiveness']    = responsiveness_feature

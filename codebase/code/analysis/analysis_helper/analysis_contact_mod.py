@@ -63,7 +63,8 @@ def contact_list(msg_data, user_email):
 		inbox_contact_name          = np.concatenate([inbox_contact_from_name])
  
 		inbox_contact_name_df       = pd.DataFrame({"contact":inbox_contact,"contact_name":inbox_contact_name})
-		inbox_contact_name_df       = inbox_contact_name_df.drop_duplicates("contact", inplace=False)
+		inbox_contact_name_df       = inbox_contact_name_df.sort_values(by=['contact'], ascending=[True])
+		inbox_contact_name_df       = inbox_contact_name_df.drop_duplicates("contact", inplace=False, keep='last')
 		inbox_contact_name_df       = inbox_contact_name_df.reset_index(drop=True, inplace=False)
 	 
 		inbox_contact               = global_fun_mod.freq_tabulate(inbox_contact, ['freq_inbox','contact'])
@@ -87,15 +88,16 @@ def contact_list(msg_data, user_email):
 		outbox_contact_name        = np.concatenate([outbox_contact_to_name, outbox_contact_cc_name, outbox_contact_bcc_name])
  
 		outbox_contact_name_df     = pd.DataFrame({"contact":outbox_contact,"contact_name":outbox_contact_name})
-		outbox_contact_name_df     = outbox_contact_name_df.drop_duplicates("contact", inplace=False)
+		outbox_contact_name_df     = outbox_contact_name_df.sort_values(by=['contact'], ascending=[True])
+		outbox_contact_name_df     = outbox_contact_name_df.drop_duplicates("contact", inplace=False, keep='last')
 		outbox_contact_name_df     = outbox_contact_name_df.reset_index(drop=True, inplace=False)
 
 		outbox_contact             = global_fun_mod.freq_tabulate(outbox_contact, ['freq_outbox','contact'])
 	
 	else:
 		
-		outbox_contact         = pd.DataFrame({"freq_outbox":np.nan, 'contact':['']})
-		outbox_contact_name_df = pd.DataFrame({"contact":[''], 'contact_name':['']})
+		outbox_contact         	   = pd.DataFrame({"freq_outbox":np.nan, 'contact':['']})
+		outbox_contact_name_df 	   = pd.DataFrame({"contact":[''], 'contact_name':['']})
 
 
 	## combine > aggregate contact

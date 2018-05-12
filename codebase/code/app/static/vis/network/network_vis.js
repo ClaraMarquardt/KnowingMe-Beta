@@ -155,7 +155,7 @@ var stage_entry = function() {
     .html("Loading ...");
 
   // # Initialize buttons
-  info_text = "* Gender unknown: "+Math.round($perc_na) + "% of contacts."
+  info_text = "* Gender undetermined: "+Math.round($perc_na) + "% of contacts."
  
   generate_button(width=90, displ_x_origin=180,displ_x_step=0, displ_y_origin=90,displ_y_step=30,
     button_label    = ["All Contacts", "Female Contacts", "Male Contacts", info_text],
@@ -173,7 +173,7 @@ var stage_0 = function(mode="All") {
   text_temp = update_text(mode=mode)
   
   // # Define text
-  text_content  = ["You corresponded with "+ $total_contact +" contacts.<br></i>" + Math.round($perc_female) + "% of those individuals whose gender we were able to determine are female.</i>",
+  text_content  = ["You corresponded predominantly with "+ $total_contact +" contacts.<br></i>" + Math.round($perc_female) + "% of these contacts are female.</i>",
     text_temp.main_text]
   text_delay    = [0, 3500]
   text_duration = [1000,1000]
