@@ -151,7 +151,7 @@ def network(email_link_df, email_link_df_unique, current_date, email_date_df, em
 
 	## subset
 	contact_df_temp 								   = contact_df.sort_values(by=['freq_agg'], ascending=[False])
-	contact_df_temp                                    = contact_df_temp[0:np.min([len(contact_df_temp), 30])]
+	contact_df_temp                                    = contact_df_temp[0:np.min([len(contact_df_temp), 29])]
 	
 	## raw data
 	user_name_col        					           = np.concatenate([[user_name], np.array(contact_df_temp['contact_name'])])

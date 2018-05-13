@@ -173,7 +173,7 @@ var stage_0 = function(mode="All") {
   text_temp = update_text(mode=mode)
   
   // # Define text
-  text_content  = ["You corresponded predominantly with " + $total_contact +" contacts - a group which accounted for " + Math.round($total_contact_perc) + "% of your emails.<br></i>" + Math.round($perc_female) + "% of these contacts are female.</i>",text_temp.main_text]
+  text_content  = [$total_contact +" contacts accounted for " + Math.round($total_contact_perc) + "% of your emails.<br></i>" + Math.round($perc_female) + "% of these contacts are female.</i>",text_temp.main_text]
   text_delay    = [0, 4000]
   text_duration = [1000,1000]
   function_new  = ""
