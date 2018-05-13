@@ -86,6 +86,7 @@ var update_data  = function(mode) {
     } else if (mode=="Time to Sent Response (Min)") {
         chart_data=chart_data_time_received
     }
+    console.log(chart_data)
     return({chart_data:chart_data})
 
 }

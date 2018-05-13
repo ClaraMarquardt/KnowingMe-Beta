@@ -27,7 +27,7 @@ var update_raw_data = function(raw_data) {
 
 	$response_time           	  		      = [$mean_response_time_sent,$mean_response_time_sent_female,$mean_response_time_sent_male,$mean_response_time_received,$mean_response_time_received_female,$mean_response_time_received_male];
 	$response_time_sent           		 	  = [$mean_response_time_sent,$mean_response_time_sent_female,$mean_response_time_sent_male];
-	$response_time_received           		  = [$mean_response_rate_received,$mean_response_rate_received_female,$mean_response_rate_received_male];
+	$response_time_received           		  = [$mean_response_time_received,$mean_response_time_received_female,$mean_response_time_received_male];
 	
 	// DYNAMIC TEXT VARIABLES
 	$comparison_cutoff_response_rate          = 1

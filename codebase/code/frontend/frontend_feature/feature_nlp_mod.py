@@ -52,7 +52,7 @@ def sentiment_dict_feature(email_link_df, link_id, msg_id, msg_threadid, msg_dat
 
 	# insight generation successful
 	try:
-	   	
+		
 		# individual word categories
 		word_list = np.array([msg_text_data[x].sentiment_count.keys() for x in msg_id])[0]
 		
@@ -143,7 +143,7 @@ def politeness_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, l
 	# insight generation successful
 	try:
 	   
-	   	politeness     = np.array([msg_text_data[x].polite for x in msg_id])
+		politeness     = np.array([msg_text_data[x].polite for x in msg_id])
 		request   	   = np.array([msg_text_data[x].request for x in msg_id])
 		request_agg    = np.array([min(sum(msg_text_data[x].request),1) for x in msg_id])
 		
@@ -154,8 +154,8 @@ def politeness_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data, l
 		with warnings.catch_warnings():
 			warnings.simplefilter("ignore")
 			politeness_balance              		= [np.nanmean([response_balance(y, msg_text_data, 'polite') for y in x]) for x in response_link_pair]
-
-
+	
+	
 	# insight generation unsuccessful
 	except Exception as e: 
 		
@@ -200,7 +200,7 @@ def coordination_feature(email_link_df, link_id, msg_id, msg_threadid, msg_data,
 
 		link_contact_coordination_score          	   = [coordination_score(x, link_data, msg_text_data, word_list) for x in link_contact_link_id]
 		link_contact_coordination_score_dict     	   = dict([(x,y) for (x,y) in zip(link_contact, link_contact_coordination_score)])
- 		
+		
 		# message/link itself - message level identifiers
 		for word_list_name in word_list:
 			

@@ -10,7 +10,8 @@ var update_raw_data = function(raw_data) {
 	$network_matrix         	  	= raw_data['graph_network_matrix']
 	$network_matrix_female        	= raw_data['graph_network_matrix_female']
 	$network_matrix_male          	= raw_data['graph_network_matrix_male']
-	
+
+	$total_contact_perc             = raw_data['stat_total_contact_perc']
 	$total_contact                	= raw_data['stat_total_contact']
 	$perc_female                  	= raw_data['stat_perc_female']
 	$perc_na                      	= raw_data['stat_perc_na']

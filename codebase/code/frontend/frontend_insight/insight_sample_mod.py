@@ -150,8 +150,9 @@ def network(email_link_df, email_link_df_unique, current_date, email_date_df, em
 	# generate graph data
 
 	## subset
-	contact_df_temp 								   = contact_df.loc[contact_df['freq_agg']>3]
-
+	contact_df_temp 								   = contact_df.sort_values(by=['freq_agg'], ascending=[False])
+	contact_df_temp                                    = contact_df_temp[0:np.min([len(contact_df_temp), 30])]
+	
 	## raw data
 	user_name_col        					           = np.concatenate([[user_name], np.array(contact_df_temp['contact_name'])])
 	user_email_col       					           = np.concatenate([[user_email], np.array(contact_df_temp['contact'])])
@@ -200,6 +201,8 @@ def network(email_link_df, email_link_df_unique, current_date, email_date_df, em
 	network_dict['graph_network_matrix_female']        = list(network_dict['graph_network_matrix_female'].flatten())
 
 	# generate stats data
+	network_dict['stat_total_contact_perc']            = (float(sum(contact_df_temp['freq_agg']))/sum(contact_df['freq_agg']))*100
+
 	network_dict['stat_total_contact']                 = len(user_name_col)
 	network_dict['stat_perc_female']                   = (float(len([x for x in network_dict['graph_contact_gender'] if x=='F']))/len([x for x in network_dict['graph_contact_gender'] if bool(re.search("M|F", x))==True]))*100
 	network_dict['stat_perc_na']                       = (float(len([x for x in network_dict['graph_contact_gender'] if x=='I']))/len([x for x in network_dict['graph_contact_gender'] if bool(re.search("M|F|I", x))==True]))*100
@@ -225,11 +228,14 @@ def sample_sentiment(email_link_df, email_link_df_unique, current_date, email_da
 	# initialize
 	sample_sentiment_dict = dict()
 
+	# subset to sent
+	email_link_df_unique_temp                 = email_link_df_unique.loc[email_link_df_unique['inbox_outbox']=='outbox']
+
 	# generate graph data
-	sample_sentiment_dict['graph_sentiment']  = list([x for x in np.array(email_link_df_unique['sentiment..sentiment']) if ~np.isnan(x)])
+	sample_sentiment_dict['graph_sentiment']  = list([x for x in np.array(email_link_df_unique_temp['sentiment..sentiment']) if ~np.isnan(x)])
 
 	# generate samples
-	sample_sentiment_dict['graph_sentiment_sample']     = []
+	sample_sentiment_dict['graph_sentiment_sample']          = []
 	sample_sentiment_dict['graph_sentiment_sample_dist']     = []
 
 	min_range = pd.cut((0,1),10, retbins=True)[1][0:10]
@@ -237,16 +243,16 @@ def sample_sentiment(email_link_df, email_link_df_unique, current_date, email_da
 
 	for min_sentiment,max_sentiment in zip(min_range, max_range):
 
-		sample_temp = np.array(email_link_df_unique[(email_link_df_unique['sentiment..sentiment']>=min_sentiment) & (email_link_df_unique['sentiment..sentiment'] < max_sentiment)]['msg_id'])
+		sample_temp = np.array(email_link_df_unique_temp[(email_link_df_unique_temp['sentiment..sentiment']>=min_sentiment) & (email_link_df_unique_temp['sentiment..sentiment'] < max_sentiment)]['msg_id'])
 
 		if len(sample_temp)>0:
 			np.random.shuffle(sample_temp)
 			sample_temp = sample_temp[0]
 
-			sample_msg  = np.array(email_link_df_unique[(email_link_df_unique['msg_id']==sample_temp)]['text'])[0]
+			sample_msg  = np.array(email_link_df_unique_temp[(email_link_df_unique_temp['msg_id']==sample_temp)]['text'])[0]
 			sample_msg  = ''.join(x for x in sample_msg if x in string.printable) 
 			
-			sample_dist = np.array(email_link_df_unique[(email_link_df_unique['msg_id']==sample_temp)]['sentiment_score_dist_vader'])[0]
+			sample_dist = np.array(email_link_df_unique_temp[(email_link_df_unique_temp['msg_id']==sample_temp)]['sentiment_score_dist_vader'])[0]
 			
 
 			sample_sentiment_dict['graph_sentiment_sample'].append(sample_msg)

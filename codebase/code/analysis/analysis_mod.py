@@ -176,11 +176,12 @@ def analysis(session_id, email_file_array, user_address, output_dir, current_dat
 		agg_contact_df  	= agg_contact_df.loc[~(agg_contact_df['contact_name']=="/")]
 		insight_df   		= insight_df.reset_index(drop=True, inplace=False)
 		agg_contact_df  	= agg_contact_df.reset_index(drop=True, inplace=False)
-
-		conver_parsed   	= [conver_parsed[x] for x in conver_parsed.keys() if x in np.array(insight_df['msg_threadid'])][0]
-		msg_parsed      	= [msg_parsed[x] for x in msg_parsed.keys() if x in np.array(insight_df['msg_id'])][0]
-		msg_text_parsed 	= [msg_text_parsed[x] for x in msg_text_parsed.keys() if x in np.array(insight_df['msg_id'])][0]
-		contact_parsed  	= [contact_parsed[x] for x in contact_parsed.keys() if x in np.array(insight_df['link_contact'])][0]
+		
+		conver_parsed   	= dict((k, conver_parsed[k]) for k in np.array(insight_df['msg_threadid']) if k in conver_parsed)
+		msg_parsed   		= dict((k, msg_parsed[k]) for k in np.array(insight_df['msg_id']) if k in msg_parsed)
+		msg_text_parsed   	= dict((k, msg_text_parsed[k]) for k in np.array(insight_df['msg_id']) if k in msg_text_parsed)
+		link_parsed   		= dict((k, link_parsed[k]) for k in np.array(insight_df['link_id']) if k in link_parsed)
+		contact_parsed   	= dict((k, contact_parsed[k]) for k in np.array(insight_df['link_contact']) if k in contact_parsed)
 
 		final_link_count   = len(insight_df)
 		print("Emails - omitted as impersonal (lack of name): " + str(original_link_count-final_link_count))
