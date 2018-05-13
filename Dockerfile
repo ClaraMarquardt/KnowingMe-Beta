@@ -62,7 +62,8 @@ RUN chmod -R a+rwx .
 ## Install Dependencies
 RUN pip install --no-binary scipy scikit-learn  
 RUN pip --no-cache-dir install -r codebase/requirements.txt           	   
-RUN pip install --upgrade google-api-python-client        			           
+RUN pip install --upgrade google-api-python-client        
+RUN pip install gevent       			           
 
 ## Test Dependencies
 # RUN python codebase/installation/dependency_test.sh
