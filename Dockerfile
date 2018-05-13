@@ -25,8 +25,6 @@ RUN apt-get install --no-install-recommends --no-install-suggests -y g++-4.8 git
 gcc python-pip libc-dev unixodbc-dev python-dev
 RUN pip install --upgrade pip
 
-RUN apt-get install -y openjdk-8-jre python-pycurl
-
 # Info
 # ------------------------------------------------------------------------ #
 MAINTAINER Clara Marquardt "marquardt.clara@gmail.com”
