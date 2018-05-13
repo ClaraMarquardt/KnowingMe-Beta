@@ -14,7 +14,7 @@ importlib
 argparse
 python-dateutil
 pytz
-gevent
+gevent==1.2.2
 vaderSentiment
 sqlalchemy
 Flask-SQLAlchemy
