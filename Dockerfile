@@ -19,7 +19,7 @@
 # ------------------------------------------------------------------------ #
 
 FROM ubuntu:latest  
-RUN apt-get update && apt-get install -my wget gnupg
+RUN apt-get update
 RUN apt-get install --no-install-recommends --no-install-suggests -y --reinstall build-essential
 RUN apt-get install --no-install-recommends --no-install-suggests -y g++-4.8 git bash python python-setuptools \
 gcc python-pip libc-dev unixodbc-dev python-dev
