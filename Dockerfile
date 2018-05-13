@@ -19,15 +19,11 @@
 # ------------------------------------------------------------------------ #
 
 FROM ubuntu:latest  
-RUN apt-get update  
+RUN apt-get update && apt-get install -my wget gnupg
 RUN apt-get install --no-install-recommends --no-install-suggests -y --reinstall build-essential
 RUN apt-get install --no-install-recommends --no-install-suggests -y g++-4.8 git bash python python-setuptools \
 gcc python-pip libc-dev unixodbc-dev python-dev
 RUN pip install --upgrade pip
-
-RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc/apt/sources.list.d/pgdg.list
-RUN apt-get update && apt-get install -y python-software-properties software-properties-common postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3
 
 RUN apt-get install -y openjdk-8-jre python-pycurl
 
@@ -57,7 +53,7 @@ RUN pwd
 # Installation - Setup
 # ---------------------------------------------
 RUN pwd
-WORKDIR /KnowingMeBeta/
+WORKDIR /KnowingMeBeta_Test/
 RUN chmod -R a+rwx .
 
 # Installation - Python Dependencies
@@ -74,7 +70,6 @@ RUN python codebase/installation/nltk_test.py
 RUN python codebase/installation/spacy_test.py  
 
 
-
 # STAGE RESTART
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #
@@ -88,29 +83,19 @@ RUN RESTART=${RESTART} echo "stage_restart" # comment to restart here
 # ---------------------------------------------
 WORKDIR /
 RUN pwd
-RUN rm -rf /KnowingMeBeta
+RUN rm -rf /KnowingMeBeta_Test
 
 RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@github.com/ClaraMarquardt/KnowingMeBeta_Test.git
 
-WORKDIR /KnowingMeBeta/
+WORKDIR /KnowingMeBeta_Test/
 RUN chmod -R a+rwx .
-
-# Database Initialization
-# ---------------------------------------------
-USER postgres
-RUN /etc/init.d/postgresql start &&\
-    psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
-    createdb -O docker docker
-
-RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.3/main/pg_hba.conf
-RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
 
 # Launch
 # ---------------------------------------------
 VOLUME /KnowingMe_Data
-WORKDIR /KnowingMeBeta/
+WORKDIR /KnowingMeBeta_Test/
 EXPOSE  $PORT
-CMD ["/KnowingMeBeta/codebase/docker/docker_start.sh"]
+CMD ["/KnowingMeBeta_Test/codebase/docker/docker_start.sh"]
 
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #

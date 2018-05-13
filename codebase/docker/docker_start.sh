@@ -14,10 +14,10 @@
 # ------------------------------------------------------------------------ #
 
 ## Start postgresql
-/etc/init.d/postgresql start
+# /etc/init.d/postgresql start
 
 ## Launch app
-python /KnowingMeBeta/codebase/KnowingMe.py
+python /KnowingMeBeta_Test/codebase/KnowingMe.py
 
 # ------------------------------------------------------------------------ #
 # ------------------------------------------------------------------------ #
