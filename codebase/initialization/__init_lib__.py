@@ -59,12 +59,12 @@ import webbrowser
 import flask 
 from   flask_httpauth import HTTPBasicAuth
 from   flask_oauth import OAuth
-from   urllib2 import Request, urlopen, URLError
 from   threading import Thread
 from   gevent.wsgi import WSGIServer
 from   flask_sqlalchemy import SQLAlchemy
 from   sqlalchemy.dialects.postgresql import JSON
 from   werkzeug.debug import DebuggedApplication
+from   urllib2 import Request, urlopen, URLError
 
 # Gmail API & OAuth2
 import httplib2

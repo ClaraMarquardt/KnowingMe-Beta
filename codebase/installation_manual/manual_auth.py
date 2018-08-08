@@ -64,6 +64,7 @@ def get_credentials():
 		print('Storing credentials to ' + credential_path)
 	return credentials
 
+
 # log_in
 #---------------------------------------------#
 def log_in():

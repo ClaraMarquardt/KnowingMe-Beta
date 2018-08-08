@@ -87,6 +87,13 @@ RUN git clone https://5f93c3a742abf9ec98d058391d49cb7970e90973:x-oauth-basic@git
 
 WORKDIR /KnowingMeBeta_Test/
 RUN chmod -R a+rwx .
+RUN rm -rf /KnowingMeBeta_Test/.git
+RUN rm -rf /KnowingMeBeta_Test/.gitignore
+
+# Create volume
+# ---------------------------------------------
+RUN mkdir /KnowingMe_Data
+RUN chmod -R a+rwx /KnowingMe_Data
 
 # Launch
 # ---------------------------------------------

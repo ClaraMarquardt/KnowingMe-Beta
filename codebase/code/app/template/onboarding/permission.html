@@ -28,7 +28,7 @@
     
     <h3><p style="text-align:center;">Let's Get Logged-In</p></h3>
   
-    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">To create insights about the way you communicate with others, we need to analyze your email data which is why we are asking you to authenticate with your Gmail account. If you have not previously authenticated, you’ll see a request for permission on the next page.<br><br>Your email data is personal, and we take your trust seriously. <br>  &#8226; <i>No data leaves your computer. <br> &#8226; Any data that is generated is deleted once you log out or close the app.</i>
+    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241">To create insights about the way you communicate with others, we need to analyze your email data which is why <br>we are asking you to authenticate with your Gmail account. If you have not previously authenticated, you’ll see a request for specific permissions on the next page. You will also be asked to acknowledge that you have read and agree with our <a href="https://claramarquardt.github.io/projects/knowingme/knowingme-privacy-policy.html" target="_blank">Privacy Policy</a>, <br><a href="https://claramarquardt.github.io/projects/knowingme/knowingme-terms-of-use.html" target="_blank">Terms of Use</a>, and <a href="https://claramarquardt.github.io/projects/knowingme/knowingme-beta-disclaimer.html" target="_blank">Beta Disclaimer</a>.<br><br>Your email data is personal, and we take your trust seriously. <br>  &#8226; <i>No data leaves your computer (Desktop app) / our dedicated web server (Web app). <br> &#8226; Any data that is collected or generated is deleted once you properly terminate the app.</i>
     </font></p>
  
     <p style="text-align:center;"><a href={{ auth_url }}>Authenticate</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="#section02">Learn More</a>&nbsp;&nbsp;</p>
@@ -46,12 +46,22 @@
     {% include 'template/general/header_ribbon_authentication.html' %}
 
     {% include 'template/space/landing_scroll_top_space.html' %}
-    {% include 'template/space/landing_scroll_top_space.html' %}
-    {% include 'template/space/landing_scroll_top_space.html' %}
 
-    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241"> We want to help you understand how you communicate.<br><br>To do this, we pull the text and meta-data of your emails from Gmail and run it through our analytical package. All processing takes place locally on your computer. No data leaves your computer, and all data is deleted once you log out or close the app.<br>
+    <p style="text-align:center; padding-left:350px; padding-right:350px;"><font color="#464241"> We want to help you understand how you communicate.<br><br>To do this, we (i) collect your email address and gather some basic information from your Gmail Profile (full name + profile photo) and (ii) pull the text and metadata of your sent and received emails over a specified period from your Gmail account. Whether you are using the Desktop or Web app, we are committed to safeguarding the data we collect.
 
-    <br><br><i>We realize that you're placing a large trust in our service. <br>If you have concerns that aren't covered here, please <a href="http://knowingmeapp.com/contact-us/">contact us</a></i>.
+
+    <br><br><img src="{{url_for('static', filename='image/icon/desktop.png')}}" style="width:55px;height:55px;"/><br><b>Desktop App</b><br>All the data that we collect is stored and analyzed locally on your computer. <br>No data is collected, analyzed or retained by us in any other location. 
+
+    <br>
+  
+    <br><br><img src="{{url_for('static', filename='image/icon/cloud.png')}}" style="width:50px;height:50px;"/><br><b>Web App</b><br>All the data that we collect is stored and analyzed on a web server hosted by Amazon Web Servers (AWS). No data is collected, analyzed or retained by us in any other location. The data is secured with a user-session-specific password and accessible only to our team's CTO. Any data that is transferred to the server is automatically deleted within 24 hours as part of a daily server reboot. 
+
+    <br><br>
+
+    In either case you can delete all your data by following these steps to properly terminate the app: (i) Log out of the app, confirming your intent to reset the app when prompted; (ii) Close this browser window; (iii) (Desktop App Only) Terminate the Docker container in which the app is being executed; and (iv) (Desktop App Only) Delete the user-designated data folder. 
+
+
+    <br><br><i>We realize that you're placing a large trust in our service. <br>If you have concerns that aren't covered here, please <a href="mailto:knowingmeteam@gmail.com">contact us</a></i>.
 
     <br><br>
 

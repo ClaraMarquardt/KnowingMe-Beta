@@ -1,3 +1,4 @@
+pip==9.0.1
 plotly==2.0.15
 flask==0.12.2
 flask_oauth==0.12
