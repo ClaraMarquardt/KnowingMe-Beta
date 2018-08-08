@@ -13,14 +13,14 @@
 # ------------------------------------------------------------------------ #
 
 # Build docker image
-# docker build -t knowingmebeta_test .
-# docker build --no-cache -t knowingmebeta_test .
-docker build --build-arg RESTART=`date +%s` -t knowingmebeta_test .
+# docker build -t knowingmeaws .
+# docker build --no-cache -t knowingmeaws .
+docker build --build-arg RESTART=`date +%s` -t knowingmeaws .
 
 # Push docker image
-docker login --username=knowingmeatideas42        					# KnowingMe    
-docker tag knowingmebeta_test knowingmeatideas42/knowingmebeta_test
-docker push knowingmeatideas42/knowingmebeta_test
+docker login --username=knowingmeapp        		# KnowingMe    
+docker tag knowingmeaws knowingmeapp/knowingmeaws
+docker push knowingmeapp/knowingmeaws
 
 #----------------------------------------------------------------------------#
 
