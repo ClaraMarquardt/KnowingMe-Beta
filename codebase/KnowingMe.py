@@ -400,7 +400,7 @@ def intro_load_analysis_wrapper(session_id, user, user_name, email_range, email_
 # landing 
 # ---------------------------------------------#
 @app.route('/')
-@auth.login_required
+# @auth.login_required
 def landing_view():
 	
 	# define globals
@@ -432,7 +432,7 @@ def landing_view():
 # home 
 # ---------------------------------------------#
 @app.route('/home')
-@auth.login_required
+# @auth.login_required
 def home_view():
 
 	# define globals
@@ -466,7 +466,7 @@ def home_view():
 # reset 
 # ---------------------------------------------#
 @app.route('/reset')
-@auth.login_required
+# @auth.login_required
 def reset_view():
 	
 	# access check
@@ -502,7 +502,7 @@ def reset_view():
 # gmail_authentication 
 # ---------------------------------------------#
 @app.route('/gmail_authentication')
-@auth.login_required
+# @auth.login_required
 def gmail_authentication_view():
 
 	# define globals
@@ -547,7 +547,7 @@ def gmail_authentication_view():
 # permission 
 # ---------------------------------------------#
 @app.route('/permission')
-@auth.login_required
+# @auth.login_required
 def permission_view():
 	
 	# access check
@@ -569,7 +569,7 @@ def permission_view():
 # gmail_oauth2callback
 # ---------------------------------------------#
 @app.route('/gmail_oauth2callback')
-@auth.login_required
+# @auth.login_required
 def gmail_oauth2callback_view():
 
 	# access check
@@ -599,7 +599,7 @@ def gmail_oauth2callback_view():
 # logout 
 # ---------------------------------------------#
 @app.route('/logout')
-@auth.login_required
+# @auth.login_required
 def logout_view():
 
 	# access check
@@ -639,7 +639,7 @@ def logout_view():
 # intro_load_a
 # ---------------------------------------------#
 @app.route('/intro_load_a')
-@auth.login_required
+# @auth.login_required
 def intro_load_a_view():
 
 	# define globals
@@ -698,7 +698,7 @@ def intro_load_a_view():
 # intro_load_b
 # ---------------------------------------------#
 @app.route('/intro_load_b')
-@auth.login_required
+# @auth.login_required
 def intro_load_b_view():
 
 	# define globals
@@ -749,7 +749,7 @@ def intro_load_b_view():
 # intro_load_c
 # ---------------------------------------------#
 @app.route('/intro_load_c')
-@auth.login_required
+# @auth.login_required
 def intro_load_c_view():
 
 	# define globals
@@ -789,7 +789,7 @@ def intro_load_c_view():
 # intro_main
 # ---------------------------------------------#
 @app.route('/intro_main')
-@auth.login_required
+# @auth.login_required
 def intro_main_view():
 
 
@@ -856,7 +856,7 @@ def intro_main_view():
 # intro_final
 # ---------------------------------------------#
 @app.route('/intro_final')
-@auth.login_required
+# @auth.login_required
 def intro_final_view():
 
 	# define globals
@@ -894,7 +894,7 @@ def intro_final_view():
 # dashboard_intro
 # ------------------------------------------------------------------------ #
 @app.route('/dashboard_intro')
-@auth.login_required
+# @auth.login_required
 def dashboard_intro_view():
 
 	# define globals
@@ -911,7 +911,7 @@ def dashboard_intro_view():
 # dashboard
 # ------------------------------------------------------------------------ #
 @app.route('/dashboard')
-@auth.login_required
+# @auth.login_required
 def dashboard_view():
 
 	# define globals
@@ -944,7 +944,7 @@ def dashboard_view():
 # setting
 # ------------------------------------------------------------------------ #
 @app.route('/setting')
-@auth.login_required
+# @auth.login_required
 def setting_view():
 
 	# access check
@@ -969,7 +969,7 @@ def setting_view():
 # timeframe_setting
 # ------------------------------------------------------------------------ #
 @app.route('/timeframe_setting', methods=['POST','GET'])
-@auth.login_required
+# @auth.login_required
 def timeframe_setting_view():
 
 	# access check
@@ -1019,7 +1019,7 @@ def timeframe_setting_view():
 # timeframe_setting_store
 # ------------------------------------------------------------------------ #
 @app.route('/timeframe_setting_store', methods=['POST','GET'])
-@auth.login_required
+# @auth.login_required
 def timeframe_setting_store_view():
 
 	## NO ACCESS CHECK (BACKEND)
@@ -1053,7 +1053,7 @@ def timeframe_setting_store_view():
 # group_setting
 # ------------------------------------------------------------------------ #
 @app.route('/contact_group')
-@auth.login_required
+# @auth.login_required
 def group_setting_view():
 
 	# access check
@@ -1106,7 +1106,7 @@ def group_setting_view():
 # group_setting_store
 # ------------------------------------------------------------------------ #
 @app.route('/group_setting_store', methods=['POST','GET'])
-@auth.login_required
+# @auth.login_required
 def group_setting_store_view():
 
 	## NO ACCESS CHECK (BACKEND)
@@ -1148,7 +1148,7 @@ def group_setting_store_view():
 # scroll_mode
 # ------------------------------------------------------------------------ #
 @app.route('/scroll_mode')
-@auth.login_required
+# @auth.login_required
 def scroll_mode_view():
 
 	# define globals
@@ -1192,7 +1192,7 @@ def scroll_mode_view():
 # insight_intro
 # ------------------------------------------------------------------------ #
 @app.route('/insight_intro')
-@auth.login_required
+# @auth.login_required
 def insight_intro_view():
 
 	# access check
@@ -1240,7 +1240,7 @@ def insight_intro_view():
 # insight_a
 # ------------------------------------------------------------------------ #
 @app.route('/insight_a')
-@auth.login_required
+# @auth.login_required
 def insight_a_view():
 
 	# access check
@@ -1297,7 +1297,7 @@ def insight_a_view():
 # insight_b
 # ------------------------------------------------------------------------ #
 @app.route('/insight_b',methods=['POST','GET'])
-@auth.login_required
+# @auth.login_required
 def insight_b_view(analysis_data="None",analysis_text_id="None", analysis_data_text="None"):
 
 	# access check
@@ -1365,7 +1365,7 @@ def insight_b_view(analysis_data="None",analysis_text_id="None", analysis_data_t
 # insight_c
 # ------------------------------------------------------------------------ #
 @app.route('/insight_c')
-@auth.login_required
+# @auth.login_required
 def insight_c_view():
 
 	# access check
@@ -1412,7 +1412,7 @@ def insight_c_view():
 # insight_d
 # ------------------------------------------------------------------------ #
 @app.route('/insight_d')
-@auth.login_required
+# @auth.login_required
 def insight_d_view():
 
 	# define globals
@@ -1488,7 +1488,7 @@ def insight_d_view():
 # insight_info
 # ------------------------------------------------------------------------ #
 @app.route('/insight_info')
-@auth.login_required
+# @auth.login_required
 def insight_info_view():
 
 	# access check
@@ -1533,7 +1533,7 @@ def insight_info_view():
 # references
 # ------------------------------------------------------------------------ #
 @app.route('/references')
-@auth.login_required
+# @auth.login_required
 def references_view():
 
 	if (access_check(access_level=1, output_dir=setting_var[flask.session['session_id']]['user_setting']['output_dir'])) == True: 
@@ -1559,7 +1559,7 @@ def references_view():
 # intro_load_update
 # ---------------------------------------------#
 @app.route('/intro_load_update')
-@auth.login_required
+# @auth.login_required
 def intro_load_update_view():
 	
 
@@ -1584,7 +1584,7 @@ def intro_load_update_view():
 # insight_update
 # ------------------------------------------------------------------------ #
 @app.route('/insight_update')
-@auth.login_required
+# @auth.login_required
 def insight_update_view():
 
 	## NO ACCESS CHECK (BACKEND)
@@ -1618,7 +1618,7 @@ def insight_update_view():
 # error
 # ------------------------------------------------------------------------ #
 @app.route('/error')
-@auth.login_required
+# @auth.login_required
 def error_view():
 
 	## NO ACCESS CHECK (ERROR)
